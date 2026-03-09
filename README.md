@@ -12,7 +12,7 @@ The default setup in this repo supports:
 - a fixed set of workflow statuses
 - scheduled issue reminders
 - GitHub Project sync for article issues
-- Project fields for status, priority, repo, venue, target date, and next action
+- Project fields for status, priority, repo URL, venue, target date, and next action
 
 ## Repository layout
 
@@ -51,7 +51,7 @@ Create a GitHub Project named `Research Tracker` and add these fields:
   - Medium
   - High
   - Critical
-- **Repo** (text)
+- **Repo URL** (text)
 - **Venue** (text)
 - **Target date** (date)
 - **Next action** (text)
@@ -113,21 +113,23 @@ Example:
 ]
 ```
 
-## Important rule
+## Article status mapping
 
-Use controlled values in `status`:
+The `status` field in `articles.json` is mapped to the Project Status field as follows:
 
-- Backlog
-- Planned
-- Reading
-- Writing
-- Experiments
-- Revising
-- Submitted
-- Camera-ready
-- Done
-- Blocked
-- Archived
+| `articles.json` status | Project Status |
+|---|---|
+| `planned` | Planned |
+| `in_progress` | Writing |
+| `draft` | Writing |
+| `submitted` | Submitted |
+| `revising` | Revising |
+| `finished` | Done |
+| `published` | Done |
+| `archived` | Archived |
+| `cancelled` | Archived |
+
+Any valid Project Status value (e.g. `Backlog`, `Experiments`) can also be used directly. Unknown values default to `Backlog`.
 
 Do not use free-text statuses such as `experiments running`. Put that richer description in `notes` or `next_action` instead.
 

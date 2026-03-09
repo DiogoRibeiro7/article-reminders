@@ -1,3 +1,27 @@
+# Project sync: syncs article issues into a GitHub Project and updates fields.
+#
+# Required GitHub Project fields:
+#   - Status      (single select): Backlog, Planned, Reading, Writing,
+#                                   Experiments, Revising, Submitted,
+#                                   Camera-ready, Done, Blocked, Archived
+#   - Priority    (single select): Low, Medium, High, Critical
+#   - Repo URL    (text)
+#   - Venue       (text)
+#   - Target date (date)
+#   - Next action (text)
+#
+# Article status mapping (articles.json -> Project Status):
+#   planned    -> Planned
+#   in_progress -> Writing
+#   draft      -> Writing
+#   submitted  -> Submitted
+#   revising   -> Revising
+#   finished   -> Done
+#   published  -> Done
+#   archived   -> Archived
+#   cancelled  -> Archived
+#   (any valid Project status used as-is, otherwise defaults to Backlog)
+
 from __future__ import annotations
 
 import json
