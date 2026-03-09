@@ -1,0 +1,107 @@
+name: Article tracker
+description: Track an article, paper, or repo-first research line
+title: "[Article] "
+labels:
+  - type:article
+body:
+  - type: input
+    id: paper_title
+    attributes:
+      label: Paper title
+      description: Full working or final paper title
+      placeholder: Uncertainty and Calibration Under Shift, Noise, and Autocorrelation: A Simulation Benchmark
+    validations:
+      required: true
+
+  - type: input
+    id: repo
+    attributes:
+      label: Repository
+      description: GitHub repository where the work lives
+      placeholder: DiogoRibeiro7/uncertainty-bench
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - Low
+        - Medium
+        - High
+        - Critical
+    validations:
+      required: true
+
+  - type: dropdown
+    id: status
+    attributes:
+      label: Current status
+      options:
+        - Backlog
+        - Planned
+        - Reading
+        - Writing
+        - Experiments
+        - Revising
+        - Submitted
+        - Camera-ready
+        - Done
+        - Blocked
+        - Archived
+    validations:
+      required: true
+
+  - type: input
+    id: venue
+    attributes:
+      label: Venue
+      placeholder: Journal / conference / workshop
+
+  - type: input
+    id: target_date
+    attributes:
+      label: Target date
+      placeholder: YYYY-MM-DD
+
+  - type: textarea
+    id: abstract
+    attributes:
+      label: Abstract
+      description: Working abstract or short summary
+
+  - type: textarea
+    id: current_focus
+    attributes:
+      label: Current focus
+      description: What is being done now
+
+  - type: textarea
+    id: next_action
+    attributes:
+      label: Next action
+      description: One concrete next step
+    validations:
+      required: true
+
+  - type: textarea
+    id: blockers
+    attributes:
+      label: Blockers
+      description: Anything slowing or blocking progress
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: Abstract
+        - label: Introduction
+        - label: Related work
+        - label: Methods
+        - label: Experiments
+        - label: Figures
+        - label: Discussion
+        - label: Conclusion
+        - label: Submission package

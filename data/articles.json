@@ -1,0 +1,85 @@
+{
+  "articles": [
+    {
+      "title": "Uncertainty and Calibration Under Shift, Noise, and Autocorrelation: A Simulation Benchmark",
+      "repo": "DiogoRibeiro7/uncertainty-bench",
+      "status": "in_progress",
+      "notes": "Simulation benchmark for uncertainty in regression, classification, and forecasting under shift, noise, and temporal dependence.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-03-07"
+    },
+    {
+      "title": "Stress-Testing Online Change-Point Detection Under Missingness, Outliers, and Seasonality: A Simulation Study",
+      "repo": "DiogoRibeiro7/cpd-stress-test",
+      "status": "draft",
+      "notes": "Main CPD simulation paper.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-03-07"
+    },
+    {
+      "title": "Geodesic Non-Local Means for Geometry-Aware Image Denoising",
+      "repo": "DiogoRibeiro7/geodesic-nlm",
+      "status": "draft",
+      "notes": "Research codebase for geometry-aware image denoising with reliable baselines, graph-based geodesic denoising methods, reproducible experiments, and publication-ready paper artifacts (figures, tables, and LaTeX alignment).",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-03-08"
+    },
+    {
+      "title": "Calibration vs accuracy trade-offs",
+      "repo": "DiogoRibeiro7/calibration-tradeoffs",
+      "status": "draft",
+      "notes": "Need to strengthen simulation design and references.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-03-01"
+    },
+    {
+      "title": "Synthetic smart-home stress testing for ML systems",
+      "repo": "DiogoRibeiro7/stressloop",
+      "status": "planned",
+      "notes": "Repository scaffold exists, experiments not complete yet.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-02-28"
+    },
+    {
+      "title": "Curvature-adaptive nearest-neighbour classification",
+      "repo": "DiogoRibeiro7/curvknn",
+      "status": "finished",
+      "notes": "Core repo is in place; reminder issue should be closed.",
+      "paper_path": "paper/",
+      "priority": "low",
+      "last_updated": "2026-03-05"
+    },
+    {
+    "title": "TMLE Missingness Simulation Study",
+    "repo": "DiogoRibeiro7/tmle-missingness-sim",
+    "status": "draft",
+    "notes": "Simulation study comparing MI + Rubin versus missingness-aware orthogonal estimators with bootstrap or BLB inference for causal effects under missing data.",
+    "paper_path": "paper/",
+    "priority": "medium",
+    "last_updated": "2026-03-07"
+    },
+    {
+    "title": "pro-particles",
+    "repo": "DiogoRibeiro7/pro-particles",
+    "status": "in_progress",
+    "notes": "NumPy-first interacting-particle sampler for Proper-Scoring-Rule posteriors with log-score and MMD² examples.",
+    "paper_path": "paper/",
+    "priority": "medium",
+    "last_updated": "2026-03-07"
+  },
+  {
+    "title": "Curvature-Adaptive k-NN on Nonlinear Manifolds",
+    "repo": "DiogoRibeiro7/curvknn",
+    "status": "draft",
+    "notes": "Research codebase for curvature-adaptive nearest-neighbour classification, including fixed-k, curvature-adaptive, and curvature-weighted k-NN with reproducible synthetic benchmarks, runtime tracking, and paper artifact generation.",
+    "paper_path": "paper/",
+    "priority": "medium",
+    "last_updated": "2026-03-08"
+  }
+  ]
+}

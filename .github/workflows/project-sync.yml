@@ -1,0 +1,42 @@
+name: Project sync
+
+on:
+  workflow_run:
+    workflows: ["Article reminders"]
+    types:
+      - completed
+  issues:
+    types:
+      - opened
+      - edited
+      - reopened
+      - closed
+      - labeled
+      - unlabeled
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: read
+  repository-projects: write
+
+jobs:
+  sync-project:
+    if: (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success') && vars.PROJECT_OWNER != '' && vars.PROJECT_NUMBER != ''
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Sync issues into project and update fields
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROJECT_TOKEN || secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          PROJECT_OWNER: ${{ vars.PROJECT_OWNER }}
+          PROJECT_NUMBER: ${{ vars.PROJECT_NUMBER }}
+        run: python scripts/sync_project_items.py
