@@ -143,6 +143,24 @@
       "paper_path": "papers/6_topological_cartography_destructive_attractors/",
       "priority": "high",
       "last_updated": "2026-07-02"
+    },
+    {
+      "title": "Open-Access Municipal Housing Price Dynamics in Portugal: Replication and Multi-Layer Extension Scaffolds",
+      "repo": "DiogoRibeiro7/housing_future_work_etl",
+      "status": "in_progress",
+      "notes": "Open-access Portuguese municipal housing research pipeline that reproduces the 2017 cross-sectional housing-price model and extends it with auditable ETL, validation, model-ready datasets, panel econometrics, spatial diagnostics and spatial models, RNAL exposure collection, causal scaffolds, granular data architecture, and temporal clustering. The repository is explicit that substantive empirical claims depend on official input data and that spatial, clustering, and causal layers have distinct inferential status.",
+      "paper_path": "docs/",
+      "priority": "high",
+      "last_updated": "2026-07-02"
+    },
+    {
+      "title": "From Chaos to Crisis: Using Dynamical-Systems Extreme Value Theory in Econometrics",
+      "repo": "DiogoRibeiro7/dynamical_systems_econometrics",
+      "status": "in_progress",
+      "notes": "Applies extreme value theory from dynamical systems (Milhazes Freitas framework) to econometric analysis of rare events, crises, and tail dependence. Includes simulation utilities for chaotic maps, rare-event diagnostics (exceedances, extremal index, return/hitting times), multivariate stress analysis, and reproduction package with YAML-based experiment orchestration. Designed for both Medium article and future formal paper.",
+      "paper_path": "article/",
+      "priority": "high",
+      "last_updated": "2026-07-02"
     }
   ]
 }
