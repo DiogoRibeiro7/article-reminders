@@ -55,40 +55,94 @@
       "last_updated": "2026-03-05"
     },
     {
-    "title": "TMLE Missingness Simulation Study",
-    "repo": "DiogoRibeiro7/tmle-missingness-sim",
-    "status": "draft",
-    "notes": "Simulation study comparing MI + Rubin versus missingness-aware orthogonal estimators with bootstrap or BLB inference for causal effects under missing data.",
-    "paper_path": "paper/",
-    "priority": "medium",
-    "last_updated": "2026-03-07"
+      "title": "TMLE Missingness Simulation Study",
+      "repo": "DiogoRibeiro7/tmle-missingness-sim",
+      "status": "draft",
+      "notes": "Simulation study comparing MI + Rubin versus missingness-aware orthogonal estimators with bootstrap or BLB inference for causal effects under missing data.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-03-07"
     },
     {
-    "title": "pro-particles",
-    "repo": "DiogoRibeiro7/pro-particles",
-    "status": "in_progress",
-    "notes": "NumPy-first interacting-particle sampler for Proper-Scoring-Rule posteriors with log-score and MMD² examples.",
-    "paper_path": "paper/",
-    "priority": "medium",
-    "last_updated": "2026-03-07"
-  },
-  {
-    "title": "Curvature-Adaptive k-NN on Nonlinear Manifolds",
-    "repo": "DiogoRibeiro7/curvknn",
-    "status": "draft",
-    "notes": "Research codebase for curvature-adaptive nearest-neighbour classification, including fixed-k, curvature-adaptive, and curvature-weighted k-NN with reproducible synthetic benchmarks, runtime tracking, and paper artifact generation.",
-    "paper_path": "paper/",
-    "priority": "medium",
-    "last_updated": "2026-03-08"
-  },
-  {
-  "title": "Economic Crises as Redistribution Operators: A Dynamical Systems Model of Wage Decline, Wealth Concentration, and Policy Control",
-  "repo": "DiogoRibeiro7/crisis_wealth_dynamics",
-  "status": "in_progress",
-  "notes": "Reproducible research repo with formal dynamical systems model, ETL pipeline for inequality/macro/labour data, simulation code, empirical panel analysis, and policy counterfactuals. Treats crisis outcomes as government choices.",
-  "paper_path": "article/",
-  "priority": "high",
-  "last_updated": "2026-07-02"
-}
+      "title": "pro-particles",
+      "repo": "DiogoRibeiro7/pro-particles",
+      "status": "in_progress",
+      "notes": "NumPy-first interacting-particle sampler for Proper-Scoring-Rule posteriors with log-score and MMD² examples.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-03-07"
+    },
+    {
+      "title": "Curvature-Adaptive k-NN on Nonlinear Manifolds",
+      "repo": "DiogoRibeiro7/curvknn",
+      "status": "draft",
+      "notes": "Research codebase for curvature-adaptive nearest-neighbour classification, including fixed-k, curvature-adaptive, and curvature-weighted k-NN with reproducible synthetic benchmarks, runtime tracking, and paper artifact generation.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-03-08"
+    },
+    {
+      "title": "Economic Crises as Redistribution Operators: A Dynamical Systems Model of Wage Decline, Wealth Concentration, and Policy Control",
+      "repo": "DiogoRibeiro7/crisis_wealth_dynamics",
+      "status": "in_progress",
+      "notes": "Reproducible research repo with formal dynamical systems model, ETL pipeline for inequality/macro/labour data, simulation code, empirical panel analysis, and policy counterfactuals. Treats crisis outcomes as government choices.",
+      "paper_path": "article/",
+      "priority": "high",
+      "last_updated": "2026-07-02"
+    },
+    {
+      "title": "Wealth Concentration as a Destructive Attractor: A Conditional Dynamical-Systems Benchmark",
+      "repo": "DiogoRibeiro7/wealth_attractor_dynamics",
+      "status": "in_progress",
+      "notes": "Benchmark two-variable dynamical-systems paper proving conditional local collapse stability under explicit institutional and demand-side thresholds, with equilibrium geometry, basin structure, separatrix analysis, and bifurcation results. Model-internal and non-empirical by design.",
+      "paper_path": "papers/1_destructive_attractor_benchmark/",
+      "priority": "high",
+      "last_updated": "2026-07-02"
+    },
+    {
+      "title": "From Destructive Attractors to Institutional Resilience: Calibration, Stochastic Escape, and Policy Counterfactuals",
+      "repo": "DiogoRibeiro7/wealth_attractor_dynamics",
+      "status": "in_progress",
+      "notes": "Extension paper adding public-data calibration, SMM and ABC identification checks, weak-identification diagnostics, three-variable bargaining dynamics, ABM consistency, stochastic escape, EVT-style rare-event analysis, and policy counterfactuals. Uses the benchmark theorem from Paper 1 without re-proving it.",
+      "paper_path": "papers/2_destructive_attractor_extensions/",
+      "priority": "high",
+      "last_updated": "2026-07-02"
+    },
+    {
+      "title": "From Bargaining Collapse to Institutional Erosion: Higher-Dimensional Destructive Attractor Models",
+      "repo": "DiogoRibeiro7/wealth_attractor_dynamics",
+      "status": "in_progress",
+      "notes": "Higher-dimensional theory paper developing the 3D bargaining model and 4D endogenous-institutions model as a hierarchy extending the 2D benchmark. Focuses on forward invariance, equilibria, resilience regions, deterministic simulations, basin slices, and continuation diagnostics.",
+      "paper_path": "papers/3_higher_dimensional_destructive_attractors/",
+      "priority": "high",
+      "last_updated": "2026-07-02"
+    },
+    {
+      "title": "Monte Carlo Cartography of Destructive Attractors: Collapse Probabilities, Resilience Thresholds, and Global Sensitivity",
+      "repo": "DiogoRibeiro7/wealth_attractor_dynamics",
+      "status": "in_progress",
+      "notes": "Computational uncertainty paper building a Monte Carlo atlas across the 2D, 3D, and 4D model hierarchy. Covers parameter and initial-condition uncertainty, stochastic shocks, collapse and resilience probability maps, first-passage summaries, and global sensitivity analysis without making empirical-probability claims.",
+      "paper_path": "papers/4_monte_carlo_destructive_attractors/",
+      "priority": "high",
+      "last_updated": "2026-07-02"
+    },
+    {
+      "title": "Koopman Early-Warning Indicators for Destructive Attractors in Political-Economy Dynamical Systems",
+      "repo": "DiogoRibeiro7/wealth_attractor_dynamics",
+      "status": "in_progress",
+      "notes": "Methodological paper applying Koopman operator methods and EDMD to derive slow modes, basin-separating observables, and short-window collapse predictors across the model hierarchy. Emphasizes model-internal diagnostics, spectral comparison, and robustness rather than empirical forecasting.",
+      "paper_path": "papers/5_koopman_early_warning_destructive_attractors/",
+      "priority": "high",
+      "last_updated": "2026-07-02"
+    },
+    {
+      "title": "Topological Cartography of Collapse and Resilience: Morse Graphs and Basin Structure in Destructive-Attractor Models",
+      "repo": "DiogoRibeiro7/wealth_attractor_dynamics",
+      "status": "in_progress",
+      "notes": "Set-oriented topology paper constructing coarse global state-space summaries through box decompositions, transition graphs, recurrent components, Morse-style graphs, and basin comparisons across 2D, 3D, and 4D models. Claims are explicitly resolution- and flow-time-dependent rather than theorem-level topology statements.",
+      "paper_path": "papers/6_topological_cartography_destructive_attractors/",
+      "priority": "high",
+      "last_updated": "2026-07-02"
+    }
   ]
 }
