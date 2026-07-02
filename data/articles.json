@@ -80,6 +80,15 @@
     "paper_path": "paper/",
     "priority": "medium",
     "last_updated": "2026-03-08"
-  }
+  },
+  {
+  "title": "Economic Crises as Redistribution Operators: A Dynamical Systems Model of Wage Decline, Wealth Concentration, and Policy Control",
+  "repo": "DiogoRibeiro7/crisis_wealth_dynamics",
+  "status": "in_progress",
+  "notes": "Reproducible research repo with formal dynamical systems model, ETL pipeline for inequality/macro/labour data, simulation code, empirical panel analysis, and policy counterfactuals. Treats crisis outcomes as government choices.",
+  "paper_path": "article/",
+  "priority": "high",
+  "last_updated": "2026-07-02"
+}
   ]
 }
