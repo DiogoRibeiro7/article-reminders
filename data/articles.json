@@ -170,6 +170,51 @@
   "paper_path": "reports/",
   "priority": "high",
   "last_updated": "2026-07-03"
-}
+},
+  {
+    "title": "The European Economy as a Set of Choices: A Reusable Diagnostic Framework for Convergence, Wages, Investment, and Fiscal Policy",
+    "repo": "DiogoRibeiro7/eu_economy_decision_lab",
+    "status": "in_progress",
+    "notes": "Policy-facing analytical framework for diagnosing the European economy through economic choices rather than headline GDP. Implements a synthetic EU macro-panel generator, growth and beta/sigma convergence analysis, wage-productivity gap and labour/profit-share diagnostics, public and private investment indicators, fiscal-stance classification, inflation and real-wage pressure measures, inequality indicators, country scorecards, and an automated Portugal-vs-EU policy brief, exposed through a Typer CLI, notebooks, and tests. The framework currently runs offline on synthetic panels with an explicit extension path to Eurostat, AMECO, and ECB data, so it is best understood as a reusable diagnostic toolkit awaiting connection to official sources.",
+    "paper_path": "notebooks/",
+    "priority": "medium",
+    "last_updated": "2026-07-03"
+  },
+  {
+    "title": "Has Supply-Side Liberalisation Been Tested? Event Studies, Synthetic Control, and Panel Evidence on Its Promised Gains",
+    "repo": "DiogoRibeiro7/il_supply_side_policy_tests",
+    "status": "in_progress",
+    "notes": "Reproducible empirical project that treats the supply-side liberalisation package (lower income and corporate taxes, privatisation, labour-market flexibility, a smaller public sector) as a falsifiable claim and tests whether it historically delivered higher productivity, real wages, GDP per capita, and lower poverty. Combines event studies around policy episodes (Portugal 2011-2015, Kansas 2012-2017, UK post-1979, US post-1981, Eastern European flat-tax reforms), a synthetic-control design for Portugal, and OECD/EU panel models, alongside an indicator contract, source registry, methodology notes, notebook templates, a Django dashboard scaffold, and tests. The analytical scaffolding, reusable functions, and agent prompts are in place, but the data providers are not yet fully connected, so the empirical conclusions remain to be produced under the repository's explicit robustness and failure-criteria rules.",
+    "paper_path": "reports/",
+    "priority": "high",
+    "last_updated": "2026-07-03"
+  },
+  {
+    "title": "Could Portugal Build a Sovereign Fund from Social Security Surpluses? A Monte Carlo Stress-Testing Framework",
+    "repo": "DiogoRibeiro7/portugal_swf_sim",
+    "status": "in_progress",
+    "notes": "Transparent Monte Carlo stress-testing framework (explicitly not a forecast) for whether Portugal could build a sovereign or strategic fund via the indirect route of Social Security surpluses, FEFSS transfers, and financial-asset purchases. Anchored on editable 2025 fiscal and FEFSS baselines, it simulates public-debt trajectories, FEFSS pension-coverage ratios, sovereign-fund asset growth, and downside risk across six policy scenarios spanning conservative reinforcement, debt-reduction-first, higher-equity mandates, indirect and aggressive strategic funds, and a post-2035 demographic-stress case. A second engine isolates the specific risk of buying Portuguese equities with pension surpluses, using transparent proxy returns by default and optional downloaded market data. The model deliberately separates fiscal balance, financial allocation, and mandate, and is designed to be falsifiable and improvable with better demographic and return calibration.",
+    "paper_path": "notebooks/",
+    "priority": "medium",
+    "last_updated": "2026-07-03"
+  },
+  {
+    "title": "From Employer Wages to State Transfers: A Ten-Paper Programme on Poverty, the Low-Wage Subsidy State, and Asset Power in the US and UK Since 1950",
+    "repo": "DiogoRibeiro7/poverty_neoliberalism_research_program",
+    "status": "in_progress",
+    "notes": "Agent-first scaffold for a sequenced ten-paper empirical research programme sharing one data pipeline, modelling framework, set of definitions, and reproducibility contract. It tests the working hypothesis that since the Reagan and Thatcher periods poverty reduction shifted away from employer responsibility and wage growth toward state correction through taxes and transfers, while the upper tail increasingly captured income via assets, business ownership, and capital gains taxed differently from wages - that is, that public budgets increasingly subsidised low wages as asset owners captured a growing share of income and wealth. The papers span the historical poverty record, lagged policy effects, market versus state-corrected poverty, the low-wage subsidy state, the incidence of poverty reduction, asset income and top wealth, labour power, housing, synthetic counterfactuals, and a final synthesis. The specification, data contracts, and per-paper prompts are complete; the empirical work is deliberately left minimal for a coding agent to implement, and the repo is explicit that the hypothesis must be tested rather than assumed and that synthetic data must not be used as evidence.",
+    "paper_path": "papers/",
+    "priority": "high",
+    "last_updated": "2026-07-03"
+  },
+  {
+    "title": "From Wages to Wealth: A Dynamical Model and Research Design for Rent Extraction, Property Ownership, and Class Reproduction",
+    "repo": "DiogoRibeiro7/wealth_rentier_dynamics",
+    "status": "in_progress",
+    "notes": "Develops a political-economy model of wealth concentration centered on the conversion of wages into asset ownership, with housing as the main transmission channel. Includes a deterministic dynamic model with explicit ownership-transition timing and affordability constraints, Portugal-oriented calibration scenarios, fixed-effects panel utilities, household ownership-transition modeling, dashboards, notebooks, and a reproducible simulation pipeline. The current empirical layer is implemented in code but still relies on synthetic sample panel data and provisional calibration anchors, so the repo is best understood as a theory-plus-research-design package for a working paper and future formal article.",
+    "paper_path": "reports/",
+    "priority": "high",
+    "last_updated": "2026-07-03"
+  }
   ]
 }
