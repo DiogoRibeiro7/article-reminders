@@ -161,6 +161,15 @@
       "paper_path": "article/",
       "priority": "high",
       "last_updated": "2026-07-02"
-    }
+    },
+    {
+  "title": "From Wages to Wealth: A Dynamical Model and Research Design for Rent Extraction, Property Ownership, and Class Reproduction",
+  "repo": "DiogoRibeiro7/wealth_rentier_dynamics",
+  "status": "in_progress",
+  "notes": "Develops a political-economy model of wealth concentration centered on the conversion of wages into asset ownership, with housing as the main transmission channel. Includes a deterministic dynamic model with explicit ownership-transition timing and affordability constraints, Portugal-oriented calibration scenarios, fixed-effects panel utilities, household ownership-transition modeling, dashboards, notebooks, and a reproducible simulation pipeline. The current empirical layer is implemented in code but still relies on synthetic sample panel data and provisional calibration anchors, so the repo is best understood as a theory-plus-research-design package for a working paper and future formal article.",
+  "paper_path": "reports/",
+  "priority": "high",
+  "last_updated": "2026-07-03"
+}
   ]
 }
