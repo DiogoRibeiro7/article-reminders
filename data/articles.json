@@ -215,6 +215,15 @@
     "paper_path": "reports/",
     "priority": "high",
     "last_updated": "2026-07-03"
-  }
+  },
+  {
+  "title": "North–South Fire-Season Onset in Mainland Portugal: A Reproducible Data-Engineering and Statistics Pipeline",
+  "repo": "DiogoRibeiro7/portugal-fire-onset",
+  "status": "in_progress",
+  "notes": "Tests whether rural fire onset is earlier at higher latitude, keeping ignition, burned-area, and fire-weather onset separate. Multi-source ingestion (ICNF, NASA FIRMS, EFFIS, ERA5/CEMS, GISCO, CORINE/DGT COS, DEM, OSM, INE) via a provenance-tracked download manager into PostGIS. Pure-Python statistics (OLS+robust SE, sign test, permutation, discrete-time hazard, Cox PH, Weibull AFT, random-intercept mixed, quantile, robustness). All 29 prompts implemented; ruff+mypy clean; 197 unit tests; offline path (features onset -> stats run -> viz build) reproducible. Remaining: live credentialed downloads (FIRMS/CDS), live PostGIS loader run, real GeoTIFF raster reads. Article is a scaffold, not yet written.",
+  "paper_path": "article_prompts/",
+  "priority": "high",
+  "last_updated": "2026-07-07"
+}
   ]
 }
