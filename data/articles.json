@@ -224,6 +224,15 @@
   "paper_path": "article_prompts/",
   "priority": "high",
   "last_updated": "2026-07-07"
+},
+  {
+  "title": "Can Portugal Produce a Parish-Level Map of Rent per Square Metre? A Coverage and Concordance Audit of Official INE Rent Data",
+  "repo": "DiogoRibeiro7/pt_rent_parish_repo",
+  "status": "in_progress",
+  "notes": "Reproducible pipeline auditing whether a national parish-level (freguesia) rent-per-m2 map can be built from observed official INE data alone, with explicit coverage reporting, CAOP 2025 concordance, and strict separation of official / asking-price / inferred / modelled layers.",
+  "paper_path": "reports/",
+  "priority": "high",
+  "last_updated": "2026-07-07"
 }
   ]
 }
