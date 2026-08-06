@@ -233,6 +233,15 @@
   "paper_path": "reports/",
   "priority": "high",
   "last_updated": "2026-07-07"
+},
+{
+  "title": "Locating Where Extreme-Score Detectors Fail: A Layered Evaluation for Predictive Maintenance on Public Industrial Data",
+  "repo": "DiogoRibeiro7/dynamical-evt-pdm",
+  "status": "in_progress",
+  "notes": "Reproducible layered evaluation that separates an extreme-score detector into score, threshold, extreme clusters, alarm episodes and matched events, so failure can be located per method rather than per dataset. Applied to two independent held-out compressor failures (MetroPT, MetroPT2) across nineteen methods under one shared alarm policy, with a warning-window rank separation and a circular-shift null that test whether a match carries information, genuine cross-dataset target-region transfer, detection-conditioned matched controls, and a high-replication extremal-index Monte Carlo. Under major revision after peer review; archived at Zenodo (concept DOI 10.5281/zenodo.21803768), results correspond to release v0.3.2.",
+  "paper_path": "paper/",
+  "priority": "high",
+  "last_updated": "2026-08-06"
 }
   ]
 }
