@@ -163,85 +163,139 @@
       "last_updated": "2026-07-02"
     },
     {
-  "title": "From Wages to Wealth: A Dynamical Model and Research Design for Rent Extraction, Property Ownership, and Class Reproduction",
-  "repo": "DiogoRibeiro7/wealth_rentier_dynamics",
-  "status": "in_progress",
-  "notes": "Develops a political-economy model of wealth concentration centered on the conversion of wages into asset ownership, with housing as the main transmission channel. Includes a deterministic dynamic model with explicit ownership-transition timing and affordability constraints, Portugal-oriented calibration scenarios, fixed-effects panel utilities, household ownership-transition modeling, dashboards, notebooks, and a reproducible simulation pipeline. The current empirical layer is implemented in code but still relies on synthetic sample panel data and provisional calibration anchors, so the repo is best understood as a theory-plus-research-design package for a working paper and future formal article.",
-  "paper_path": "reports/",
-  "priority": "high",
-  "last_updated": "2026-07-03"
-},
-  {
-    "title": "The European Economy as a Set of Choices: A Reusable Diagnostic Framework for Convergence, Wages, Investment, and Fiscal Policy",
-    "repo": "DiogoRibeiro7/eu_economy_decision_lab",
-    "status": "in_progress",
-    "notes": "Policy-facing analytical framework for diagnosing the European economy through economic choices rather than headline GDP. Implements a synthetic EU macro-panel generator, growth and beta/sigma convergence analysis, wage-productivity gap and labour/profit-share diagnostics, public and private investment indicators, fiscal-stance classification, inflation and real-wage pressure measures, inequality indicators, country scorecards, and an automated Portugal-vs-EU policy brief, exposed through a Typer CLI, notebooks, and tests. The framework currently runs offline on synthetic panels with an explicit extension path to Eurostat, AMECO, and ECB data, so it is best understood as a reusable diagnostic toolkit awaiting connection to official sources.",
-    "paper_path": "notebooks/",
-    "priority": "medium",
-    "last_updated": "2026-07-03"
-  },
-  {
-    "title": "Has Supply-Side Liberalisation Been Tested? Event Studies, Synthetic Control, and Panel Evidence on Its Promised Gains",
-    "repo": "DiogoRibeiro7/il_supply_side_policy_tests",
-    "status": "in_progress",
-    "notes": "Reproducible empirical project that treats the supply-side liberalisation package (lower income and corporate taxes, privatisation, labour-market flexibility, a smaller public sector) as a falsifiable claim and tests whether it historically delivered higher productivity, real wages, GDP per capita, and lower poverty. Combines event studies around policy episodes (Portugal 2011-2015, Kansas 2012-2017, UK post-1979, US post-1981, Eastern European flat-tax reforms), a synthetic-control design for Portugal, and OECD/EU panel models, alongside an indicator contract, source registry, methodology notes, notebook templates, a Django dashboard scaffold, and tests. The analytical scaffolding, reusable functions, and agent prompts are in place, but the data providers are not yet fully connected, so the empirical conclusions remain to be produced under the repository's explicit robustness and failure-criteria rules.",
-    "paper_path": "reports/",
-    "priority": "high",
-    "last_updated": "2026-07-03"
-  },
-  {
-    "title": "Could Portugal Build a Sovereign Fund from Social Security Surpluses? A Monte Carlo Stress-Testing Framework",
-    "repo": "DiogoRibeiro7/portugal_swf_sim",
-    "status": "in_progress",
-    "notes": "Transparent Monte Carlo stress-testing framework (explicitly not a forecast) for whether Portugal could build a sovereign or strategic fund via the indirect route of Social Security surpluses, FEFSS transfers, and financial-asset purchases. Anchored on editable 2025 fiscal and FEFSS baselines, it simulates public-debt trajectories, FEFSS pension-coverage ratios, sovereign-fund asset growth, and downside risk across six policy scenarios spanning conservative reinforcement, debt-reduction-first, higher-equity mandates, indirect and aggressive strategic funds, and a post-2035 demographic-stress case. A second engine isolates the specific risk of buying Portuguese equities with pension surpluses, using transparent proxy returns by default and optional downloaded market data. The model deliberately separates fiscal balance, financial allocation, and mandate, and is designed to be falsifiable and improvable with better demographic and return calibration.",
-    "paper_path": "notebooks/",
-    "priority": "medium",
-    "last_updated": "2026-07-03"
-  },
-  {
-    "title": "From Employer Wages to State Transfers: A Ten-Paper Programme on Poverty, the Low-Wage Subsidy State, and Asset Power in the US and UK Since 1950",
-    "repo": "DiogoRibeiro7/poverty_neoliberalism_research_program",
-    "status": "in_progress",
-    "notes": "Agent-first scaffold for a sequenced ten-paper empirical research programme sharing one data pipeline, modelling framework, set of definitions, and reproducibility contract. It tests the working hypothesis that since the Reagan and Thatcher periods poverty reduction shifted away from employer responsibility and wage growth toward state correction through taxes and transfers, while the upper tail increasingly captured income via assets, business ownership, and capital gains taxed differently from wages - that is, that public budgets increasingly subsidised low wages as asset owners captured a growing share of income and wealth. The papers span the historical poverty record, lagged policy effects, market versus state-corrected poverty, the low-wage subsidy state, the incidence of poverty reduction, asset income and top wealth, labour power, housing, synthetic counterfactuals, and a final synthesis. The specification, data contracts, and per-paper prompts are complete; the empirical work is deliberately left minimal for a coding agent to implement, and the repo is explicit that the hypothesis must be tested rather than assumed and that synthetic data must not be used as evidence.",
-    "paper_path": "papers/",
-    "priority": "high",
-    "last_updated": "2026-07-03"
-  },
-  {
-    "title": "From Wages to Wealth: A Dynamical Model and Research Design for Rent Extraction, Property Ownership, and Class Reproduction",
-    "repo": "DiogoRibeiro7/wealth_rentier_dynamics",
-    "status": "in_progress",
-    "notes": "Develops a political-economy model of wealth concentration centered on the conversion of wages into asset ownership, with housing as the main transmission channel. Includes a deterministic dynamic model with explicit ownership-transition timing and affordability constraints, Portugal-oriented calibration scenarios, fixed-effects panel utilities, household ownership-transition modeling, dashboards, notebooks, and a reproducible simulation pipeline. The current empirical layer is implemented in code but still relies on synthetic sample panel data and provisional calibration anchors, so the repo is best understood as a theory-plus-research-design package for a working paper and future formal article.",
-    "paper_path": "reports/",
-    "priority": "high",
-    "last_updated": "2026-07-03"
-  },
-  {
-  "title": "North–South Fire-Season Onset in Mainland Portugal: A Reproducible Data-Engineering and Statistics Pipeline",
-  "repo": "DiogoRibeiro7/portugal-fire-onset",
-  "status": "in_progress",
-  "notes": "Tests whether rural fire onset is earlier at higher latitude, keeping ignition, burned-area, and fire-weather onset separate. Multi-source ingestion (ICNF, NASA FIRMS, EFFIS, ERA5/CEMS, GISCO, CORINE/DGT COS, DEM, OSM, INE) via a provenance-tracked download manager into PostGIS. Pure-Python statistics (OLS+robust SE, sign test, permutation, discrete-time hazard, Cox PH, Weibull AFT, random-intercept mixed, quantile, robustness). All 29 prompts implemented; ruff+mypy clean; 197 unit tests; offline path (features onset -> stats run -> viz build) reproducible. Remaining: live credentialed downloads (FIRMS/CDS), live PostGIS loader run, real GeoTIFF raster reads. Article is a scaffold, not yet written.",
-  "paper_path": "article_prompts/",
-  "priority": "high",
-  "last_updated": "2026-07-07"
-},
-  {
-  "title": "Can Portugal Produce a Parish-Level Map of Rent per Square Metre? A Coverage and Concordance Audit of Official INE Rent Data",
-  "repo": "DiogoRibeiro7/pt_rent_parish_repo",
-  "status": "in_progress",
-  "notes": "Reproducible pipeline auditing whether a national parish-level (freguesia) rent-per-m2 map can be built from observed official INE data alone, with explicit coverage reporting, CAOP 2025 concordance, and strict separation of official / asking-price / inferred / modelled layers.",
-  "paper_path": "reports/",
-  "priority": "high",
-  "last_updated": "2026-07-07"
-},
-{
-  "title": "Locating Where Extreme-Score Detectors Fail: A Layered Evaluation for Predictive Maintenance on Public Industrial Data",
-  "repo": "DiogoRibeiro7/dynamical-evt-pdm",
-  "status": "in_progress",
-  "notes": "Reproducible layered evaluation that separates an extreme-score detector into score, threshold, extreme clusters, alarm episodes and matched events, so failure can be located per method rather than per dataset. Applied to two independent held-out compressor failures (MetroPT, MetroPT2) across nineteen methods under one shared alarm policy, with a warning-window rank separation and a circular-shift null that test whether a match carries information, genuine cross-dataset target-region transfer, detection-conditioned matched controls, and a high-replication extremal-index Monte Carlo. Under major revision after peer review; archived at Zenodo (concept DOI 10.5281/zenodo.21803768), results correspond to release v0.3.2.",
-  "paper_path": "paper/",
-  "priority": "high",
-  "last_updated": "2026-08-06"
-}
+      "title": "From Wages to Wealth: A Dynamical Model and Research Design for Rent Extraction, Property Ownership, and Class Reproduction",
+      "repo": "DiogoRibeiro7/wealth_rentier_dynamics",
+      "status": "in_progress",
+      "notes": "Develops a political-economy model of wealth concentration centered on the conversion of wages into asset ownership, with housing as the main transmission channel. Includes a deterministic dynamic model with explicit ownership-transition timing and affordability constraints, Portugal-oriented calibration scenarios, fixed-effects panel utilities, household ownership-transition modeling, dashboards, notebooks, and a reproducible simulation pipeline. The current empirical layer is implemented in code but still relies on synthetic sample panel data and provisional calibration anchors, so the repo is best understood as a theory-plus-research-design package for a working paper and future formal article.",
+      "paper_path": "reports/",
+      "priority": "high",
+      "last_updated": "2026-07-03"
+    },
+    {
+      "title": "The European Economy as a Set of Choices: A Reusable Diagnostic Framework for Convergence, Wages, Investment, and Fiscal Policy",
+      "repo": "DiogoRibeiro7/eu_economy_decision_lab",
+      "status": "in_progress",
+      "notes": "Policy-facing analytical framework for diagnosing the European economy through economic choices rather than headline GDP. Implements a synthetic EU macro-panel generator, growth and beta/sigma convergence analysis, wage-productivity gap and labour/profit-share diagnostics, public and private investment indicators, fiscal-stance classification, inflation and real-wage pressure measures, inequality indicators, country scorecards, and an automated Portugal-vs-EU policy brief, exposed through a Typer CLI, notebooks, and tests. The framework currently runs offline on synthetic panels with an explicit extension path to Eurostat, AMECO, and ECB data, so it is best understood as a reusable diagnostic toolkit awaiting connection to official sources.",
+      "paper_path": "notebooks/",
+      "priority": "medium",
+      "last_updated": "2026-07-03"
+    },
+    {
+      "title": "Has Supply-Side Liberalisation Been Tested? Event Studies, Synthetic Control, and Panel Evidence on Its Promised Gains",
+      "repo": "DiogoRibeiro7/il_supply_side_policy_tests",
+      "status": "in_progress",
+      "notes": "Reproducible empirical project that treats the supply-side liberalisation package (lower income and corporate taxes, privatisation, labour-market flexibility, a smaller public sector) as a falsifiable claim and tests whether it historically delivered higher productivity, real wages, GDP per capita, and lower poverty. Combines event studies around policy episodes (Portugal 2011-2015, Kansas 2012-2017, UK post-1979, US post-1981, Eastern European flat-tax reforms), a synthetic-control design for Portugal, and OECD/EU panel models, alongside an indicator contract, source registry, methodology notes, notebook templates, a Django dashboard scaffold, and tests. The analytical scaffolding, reusable functions, and agent prompts are in place, but the data providers are not yet fully connected, so the empirical conclusions remain to be produced under the repository's explicit robustness and failure-criteria rules.",
+      "paper_path": "reports/",
+      "priority": "high",
+      "last_updated": "2026-07-03"
+    },
+    {
+      "title": "Could Portugal Build a Sovereign Fund from Social Security Surpluses? A Monte Carlo Stress-Testing Framework",
+      "repo": "DiogoRibeiro7/portugal_swf_sim",
+      "status": "in_progress",
+      "notes": "Transparent Monte Carlo stress-testing framework (explicitly not a forecast) for whether Portugal could build a sovereign or strategic fund via the indirect route of Social Security surpluses, FEFSS transfers, and financial-asset purchases. Anchored on editable 2025 fiscal and FEFSS baselines, it simulates public-debt trajectories, FEFSS pension-coverage ratios, sovereign-fund asset growth, and downside risk across six policy scenarios spanning conservative reinforcement, debt-reduction-first, higher-equity mandates, indirect and aggressive strategic funds, and a post-2035 demographic-stress case. A second engine isolates the specific risk of buying Portuguese equities with pension surpluses, using transparent proxy returns by default and optional downloaded market data. The model deliberately separates fiscal balance, financial allocation, and mandate, and is designed to be falsifiable and improvable with better demographic and return calibration.",
+      "paper_path": "notebooks/",
+      "priority": "medium",
+      "last_updated": "2026-07-03"
+    },
+    {
+      "title": "From Employer Wages to State Transfers: A Ten-Paper Programme on Poverty, the Low-Wage Subsidy State, and Asset Power in the US and UK Since 1950",
+      "repo": "DiogoRibeiro7/poverty_neoliberalism_research_program",
+      "status": "in_progress",
+      "notes": "Agent-first scaffold for a sequenced ten-paper empirical research programme sharing one data pipeline, modelling framework, set of definitions, and reproducibility contract. It tests the working hypothesis that since the Reagan and Thatcher periods poverty reduction shifted away from employer responsibility and wage growth toward state correction through taxes and transfers, while the upper tail increasingly captured income via assets, business ownership, and capital gains taxed differently from wages - that is, that public budgets increasingly subsidised low wages as asset owners captured a growing share of income and wealth. The papers span the historical poverty record, lagged policy effects, market versus state-corrected poverty, the low-wage subsidy state, the incidence of poverty reduction, asset income and top wealth, labour power, housing, synthetic counterfactuals, and a final synthesis. The specification, data contracts, and per-paper prompts are complete; the empirical work is deliberately left minimal for a coding agent to implement, and the repo is explicit that the hypothesis must be tested rather than assumed and that synthetic data must not be used as evidence.",
+      "paper_path": "papers/",
+      "priority": "high",
+      "last_updated": "2026-07-03"
+    },
+    {
+      "title": "From Wages to Wealth: A Dynamical Model and Research Design for Rent Extraction, Property Ownership, and Class Reproduction",
+      "repo": "DiogoRibeiro7/wealth_rentier_dynamics",
+      "status": "in_progress",
+      "notes": "Develops a political-economy model of wealth concentration centered on the conversion of wages into asset ownership, with housing as the main transmission channel. Includes a deterministic dynamic model with explicit ownership-transition timing and affordability constraints, Portugal-oriented calibration scenarios, fixed-effects panel utilities, household ownership-transition modeling, dashboards, notebooks, and a reproducible simulation pipeline. The current empirical layer is implemented in code but still relies on synthetic sample panel data and provisional calibration anchors, so the repo is best understood as a theory-plus-research-design package for a working paper and future formal article.",
+      "paper_path": "reports/",
+      "priority": "high",
+      "last_updated": "2026-07-03"
+    },
+    {
+      "title": "North–South Fire-Season Onset in Mainland Portugal: A Reproducible Data-Engineering and Statistics Pipeline",
+      "repo": "DiogoRibeiro7/portugal-fire-onset",
+      "status": "in_progress",
+      "notes": "Tests whether rural fire onset is earlier at higher latitude, keeping ignition, burned-area, and fire-weather onset separate. Multi-source ingestion (ICNF, NASA FIRMS, EFFIS, ERA5/CEMS, GISCO, CORINE/DGT COS, DEM, OSM, INE) via a provenance-tracked download manager into PostGIS. Pure-Python statistics (OLS+robust SE, sign test, permutation, discrete-time hazard, Cox PH, Weibull AFT, random-intercept mixed, quantile, robustness). All 29 prompts implemented; ruff+mypy clean; 197 unit tests; offline path (features onset -> stats run -> viz build) reproducible. Remaining: live credentialed downloads (FIRMS/CDS), live PostGIS loader run, real GeoTIFF raster reads. Article is a scaffold, not yet written.",
+      "paper_path": "article_prompts/",
+      "priority": "high",
+      "last_updated": "2026-07-07"
+    },
+    {
+      "title": "Can Portugal Produce a Parish-Level Map of Rent per Square Metre? A Coverage and Concordance Audit of Official INE Rent Data",
+      "repo": "DiogoRibeiro7/pt_rent_parish_repo",
+      "status": "in_progress",
+      "notes": "Reproducible pipeline auditing whether a national parish-level (freguesia) rent-per-m2 map can be built from observed official INE data alone, with explicit coverage reporting, CAOP 2025 concordance, and strict separation of official / asking-price / inferred / modelled layers.",
+      "paper_path": "reports/",
+      "priority": "high",
+      "last_updated": "2026-07-07"
+    },
+    {
+      "title": "Locating Where Extreme-Score Detectors Fail: A Layered Evaluation for Predictive Maintenance on Public Industrial Data",
+      "repo": "DiogoRibeiro7/dynamical-evt-pdm",
+      "status": "in_progress",
+      "notes": "Reproducible layered evaluation that separates an extreme-score detector into score, threshold, extreme clusters, alarm episodes and matched events, so failure can be located per method rather than per dataset. Applied to two independent held-out compressor failures (MetroPT, MetroPT2) across nineteen methods under one shared alarm policy, with a warning-window rank separation and a circular-shift null that test whether a match carries information, genuine cross-dataset target-region transfer, detection-conditioned matched controls, and a high-replication extremal-index Monte Carlo. Under major revision after peer review; archived at Zenodo (concept DOI 10.5281/zenodo.21803768), results correspond to release v0.3.2.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-08-06"
+    },
+    {
+      "title": "Portugal's Public-Debt Interest Burden: Measurement and Debt Dynamics under ESA 2010",
+      "repo": "DiogoRibeiro7/portugal-public-debt-interest",
+      "status": "in_progress",
+      "notes": "Reproducible annual dataset and paper on general-government interest payable (Eurostat D41PAY) in euros and as a share of nominal GDP, with an optional AMECO pre-1995 extension kept separate and observed/forecast observations labelled. Decomposes the decline in the burden into effective rate, debt ratio, nominal growth, and inflation, and compares Portugal against the euro-area universe under harmonised definitions. Ships validation and reproducibility JSON, generated LaTeX tables, and a committed PDF built from paper/portugal_public_debt_interest_report.tex.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-08-07"
+    },
+    {
+      "title": "The Repricing Kernel: How Fast Do Market Rates Pass Through to Portugal's Effective Debt Cost?",
+      "repo": "DiogoRibeiro7/portugal-public-debt-interest",
+      "status": "in_progress",
+      "notes": "Second paper in the same repository, relaxing the burden paper's constant-hazard repricing assumption. Imports rather than duplicates the shared measurement layer, with a regression test asserting the burden paper's artefacts stay byte-identical. Every manuscript number is a generated macro; a gate fails the build if a literal is hand-typed. Null results are reported alongside positive ones in reports/repricing/findings.md.",
+      "paper_path": "paper/repricing/",
+      "priority": "high",
+      "last_updated": "2026-08-07"
+    },
+    {
+      "title": "Short-Term Interest Rate Innovations Across Monetary Regimes",
+      "repo": "DiogoRibeiro7/short-rate-anomaly-regimes",
+      "status": "planned",
+      "notes": "Evidence-gated scaffold for replicating and extending Maio and Santa-Clara on short-rate innovations and equity anomalies, asking whether the innovation prices anomalies as a stable hedging state variable or as a mix of policy shocks, central-bank information, macro news, and regime-dependent transmission. Two deliberately separate tracks: strict replication and documented reconstruction, which never labels substitutes as reproduced. Config, typed pipeline interfaces, validation, and tests are in place; data acquisition is intentionally disabled until licences and variable definitions are recorded in research/data_access_matrix.csv. Release gate reports 0 critical and 1 major issue: code release permitted, empirical-results release blocked.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-08-07"
+    },
+    {
+      "title": "Dimensional Asymptotics of Euler-Based Simulated Likelihood for Multidimensional Diffusions",
+      "repo": "DiogoRibeiro7/sml_diffusions_paper",
+      "status": "draft",
+      "notes": "Shows the endpoint/Pedersen simulated-likelihood estimator is a shrinking-bandwidth kernel estimator of bandwidth sqrt(h), giving effective simulation size S / M^(K/2) rather than S. Derives exact finite-M moments, the local moment law, corrected density-level normalisation, and an MSE minimised at M ~ S^(2/(K+4)), then gives a sharp counterexample refuting the joint transition-density consistency and CLT lemmas of Brandt and Santa-Clara (2002) for K > 2. Explicitly does not claim the argmax estimator is inconsistent - proves the opposite in a Gaussian location model on the same designs - and does not claim the published empirical estimates are wrong; the open question is the rate. A companion note handles the exchange-rate application (Feller ratios, incompleteness, invertibility, identification), with several deliberately negative results. Both manuscripts compile with all figures and tables generated from the code; 39 DOIs Crossref-verified.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-08-07"
+    },
+    {
+      "title": "Persistent Continuous Price-Level Ordering in Portuguese Municipal Housing Across Two Price Constructs",
+      "repo": "DiogoRibeiro7/portugal-housing-trajectories",
+      "status": "in_progress",
+      "notes": "Standalone longitudinal unsupervised paper (not a revision of the earlier municipal house-price determinants work) analysing PORDATA average transaction value 2009-2019 and INE median price per m2 2019-2025 as two separate constructs that are never spliced. Headline estimand is a persistent continuous price-level ordering; two-group tiers are reported only as uncertain, lossy coarsenings, not market types. Separates level, shape, level-plus-shape, and growth representations, with B>=500 bootstrap stability, candidate HMM state formulations, spatial-graph and fold-refit external INE validation, and uncertainty-aware structural profiling. Reports negative results when a structure fails the diagnostic rules rather than forcing a partition. Reviewer-facing run registry records analysis commit, config hash, seed, and data manifest hash. Under major revision.",
+      "paper_path": "article/",
+      "priority": "high",
+      "last_updated": "2026-08-07"
+    },
+    {
+      "title": "Colonial versus European Linkages in Portuguese Growth, 1960-1973",
+      "repo": "DiogoRibeiro7/portugal-external-growth-1960-1973",
+      "status": "planned",
+      "notes": "Data-engineering and analytical code only - the repository deliberately contains no paper, argument, or narrative conclusion until the pipeline, territorial definitions, classifications, and cross-checks are stable. Builds evidence on the shift of Portuguese export destinations across colonial, EFTA, EEC, and other markets, product-group dependence on colonial markets, and openness/trade/GDP evolution, cross-checking UN Comtrade, BPstat, World Bank, CEPII TRADHIST, INE, OECD, and EFTA aggregates. Three-layer raw/interim/processed reproducibility policy with SHA-256 sidecars and manifests; a committed deterministic World Bank bootstrap snapshot makes validation run offline. Explicitly refuses to treat gross exports as GDP or to estimate a net return from colonialism without fiscal, financial, military, and opportunity-cost data. Synthetic records exist only under tests/fixtures.",
+      "paper_path": "results/",
+      "priority": "medium",
+      "last_updated": "2026-08-07"
+    }
   ]
 }
