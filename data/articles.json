@@ -154,15 +154,6 @@
       "last_updated": "2026-07-23"
     },
     {
-      "title": "Determinants of Housing Prices in Portugal: A Municipal-Level Analysis",
-      "repo": "DiogoRibeiro7/housing_future_work_etl",
-      "status": "published",
-      "notes": "Published: Ferreira, Correia, Lima & Ribeiro (2026), ICCSA 2026 Workshops, Lecture Notes in Computer Science, doi 10.1007/978-3-032-30521-3_6, published 2026-07-03. Log-linear OLS of ln(VMPT) on ten regressors with NUTS II ordinal as the only region variable and education (PES) excluded for collinearity with purchasing power, plus a GLS robustness re-estimation; published fit n = 308, adjusted R-squared 0.7121, 297 residual df. Reproduced exactly from the paper's own dataset by housing_etl.paper_dataset.fit_published_model, which recovers every published t-statistic; the open-data reconstruction of the same specification is graded separately. This is the baseline the preprint in the same repo extends - kept as a separate tracker entry because it is a distinct, already-published article.",
-      "paper_path": "docs/paper_2017_replication.md",
-      "priority": "low",
-      "last_updated": "2026-07-23"
-    },
-    {
       "title": "From Chaos to Crisis: Using Dynamical-Systems Extreme Value Theory in Econometrics",
       "repo": "DiogoRibeiro7/dynamical_systems_econometrics",
       "status": "in_progress",
