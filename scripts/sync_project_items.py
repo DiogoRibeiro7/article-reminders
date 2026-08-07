@@ -1,9 +1,7 @@
 # Project sync: syncs article issues into a GitHub Project and updates fields.
 #
 # Required GitHub Project fields:
-#   - Status      (single select): Backlog, Planned, Reading, Writing,
-#                                   Experiments, Revising, Submitted,
-#                                   Camera-ready, Done, Blocked, Archived
+#   - Status      (single select): Backlog, Experiments, Drafting, Review, Done
 #   - Priority    (single select): Low, Medium, High, Critical
 #   - Repo URL    (text)
 #   - Venue       (text)
@@ -11,15 +9,15 @@
 #   - Next action (text)
 #
 # Article status mapping (articles.json -> Project Status):
-#   planned    -> Planned
-#   in_progress -> Writing
-#   draft      -> Writing
-#   submitted  -> Submitted
-#   revising   -> Revising
-#   finished   -> Done
-#   published  -> Done
-#   archived   -> Archived
-#   cancelled  -> Archived
+#   planned     -> Backlog
+#   in_progress -> Experiments
+#   draft       -> Drafting
+#   submitted   -> Review
+#   revising    -> Review
+#   finished    -> Done
+#   published   -> Done
+#   archived    -> Done
+#   cancelled   -> Done
 #   (any valid Project status used as-is, otherwise defaults to Backlog)
 
 from __future__ import annotations
@@ -40,29 +38,23 @@ MANAGED_LABEL = "article-reminder"
 
 VALID_PROJECT_STATUSES = {
     "Backlog",
-    "Planned",
-    "Reading",
-    "Writing",
     "Experiments",
-    "Revising",
-    "Submitted",
-    "Camera-ready",
+    "Drafting",
+    "Review",
     "Done",
-    "Blocked",
-    "Archived",
 }
 VALID_PRIORITIES = {"Low", "Medium", "High", "Critical"}
 
 STATUS_TO_PROJECT_STATUS = {
-    "planned": "Planned",
-    "in_progress": "Writing",
-    "draft": "Writing",
-    "submitted": "Submitted",
-    "revising": "Revising",
+    "planned": "Backlog",
+    "in_progress": "Experiments",
+    "draft": "Drafting",
+    "submitted": "Review",
+    "revising": "Review",
     "finished": "Done",
     "published": "Done",
-    "archived": "Archived",
-    "cancelled": "Archived",
+    "archived": "Done",
+    "cancelled": "Done",
 }
 
 

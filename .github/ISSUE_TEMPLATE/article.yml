@@ -9,7 +9,7 @@ body:
     attributes:
       label: Paper title
       description: Full working or final paper title
-      placeholder: Uncertainty and Calibration Under Shift, Noise, and Autocorrelation: A Simulation Benchmark
+      placeholder: "Uncertainty and Calibration Under Shift, Noise, and Autocorrelation: A Simulation Benchmark"
     validations:
       required: true
 
@@ -40,16 +40,10 @@ body:
       label: Current status
       options:
         - Backlog
-        - Planned
-        - Reading
-        - Writing
         - Experiments
-        - Revising
-        - Submitted
-        - Camera-ready
+        - Drafting
+        - Review
         - Done
-        - Blocked
-        - Archived
     validations:
       required: true
 

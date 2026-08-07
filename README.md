@@ -35,17 +35,11 @@ data/
 Create a GitHub Project named `Research Tracker` and add these fields:
 
 - **Status** (single select)
-  - Backlog
-  - Planned
-  - Reading
-  - Writing
-  - Experiments
-  - Revising
-  - Submitted
-  - Camera-ready
-  - Done
-  - Blocked
-  - Archived
+  - Backlog — planned; work not started
+  - Experiments — code, data, and experiments in progress
+  - Drafting — manuscript being written
+  - Review — submitted or under revision
+  - Done — finished, published, or archived
 - **Priority** (single select)
   - Low
   - Medium
@@ -119,15 +113,15 @@ The `status` field in `articles.json` is mapped to the Project Status field as f
 
 | `articles.json` status | Project Status |
 |---|---|
-| `planned` | Planned |
-| `in_progress` | Writing |
-| `draft` | Writing |
-| `submitted` | Submitted |
-| `revising` | Revising |
+| `planned` | Backlog |
+| `in_progress` | Experiments |
+| `draft` | Drafting |
+| `submitted` | Review |
+| `revising` | Review |
 | `finished` | Done |
 | `published` | Done |
-| `archived` | Archived |
-| `cancelled` | Archived |
+| `archived` | Done |
+| `cancelled` | Done |
 
 Any valid Project Status value (e.g. `Backlog`, `Experiments`) can also be used directly. Unknown values default to `Backlog`.
 
