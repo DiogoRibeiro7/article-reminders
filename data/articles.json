@@ -296,6 +296,141 @@
       "paper_path": "results/",
       "priority": "medium",
       "last_updated": "2026-08-07"
+    },
+    {
+      "title": "Extending the Municipal Housing-Price Model to Multiple Years",
+      "repo": "DiogoRibeiro7/Dynamics_ICCSA",
+      "status": "draft",
+      "notes": "ICCSA/LNCS-formatted extension of the municipal housing-price model from a single cross-section to multiple years, alongside a Portuguese abstract (resumo.tex) and the conference presentation deck (housing_prices_portugal_conference_presentation.tex). Built on the llncs document class. Sits between the published municipal-level analysis and the later panel and trajectory work in housing_future_work_etl and portugal-housing-trajectories.",
+      "paper_path": "article/",
+      "priority": "high",
+      "last_updated": "2026-06-30"
+    },
+    {
+      "title": "Dynamics of the Real Estate Market: Determining Factors in the Value of Housing in Portugal",
+      "repo": "DiogoRibeiro7/article_tex_repo",
+      "status": "draft",
+      "notes": "Multiple linear regression on PORDATA data for all 308 Portuguese municipalities, identifying the factors driving municipal housing transaction values: location, population density, local purchasing power, family size, unemployment, environmental quality, ageing, education, marital status, owner-occupier ratio, and available housing stock. Finds most factors significant except population density and environmental quality. Framed as decision support for buyers and investors and for municipal-to-national housing policy. NOTE: this 2023 manuscript closely matches the scope of the published ICCSA 2026 paper and may be its pre-publication draft rather than a live article - confirm before working it.",
+      "paper_path": "",
+      "priority": "low",
+      "last_updated": "2023-11-10"
+    },
+    {
+      "title": "When Does Wealth Concentration Become Financial Fragility? An Agent-Based Simulation Laboratory",
+      "repo": "DiogoRibeiro7/wealth_concentration_crisis_sim",
+      "status": "draft",
+      "notes": "Agent-based model of heterogeneous agents differing in wealth, income, debt, and marginal propensity to consume. When capital returns rise with existing wealth, income and wealth concentrate among high-saving agents, aggregate consumption weakens, lower- and middle-wealth agents borrow to defend a consumption floor, and private debt accumulates until default or output-collapse thresholds are crossed. Monte Carlo experiments characterise how crisis probability, timing, and severity vary with the concentration-strength parameter, and a mechanism-specific falsification suite shows crises weaken or disappear when individual channels are removed. Optional firm, banking, and asset-collateral sectors. The stated contribution is mechanism integration, scenario grids, and falsification - explicitly demonstrating causal sufficiency in silico, uncalibrated, and explicitly not empirical causal proof.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-07-02"
+    },
+    {
+      "title": "Heat-Burst-Like Extremes as Rare Transitions in a Reduced Downdraft System",
+      "repo": "DiogoRibeiro7/heat-burst-evt-dynamics",
+      "status": "draft",
+      "notes": "Hybrid framework coupling a reduced-order dynamical model of precipitation-driven downdrafts to peaks-over-threshold Extreme Value Theory, for thunderstorm heat bursts - rare, short-lived events hard to study from station records alone. The dynamical part models a two-layer hydrostatic background with a stable nocturnal near-surface layer beneath a deep near-dry-adiabatic residual layer, with cloud-base geometry, evaporation, condensate-loaded negative buoyancy, rain-water exhaustion, entrainment, drag, and dry adiabatic compressional warming. The statistical part estimates the tail of a composite severity index from temperature jump, dew-point drop, and downdraft speed. Synthetic experiments reproduce heat-burst-like warming as a tail population, with the strongest baseline events exceeding ten degrees. Explicitly a controlled mechanism study, not an operational forecasting system or a replacement for convection-resolving NWP. Manuscript is arXiv-oriented (paper/README_ARXIV.md).",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-06-26"
+    },
+    {
+      "title": "How Fast Would Carbon Capture Have to Grow? A Transparent, Reproducible Feasibility-Gap Assessment of Mid-Century CCS Deployment",
+      "repo": "DiogoRibeiro7/ccs-scale-gap",
+      "status": "draft",
+      "notes": "Tests whether the multi-gigatonne mid-century CCS assumed by Paris-consistent mitigation pathways is consistent with the observed starting point - current operating capacity plus the announced project pipeline - using a deliberately transparent reproducible framework rather than an integrated assessment model. Reaching a representative 6 GtCO2/yr subsurface-storage benchmark by 2050 from about 50 MtCO2/yr operating in early 2025 requires a sustained CAGR of roughly 21 percent. Deliberately narrow: it does not claim CCS is impossible, only that the scale, speed, infrastructure, land, reservoir, and cost requirements of CCS-heavy pathways are far beyond current deployment. Has revision notes and both Markdown and LaTeX manuscripts.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-06-26"
+    },
+    {
+      "title": "The heteroTests Package: A Unified Toolkit for Heteroscedasticity Diagnostics",
+      "repo": "DiogoRibeiro7/heteroTests",
+      "status": "draft",
+      "notes": "R Journal submission (RJwrapper/RJtemplate layout, compiled PDF present) for an R package implementing a broad collection of heteroscedasticity diagnostics for linear models - White, Breusch-Pagan, Goldfeld-Quandt and others - plus helpers to visualise and mitigate heteroscedasticity. Every test returns a base-R htest object and follows a common perform*Test(model, data, ...) convention so results print, subset, and compose like stats::bptest() and drop into automated pipelines. Repo carries fixes.md and fixes_1.md revision notes.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-06-23"
+    },
+    {
+      "title": "High-Order Navier-Stokes Solvers for Transitional and Turbulent Flows",
+      "repo": "DiogoRibeiro7/navier-stokes-solvers",
+      "status": "draft",
+      "notes": "Unified computational framework for the 2D incompressible Navier-Stokes equations combining a Newton-Raphson finite-difference scheme with multigrid pressure correction and a Fourier pseudospectral solver with hyperviscosity, stochastic large-scale forcing, and adaptive time stepping. Covers formulation, discretisation, and algorithmic enhancements, with validation showing spectral accuracy on canonical benchmarks and scaling studies confirming strong parallel efficiency. Both solvers share a configuration system, automated testing, and publication-ready assets (manuscript, figures, slides).",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-06-22"
+    },
+    {
+      "title": "Restricted Mean Survival Time Versus Classical Tests: A Comprehensive Simulation-Based Comparison of Statistical Power",
+      "repo": "DiogoRibeiro7/rmstpower",
+      "status": "draft",
+      "notes": "Simulation framework comparing RMST against the logrank test, Peto-Peto Wilcoxon, and Cox PH across 24 survival scenarios including proportional hazards, early benefit, delayed benefit, crossing hazards, and diminishing effects, with 5,000 replications per scenario and 200-1,000 participants per arm. Evaluates type I error control, power, and sensitivity to the truncation horizon. Shipped as an installable R package with vignettes and a YAML-driven CLI for batch runs. INCOMPLETE: the manuscript's Results section is still a placeholder ('to be completed') covering type I error rates, power comparisons, truncation-time guidance, and sample-size recommendations.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2025-09-24"
+    },
+    {
+      "title": "Comparing Agent-Based and ODE SEIR Models Under Non-Pharmaceutical Interventions",
+      "repo": "DiogoRibeiro7/seir-abm",
+      "status": "planned",
+      "notes": "Framework simulating epidemic dynamics with both an agent-based SEIR model - individuals as particles moving in a 2D domain with distance-based infection - and compartmental SEIR models at regional and metapopulation scale with a mobility matrix, used to compare non-pharmaceutical interventions such as lockdown, mobility reduction, and targeted protection of elderly subpopulations. Code, CLI, tests, and an ABM-vs-ODE notebook are in place; the repository describes paper/main.tex as a LaTeX skeleton for writing up results, so the manuscript itself is not yet written.",
+      "paper_path": "paper/",
+      "priority": "low",
+      "last_updated": "2025-11-28"
+    },
+    {
+      "title": "Passive Proximity Inference in Smart Homes Using RSSI Signals and Temporal Context: A Privacy-Conscious, Data-Centric Framework",
+      "repo": "DiogoRibeiro7/rssi_research",
+      "status": "draft",
+      "notes": "Infers user proximity in smart homes from passive RSSI signals and annotated behavioural intervals, for continuous unobtrusive monitoring that improves the temporal resolution of presence detection without requiring explicit sensor activations. Combines a preprocessing pipeline turning semi-structured logs into interpretable time series, integration of annotated sleep and timeout intervals, and transparent rule-based proximity labelling. Positioned against prior work needing dense sensor deployments or complex signal processing: lightweight, explainable, and deployable under ethical and privacy constraints. Two manuscript versions tracked (article.tex, article_version_2.tex).",
+      "paper_path": "",
+      "priority": "low",
+      "last_updated": "2025-04-24"
+    },
+    {
+      "title": "Synthetic Household Electricity Load Generation: A Model Ladder Approach",
+      "repo": "DiogoRibeiro7/goiener_synthetic_pipeline",
+      "status": "planned",
+      "notes": "Synthload generates realistic synthetic household electricity consumption from Spanish GoiEner smart-meter data using a ladder of hierarchical and dynamic linear models capturing time-of-week effects, temperature sensitivity via heating and cooling degree hours, AR(1) or time-varying-coefficient temporal autocorrelation, and household heterogeneity. The package and pipeline are complete and a compiled paper/main.pdf exists, but the tracked LaTeX source is only a stub, so the manuscript needs reconstructing before submission.",
+      "paper_path": "paper/",
+      "priority": "low",
+      "last_updated": "2025-11-23"
+    },
+    {
+      "title": "ssspx: Production-Grade Single-Source Shortest Paths in Python (JOSS)",
+      "repo": "DiogoRibeiro7/bmssp",
+      "status": "draft",
+      "notes": "JOSS-format software paper for ssspx, a typed and tested deterministic single-source shortest-paths solver for directed graphs with non-negative weights, following a BMSSP-style divide-and-conquer design (levels, FindPivots, bounded base case) with a switchable frontier, optional constant-outdegree transform, CLI, exports, and a benchmark harness. The software paper is original; the algorithm it implements is from Duan, Mao, Mao, Shu & Yin, 'Breaking the Sorting Barrier for Directed Single-Source Shortest Paths' (arXiv:2504.17033).",
+      "paper_path": "paper/paper.md",
+      "priority": "medium",
+      "last_updated": "2026-08-03"
+    },
+    {
+      "title": "cfad: A Characteristic Function Anomaly Detector for Financial Time Series (JOSS)",
+      "repo": "DiogoRibeiro7/cfad",
+      "status": "draft",
+      "notes": "JOSS-format software paper for a Python package detecting structural breaks in financial return series via contour integrals of the empirical characteristic function. Rather than tracking only first and second moments, it monitors changes in the analytic structure of the data-generating law in the complex frequency domain: under diffusive Gaussian dynamics the characteristic function is entire, so a closed contour integral vanishes by Cauchy's theorem, while heavy-tailed and jump processes introduce branch cuts and poles that make the score rise. Combines Cython-accelerated rolling ECF estimation, contour-residue scoring, and sequential CUSUM alarming in one API, plus parametric CF models (Gaussian, NIG, CGMY, Levy-stable) for structural interpretation. Aimed at computational scientists rather than only quantitative finance.",
+      "paper_path": "paper/paper.md",
+      "priority": "medium",
+      "last_updated": "2026-04-12"
+    },
+    {
+      "title": "loss-functions-gof: A Unified Python Framework for Loss Functions and Goodness-of-Fit Measures (JOSS)",
+      "repo": "DiogoRibeiro7/loss-functions-gof",
+      "status": "draft",
+      "notes": "JOSS-format software paper for a Python library providing a unified, extensible framework for loss functions, metrics, and statistical tests, aiming to bridge classical statistical methods and modern deep-learning approaches for model evaluation, optimisation, and analysis. Ships supplementary materials alongside the paper draft.",
+      "paper_path": "paper/paper.md",
+      "priority": "low",
+      "last_updated": "2026-04-21"
+    },
+    {
+      "title": "ewma-ad: Robust EWMA Detectors for Streaming Anomaly Detection (JOSS)",
+      "repo": "DiogoRibeiro7/ewma-ad",
+      "status": "draft",
+      "notes": "JOSS-format software paper for a lightweight implementation of robust exponentially weighted moving average detectors for streaming anomaly detection over smart-home event and value streams, with adaptive sigma updates, an optional outlier-exclusion gate, per-user baselines, seasonality baselines (hour-of-day and hour-of-week), online conformal prediction intervals, and optional Numba JIT acceleration. Exposes a CLI and an AWS Lambda handler for serverless deployment; metrics include precision/recall@k, time-to-detect, hourly false-alarm rate, and interval coverage (PICP).",
+      "paper_path": "paper/paper.md",
+      "priority": "low",
+      "last_updated": "2025-09-04"
     }
   ]
 }
