@@ -1,6 +1,42 @@
 {
   "articles": [
     {
+  "title": "Identifiability of Sequential LLM Rewriting Channels",
+  "repo": "DiogoRibeiro7/llm-rewrite-lineage-identifiability",
+  "status": "in_progress",
+  "notes": "Markov-kernel theory of when an ordered sequence of LLM rewrites is recoverable from the final text law. Observational equivalence, source-relative noncommutativity, a closed-form provenance horizon, and an Assouad bound showing the number of recoverable lineage positions does not grow with depth. Complete draft; pending novelty verification.",
+  "paper_path": "papers/01_identifiability/",
+  "priority": "high",
+  "last_updated": "2026-08-14"
+},
+{
+  "title": "Statistical Dynamics of Sequentially Rewritten LLM Text",
+  "repo": "DiogoRibeiro7/llm-rewrite-lineage-identifiability",
+  "status": "in_progress",
+  "notes": "Dynamical companion to Paper 1: attractors and cycle attractors under repeated rewriting, an autonomy criterion for signature recursions, invariant and quasi-invariant statistics, spectral persistence, and the robustness-versus-identifiability trade-off.",
+  "paper_path": "papers/02_signature_dynamics/",
+  "priority": "high",
+  "last_updated": "2026-08-14"
+},
+{
+  "title": "Tracing the Rewrite Chain: Recovering Ordered LLM Provenance from Final Text",
+  "repo": "DiogoRibeiro7/llm-rewrite-lineage-identifiability",
+  "status": "planned",
+  "notes": "Empirical lineage reconstruction: labelled rewrite-chain datasets, ordered-path estimators, benchmark protocol, and provenance-depth curves testing the predictions of Papers 1 and 2. Gated on data and compute access.",
+  "paper_path": "papers/03_ordered_provenance_reconstruction/",
+  "priority": "medium",
+  "last_updated": "2026-08-14"
+},
+{
+  "title": "Sequential Watermark Dynamics under Repeated LLM Rewriting",
+  "repo": "DiogoRibeiro7/llm-rewrite-lineage-identifiability",
+  "status": "planned",
+  "notes": "Controlled special case on multi-stage watermark attenuation, interference, collision, and order effects. Deliberately gated on finding a sharper contribution than 'multiple watermarks can coexist or decay'.",
+  "paper_path": "papers/04_watermark_dynamics/",
+  "priority": "low",
+  "last_updated": "2026-08-14"
+},
+    {
       "title": "Uncertainty and Calibration Under Shift, Noise, and Autocorrelation: A Simulation Benchmark",
       "repo": "DiogoRibeiro7/uncertainty-bench",
       "status": "in_progress",
