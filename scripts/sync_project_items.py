@@ -101,6 +101,16 @@ class Article:
     def next_action_value(self) -> str:
         return self.next_action or ""
 
+    @property
+    def repo_url(self) -> str:
+        """The field is called Repo URL, so give it a URL rather than the bare slug."""
+        repo = self.repo.strip()
+        if not repo:
+            return ""
+        if repo.startswith(("http://", "https://")):
+            return repo
+        return f"https://github.com/{repo}"
+
 
 def graphql(token: str, query: str, variables: Dict[str, Any]) -> Dict[str, Any]:
     payload = json.dumps({"query": query, "variables": variables}).encode("utf-8")
@@ -131,8 +141,11 @@ def load_articles(path: Path) -> List[Article]:
         if not title or not repo:
             continue
 
-        notes = str(row.get("notes", "")).strip()
-        next_action = str(row.get("next_action", "")).strip() or notes
+        # Deliberately no fallback to notes. Filling this column with the notes blob
+        # made it look maintained across every item while carrying nothing the issue
+        # body did not already say, which hid the fact that no article had ever set
+        # a next action. Blank is the honest value and prompts someone to write one.
+        next_action = str(row.get("next_action", "")).strip()
         articles.append(
             Article(
                 title=title,
@@ -378,7 +391,7 @@ def main() -> None:
 
         update_single_select_field(token, project_id, item_id, fields["Status"]["id"], status_option)
         update_single_select_field(token, project_id, item_id, fields["Priority"]["id"], priority_option)
-        update_text_field(token, project_id, item_id, fields["Repo URL"]["id"], article.repo)
+        update_text_field(token, project_id, item_id, fields["Repo URL"]["id"], article.repo_url)
         update_text_field(token, project_id, item_id, fields["Venue"]["id"], article.venue)
         update_text_field(token, project_id, item_id, fields["Next action"]["id"], article.next_action_value)
         if article.target_date:

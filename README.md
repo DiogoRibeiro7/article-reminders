@@ -4,7 +4,7 @@ Public tracker for article repositories with GitHub Issues, GitHub Projects, and
 
 ## What this repo does
 
-This repository treats **one GitHub issue as one article**. A scheduled workflow reads `data/articles.json`, creates or updates article issues, and then syncs those issues into a GitHub Project. GitHub Projects supports custom fields such as single select, text, date, and iteration, and GitHub supports both built-in Project automations and GraphQL-based automation from Actions. citeturn0search19turn0search7turn0search1turn0search0
+This repository treats **one GitHub issue as one article**. A scheduled workflow reads `data/articles.json`, creates or updates article issues, and then syncs those issues into a GitHub Project. GitHub Projects supports custom fields such as single select, text, date, and iteration, and GitHub supports both built-in Project automations and GraphQL-based automation from Actions.
 
 The default setup in this repo supports:
 
@@ -54,7 +54,7 @@ Create a GitHub Project named `Research Tracker` and add these fields:
 - **Target date** (date)
 - **Next action** (text)
 
-GitHub Projects supports custom fields including single select, text, date, and iteration fields, and Projects can be automated with Actions and the GraphQL API. citeturn0search19turn0search20turn0search1turn0search0
+GitHub Projects supports custom fields including single select, text, date, and iteration fields, and Projects can be automated with Actions and the GraphQL API.
 
 ## Required labels
 
@@ -88,7 +88,7 @@ In the Project UI, enable built-in automation to:
 - set status when an item is added
 - mark items as done when an issue is closed
 
-GitHub supports built-in auto-add and status automations directly in Projects. citeturn0search2turn0search4
+GitHub supports built-in auto-add and status automations directly in Projects.
 
 ## Source of truth
 
@@ -97,19 +97,29 @@ The source of truth is `data/articles.json`.
 Example:
 
 ```json
-[
-  {
-    "title": "Uncertainty and Calibration Under Shift, Noise, and Autocorrelation: A Simulation Benchmark",
-    "repo": "DiogoRibeiro7/uncertainty-bench",
-    "status": "Experiments",
-    "priority": "High",
-    "venue": "",
-    "target_date": "2026-03-20",
-    "next_action": "Regenerate tables and figures from latest aggregated metrics.",
-    "notes": "Current experiments are running on the medium grid."
-  }
-]
+{
+  "articles": [
+    {
+      "title": "Uncertainty and Calibration Under Shift, Noise, and Autocorrelation: A Simulation Benchmark",
+      "repo": "DiogoRibeiro7/uncertainty-bench",
+      "status": "in_progress",
+      "notes": "Current experiments are running on the medium grid.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-03-07",
+      "venue": "",
+      "target_date": "2026-03-20",
+      "next_action": "Regenerate tables and figures from latest aggregated metrics."
+    }
+  ]
+}
 ```
+
+`title`, `repo`, `status`, `notes`, `paper_path`, `priority`, and `last_updated` are
+required. `venue`, `target_date`, and `next_action` are optional and feed the Project
+columns of the same name; leave them out and those columns stay blank. Any other key
+is rejected by `validate.yml`, because the sync scripts read none of them and it would
+sit in the file doing nothing.
 
 ## Article status mapping
 
@@ -127,9 +137,11 @@ The `status` field in `articles.json` is mapped to the Project Status field as f
 | `archived` | Done |
 | `cancelled` | Done |
 
-Any valid Project Status value (e.g. `Backlog`, `Experiments`) can also be used directly. Unknown values default to `Backlog`.
-
-Do not use free-text statuses such as `experiments running`. Put that richer description in `notes` or `next_action` instead.
+Use the left-hand values only. A Project Status name such as `Experiments` sorts onto
+the board correctly but is not a status `sync_article_issues.py` recognises, so the
+article is skipped and never gets a reminder issue at all. The same goes for free text
+such as `experiments running`; put that richer description in `notes` or `next_action`.
+`validate.yml` rejects both.
 
 ## How the automation works
 
@@ -186,4 +198,4 @@ scan token only reads — the report is written with the workflow's own
 - adds the issue to the configured GitHub Project if missing
 - updates Project fields using the GraphQL API
 
-GitHub documents GraphQL mutations for adding items to Projects and updating field values, and also documents how to automate Projects from Actions. citeturn0search0turn0search1turn0search20
+GitHub documents GraphQL mutations for adding items to Projects and updating field values, and also documents how to automate Projects from Actions.

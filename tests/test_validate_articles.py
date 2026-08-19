@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -120,3 +121,19 @@ def test_main_exits_nonzero_on_invalid_data(tmp_path: Path, monkeypatch: pytest.
 def test_main_exits_zero_on_valid_data(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(validate_articles, "DATA_PATH", write(tmp_path, [good()]))
     assert validate_articles.main() == 0
+
+
+def test_the_readme_example_is_itself_valid(tmp_path: Path) -> None:
+    """The README example is the contract newcomers copy.
+
+    It previously advised `"status": "Experiments"`, which sync_article_issues skips
+    as unknown, so an article copied from the docs silently never got a reminder.
+    """
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    blocks = re.findall(r"```json\n(.*?)```", readme, re.DOTALL)
+    assert blocks, "README no longer contains a JSON example"
+
+    example = json.loads(blocks[0])
+    path = tmp_path / "articles.json"
+    path.write_text(json.dumps(example), encoding="utf-8")
+    assert validate_articles.validate(path) == []
