@@ -23,9 +23,13 @@ The default setup in this repo supports:
   workflows/
     article-reminders.yml
     project-sync.yml
+    validate.yml
+    drift-check.yml
 scripts/
   sync_article_issues.py
   sync_project_items.py
+  validate_articles.py
+  check_article_drift.py
 data/
   articles.json
 ```
@@ -144,6 +148,36 @@ cleanup is skipped entirely when no articles load, so a truncated or malformed
 data file cannot close every reminder at once. Deleting an article is therefore
 a safe way to retire it; the issue closes on the next run and reopens if the
 entry comes back.
+
+### `validate.yml`
+
+- runs on every push to `main`, every pull request, and manual dispatch
+- validates `data/articles.json`: required keys, no unknown keys, known status and
+  priority vocabulary, `YYYY-MM-DD` dates, unique titles, unique repo + `paper_path`
+- runs the test suite
+
+The sync workflows run on a schedule and treat this file as the source of truth, so
+without this gate a malformed entry surfaces midway through a cron run that has
+already created or edited issues.
+
+### `drift-check.yml`
+
+- runs monthly and on manual dispatch
+- compares every entry against its actual repository and reports the disagreements
+  in a single `[article-drift]` issue, which closes automatically once nothing drifts
+
+It reports rather than edits: whether 50 KB of sections counts as a draft is a
+judgement call. It flags repositories that no longer resolve, `paper_path` values
+that no longer exist, statuses contradicted by how much manuscript source is
+actually committed, and a `last_updated` more than 60 days behind the repository's
+last push.
+
+Requires an `ARTICLE_SCAN_TOKEN` secret with read access to the tracked
+repositories. Most of them are private and the default `GITHUB_TOKEN` is scoped to
+this repository alone, so without it every lookup returns 404; the workflow skips
+with a notice rather than reporting a tracker full of deleted repositories. The
+scan token only reads — the report is written with the workflow's own
+`GITHUB_TOKEN`.
 
 ### `project-sync.yml`
 

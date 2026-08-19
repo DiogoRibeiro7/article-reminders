@@ -1,0 +1,37 @@
+name: Validate
+
+# The reminder and project-sync workflows run on a schedule and treat
+# data/articles.json as the source of truth. Without this gate a malformed entry
+# is discovered midway through a cron run that has already created or edited
+# issues, so validation belongs on the way in.
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Install test dependencies
+        run: python -m pip install --upgrade pip pytest
+
+      - name: Validate data/articles.json
+        run: python scripts/validate_articles.py
+
+      - name: Run tests
+        run: python -m pytest tests/ -q
