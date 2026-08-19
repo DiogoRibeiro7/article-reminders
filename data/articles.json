@@ -422,6 +422,15 @@
       "paper_path": "paper/paper.md",
       "priority": "low",
       "last_updated": "2025-09-04"
+    },
+    {
+      "title": "When Political Systems Negate Their Own Values",
+      "repo": "DiogoRibeiro7/political-systems-research",
+      "status": "planned",
+      "notes": "Research protocol and novelty-audit stage for a formal and comparative theory of political systems that can generate trajectories negating their own legitimating values.",
+      "paper_path": "papers/self-negating-political-systems/",
+      "priority": "medium",
+      "last_updated": "2026-08-19"
     }
   ]
 }
