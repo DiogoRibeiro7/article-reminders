@@ -3,20 +3,20 @@
     {
       "title": "Identifiability of Sequential LLM Rewriting Channels",
       "repo": "DiogoRibeiro7/llm-rewrite-lineage-identifiability",
-      "status": "in_progress",
+      "status": "draft",
       "notes": "Markov-kernel theory of when an ordered sequence of LLM rewrites is recoverable from the final text law. Observational equivalence, source-relative noncommutativity, a closed-form provenance horizon, and an Assouad bound showing the number of recoverable lineage positions does not grow with depth. Complete draft; pending novelty verification.",
       "paper_path": "papers/01_identifiability/",
       "priority": "high",
-      "last_updated": "2026-08-14"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "Statistical Dynamics of Sequentially Rewritten LLM Text",
       "repo": "DiogoRibeiro7/llm-rewrite-lineage-identifiability",
-      "status": "in_progress",
+      "status": "draft",
       "notes": "Dynamical companion to Paper 1: attractors and cycle attractors under repeated rewriting, an autonomy criterion for signature recursions, invariant and quasi-invariant statistics, spectral persistence, and the robustness-versus-identifiability trade-off.",
       "paper_path": "papers/02_signature_dynamics/",
       "priority": "high",
-      "last_updated": "2026-08-14"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "Tracing the Rewrite Chain: Recovering Ordered LLM Provenance from Final Text",
@@ -120,65 +120,65 @@
     {
       "title": "Economic Crises as Redistribution Operators: A Dynamical Systems Model of Wage Decline, Wealth Concentration, and Policy Control",
       "repo": "DiogoRibeiro7/crisis_wealth_dynamics",
-      "status": "in_progress",
+      "status": "draft",
       "notes": "Reproducible research repo with formal dynamical systems model, ETL pipeline for inequality/macro/labour data, simulation code, empirical panel analysis, and policy counterfactuals. Treats crisis outcomes as government choices.",
       "paper_path": "article/",
       "priority": "high",
-      "last_updated": "2026-07-02"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "Wealth Concentration as a Destructive Attractor: A Conditional Dynamical-Systems Benchmark",
       "repo": "DiogoRibeiro7/wealth_attractor_dynamics",
-      "status": "in_progress",
+      "status": "draft",
       "notes": "Benchmark two-variable dynamical-systems paper proving conditional local collapse stability under explicit institutional and demand-side thresholds, with equilibrium geometry, basin structure, separatrix analysis, and bifurcation results. Model-internal and non-empirical by design.",
       "paper_path": "papers/1_destructive_attractor_benchmark/",
       "priority": "high",
-      "last_updated": "2026-07-02"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "From Destructive Attractors to Institutional Resilience: Calibration, Stochastic Escape, and Policy Counterfactuals",
       "repo": "DiogoRibeiro7/wealth_attractor_dynamics",
-      "status": "in_progress",
+      "status": "draft",
       "notes": "Extension paper adding public-data calibration, SMM and ABC identification checks, weak-identification diagnostics, three-variable bargaining dynamics, ABM consistency, stochastic escape, EVT-style rare-event analysis, and policy counterfactuals. Uses the benchmark theorem from Paper 1 without re-proving it.",
       "paper_path": "papers/2_destructive_attractor_extensions/",
       "priority": "high",
-      "last_updated": "2026-07-02"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "From Bargaining Collapse to Institutional Erosion: Higher-Dimensional Destructive Attractor Models",
       "repo": "DiogoRibeiro7/wealth_attractor_dynamics",
-      "status": "in_progress",
+      "status": "draft",
       "notes": "Higher-dimensional theory paper developing the 3D bargaining model and 4D endogenous-institutions model as a hierarchy extending the 2D benchmark. Focuses on forward invariance, equilibria, resilience regions, deterministic simulations, basin slices, and continuation diagnostics.",
       "paper_path": "papers/3_higher_dimensional_destructive_attractors/",
       "priority": "high",
-      "last_updated": "2026-07-02"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "Monte Carlo Cartography of Destructive Attractors: Collapse Probabilities, Resilience Thresholds, and Global Sensitivity",
       "repo": "DiogoRibeiro7/wealth_attractor_dynamics",
-      "status": "in_progress",
+      "status": "draft",
       "notes": "Computational uncertainty paper building a Monte Carlo atlas across the 2D, 3D, and 4D model hierarchy. Covers parameter and initial-condition uncertainty, stochastic shocks, collapse and resilience probability maps, first-passage summaries, and global sensitivity analysis without making empirical-probability claims.",
       "paper_path": "papers/4_monte_carlo_destructive_attractors/",
       "priority": "high",
-      "last_updated": "2026-07-02"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "Koopman Early-Warning Indicators for Destructive Attractors in Political-Economy Dynamical Systems",
       "repo": "DiogoRibeiro7/wealth_attractor_dynamics",
-      "status": "in_progress",
+      "status": "draft",
       "notes": "Methodological paper applying Koopman operator methods and EDMD to derive slow modes, basin-separating observables, and short-window collapse predictors across the model hierarchy. Emphasizes model-internal diagnostics, spectral comparison, and robustness rather than empirical forecasting.",
       "paper_path": "papers/5_koopman_early_warning_destructive_attractors/",
       "priority": "high",
-      "last_updated": "2026-07-02"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "Topological Cartography of Collapse and Resilience: Morse Graphs and Basin Structure in Destructive-Attractor Models",
       "repo": "DiogoRibeiro7/wealth_attractor_dynamics",
-      "status": "in_progress",
+      "status": "draft",
       "notes": "Set-oriented topology paper constructing coarse global state-space summaries through box decompositions, transition graphs, recurrent components, Morse-style graphs, and basin comparisons across 2D, 3D, and 4D models. Claims are explicitly resolution- and flow-time-dependent rather than theorem-level topology statements.",
       "paper_path": "papers/6_topological_cartography_destructive_attractors/",
       "priority": "high",
-      "last_updated": "2026-07-02"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "Determinants of Municipal House Prices in Portugal: Structure, Space, and the Limits of a Short Panel",
@@ -192,20 +192,20 @@
     {
       "title": "From Chaos to Crisis: Using Dynamical-Systems Extreme Value Theory in Econometrics",
       "repo": "DiogoRibeiro7/dynamical_systems_econometrics",
-      "status": "in_progress",
+      "status": "draft",
       "notes": "Applies extreme value theory from dynamical systems (Milhazes Freitas framework) to econometric analysis of rare events, crises, and tail dependence. Includes simulation utilities for chaotic maps, rare-event diagnostics (exceedances, extremal index, return/hitting times), multivariate stress analysis, and reproduction package with YAML-based experiment orchestration. Designed for both Medium article and future formal paper.",
       "paper_path": "article/",
       "priority": "high",
-      "last_updated": "2026-07-02"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "From Wages to Wealth: A Dynamical Model and Research Design for Rent Extraction, Property Ownership, and Class Reproduction",
       "repo": "DiogoRibeiro7/wealth_rentier_dynamics",
-      "status": "in_progress",
+      "status": "draft",
       "notes": "Develops a political-economy model of wealth concentration centered on the conversion of wages into asset ownership, with housing as the main transmission channel. Includes a deterministic dynamic model with explicit ownership-transition timing and affordability constraints, Portugal-oriented calibration scenarios, fixed-effects panel utilities, household ownership-transition modeling, dashboards, notebooks, and a reproducible simulation pipeline. The current empirical layer is implemented in code but still relies on synthetic sample panel data and provisional calibration anchors, so the repo is best understood as a theory-plus-research-design package for a working paper and future formal article.",
       "paper_path": "reports/",
       "priority": "high",
-      "last_updated": "2026-07-03"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "The European Economy as a Set of Choices: A Reusable Diagnostic Framework for Convergence, Wages, Investment, and Fiscal Policy",
@@ -246,20 +246,20 @@
     {
       "title": "From Wages to Wealth: A Dynamical Model and Research Design for Rent Extraction, Property Ownership, and Class Reproduction",
       "repo": "DiogoRibeiro7/wealth_rentier_dynamics",
-      "status": "in_progress",
+      "status": "draft",
       "notes": "Develops a political-economy model of wealth concentration centered on the conversion of wages into asset ownership, with housing as the main transmission channel. Includes a deterministic dynamic model with explicit ownership-transition timing and affordability constraints, Portugal-oriented calibration scenarios, fixed-effects panel utilities, household ownership-transition modeling, dashboards, notebooks, and a reproducible simulation pipeline. The current empirical layer is implemented in code but still relies on synthetic sample panel data and provisional calibration anchors, so the repo is best understood as a theory-plus-research-design package for a working paper and future formal article.",
       "paper_path": "reports/",
       "priority": "high",
-      "last_updated": "2026-07-03"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "North–South Fire-Season Onset in Mainland Portugal: A Reproducible Data-Engineering and Statistics Pipeline",
       "repo": "DiogoRibeiro7/portugal-fire-onset",
       "status": "in_progress",
       "notes": "Tests whether rural fire onset is earlier at higher latitude, keeping ignition, burned-area, and fire-weather onset separate. Multi-source ingestion (ICNF, NASA FIRMS, EFFIS, ERA5/CEMS, GISCO, CORINE/DGT COS, DEM, OSM, INE) via a provenance-tracked download manager into PostGIS. Pure-Python statistics (OLS+robust SE, sign test, permutation, discrete-time hazard, Cox PH, Weibull AFT, random-intercept mixed, quantile, robustness). All 29 prompts implemented; ruff+mypy clean; 197 unit tests; offline path (features onset -> stats run -> viz build) reproducible. Remaining: live credentialed downloads (FIRMS/CDS), live PostGIS loader run, real GeoTIFF raster reads. Article is a scaffold, not yet written.",
-      "paper_path": "article_prompts/",
+      "paper_path": "reports/",
       "priority": "high",
-      "last_updated": "2026-07-07"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "Can Portugal Produce a Parish-Level Map of Rent per Square Metre? A Coverage and Concordance Audit of Official INE Rent Data",
@@ -273,38 +273,38 @@
     {
       "title": "Locating Where Extreme-Score Detectors Fail: A Layered Evaluation for Predictive Maintenance on Public Industrial Data",
       "repo": "DiogoRibeiro7/dynamical-evt-pdm",
-      "status": "in_progress",
+      "status": "draft",
       "notes": "Reproducible layered evaluation that separates an extreme-score detector into score, threshold, extreme clusters, alarm episodes and matched events, so failure can be located per method rather than per dataset. Applied to two independent held-out compressor failures (MetroPT, MetroPT2) across nineteen methods under one shared alarm policy, with a warning-window rank separation and a circular-shift null that test whether a match carries information, genuine cross-dataset target-region transfer, detection-conditioned matched controls, and a high-replication extremal-index Monte Carlo. Under major revision after peer review; archived at Zenodo (concept DOI 10.5281/zenodo.21803768), results correspond to release v0.3.2.",
       "paper_path": "paper/",
       "priority": "high",
-      "last_updated": "2026-08-06"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "Portugal's Public-Debt Interest Burden: Measurement and Debt Dynamics under ESA 2010",
       "repo": "DiogoRibeiro7/portugal-public-debt-interest",
-      "status": "in_progress",
+      "status": "draft",
       "notes": "Reproducible annual dataset and paper on general-government interest payable (Eurostat D41PAY) in euros and as a share of nominal GDP, with an optional AMECO pre-1995 extension kept separate and observed/forecast observations labelled. Decomposes the decline in the burden into effective rate, debt ratio, nominal growth, and inflation, and compares Portugal against the euro-area universe under harmonised definitions. Ships validation and reproducibility JSON, generated LaTeX tables, and a committed PDF built from paper/portugal_public_debt_interest_report.tex.",
       "paper_path": "paper/",
       "priority": "high",
-      "last_updated": "2026-08-07"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "The Repricing Kernel: How Fast Do Market Rates Pass Through to Portugal's Effective Debt Cost?",
       "repo": "DiogoRibeiro7/portugal-public-debt-interest",
-      "status": "in_progress",
+      "status": "draft",
       "notes": "Second paper in the same repository, relaxing the burden paper's constant-hazard repricing assumption. Imports rather than duplicates the shared measurement layer, with a regression test asserting the burden paper's artefacts stay byte-identical. Every manuscript number is a generated macro; a gate fails the build if a literal is hand-typed. Null results are reported alongside positive ones in reports/repricing/findings.md.",
       "paper_path": "paper/repricing/",
       "priority": "high",
-      "last_updated": "2026-08-07"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "Short-Term Interest Rate Innovations Across Monetary Regimes",
       "repo": "DiogoRibeiro7/short-rate-anomaly-regimes",
-      "status": "planned",
+      "status": "draft",
       "notes": "Evidence-gated scaffold for replicating and extending Maio and Santa-Clara on short-rate innovations and equity anomalies, asking whether the innovation prices anomalies as a stable hedging state variable or as a mix of policy shocks, central-bank information, macro news, and regime-dependent transmission. Two deliberately separate tracks: strict replication and documented reconstruction, which never labels substitutes as reproduced. Config, typed pipeline interfaces, validation, and tests are in place; data acquisition is intentionally disabled until licences and variable definitions are recorded in research/data_access_matrix.csv. Release gate reports 0 critical and 1 major issue: code release permitted, empirical-results release blocked.",
       "paper_path": "paper/",
       "priority": "high",
-      "last_updated": "2026-08-07"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "Dimensional Asymptotics of Euler-Based Simulated Likelihood for Multidimensional Diffusions",
@@ -318,11 +318,11 @@
     {
       "title": "Persistent Continuous Price-Level Ordering in Portuguese Municipal Housing Across Two Price Constructs",
       "repo": "DiogoRibeiro7/portugal-housing-trajectories",
-      "status": "in_progress",
+      "status": "draft",
       "notes": "Standalone longitudinal unsupervised paper (not a revision of the earlier municipal house-price determinants work) analysing PORDATA average transaction value 2009-2019 and INE median price per m2 2019-2025 as two separate constructs that are never spliced. Headline estimand is a persistent continuous price-level ordering; two-group tiers are reported only as uncertain, lossy coarsenings, not market types. Separates level, shape, level-plus-shape, and growth representations, with B>=500 bootstrap stability, candidate HMM state formulations, spatial-graph and fold-refit external INE validation, and uncertainty-aware structural profiling. Reports negative results when a structure fails the diagnostic rules rather than forcing a partition. Reviewer-facing run registry records analysis commit, config hash, seed, and data manifest hash. Under major revision.",
       "paper_path": "article/",
       "priority": "high",
-      "last_updated": "2026-08-07"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "Colonial versus European Linkages in Portuguese Growth, 1960-1973",
@@ -338,9 +338,9 @@
       "repo": "DiogoRibeiro7/Dynamics_ICCSA",
       "status": "draft",
       "notes": "ICCSA/LNCS-formatted extension of the municipal housing-price model from a single cross-section to multiple years, alongside a Portuguese abstract (resumo.tex) and the conference presentation deck (housing_prices_portugal_conference_presentation.tex). Built on the llncs document class. Sits between the published municipal-level analysis and the later panel and trajectory work in housing_future_work_etl and portugal-housing-trajectories.",
-      "paper_path": "article/",
+      "paper_path": "",
       "priority": "high",
-      "last_updated": "2026-06-30"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "Dynamics of the Real Estate Market: Determining Factors in the Value of Housing in Portugal",
@@ -426,11 +426,11 @@
     {
       "title": "Synthetic Household Electricity Load Generation: A Model Ladder Approach",
       "repo": "DiogoRibeiro7/goiener_synthetic_pipeline",
-      "status": "planned",
-      "notes": "Synthload generates realistic synthetic household electricity consumption from Spanish GoiEner smart-meter data using a ladder of hierarchical and dynamic linear models capturing time-of-week effects, temperature sensitivity via heating and cooling degree hours, AR(1) or time-varying-coefficient temporal autocorrelation, and household heterogeneity. The package and pipeline are complete and a compiled paper/main.pdf exists, but the tracked LaTeX source is only a stub, so the manuscript needs reconstructing before submission.",
+      "status": "draft",
+      "notes": "Synthload generates realistic synthetic household electricity consumption from Spanish GoiEner smart-meter data using a ladder of hierarchical and dynamic linear models capturing time-of-week effects, temperature sensitivity via heating and cooling degree hours, AR(1) or time-varying-coefficient temporal autocorrelation, and household heterogeneity. The package and pipeline are complete, and the manuscript is written: paper/main.tex is a thin wrapper that inputs six substantive section files (introduction, data and methods, dynamic model, factor model, results and validation, conclusion) totalling roughly 54 KB, with a compiled paper/main.pdf.",
       "paper_path": "paper/",
       "priority": "low",
-      "last_updated": "2025-11-23"
+      "last_updated": "2026-08-19"
     },
     {
       "title": "ssspx: Production-Grade Single-Source Shortest Paths in Python (JOSS)",
