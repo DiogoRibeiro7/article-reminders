@@ -64,46 +64,10 @@
       "last_updated": "2026-03-08"
     },
     {
-      "title": "Calibration vs accuracy trade-offs",
-      "repo": "DiogoRibeiro7/calibration-tradeoffs",
-      "status": "draft",
-      "notes": "Need to strengthen simulation design and references.",
-      "paper_path": "paper/",
-      "priority": "medium",
-      "last_updated": "2026-03-01"
-    },
-    {
-      "title": "Synthetic smart-home stress testing for ML systems",
-      "repo": "DiogoRibeiro7/stressloop",
-      "status": "planned",
-      "notes": "Repository scaffold exists, experiments not complete yet.",
-      "paper_path": "paper/",
-      "priority": "high",
-      "last_updated": "2026-02-28"
-    },
-    {
-      "title": "Curvature-adaptive nearest-neighbour classification",
-      "repo": "DiogoRibeiro7/curvknn",
-      "status": "finished",
-      "notes": "Core repo is in place; reminder issue should be closed.",
-      "paper_path": "paper/",
-      "priority": "low",
-      "last_updated": "2026-03-05"
-    },
-    {
       "title": "TMLE Missingness Simulation Study",
       "repo": "DiogoRibeiro7/tmle-missingness-sim",
       "status": "draft",
       "notes": "Simulation study comparing MI + Rubin versus missingness-aware orthogonal estimators with bootstrap or BLB inference for causal effects under missing data.",
-      "paper_path": "paper/",
-      "priority": "medium",
-      "last_updated": "2026-03-07"
-    },
-    {
-      "title": "pro-particles",
-      "repo": "DiogoRibeiro7/pro-particles",
-      "status": "in_progress",
-      "notes": "NumPy-first interacting-particle sampler for Proper-Scoring-Rule posteriors with log-score and MMD² examples.",
       "paper_path": "paper/",
       "priority": "medium",
       "last_updated": "2026-03-07"
@@ -242,15 +206,6 @@
       "paper_path": "papers/",
       "priority": "high",
       "last_updated": "2026-07-03"
-    },
-    {
-      "title": "From Wages to Wealth: A Dynamical Model and Research Design for Rent Extraction, Property Ownership, and Class Reproduction",
-      "repo": "DiogoRibeiro7/wealth_rentier_dynamics",
-      "status": "draft",
-      "notes": "Develops a political-economy model of wealth concentration centered on the conversion of wages into asset ownership, with housing as the main transmission channel. Includes a deterministic dynamic model with explicit ownership-transition timing and affordability constraints, Portugal-oriented calibration scenarios, fixed-effects panel utilities, household ownership-transition modeling, dashboards, notebooks, and a reproducible simulation pipeline. The current empirical layer is implemented in code but still relies on synthetic sample panel data and provisional calibration anchors, so the repo is best understood as a theory-plus-research-design package for a working paper and future formal article.",
-      "paper_path": "reports/",
-      "priority": "high",
-      "last_updated": "2026-08-19"
     },
     {
       "title": "North–South Fire-Season Onset in Mainland Portugal: A Reproducible Data-Engineering and Statistics Pipeline",
