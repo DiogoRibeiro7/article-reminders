@@ -191,6 +191,52 @@ def close_issue(issue_number: int, article: Article) -> None:
     print(f"Closed issue #{issue_number} for: {article.title}")
 
 
+def comment_on_issue(issue_number: int, body: str) -> None:
+    api_request("POST", f"/repos/{REPOSITORY}/issues/{issue_number}/comments", {"body": body})
+
+
+def close_orphaned_issues(
+    issues: Iterable[Dict[str, Any]],
+    matched_numbers: Set[int],
+    article_count: int,
+) -> None:
+    """Close managed issues that no article in the data file claims any more.
+
+    An article can leave the tracker by being deleted outright rather than by
+    moving to a closed status, and nothing else would ever close its reminder.
+    Only issues this workflow owns are eligible: they must carry the managed
+    label and the reminder title prefix.
+    """
+    if article_count == 0:
+        # A truncated or malformed data file must not close the whole board.
+        print("Skipping orphan cleanup: no articles were loaded.")
+        return
+
+    for issue in issues:
+        number = int(issue["number"])
+        if number in matched_numbers:
+            continue
+        if str(issue.get("state", "open")) == "closed":
+            continue
+        if not str(issue.get("title", "")).startswith(ISSUE_PREFIX):
+            continue
+        labels = {
+            str(label.get("name", "")) if isinstance(label, dict) else str(label)
+            for label in issue.get("labels", [])
+        }
+        if MANAGED_LABEL not in labels:
+            continue
+
+        comment_on_issue(
+            number,
+            "Closing automatically: this article is no longer listed in "
+            "`data/articles.json`, so no reminder tracks it any more. "
+            "Restore the entry to reopen this issue.",
+        )
+        api_request("PATCH", f"/repos/{REPOSITORY}/issues/{number}", {"state": "closed"})
+        print(f"Closed orphaned issue #{number}: {issue.get('title', '')}")
+
+
 def find_issue_for_article(issues: Iterable[Dict[str, Any]], article: Article) -> Optional[Dict[str, Any]]:
     expected_title = article.issue_title
     expected_key = f"`{article.slug}`"
@@ -210,9 +256,13 @@ def sync() -> None:
     ensure_label_exists()
     issues = list_open_issues()
 
+    matched_numbers: Set[int] = set()
+
     for article in articles:
         issue = find_issue_for_article(issues, article)
         status = article.normalized_status
+        if issue is not None:
+            matched_numbers.add(int(issue["number"]))
 
         if status in UNFINISHED_STATUSES:
             if issue is None:
@@ -229,6 +279,8 @@ def sync() -> None:
                 close_issue(int(issue["number"]), article)
         else:
             print(f"Skipping article with unknown status '{article.status}': {article.title}")
+
+    close_orphaned_issues(issues, matched_numbers, len(articles))
 
 
 if __name__ == "__main__":

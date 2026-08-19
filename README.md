@@ -135,6 +135,15 @@ Do not use free-text statuses such as `experiments running`. Put that richer des
 - reads `data/articles.json`
 - creates or updates one issue per article
 - closes issues for articles marked `Done` or `Archived`
+- closes orphaned issues: any reminder whose article has been deleted from
+  `data/articles.json` outright, rather than moved to a closed status
+
+Only issues the workflow owns are eligible for orphan cleanup — they must carry
+the `article-reminder` label and the `[article-reminder]` title prefix — and the
+cleanup is skipped entirely when no articles load, so a truncated or malformed
+data file cannot close every reminder at once. Deleting an article is therefore
+a safe way to retire it; the issue closes on the next run and reopens if the
+entry comes back.
 
 ### `project-sync.yml`
 

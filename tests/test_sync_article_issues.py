@@ -117,3 +117,83 @@ def test_sync_handles_create_update_reopen_and_close(monkeypatch: pytest.MonkeyP
     assert ("update", 2, "Update", None) in actions
     assert ("update", 3, "Reopen", "open") in actions
     assert ("close", 4, "Close") in actions
+
+
+def _managed_issue(number: int, title: str, state: str = "open", labels=None):
+    return {
+        "number": number,
+        "title": f"{sync_article_issues.ISSUE_PREFIX} {title}",
+        "state": state,
+        "body": "",
+        "labels": [{"name": sync_article_issues.MANAGED_LABEL}] if labels is None else labels,
+    }
+
+
+def _record_orphan_calls(monkeypatch: pytest.MonkeyPatch) -> list:
+    calls: list = []
+    monkeypatch.setattr(
+        sync_article_issues,
+        "comment_on_issue",
+        lambda number, body: calls.append(("comment", number)),
+    )
+    monkeypatch.setattr(
+        sync_article_issues,
+        "api_request",
+        lambda method, path, payload=None, expected_error_codes=None: calls.append(
+            ("api", method, path, payload)
+        ),
+    )
+    return calls
+
+
+def test_close_orphaned_issues_closes_unclaimed_issue(monkeypatch: pytest.MonkeyPatch) -> None:
+    calls = _record_orphan_calls(monkeypatch)
+    issues = [_managed_issue(4, "Deleted article"), _managed_issue(9, "Still tracked")]
+
+    sync_article_issues.close_orphaned_issues(issues, {9}, article_count=3)
+
+    assert ("comment", 4) in calls
+    assert ("api", "PATCH", "/repos/None/issues/4", {"state": "closed"}) in calls
+    assert not any(call[1] == 9 for call in calls)
+
+
+def test_close_orphaned_issues_skips_unmanaged_and_closed(monkeypatch: pytest.MonkeyPatch) -> None:
+    calls = _record_orphan_calls(monkeypatch)
+    issues = [
+        _managed_issue(1, "Already closed", state="closed"),
+        _managed_issue(2, "No managed label", labels=[{"name": "bug"}]),
+        {"number": 3, "title": "Unrelated hand-written issue", "state": "open", "body": "", "labels": [{"name": sync_article_issues.MANAGED_LABEL}]},
+    ]
+
+    sync_article_issues.close_orphaned_issues(issues, set(), article_count=3)
+
+    assert calls == []
+
+
+def test_close_orphaned_issues_refuses_to_run_on_empty_data(monkeypatch: pytest.MonkeyPatch) -> None:
+    calls = _record_orphan_calls(monkeypatch)
+
+    sync_article_issues.close_orphaned_issues([_managed_issue(4, "Anything")], set(), article_count=0)
+
+    assert calls == []
+
+
+def test_sync_closes_issue_left_behind_by_a_removed_article(monkeypatch: pytest.MonkeyPatch) -> None:
+    articles = [Article(title="Kept", repo="a/b", status="draft")]
+    issues = [_managed_issue(2, "Kept"), _managed_issue(7, "Removed from the tracker")]
+    orphaned: list = []
+
+    monkeypatch.setattr(sync_article_issues, "DATA_PATH", Path("data/articles.json"))
+    monkeypatch.setattr(sync_article_issues, "load_articles", lambda path: articles)
+    monkeypatch.setattr(sync_article_issues, "ensure_label_exists", lambda: None)
+    monkeypatch.setattr(sync_article_issues, "list_open_issues", lambda: issues)
+    monkeypatch.setattr(sync_article_issues, "update_issue", lambda number, article, state=None: None)
+    monkeypatch.setattr(
+        sync_article_issues,
+        "close_orphaned_issues",
+        lambda issues, matched, count: orphaned.append((sorted(matched), count)),
+    )
+
+    sync_article_issues.sync()
+
+    assert orphaned == [([2], 1)]
