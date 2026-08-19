@@ -197,3 +197,20 @@ def test_sync_closes_issue_left_behind_by_a_removed_article(monkeypatch: pytest.
     sync_article_issues.sync()
 
     assert orphaned == [([2], 1)]
+
+
+def test_issue_body_shows_the_abstract_before_the_notes() -> None:
+    article = Article(
+        title="A Paper", repo="a/b", status="draft",
+        notes="Waiting on the referee round.",
+        abstract="We show that X implies Y.",
+    )
+    body = article.to_issue_body()
+    assert "## Abstract" in body
+    assert "We show that X implies Y." in body
+    assert body.index("## Abstract") < body.index("## Notes")
+
+
+def test_issue_body_omits_the_abstract_section_when_unset() -> None:
+    body = Article(title="A Paper", repo="a/b", status="draft", notes="n").to_issue_body()
+    assert "## Abstract" not in body

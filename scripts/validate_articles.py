@@ -17,7 +17,7 @@ from typing import Any, Dict, List
 DATA_PATH = Path("data/articles.json")
 
 REQUIRED_KEYS = {"title", "repo", "status", "notes", "paper_path", "priority", "last_updated"}
-OPTIONAL_KEYS = {"venue", "target_date", "next_action"}
+OPTIONAL_KEYS = {"abstract", "venue", "target_date", "next_action"}
 KNOWN_KEYS = REQUIRED_KEYS | OPTIONAL_KEYS
 
 VALID_STATUSES = {

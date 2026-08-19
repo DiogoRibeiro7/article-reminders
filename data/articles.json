@@ -5,6 +5,7 @@
       "repo": "DiogoRibeiro7/llm-rewrite-lineage-identifiability",
       "status": "draft",
       "notes": "Markov-kernel theory of when an ordered sequence of LLM rewrites is recoverable from the final text law. Observational equivalence, source-relative noncommutativity, a closed-form provenance horizon, and an Assouad bound showing the number of recoverable lineage positions does not grow with depth. Complete draft; pending novelty verification.",
+      "abstract": "A document produced by one language model may be rewritten by others before anyone sees it, so the observable text is the endpoint of a latent sequence of stochastic transformations. Modelling each rewriting mechanism as a Markov kernel and a lineage as an ordered composition of kernels, we ask when the lineage is identifiable from the law of the final text.",
       "paper_path": "papers/01_identifiability/",
       "priority": "high",
       "last_updated": "2026-08-19"
@@ -14,6 +15,7 @@
       "repo": "DiogoRibeiro7/llm-rewrite-lineage-identifiability",
       "status": "draft",
       "notes": "Dynamical companion to Paper 1: attractors and cycle attractors under repeated rewriting, an autonomy criterion for signature recursions, invariant and quasi-invariant statistics, spectral persistence, and the robustness-versus-identifiability trade-off.",
+      "abstract": "Repeated rewriting of a document by stochastic text transformations induces a dynamical system on the law of the text, and on any measurable signature of it. That successive paraphrasing by language models produces attractors and cycles is documented empirically; we ask what a contraction hypothesis actually delivers, and which observables survive it.",
       "paper_path": "papers/02_signature_dynamics/",
       "priority": "high",
       "last_updated": "2026-08-19"
@@ -23,6 +25,7 @@
       "repo": "DiogoRibeiro7/llm-rewrite-lineage-identifiability",
       "status": "planned",
       "notes": "Empirical lineage reconstruction: labelled rewrite-chain datasets, ordered-path estimators, benchmark protocol, and provenance-depth curves testing the predictions of Papers 1 and 2. Gated on data and compute access.",
+      "abstract": "This manuscript is reserved for empirical reconstruction of ordered LLM rewrite histories from final text. It will evaluate whether model-specific statistical traces permit recovery of latent rewrite paths under controlled and realistic transformations.",
       "paper_path": "papers/03_ordered_provenance_reconstruction/",
       "priority": "medium",
       "last_updated": "2026-08-14"
@@ -32,6 +35,7 @@
       "repo": "DiogoRibeiro7/llm-rewrite-lineage-identifiability",
       "status": "planned",
       "notes": "Controlled special case on multi-stage watermark attenuation, interference, collision, and order effects. Deliberately gated on finding a sharper contribution than 'multiple watermarks can coexist or decay'.",
+      "abstract": "This manuscript is reserved for the explicit-watermark special case of sequential text rewriting. Its intended focus is the evolution, coexistence, interference, and possible order information of multiple statistical watermark signals under repeated rewriting.",
       "paper_path": "papers/04_watermark_dynamics/",
       "priority": "low",
       "last_updated": "2026-08-14"
@@ -41,6 +45,7 @@
       "repo": "DiogoRibeiro7/uncertainty-bench",
       "status": "in_progress",
       "notes": "Simulation benchmark for uncertainty in regression, classification, and forecasting under shift, noise, and temporal dependence.",
+      "abstract": "We present uncertainty-bench, a fully reproducible simulation benchmark for predictive uncertainty under dataset shift, class imbalance with label noise, and temporal dependence. All claims are generated from scripted artifacts and traced to results/aggregated/metrics_summary.csv.",
       "paper_path": "paper/",
       "priority": "high",
       "last_updated": "2026-03-07"
@@ -50,6 +55,7 @@
       "repo": "DiogoRibeiro7/cpd-stress-test",
       "status": "draft",
       "notes": "Main CPD simulation paper.",
+      "abstract": "Classical online change-point detectors are widely deployed but poorly understood under the data corruption that real-world monitoring systems routinely face: outlier contamination, sensor dropout, and strong seasonality. We present a complete engineering pipeline-seasonal residualization, bounded-influence M-estimation, per-variant threshold calibration, and detection clustering-that makes three sequential detectors (Page-Hinkley, two-sided CUSUM, BOCPD) practical under these conditions, along with a simulation framework for systematic evaluation.",
       "paper_path": "paper/",
       "priority": "high",
       "last_updated": "2026-03-07"
@@ -68,6 +74,7 @@
       "repo": "DiogoRibeiro7/tmle-missingness-sim",
       "status": "draft",
       "notes": "Simulation study comparing MI + Rubin versus missingness-aware orthogonal estimators with bootstrap or BLB inference for causal effects under missing data.",
+      "abstract": "Orthogonal estimators such as augmented inverse probability weighting (AIPW) and targeted maximum likelihood estimation (TMLE) are widely used to estimate causal effects in observational studies, often with flexible machine learning nuisance fits and cross-fitting. In practice, missing outcomes are commonly handled by complete-case analysis or multiple imputation (MI) followed by Rubin's rules.",
       "paper_path": "paper/",
       "priority": "medium",
       "last_updated": "2026-03-07"
@@ -77,6 +84,7 @@
       "repo": "DiogoRibeiro7/curvknn",
       "status": "draft",
       "notes": "Research codebase for curvature-adaptive nearest-neighbour classification, including fixed-k, curvature-adaptive, and curvature-weighted k-NN with reproducible synthetic benchmarks, runtime tracking, and paper artifact generation.",
+      "abstract": "This preprint studies a concrete question in nearest-neighbour learning: when does locally adaptive neighbourhood size produce measurable headroom over strong fixed-(k) and non-curvature baselines, and can that headroom be recovered by a deployable proxy? The repository answers this question through a fully reproducible benchmark stack with three layers: an original local-PCA residual proxy, an oracle local-optimal-(k) diagnostic that measures the attainable adaptive ceiling, and supervised proxy estimators that attempt to approximate that ceiling from training labels alone without query-time leakage.",
       "paper_path": "paper/",
       "priority": "medium",
       "last_updated": "2026-03-08"
@@ -86,6 +94,7 @@
       "repo": "DiogoRibeiro7/crisis_wealth_dynamics",
       "status": "draft",
       "notes": "Reproducible research repo with formal dynamical systems model, ETL pipeline for inequality/macro/labour data, simulation code, empirical panel analysis, and policy counterfactuals. Treats crisis outcomes as government choices.",
+      "abstract": "This article studies a distributional pattern that appears in several modern crises: real wages fall or stagnate while wealth at the top of the distribution rises. The paper formalises this pattern as a controlled dynamical system.",
       "paper_path": "article/",
       "priority": "high",
       "last_updated": "2026-08-19"
@@ -95,6 +104,7 @@
       "repo": "DiogoRibeiro7/wealth_attractor_dynamics",
       "status": "draft",
       "notes": "Benchmark two-variable dynamical-systems paper proving conditional local collapse stability under explicit institutional and demand-side thresholds, with equilibrium geometry, basin structure, separatrix analysis, and bifurcation results. Model-internal and non-empirical by design.",
+      "abstract": "Can wealth concentration become a locally self-reinforcing boundary state in a reduced-form political-economy dynamics? This article studies the general two-state class x=x(1-x)F(x,y) and y=yG(x,y), where x is a normalised concentration or effective-power index and y is a normalised demand-support/activity index.",
       "paper_path": "papers/1_destructive_attractor_benchmark/",
       "priority": "high",
       "last_updated": "2026-08-19"
@@ -104,6 +114,7 @@
       "repo": "DiogoRibeiro7/wealth_attractor_dynamics",
       "status": "draft",
       "notes": "Extension paper adding public-data calibration, SMM and ABC identification checks, weak-identification diagnostics, three-variable bargaining dynamics, ABM consistency, stochastic escape, EVT-style rare-event analysis, and policy counterfactuals. Uses the benchmark theorem from Paper 1 without re-proving it.",
+      "abstract": "This article turns the benchmark destructive-attractor model into a calibrated computational stress test. Using a pooled public-indicator panel, we ask not whether the benchmark theorem is universally true, but whether the proxy-mapped economies in the current sample sit near the model's collapse region, how sharply the relevant margins are informed, and how policy and stochastic perturbations move the system once calibration uncertainty is admitted.",
       "paper_path": "papers/2_destructive_attractor_extensions/",
       "priority": "high",
       "last_updated": "2026-08-19"
@@ -149,6 +160,7 @@
       "repo": "DiogoRibeiro7/housing_future_work_etl",
       "status": "draft",
       "notes": "Preprint (article/ARTICLE.tex, PDF built, dated July 2026) extending the published municipal-level analysis with auditable open-data ETL, validation, model-ready datasets, panel econometrics, spatial diagnostics and spatial models, RNAL exposure collection, causal scaffolds, granular data architecture, and temporal clustering. Keeps two price-definition families strictly separate and never merges them into one dependent variable: PORDATA transaction values (2011 Census cross-section, 2009-2019 annual panel) and INE median EUR/m2 (2021 cross-section, 2019-2022 annual panel). The repository is explicit that substantive empirical claims depend on official input data, that spatial, clustering, and causal layers have distinct inferential status, and that its own temporal clustering was demoted to a weak exploratory result. Reproduce with scripts/reproduce_paper.sh; provenance in reproducibility_metadata.json, data_manifest.csv, and CITATION.cff.",
+      "abstract": "We revisit and extend a municipal-level analysis of Portuguese house prices built on a single 2017 cross-section of all 308 municipalities. We first reproduce the published specification exactly (adjusted R^2=0.7121, n=308) on the original study dataset, and then construct a separate continuation from open administrative and statistical sources-INE and PORDATA indicators, the Ministry of Justice transaction-value series, official boundaries, the short-term-rental register and Census variables-documenting explicitly where the original variables can and cannot be reconstructed faithfully.",
       "paper_path": "article/",
       "priority": "high",
       "last_updated": "2026-07-23"
@@ -158,6 +170,7 @@
       "repo": "DiogoRibeiro7/dynamical_systems_econometrics",
       "status": "draft",
       "notes": "Applies extreme value theory from dynamical systems (Milhazes Freitas framework) to econometric analysis of rare events, crises, and tail dependence. Includes simulation utilities for chaotic maps, rare-event diagnostics (exceedances, extremal index, return/hitting times), multivariate stress analysis, and reproduction package with YAML-based experiment orchestration. Designed for both Medium article and future formal paper.",
+      "abstract": "Standard stress diagnostics in applied econometrics usually measure magnitude, tail loss, or event frequency, but not the temporal organization of extreme episodes. That omission matters whenever interpretation depends on whether extremes arrive as isolated shocks or as clustered stress.",
       "paper_path": "article/",
       "priority": "high",
       "last_updated": "2026-08-19"
@@ -167,6 +180,7 @@
       "repo": "DiogoRibeiro7/wealth_rentier_dynamics",
       "status": "draft",
       "notes": "Develops a political-economy model of wealth concentration centered on the conversion of wages into asset ownership, with housing as the main transmission channel. Includes a deterministic dynamic model with explicit ownership-transition timing and affordability constraints, Portugal-oriented calibration scenarios, fixed-effects panel utilities, household ownership-transition modeling, dashboards, notebooks, and a reproducible simulation pipeline. The current empirical layer is implemented in code but still relies on synthetic sample panel data and provisional calibration anchors, so the repo is best understood as a theory-plus-research-design package for a working paper and future formal article.",
+      "abstract": "Inequality is not exhausted by differences in labour income: it also depends on whether households can convert current income into appreciating assets before housing costs, debt service, and asset-price inflation absorb their residual surplus. This paper develops a deterministic two-type accumulation model-renters versus owners-in which a moving down-payment threshold and a debt-service-to-income cap govern who crosses into ownership, and proves how rent burden, house-price growth, and policy instruments shape that transition.",
       "paper_path": "reports/",
       "priority": "high",
       "last_updated": "2026-08-19"
@@ -230,6 +244,7 @@
       "repo": "DiogoRibeiro7/dynamical-evt-pdm",
       "status": "draft",
       "notes": "Reproducible layered evaluation that separates an extreme-score detector into score, threshold, extreme clusters, alarm episodes and matched events, so failure can be located per method rather than per dataset. Applied to two independent held-out compressor failures (MetroPT, MetroPT2) across nineteen methods under one shared alarm policy, with a warning-window rank separation and a circular-shift null that test whether a match carries information, genuine cross-dataset target-region transfer, detection-conditioned matched controls, and a high-replication extremal-index Monte Carlo. Under major revision after peer review; archived at Zenodo (concept DOI 10.5281/zenodo.21803768), results correspond to release v0.3.2.",
+      "abstract": "Does a dynamical-EVT workflow turn clustered extreme scores into useful maintenance alarms on public industrial monitoring data? On this evidence, no.",
       "paper_path": "paper/",
       "priority": "high",
       "last_updated": "2026-08-19"
@@ -248,6 +263,7 @@
       "repo": "DiogoRibeiro7/portugal-public-debt-interest",
       "status": "draft",
       "notes": "Second paper in the same repository, relaxing the burden paper's constant-hazard repricing assumption. Imports rather than duplicates the shared measurement layer, with a regression test asserting the burden paper's artefacts stay byte-identical. Every manuscript number is a generated macro; a gate fails the build if a literal is hand-typed. Null results are reported alongside positive ones in reports/repricing/findings.md.",
+      "abstract": "Weighted average maturity is a natural first statistic for judging how quickly a rate shock reaches a sovereign interest bill. It is also easy to overuse.",
       "paper_path": "paper/repricing/",
       "priority": "high",
       "last_updated": "2026-08-19"
@@ -266,6 +282,7 @@
       "repo": "DiogoRibeiro7/sml_diffusions_paper",
       "status": "draft",
       "notes": "Shows the endpoint/Pedersen simulated-likelihood estimator is a shrinking-bandwidth kernel estimator of bandwidth sqrt(h), giving effective simulation size S / M^(K/2) rather than S. Derives exact finite-M moments, the local moment law, corrected density-level normalisation, and an MSE minimised at M ~ S^(2/(K+4)), then gives a sharp counterexample refuting the joint transition-density consistency and CLT lemmas of Brandt and Santa-Clara (2002) for K > 2. Explicitly does not claim the argmax estimator is inconsistent - proves the opposite in a Gaussian location model on the same designs - and does not claim the published empirical estimates are wrong; the open question is the rate. A companion note handles the exchange-rate application (Feller ratios, incompleteness, invertibility, identification), with several deliberately negative results. Both manuscripts compile with all figures and tables generated from the code; 39 DOIs Crossref-verified.",
+      "abstract": "A widely used simulation method for likelihood inference in discretely observed diffusions approximates each transition density by simulating an Euler scheme to one step before the observed endpoint and averaging the final Gaussian density. We show that this endpoint estimator is a shrinking-bandwidth kernel estimator whose effective simulation size is S/M^K/2, not S, where K is the state dimension, M the number of Euler substeps and S the number of simulations.",
       "paper_path": "paper/",
       "priority": "high",
       "last_updated": "2026-08-07"
@@ -275,6 +292,7 @@
       "repo": "DiogoRibeiro7/portugal-housing-trajectories",
       "status": "draft",
       "notes": "Standalone longitudinal unsupervised paper (not a revision of the earlier municipal house-price determinants work) analysing PORDATA average transaction value 2009-2019 and INE median price per m2 2019-2025 as two separate constructs that are never spliced. Headline estimand is a persistent continuous price-level ordering; two-group tiers are reported only as uncertain, lossy coarsenings, not market types. Separates level, shape, level-plus-shape, and growth representations, with B>=500 bootstrap stability, candidate HMM state formulations, spatial-graph and fold-refit external INE validation, and uncertainty-aware structural profiling. Reports negative results when a structure fails the diagnostic rules rather than forcing a partition. Reviewer-facing run registry records analysis commit, config hash, seed, and data manifest hash. Under major revision.",
+      "abstract": "We ask which summary of transaction data describes a municipal housing market, and what is lost when a continuous price signal is forced into discrete groups. Using two differently defined Portuguese price constructs that we never splice-an average transaction value from PORDATA (2009-2019) and a median price per square metre from Statistics Portugal (2019-2025)-we find that variation on both is overwhelmingly variation in persistent level.",
       "paper_path": "article/",
       "priority": "high",
       "last_updated": "2026-08-19"
@@ -302,6 +320,7 @@
       "repo": "DiogoRibeiro7/article_tex_repo",
       "status": "draft",
       "notes": "Multiple linear regression on PORDATA data for all 308 Portuguese municipalities, identifying the factors driving municipal housing transaction values: location, population density, local purchasing power, family size, unemployment, environmental quality, ageing, education, marital status, owner-occupier ratio, and available housing stock. Finds most factors significant except population density and environmental quality. Framed as decision support for buyers and investors and for municipal-to-national housing policy. NOTE: this 2023 manuscript closely matches the scope of the published ICCSA 2026 paper and may be its pre-publication draft rather than a live article - confirm before working it.",
+      "abstract": "This study provides decision-making support in the Portuguese housing sector, serving both individual and political stakeholders. For individuals - buyers and investors alike - it offers insights for informed purchasing and investment decisions.",
       "paper_path": "",
       "priority": "low",
       "last_updated": "2023-11-10"
@@ -311,6 +330,7 @@
       "repo": "DiogoRibeiro7/wealth_concentration_crisis_sim",
       "status": "draft",
       "notes": "Agent-based model of heterogeneous agents differing in wealth, income, debt, and marginal propensity to consume. When capital returns rise with existing wealth, income and wealth concentrate among high-saving agents, aggregate consumption weakens, lower- and middle-wealth agents borrow to defend a consumption floor, and private debt accumulates until default or output-collapse thresholds are crossed. Monte Carlo experiments characterise how crisis probability, timing, and severity vary with the concentration-strength parameter, and a mechanism-specific falsification suite shows crises weaken or disappear when individual channels are removed. Optional firm, banking, and asset-collateral sectors. The stated contribution is mechanism integration, scenario grids, and falsification - explicitly demonstrating causal sufficiency in silico, uncalibrated, and explicitly not empirical causal proof.",
+      "abstract": "This paper studies the conditions under which wealth concentration turns into financial fragility. We develop an agent-based simulation in which heterogeneous agents differ in wealth, income, debt, and marginal propensity to consume.",
       "paper_path": "paper/",
       "priority": "high",
       "last_updated": "2026-07-02"
@@ -320,6 +340,7 @@
       "repo": "DiogoRibeiro7/heat-burst-evt-dynamics",
       "status": "draft",
       "notes": "Hybrid framework coupling a reduced-order dynamical model of precipitation-driven downdrafts to peaks-over-threshold Extreme Value Theory, for thunderstorm heat bursts - rare, short-lived events hard to study from station records alone. The dynamical part models a two-layer hydrostatic background with a stable nocturnal near-surface layer beneath a deep near-dry-adiabatic residual layer, with cloud-base geometry, evaporation, condensate-loaded negative buoyancy, rain-water exhaustion, entrainment, drag, and dry adiabatic compressional warming. The statistical part estimates the tail of a composite severity index from temperature jump, dew-point drop, and downdraft speed. Synthetic experiments reproduce heat-burst-like warming as a tail population, with the strongest baseline events exceeding ten degrees. Explicitly a controlled mechanism study, not an operational forecasting system or a replacement for convection-resolving NWP. Manuscript is arXiv-oriented (paper/README_ARXIV.md).",
+      "abstract": "Thunderstorm heat bursts are localized events characterized by abrupt surface warming, sharp drying, and gusty winds. They are rare, short-lived, and difficult to study from station records alone.",
       "paper_path": "paper/",
       "priority": "high",
       "last_updated": "2026-06-26"
@@ -329,6 +350,7 @@
       "repo": "DiogoRibeiro7/ccs-scale-gap",
       "status": "draft",
       "notes": "Tests whether the multi-gigatonne mid-century CCS assumed by Paris-consistent mitigation pathways is consistent with the observed starting point - current operating capacity plus the announced project pipeline - using a deliberately transparent reproducible framework rather than an integrated assessment model. Reaching a representative 6 GtCO2/yr subsurface-storage benchmark by 2050 from about 50 MtCO2/yr operating in early 2025 requires a sustained CAGR of roughly 21 percent. Deliberately narrow: it does not claim CCS is impossible, only that the scale, speed, infrastructure, land, reservoir, and cost requirements of CCS-heavy pathways are far beyond current deployment. Has revision notes and both Markdown and LaTeX manuscripts.",
+      "abstract": "Many integrated mitigation pathways consistent with the Paris Agreement assume that carbon capture and storage (CCS) reaches multiple gigatonnes of CO₂ per year by mid-century. We test whether that assumption is consistent with the observed starting point — current operating capacity and the announced project pipeline — using a deliberately transparent, fully reproducible framework rather than a complex integrated assessment model.",
       "paper_path": "paper/",
       "priority": "high",
       "last_updated": "2026-06-26"
@@ -338,6 +360,7 @@
       "repo": "DiogoRibeiro7/heteroTests",
       "status": "draft",
       "notes": "R Journal submission (RJwrapper/RJtemplate layout, compiled PDF present) for an R package implementing a broad collection of heteroscedasticity diagnostics for linear models - White, Breusch-Pagan, Goldfeld-Quandt and others - plus helpers to visualise and mitigate heteroscedasticity. Every test returns a base-R htest object and follows a common perform*Test(model, data, ...) convention so results print, subset, and compose like stats::bptest() and drop into automated pipelines. Repo carries fixes.md and fixes_1.md revision notes.",
+      "abstract": "Heteroscedasticity tests are fragmented across over a dozen R packages, forcing users to juggle differing function names, arguments, and outputs. heteroTests resolves this by wrapping 25+ popular diagnostics—spanning auxiliary‐regression, group‐comparison, rank‐based, nonconstant‐variance, and ARCH‐type methods—into a single, consistent API. Each perform*Test() returns a standardized S3 htest object enriched with metadata (residual type, trimming, lags, grouping), enabling batch execution and automated reporting via runHeteroTests().",
       "paper_path": "paper/",
       "priority": "high",
       "last_updated": "2026-06-23"
@@ -347,6 +370,7 @@
       "repo": "DiogoRibeiro7/navier-stokes-solvers",
       "status": "draft",
       "notes": "Unified computational framework for the 2D incompressible Navier-Stokes equations combining a Newton-Raphson finite-difference scheme with multigrid pressure correction and a Fourier pseudospectral solver with hyperviscosity, stochastic large-scale forcing, and adaptive time stepping. Covers formulation, discretisation, and algorithmic enhancements, with validation showing spectral accuracy on canonical benchmarks and scaling studies confirming strong parallel efficiency. Both solvers share a configuration system, automated testing, and publication-ready assets (manuscript, figures, slides).",
+      "abstract": "We present a unified computational framework for the two-dimensional incompressible Navier-Stokes equations that combines a Newton-Raphson finite difference scheme with a Fourier spectral solver. The accompanying open-source implementation emphasises reproducibility, modularity, and high performance across transitional and turbulent regimes.",
       "paper_path": "paper/",
       "priority": "medium",
       "last_updated": "2026-06-22"
@@ -356,6 +380,7 @@
       "repo": "DiogoRibeiro7/rmstpower",
       "status": "draft",
       "notes": "Simulation framework comparing RMST against the logrank test, Peto-Peto Wilcoxon, and Cox PH across 24 survival scenarios including proportional hazards, early benefit, delayed benefit, crossing hazards, and diminishing effects, with 5,000 replications per scenario and 200-1,000 participants per arm. Evaluates type I error control, power, and sensitivity to the truncation horizon. Shipped as an installable R package with vignettes and a YAML-driven CLI for batch runs. INCOMPLETE: the manuscript's Results section is still a placeholder ('to be completed') covering type I error rates, power comparisons, truncation-time guidance, and sample-size recommendations.",
+      "abstract": "Background: Traditional survival analysis methods, including the Cox proportional hazards model and logrank test, assume proportional hazards (PH) and may lose power or interpretability when this assumption is violated. The restricted mean survival time (RMST) offers a robust alternative that quantifies treatment benefit as the difference in mean survival time up to a prespecified horizon.",
       "paper_path": "paper/",
       "priority": "medium",
       "last_updated": "2025-09-24"
@@ -365,6 +390,7 @@
       "repo": "DiogoRibeiro7/seir-abm",
       "status": "planned",
       "notes": "Framework simulating epidemic dynamics with both an agent-based SEIR model - individuals as particles moving in a 2D domain with distance-based infection - and compartmental SEIR models at regional and metapopulation scale with a mobility matrix, used to compare non-pharmaceutical interventions such as lockdown, mobility reduction, and targeted protection of elderly subpopulations. Code, CLI, tests, and an ABM-vs-ODE notebook are in place; the repository describes paper/main.tex as a LaTeX skeleton for writing up results, so the manuscript itself is not yet written.",
+      "abstract": "We present a simple yet flexible framework for simulating epidemic dynamics using both an agent-based SEIR model and compartmental SEIR models at regional and metapopulation scales. The agent-based model represents individuals as particles moving in a two-dimensional domain, with infection occurring through distance-based contacts.",
       "paper_path": "paper/",
       "priority": "low",
       "last_updated": "2025-11-28"
@@ -374,6 +400,7 @@
       "repo": "DiogoRibeiro7/rssi_research",
       "status": "draft",
       "notes": "Infers user proximity in smart homes from passive RSSI signals and annotated behavioural intervals, for continuous unobtrusive monitoring that improves the temporal resolution of presence detection without requiring explicit sensor activations. Combines a preprocessing pipeline turning semi-structured logs into interpretable time series, integration of annotated sleep and timeout intervals, and transparent rule-based proximity labelling. Positioned against prior work needing dense sensor deployments or complex signal processing: lightweight, explainable, and deployable under ethical and privacy constraints. Two manuscript versions tracked (article.tex, article_version_2.tex).",
+      "abstract": "This study proposes a data-centric methodology for inferring user proximity to IoT sensors in smart home environments, even in the absence of direct sensor activations. Leveraging time-series RSSI (Received Signal Strength Indicator) data, sleep state intervals, and contextual device metadata, we construct a pipeline that integrates heterogeneous data sources to enable behavioral inference.",
       "paper_path": "",
       "priority": "low",
       "last_updated": "2025-04-24"

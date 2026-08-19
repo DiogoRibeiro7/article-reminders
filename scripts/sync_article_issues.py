@@ -28,6 +28,7 @@ class Article:
     repo: str
     status: str
     notes: str = ""
+    abstract: str = ""
     paper_path: str = ""
     priority: str = ""
     last_updated: str = ""
@@ -57,6 +58,10 @@ class Article:
         lines.append(f"- **Last updated:** `{self.last_updated or 'not set'}`")
         lines.append(f"- **Reminder key:** `{self.slug}`")
         lines.append("")
+        if self.abstract:
+            lines.append("## Abstract")
+            lines.append(self.abstract)
+            lines.append("")
         if self.notes:
             lines.append("## Notes")
             lines.append(self.notes)
@@ -124,6 +129,7 @@ def load_articles(path: Path) -> List[Article]:
                 repo=str(item["repo"]),
                 status=str(item["status"]),
                 notes=str(item.get("notes", "")),
+                abstract=str(item.get("abstract", "")),
                 paper_path=str(item.get("paper_path", "")),
                 priority=str(item.get("priority", "")),
                 last_updated=str(item.get("last_updated", "")),

@@ -104,6 +104,7 @@ Example:
       "repo": "DiogoRibeiro7/uncertainty-bench",
       "status": "in_progress",
       "notes": "Current experiments are running on the medium grid.",
+      "abstract": "We present uncertainty-bench, a fully reproducible simulation benchmark for predictive uncertainty under dataset shift, class imbalance with label noise, and temporal dependence.",
       "paper_path": "paper/",
       "priority": "high",
       "last_updated": "2026-03-07",
@@ -116,10 +117,15 @@ Example:
 ```
 
 `title`, `repo`, `status`, `notes`, `paper_path`, `priority`, and `last_updated` are
-required. `venue`, `target_date`, and `next_action` are optional and feed the Project
-columns of the same name; leave them out and those columns stay blank. Any other key
-is rejected by `validate.yml`, because the sync scripts read none of them and it would
-sit in the file doing nothing.
+required. `abstract`, `venue`, `target_date`, and `next_action` are optional. `venue`,
+`target_date`, and `next_action` feed the Project columns of the same name; leave them
+out and those columns stay blank. `abstract` is rendered as its own section in the
+reminder issue, so the issue says what the paper argues without opening the repository.
+Any other key is rejected by `validate.yml`, because the sync scripts read none of them
+and it would sit in the file doing nothing.
+
+`abstract` holds a two-sentence summary rather than the full abstract, to keep the file
+readable and its diffs small.
 
 ## Article status mapping
 
