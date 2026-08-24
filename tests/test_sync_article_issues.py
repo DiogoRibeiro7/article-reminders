@@ -148,12 +148,13 @@ def _record_orphan_calls(monkeypatch: pytest.MonkeyPatch) -> list:
 
 def test_close_orphaned_issues_closes_unclaimed_issue(monkeypatch: pytest.MonkeyPatch) -> None:
     calls = _record_orphan_calls(monkeypatch)
+    monkeypatch.setattr(sync_article_issues, "REPOSITORY", "owner/tracker")
     issues = [_managed_issue(4, "Deleted article"), _managed_issue(9, "Still tracked")]
 
     sync_article_issues.close_orphaned_issues(issues, {9}, article_count=3)
 
     assert ("comment", 4) in calls
-    assert ("api", "PATCH", "/repos/None/issues/4", {"state": "closed"}) in calls
+    assert ("api", "PATCH", "/repos/owner/tracker/issues/4", {"state": "closed"}) in calls
     assert not any(call[1] == 9 for call in calls)
 
 
