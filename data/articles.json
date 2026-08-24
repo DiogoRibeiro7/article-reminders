@@ -289,6 +289,16 @@
       "last_updated": "2026-08-19"
     },
     {
+      "title": "Who Funded the Public Pension Promise? Historical Financing of Portugal's CGA, Social Security, and Transferred Banking-Sector Pension Liabilities",
+      "repo": "DiogoRibeiro7/portugal-public-pension-financing",
+      "status": "draft",
+      "notes": "Evidence-controlled reconstruction of how Portuguese public pensions were financed over the long run, covering CGA, the general Social Security system, and the banking-sector pension liabilities transferred to the State in 2009-2012 under Decree-Laws 54/2009, 1-A/2011, 127/2011 and 88/2012. The design keeps legal obligations, cash accounting, consolidated public-finance flows, actuarial liabilities and counterfactual regimes separate before any balance is read as a deficit, subsidy or transfer, and one benchmark to replicate is the European Commission finding that the 2011 bank-pension-fund transfer improved the ESA-95 headline deficit by about 3.5% of GDP while ESA-2010 treats it as a financial transaction. The manuscript compiles and Zenodo snapshot 0.2.1 is released, but the claim set is deliberately bounded: employee remittance loss, quantified employer underpayment, a post-2006 reallocation magnitude, a combined pension-balance sign, a bank subsidy and a full lifecycle gain or loss are all held outside the article boundary until the data are in. Gated on extraction: 29 of 37 registered sources acquired, 396 open coverage rows, and 8 sources still needing citable raw evidence, tracked in docs/data_completion_roadmap.md.",
+      "abstract": "This draft asks how Portugal's public pension obligations and financing flows should be described when responsibilities move across institutional boundaries. The current evidence supports a limited set of legal and accounting facts about CGA financing and the 2011-2012 banking-sector pension transfers, but not yet definitive claims about employee remittance loss, quantified employer underpayment, a combined pension-balance sign, or a subsidy for banks. The paper is therefore written as an evidence-controlled reconstruction: it reports registered values, separates accounting standards from economic incidence, and leaves unresolved claims outside the article boundary.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-08-24"
+    },
+    {
       "title": "Short-Term Interest Rate Innovations Across Monetary Regimes",
       "repo": "DiogoRibeiro7/short-rate-anomaly-regimes",
       "status": "draft",
