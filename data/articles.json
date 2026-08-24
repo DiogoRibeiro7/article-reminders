@@ -186,6 +186,26 @@
       "last_updated": "2026-08-19"
     },
     {
+      "title": "Wage-Productivity Transmission in Portugal and Selected Advanced Economies",
+      "repo": "DiogoRibeiro7/gdp-wage-transmission",
+      "status": "draft",
+      "notes": "Complete reproducible empirical manuscript on annual real wage-productivity transmission across thirteen advanced economies over 1995-2025, with Portugal as the primary case. Uses a pre-results specification lock, OECD and Eurostat source snapshots, distributed-lag country estimates, reliability gates for supporting dynamics, and a national-accounts decomposition. The Portugal estimate is too imprecise to distinguish incomplete transmission from none, while cross-country coefficients are mostly positive but heterogeneous. The repo includes a compiled paper/main.pdf and traceability artifacts.",
+      "abstract": "Real wages need not track labour productivity; this paper estimates their association across thirteen advanced economies over 1995-2025, with Portugal as the primary case and a specification fixed before official source data were retrieved. It reports a noisy Portugal estimate, mostly positive but heterogeneous country coefficients, and a decomposition of Portuguese real compensation growth into output, labour-share, employment, and deflator-wedge channels.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-08-24"
+    },
+    {
+      "title": "When Did Portuguese Wage Dispersion Begin to Compress? Structural Breaks in Employee Gains, 2002-2024",
+      "repo": "DiogoRibeiro7/gdp-wage-transmission",
+      "status": "draft",
+      "notes": "Second manuscript in the GDP-wage-transmission repository, focused on Portuguese employee wage-distribution compression rather than aggregate wage-productivity transmission. Uses annual Quadros de Pessoal gain-distribution ratios for mainland Portugal from 2002 to 2024, estimates endogenous segmented-trend break dates across several dispersion margins, and separately tests historically specified 2008 and 2009 breaks with HAC uncertainty. The analysis is post-hoc and exploratory, with its settings frozen in analysis_protocol.yml.",
+      "abstract": "This paper asks whether Portuguese wage compression has a unique 2008/2009 structural break or a staggered sequence of breaks across employee wage-distribution margins. The exploratory evidence is consistent with staggered compression, where top-to-bottom dispersion begins to fall earlier than top-to-middle and mean-to-median dispersion.",
+      "paper_path": "papers/wage_distribution_breaks/",
+      "priority": "high",
+      "last_updated": "2026-08-24"
+    },
+    {
       "title": "The European Economy as a Set of Choices: A Reusable Diagnostic Framework for Convergence, Wages, Investment, and Fiscal Policy",
       "repo": "DiogoRibeiro7/eu_economy_decision_lab",
       "status": "in_progress",
