@@ -1,9 +1,9 @@
 name: Validate
 
-# The reminder and project-sync workflows run on a schedule and treat
-# data/articles.json as the source of truth. Without this gate a malformed entry
-# is discovered midway through a cron run that has already created or edited
-# issues, so validation belongs on the way in.
+# The sync workflows run on a schedule and treat the portfolio as the source of
+# truth. Without this gate a malformed entry is discovered midway through a cron
+# run that has already created or edited issues, so validation belongs on the way
+# in -- along with the linter, the type checker, and the tests.
 
 on:
   push:
@@ -27,11 +27,28 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install test dependencies
-        run: python -m pip install --upgrade pip pytest
+      - name: Install Poetry
+        run: pipx install poetry
 
-      - name: Validate data/articles.json
-        run: python scripts/validate_articles.py
+      - name: Install the project
+        run: poetry install --with dev
+
+      - name: Lint
+        run: poetry run ruff check .
+
+      - name: Type check
+        run: poetry run mypy .
+
+      - name: Validate the legacy tracker
+        run: poetry run python scripts/validate_articles.py
+
+      - name: Validate the portfolio
+        run: poetry run article-reminders validate
+
+      - name: Check that the example portfolio still builds
+        run: |
+          poetry run python examples/build_seed.py
+          git diff --exit-code examples/
 
       - name: Run tests
-        run: python -m pytest tests/ -q
+        run: poetry run pytest

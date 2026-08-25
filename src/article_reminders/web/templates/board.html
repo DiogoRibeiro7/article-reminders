@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Lifecycle board{% endblock %}
+
+{% block content %}
+<h1>Lifecycle board</h1>
+<p class="lede">
+  Columns group the sixteen lifecycle states into the stages a research project actually moves
+  through. Moving a card is an explicit decision, so it is always allowed and always recorded.
+</p>
+
+<div class="board">
+  {% for lane in lanes %}
+    <section class="lane">
+      <h3>{{ lane.label }} <span>{{ lane.count }}</span></h3>
+      {% for card in lane.cards %}
+        <article class="card">
+          <div class="title"><a href="/papers/{{ card.paper.id }}">{{ card.paper.title }}</a></div>
+          <div class="meta">
+            <span class="pill stage">{{ card.paper.status.label }}</span>
+            {% if card.needs_attention %}<span class="pill warning">needs attention</span>{% endif %}
+          </div>
+          {% if card.paper.next_action %}
+            <div class="next">{{ card.paper.next_action.description }}</div>
+          {% elif card.paper.is_active and not card.paper.is_waiting %}
+            <div class="next missing">No next action.</div>
+          {% endif %}
+          <form method="post" action="/board/move">
+            <input type="hidden" name="paper_id" value="{{ card.paper.id }}">
+            <select name="column" aria-label="Move {{ card.paper.title }}">
+              {% for column in columns %}
+                <option value="{{ column.value }}" {{ 'selected' if column == lane.column }}>{{ column.label }}</option>
+              {% endfor %}
+            </select>
+            <button type="submit" class="secondary">Move</button>
+          </form>
+        </article>
+      {% else %}
+        <p class="muted" style="font-size:0.85rem">Empty</p>
+      {% endfor %}
+    </section>
+  {% endfor %}
+</div>
+{% endblock %}

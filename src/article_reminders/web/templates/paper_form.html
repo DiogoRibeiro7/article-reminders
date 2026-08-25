@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Edit paper' if paper else 'New paper' }}{% endblock %}
+
+{% block content %}
+<h1>{{ 'Edit ' ~ paper.title if paper else 'Add a paper' }}</h1>
+<p class="lede">
+  Only the title is required. Everything else can be filled in as the project takes shape.
+</p>
+
+<form class="stack" method="post"
+      action="{{ '/papers/' ~ paper.id ~ '/edit' if paper else '/papers' }}">
+  <div>
+    <label for="title">Title</label>
+    <input id="title" name="title" required value="{{ paper.title if paper else '' }}">
+  </div>
+
+  <div class="row">
+    {% if not paper %}
+      <div>
+        <label for="status">Stage</label>
+        <select id="status" name="status">
+          {% for item in statuses %}
+            <option value="{{ item.value }}">{{ item.label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    {% endif %}
+    <div>
+      <label for="priority">Priority</label>
+      <select id="priority" name="priority">
+        {% for item in priorities %}
+          <option value="{{ item.value }}"
+            {{ 'selected' if paper and item == paper.priority }}>{{ item.label }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <label for="research_programme">Research programme</label>
+      <input id="research_programme" name="research_programme"
+             value="{{ paper.research_programme or '' if paper else '' }}">
+    </div>
+  </div>
+
+  <div>
+    <label for="research_question">Research question</label>
+    <input id="research_question" name="research_question"
+           value="{{ paper.research_question if paper else '' }}"
+           placeholder="What does this paper actually answer?">
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="repository">Repository (owner/name)</label>
+      <input id="repository" name="repository" value="{{ paper.repository_slug or '' if paper else '' }}">
+    </div>
+    <div>
+      <label for="paper_path">Manuscript path</label>
+      <input id="paper_path" name="paper_path" value="{{ paper.paper_path or '' if paper else '' }}"
+             placeholder="paper/">
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="target_journal">Target journal</label>
+      <input id="target_journal" name="target_journal" value="{{ paper.target_journal or '' if paper else '' }}">
+    </div>
+    <div>
+      <label for="target_conference">Target conference</label>
+      <input id="target_conference" name="target_conference"
+             value="{{ paper.target_conference or '' if paper else '' }}">
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="authors">Authors (comma separated)</label>
+      <input id="authors" name="authors" value="{{ paper.authors | join(', ') if paper else '' }}">
+    </div>
+    <div>
+      <label for="tags">Tags (comma separated)</label>
+      <input id="tags" name="tags" value="{{ paper.tags | join(', ') if paper else '' }}">
+    </div>
+  </div>
+
+  {% if paper %}
+    <div class="row">
+      <div>
+        <label for="revision_due_at">Revision due</label>
+        <input id="revision_due_at" name="revision_due_at" type="date"
+               value="{{ paper.revision_due_at | date }}">
+      </div>
+      <div>
+        <label for="conference_deadline">Conference deadline</label>
+        <input id="conference_deadline" name="conference_deadline" type="date"
+               value="{{ paper.conference_deadline | date }}">
+      </div>
+      <div>
+        <label for="internal_review_deadline">Internal review deadline</label>
+        <input id="internal_review_deadline" name="internal_review_deadline" type="date"
+               value="{{ paper.internal_review_deadline | date }}">
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="doi">DOI</label>
+        <input id="doi" name="doi" value="{{ paper.doi or '' }}">
+      </div>
+      <div>
+        <label for="preprint_url">Preprint URL</label>
+        <input id="preprint_url" name="preprint_url" value="{{ paper.preprint_url or '' }}">
+      </div>
+      <div>
+        <label for="publication_url">Publication URL</label>
+        <input id="publication_url" name="publication_url" value="{{ paper.publication_url or '' }}">
+      </div>
+    </div>
+
+    <div>
+      <label for="waiting_for">Waiting for</label>
+      <input id="waiting_for" name="waiting_for" value="{{ paper.waiting_for or '' }}"
+             placeholder="who or what is holding this up">
+    </div>
+
+    <div>
+      <label for="abstract">Abstract</label>
+      <textarea id="abstract" name="abstract">{{ paper.abstract }}</textarea>
+    </div>
+    <div>
+      <label for="notes">Notes</label>
+      <textarea id="notes" name="notes">{{ paper.notes }}</textarea>
+    </div>
+  {% else %}
+    <div class="row">
+      <div style="grid-column: span 2">
+        <label for="next_action">Next action</label>
+        <input id="next_action" name="next_action"
+               placeholder="the one concrete thing that moves this forward">
+      </div>
+      <div>
+        <label for="next_action_due_at">Due</label>
+        <input id="next_action_due_at" name="next_action_due_at" type="date">
+      </div>
+    </div>
+  {% endif %}
+
+  <div>
+    <label for="description">Description</label>
+    <textarea id="description" name="description">{{ paper.description if paper else '' }}</textarea>
+  </div>
+
+  <div class="inline">
+    <button type="submit">{{ 'Save' if paper else 'Add paper' }}</button>
+    <a class="button secondary" href="{{ '/papers/' ~ paper.id if paper else '/papers' }}">Cancel</a>
+  </div>
+</form>
+{% endblock %}

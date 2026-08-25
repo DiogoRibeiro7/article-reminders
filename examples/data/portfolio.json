@@ -1,0 +1,308 @@
+{
+  "version": 2,
+  "generated_at": "2026-08-25T09:00:00+00:00",
+  "papers": [
+    {
+      "id": "57299c02227f",
+      "title": "A Dynamical Systems View of Fiscal Crises",
+      "slug": "a-dynamical-systems-view-of-fiscal-crises",
+      "status": "published",
+      "priority": "medium",
+      "target_journal": "Journal of Economic Dynamics and Control",
+      "tags": [
+        "macro",
+        "dynamical-systems"
+      ],
+      "research_programme": "Macro-financial dynamics",
+      "doi": "10.1000/example.2026.0142",
+      "publication_url": "https://doi.org/10.1000/example.2026.0142",
+      "submissions": [
+        {
+          "venue": "Journal of Economic Dynamics and Control",
+          "submitted_at": "2025-09-01T00:00:00+00:00",
+          "decision": "accept",
+          "decision_at": "2026-01-20T00:00:00+00:00"
+        }
+      ],
+      "transitions": [
+        {
+          "to_status": "ready_to_submit",
+          "occurred_at": "2026-08-25T09:00:00+00:00",
+          "forced": false
+        },
+        {
+          "from_status": "ready_to_submit",
+          "to_status": "submitted",
+          "occurred_at": "2026-08-25T09:00:00+00:00",
+          "forced": false
+        },
+        {
+          "from_status": "submitted",
+          "to_status": "under_review",
+          "occurred_at": "2026-08-25T09:00:00+00:00",
+          "forced": false
+        },
+        {
+          "from_status": "under_review",
+          "to_status": "accepted",
+          "occurred_at": "2026-08-25T09:00:00+00:00",
+          "forced": false
+        },
+        {
+          "from_status": "accepted",
+          "to_status": "published",
+          "occurred_at": "2026-08-25T09:00:00+00:00",
+          "forced": false
+        }
+      ],
+      "repository": "example-lab/fiscal-dynamics",
+      "repository_provider": "github",
+      "paper_path": "paper/",
+      "created_at": "2026-08-25T09:00:00+00:00",
+      "updated_at": "2026-08-25T09:00:00+00:00",
+      "submitted_at": "2025-09-01T00:00:00+00:00",
+      "decision_received_at": "2026-01-20T00:00:00+00:00",
+      "accepted_at": "2026-01-20T00:00:00+00:00",
+      "published_at": "2026-03-04T00:00:00+00:00"
+    },
+    {
+      "id": "6ddfe728fbf9",
+      "title": "Adaptive Threshold Selection for Heavy-Tailed Insurance Losses",
+      "slug": "adaptive-threshold-selection-for-heavy-tailed-insurance-losses",
+      "status": "revision",
+      "priority": "critical",
+      "research_question": "Does adaptive threshold selection beat fixed quantile rules for tail-index estimation on real loss data?",
+      "target_journal": "Insurance: Mathematics and Economics",
+      "tags": [
+        "extreme-values",
+        "insurance"
+      ],
+      "research_programme": "Statistical methodology",
+      "next_action": {
+        "description": "Answer reviewer 2 on the bootstrap variance",
+        "due_at": "2026-09-05T00:00:00+00:00",
+        "created_at": "2026-08-25T09:00:00+00:00"
+      },
+      "submissions": [
+        {
+          "venue": "Insurance: Mathematics and Economics",
+          "submitted_at": "2026-02-10T00:00:00+00:00",
+          "decision": "major_revision",
+          "decision_at": "2026-07-30T00:00:00+00:00",
+          "notes": "Reviewer 2 wants the bootstrap variance derived rather than asserted."
+        }
+      ],
+      "transitions": [
+        {
+          "to_status": "ready_to_submit",
+          "occurred_at": "2026-08-25T09:00:00+00:00",
+          "forced": false
+        },
+        {
+          "from_status": "ready_to_submit",
+          "to_status": "submitted",
+          "occurred_at": "2026-08-25T09:00:00+00:00",
+          "forced": false
+        },
+        {
+          "from_status": "submitted",
+          "to_status": "under_review",
+          "occurred_at": "2026-08-25T09:00:00+00:00",
+          "forced": false
+        },
+        {
+          "from_status": "under_review",
+          "to_status": "revision",
+          "occurred_at": "2026-08-25T09:00:00+00:00",
+          "forced": false
+        }
+      ],
+      "repository": "example-lab/heavy-tails",
+      "repository_provider": "github",
+      "paper_path": "papers/threshold/",
+      "created_at": "2026-08-25T09:00:00+00:00",
+      "updated_at": "2026-08-25T09:00:00+00:00",
+      "submitted_at": "2026-02-10T00:00:00+00:00",
+      "decision_received_at": "2026-07-30T00:00:00+00:00",
+      "revision_due_at": "2026-09-12T00:00:00+00:00"
+    },
+    {
+      "id": "e77f7a3c2350",
+      "title": "Calibration of Predictive Uncertainty Under Dataset Shift",
+      "slug": "calibration-of-predictive-uncertainty-under-dataset-shift",
+      "status": "under_review",
+      "priority": "medium",
+      "research_question": "Which uncertainty estimators stay calibrated when the test distribution moves away from the training one?",
+      "target_journal": "Journal of Machine Learning Research",
+      "tags": [
+        "uncertainty",
+        "benchmark"
+      ],
+      "research_programme": "Statistical methodology",
+      "waiting_for": "Journal of Machine Learning Research decision",
+      "submissions": [
+        {
+          "venue": "Journal of Machine Learning Research",
+          "submitted_at": "2026-05-12T00:00:00+00:00",
+          "decision": "pending"
+        }
+      ],
+      "transitions": [
+        {
+          "to_status": "ready_to_submit",
+          "occurred_at": "2026-08-25T09:00:00+00:00",
+          "forced": false
+        },
+        {
+          "from_status": "ready_to_submit",
+          "to_status": "submitted",
+          "occurred_at": "2026-08-25T09:00:00+00:00",
+          "forced": false
+        },
+        {
+          "from_status": "submitted",
+          "to_status": "under_review",
+          "occurred_at": "2026-08-25T09:00:00+00:00",
+          "forced": false
+        }
+      ],
+      "repository": "example-lab/uncertainty-bench",
+      "repository_provider": "github",
+      "paper_path": "paper/",
+      "created_at": "2026-08-25T09:00:00+00:00",
+      "updated_at": "2026-08-25T09:00:00+00:00",
+      "submitted_at": "2026-05-12T00:00:00+00:00"
+    },
+    {
+      "id": "7d53150d2660",
+      "title": "Do Rewritten Documents Keep a Recoverable Order?",
+      "slug": "do-rewritten-documents-keep-a-recoverable-order",
+      "status": "idea",
+      "priority": "low",
+      "research_question": "Is the order of successive machine rewrites recoverable from the final text?",
+      "tags": [
+        "text",
+        "identifiability"
+      ],
+      "research_programme": "Statistical methodology",
+      "transitions": [
+        {
+          "to_status": "idea",
+          "occurred_at": "2026-08-25T09:00:00+00:00",
+          "forced": false
+        }
+      ],
+      "created_at": "2026-08-25T09:00:00+00:00",
+      "updated_at": "2026-08-25T09:00:00+00:00"
+    },
+    {
+      "id": "97cdd9c93586",
+      "title": "Minimum Wage and Productivity in Portuguese Firms",
+      "slug": "minimum-wage-and-productivity-in-portuguese-firms",
+      "status": "analysis",
+      "priority": "high",
+      "research_question": "Did the 2019-2024 minimum wage increases move firm-level productivity, or only the wage bill?",
+      "description": "Matched employer-employee panel, difference-in-differences around the statutory increases, with a firm-level productivity decomposition.",
+      "target_journal": "Labour Economics",
+      "authors": [
+        "Ribeiro, D.",
+        "Silva, M."
+      ],
+      "tags": [
+        "labour",
+        "portugal",
+        "firm-level"
+      ],
+      "research_programme": "Labour market dynamics",
+      "next_action": {
+        "description": "Run the robustness specification on the revised OECD vintage",
+        "due_at": "2026-08-31T00:00:00+00:00",
+        "created_at": "2026-08-25T09:00:00+00:00"
+      },
+      "transitions": [
+        {
+          "to_status": "analysis",
+          "occurred_at": "2026-08-25T09:00:00+00:00",
+          "forced": false
+        }
+      ],
+      "repository": "example-lab/minimum-wage-productivity",
+      "repository_provider": "github",
+      "paper_path": "paper/",
+      "created_at": "2026-08-25T09:00:00+00:00",
+      "updated_at": "2026-08-25T09:00:00+00:00",
+      "last_repository_activity_at": "2026-08-23T09:00:00+00:00",
+      "last_manuscript_activity_at": "2026-07-18T09:00:00+00:00",
+      "last_analysis_activity_at": "2026-08-23T09:00:00+00:00"
+    },
+    {
+      "id": "e9df35736e7f",
+      "title": "Multi-Stage Watermark Interference",
+      "slug": "multi-stage-watermark-interference",
+      "status": "paused",
+      "priority": "low",
+      "notes": "Parked until there is a sharper claim than 'watermarks can coexist'.",
+      "tags": [
+        "text",
+        "watermarking"
+      ],
+      "research_programme": "Statistical methodology",
+      "transitions": [
+        {
+          "to_status": "research",
+          "occurred_at": "2026-08-25T09:00:00+00:00",
+          "forced": false
+        },
+        {
+          "from_status": "research",
+          "to_status": "paused",
+          "occurred_at": "2026-08-25T09:00:00+00:00",
+          "forced": false,
+          "note": "Waiting for a sharper contribution."
+        }
+      ],
+      "repository": "example-lab/watermark-dynamics",
+      "repository_provider": "github",
+      "paper_path": "papers/watermarks/",
+      "created_at": "2026-08-25T09:00:00+00:00",
+      "updated_at": "2026-08-25T09:00:00+00:00",
+      "started_at": "2026-08-25T09:00:00+00:00"
+    },
+    {
+      "id": "050dda5c00f2",
+      "title": "Parish-Level Rent Indices from Administrative Records",
+      "slug": "parish-level-rent-indices-from-administrative-records",
+      "status": "draft",
+      "priority": "high",
+      "research_question": "Can a defensible rent index be built at parish level from administrative records alone?",
+      "target_journal": "Journal of Housing Economics",
+      "tags": [
+        "housing",
+        "portugal",
+        "measurement"
+      ],
+      "research_programme": "Housing and cities",
+      "next_action": {
+        "description": "Finish the methodology section",
+        "due_at": "2026-09-04T00:00:00+00:00",
+        "created_at": "2026-08-25T09:00:00+00:00"
+      },
+      "transitions": [
+        {
+          "to_status": "draft",
+          "occurred_at": "2026-08-25T09:00:00+00:00",
+          "forced": false
+        }
+      ],
+      "repository": "example-lab/parish-rents",
+      "repository_provider": "github",
+      "paper_path": "manuscript/",
+      "created_at": "2026-08-25T09:00:00+00:00",
+      "updated_at": "2026-08-25T09:00:00+00:00",
+      "draft_started_at": "2026-08-25T09:00:00+00:00",
+      "last_repository_activity_at": "2026-08-24T09:00:00+00:00",
+      "last_manuscript_activity_at": "2026-08-24T09:00:00+00:00",
+      "last_analysis_activity_at": "2026-08-20T09:00:00+00:00"
+    }
+  ]
+}

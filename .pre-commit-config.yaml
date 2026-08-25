@@ -1,0 +1,35 @@
+# Run `pre-commit install` once; after that these run on every commit.
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.1
+    hooks:
+      - id: ruff
+        args: [--fix]
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.20.2
+    hooks:
+      - id: mypy
+        additional_dependencies:
+          - fastapi>=0.115
+          - types-pyyaml>=6.0
+        pass_filenames: false
+        args: [.]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-yaml
+      - id: check-json
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-merge-conflict
+
+  - repo: local
+    hooks:
+      - id: validate-portfolio
+        name: validate the portfolio and the legacy tracker
+        entry: python -c "import sys; sys.path.insert(0, 'src'); from article_reminders.cli.main import main; sys.exit(main(['validate']))"
+        language: system
+        pass_filenames: false
+        files: ^data/

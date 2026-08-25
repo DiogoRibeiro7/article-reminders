@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Research portfolio{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/app.css') }}">
+</head>
+<body>
+<header class="site">
+  <div class="inner">
+    <a class="brand" href="/">Research portfolio</a>
+    <nav>
+      <a href="/" class="{{ 'active' if request.url.path == '/' }}">Dashboard</a>
+      <a href="/papers" class="{{ 'active' if request.url.path.startswith('/papers') }}">Papers</a>
+      <a href="/board" class="{{ 'active' if request.url.path == '/board' }}">Board</a>
+      <a href="/calendar" class="{{ 'active' if request.url.path == '/calendar' }}">Calendar</a>
+      <a href="/analytics" class="{{ 'active' if request.url.path == '/analytics' }}">Analytics</a>
+      <a href="/settings" class="{{ 'active' if request.url.path == '/settings' }}">Settings</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  {% if notice %}<div class="banner notice">{{ notice }}</div>{% endif %}
+  {% if error %}<div class="banner error">{{ error }}</div>{% endif %}
+  {% if legacy_fallback %}
+    <div class="banner info">
+      Reading the legacy tracker <code>data/articles.json</code> directly. Run
+      <code>article-reminders migrate</code> to move it into the portfolio file; the legacy
+      file is left untouched either way.
+    </div>
+  {% endif %}
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="site">
+  Generated {{ now | date }} &middot; the portfolio file is the source of truth.
+</footer>
+</body>
+</html>

@@ -1,0 +1,97 @@
+[project]
+name = "article-reminders"
+version = "0.2.0"
+description = "Operational lifecycle tracker for research papers, their repositories, and the one next action each needs."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Diogo Ribeiro" }]
+keywords = ["research", "papers", "workflow", "reminders", "github"]
+dependencies = [
+    "fastapi>=0.115",
+    "jinja2>=3.1",
+    "python-multipart>=0.0.9",
+    "pyyaml>=6.0",
+    "uvicorn>=0.30",
+]
+
+[project.scripts]
+article-reminders = "article_reminders.cli.main:main"
+
+[project.urls]
+Homepage = "https://github.com/DiogoRibeiro7/article-reminders"
+
+[tool.poetry]
+requires-poetry = ">=2.0"
+packages = [{ include = "article_reminders", from = "src" }]
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=8.0"
+ruff = ">=0.6"
+mypy = ">=1.11"
+httpx = ">=0.27"
+types-pyyaml = ">=6.0"
+pre-commit = ">=3.7"
+
+[build-system]
+requires = ["poetry-core>=2.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
+addopts = "-q"
+filterwarnings = ["error::DeprecationWarning:article_reminders.*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM", "RET", "ARG", "PTH", "TID", "RUF"]
+ignore = [
+    # The web layer takes callables as FastAPI dependencies; B008 fires on every one.
+    "B008",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# The legacy sync scripts are stdlib-only and predate the package. They are kept
+# verbatim so the scheduled workflows keep running unchanged, which means the
+# linter is scoped around them rather than let loose on them.
+"scripts/*.py" = ["UP", "PTH", "ARG", "RET", "SIM", "C4", "E501", "I001"]
+"tests/*.py" = ["ARG", "PTH"]
+# The three test modules that came with the legacy scripts, same reasoning.
+"tests/test_check_article_drift.py" = ["E501", "I001", "UP031", "ARG", "PTH"]
+"tests/test_sync_article_issues.py" = ["E501", "I001", "ARG", "PTH"]
+"tests/test_validate_articles.py" = ["E501", "I001", "ARG", "PTH"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["article_reminders"]
+
+[tool.mypy]
+python_version = "3.11"
+files = ["src", "tests", "scripts"]
+strict = true
+warn_unreachable = true
+pretty = true
+
+[[tool.mypy.overrides]]
+# The legacy sync scripts are untouched stdlib code with looser typing than the
+# package holds itself to. They are still checked; they are just not rewritten to
+# satisfy a tool that was introduced after they were written.
+module = ["sync_article_issues", "sync_project_items", "validate_articles", "check_article_drift"]
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+disallow_untyped_calls = false
+disallow_any_generics = false
+warn_return_any = false
+
+[[tool.mypy.overrides]]
+# Tests may use fixtures and helpers without full annotations.
+module = ["tests.*"]
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+disallow_untyped_calls = false
+disallow_any_generics = false
+warn_return_any = false

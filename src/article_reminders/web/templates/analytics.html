@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Research pipeline{% endblock %}
+
+{% block content %}
+<h1>Research pipeline</h1>
+<p class="lede">
+  Measured from recorded timestamps only. Intervals with too little history report
+  <em>not enough data</em> rather than a number.
+</p>
+
+<div class="counts">
+  <div class="count"><span class="value">{{ analytics.total }}</span><span class="label">Papers</span></div>
+  <div class="count"><span class="value">{{ analytics.active }}</span><span class="label">Active</span></div>
+  <div class="count warn"><span class="value">{{ analytics.stalled }}</span><span class="label">Stalled</span></div>
+  <div class="count"><span class="value">{{ analytics.submissions }}</span><span class="label">Submissions</span></div>
+  <div class="count"><span class="value">{{ analytics.acceptances }}</span><span class="label">Acceptances</span></div>
+  <div class="count"><span class="value">{{ analytics.publications }}</span><span class="label">Publications</span></div>
+  <div class="count"><span class="value">{{ analytics.paused }}</span><span class="label">Paused</span></div>
+  <div class="count"><span class="value">{{ analytics.abandoned }}</span><span class="label">Abandoned</span></div>
+  <div class="count">
+    <span class="value">
+      {% if analytics.acceptance_rate is none %}&mdash;{% else %}{{ (analytics.acceptance_rate * 100) | round | int }}%{% endif %}
+    </span>
+    <span class="label">Acceptance rate</span>
+  </div>
+</div>
+
+<h2>Median time between lifecycle events</h2>
+<table>
+  <thead><tr><th>Interval</th><th>Median days</th><th>Sample</th></tr></thead>
+  <tbody>
+    {% for item in analytics.stage_durations %}
+      <tr>
+        <td>{{ item.label }}</td>
+        {% if item.available %}
+          <td class="num">{{ item.median_days | round | int }}</td>
+        {% else %}
+          <td class="unavailable">not enough data</td>
+        {% endif %}
+        <td class="num">{{ item.sample_size }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>Time in current stage</h2>
+{% if analytics.time_in_current_stage %}
+<table>
+  <thead><tr><th>Stage</th><th>Median days</th><th>Papers</th></tr></thead>
+  <tbody>
+    {% for item in analytics.time_in_current_stage %}
+      <tr>
+        <td>{{ item.label }}</td>
+        <td class="num">{{ item.median_days | round | int }}</td>
+        <td class="num">{{ item.sample_size }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+  <div class="empty">
+    No transitions have been recorded yet. This table fills in as papers move between stages
+    inside the application.
+  </div>
+{% endif %}
+
+<h2>Papers by stage</h2>
+<table>
+  <thead><tr><th>Stage</th><th>Papers</th></tr></thead>
+  <tbody>
+    {% for status, count in analytics.by_status.items() | sort %}
+      <tr><td>{{ status.replace('_', ' ') }}</td><td class="num">{{ count }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

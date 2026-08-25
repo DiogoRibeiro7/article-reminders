@@ -1,207 +1,390 @@
-# research-tracker
+# article-reminders
 
-Public tracker for article repositories with GitHub Issues, GitHub Projects, and scheduled GitHub Actions.
-
-## What this repo does
-
-This repository treats **one GitHub issue as one article**. A scheduled workflow reads `data/articles.json`, creates or updates article issues, and then syncs those issues into a GitHub Project. GitHub Projects supports custom fields such as single select, text, date, and iteration, and GitHub supports both built-in Project automations and GraphQL-based automation from Actions.
-
-The default setup in this repo supports:
-
-- one issue per article
-- a fixed set of workflow statuses
-- scheduled issue reminders
-- GitHub Project sync for article issues
-- Project fields for status, priority, repo URL, venue, target date, and next action
-
-## Repository layout
+A research workflow application for the operational side of writing papers:
+which paper needs attention, why, and what the next concrete piece of work is.
 
 ```text
-.github/
-  ISSUE_TEMPLATE/
-    article.yml
-  workflows/
-    article-reminders.yml
-    project-sync.yml
-    validate.yml
-    drift-check.yml
-scripts/
-  sync_article_issues.py
-  sync_project_items.py
-  validate_articles.py
-  check_article_drift.py
-data/
-  articles.json
+idea → research → analysis → draft → submission → revision → publication
 ```
 
-## Required project fields
+It runs locally, keeps its data in plain files you can read without it, and uses
+GitHub as evidence rather than as a database.
 
-Create a GitHub Project named `Research Tracker` and add these fields:
+---
 
-- **Status** (single select)
-  - Backlog — planned; work not started
-  - Experiments — code, data, and experiments in progress
-  - Drafting — manuscript being written
-  - Review — submitted or under revision
-  - Done — finished, published, or archived
-- **Priority** (single select)
-  - Low
-  - Medium
-  - High
-  - Critical
-- **Repo URL** (text)
-- **Venue** (text)
-- **Target date** (date)
-- **Next action** (text)
+## What problem it solves
 
-GitHub Projects supports custom fields including single select, text, date, and iteration fields, and Projects can be automated with Actions and the GraphQL API.
+A researcher with a dozen papers in flight loses track of the operational layer,
+not the intellectual one. Which manuscript has not moved in six weeks. Which
+revision is due next Friday. Which paper is generating commits every day while
+its actual text has not changed since July. Which one is waiting on a co-author
+and which one is waiting on nobody at all.
 
-## Required labels
+This application answers exactly those questions, and one more that a task list
+cannot:
 
-Create these labels in the repository:
+> The analysis is moving. Is the manuscript?
 
-- `type:article`
-- `priority:low`
-- `priority:medium`
-- `priority:high`
-- `priority:critical`
-- `status:blocked`
+Because it knows which repository each paper lives in and which path inside it is
+the manuscript, it can tell the difference between a project that is progressing
+and a project that is merely busy.
 
-## Secrets and variables
+## What it is not
 
-Set these repository variables:
+Not a reference manager (Zotero), not a general project manager (Notion), not a
+manuscript editor (Overleaf). It does not store PDFs, chase citations, or write
+prose. It tracks the lifecycle of papers, their repositories, their deadlines,
+their next actions, and their publication progress. That narrowness is the point:
+every field exists because a research workflow needs it.
 
-- `PROJECT_OWNER` — the GitHub login or organization that owns the Project
-- `PROJECT_NUMBER` — the Project number, not the title
+Deliberately absent: PDF annotation, reference management, citation graphs,
+automatic literature review, co-editing, LLM-generated text, institutional login,
+multi-tenancy, payments.
 
-Optional secret:
+---
 
-- `PROJECT_TOKEN` — a fine-grained or classic token with permission to read/write issues and projects
+## Architecture
 
-The workflows fall back to the default `GITHUB_TOKEN`, but for some Project automation setups a dedicated token is safer.
+```text
+src/article_reminders/
+├── domain/          the model and the rules; imports nothing else
+├── application/     services, reminders, activity, analytics, views
+├── infrastructure/  JSON storage, GitHub, configuration
+├── cli/             argparse interface
+└── web/             FastAPI + Jinja2, server-rendered
+```
 
-## Recommended built-in Project automation
+Dependencies point inwards: `cli` and `web` → `application` → `domain`, with
+`infrastructure` implementing the protocols the application declares. Both
+interfaces call the same services, so a rule exists in exactly one place.
 
-In the Project UI, enable built-in automation to:
+Storage is three plain files:
 
-- auto-add issues with label `type:article`
-- set status when an item is added
-- mark items as done when an issue is closed
+| File | What it is |
+|---|---|
+| `data/portfolio.json` | the source of truth |
+| `data/events.jsonl` | append-only history, one event per line |
+| `data/articles.json` | the legacy tracker, still read and still written |
 
-GitHub supports built-in auto-add and status automations directly in Projects.
+`docs/research_workflow_app_design.md` records why each of these decisions went
+the way it did.
 
-## Source of truth
+---
 
-The source of truth is `data/articles.json`.
+## Installation
 
-Example:
+Requires Python 3.11 or newer.
+
+```bash
+poetry install            # or: pip install .
+poetry run article-reminders --help
+```
+
+## First run
+
+In a fresh repository there is nothing to migrate and nothing to configure:
+
+```bash
+article-reminders add "My First Paper" --status idea
+article-reminders serve
+```
+
+In this repository, where `data/articles.json` already exists, everything works
+before you migrate — the application reads the legacy tracker directly and says
+so on every page. When you are ready:
+
+```bash
+article-reminders migrate           # writes data/portfolio.json
+article-reminders migrate --dry-run # to see what it would do first
+```
+
+The migration never modifies `data/articles.json`, backs up any existing
+portfolio into `data/backups/` first, preserves keys it does not recognise, and
+does nothing at all the second time you run it.
+
+Try the shipped example portfolio without touching your own data:
+
+```bash
+article-reminders --root examples dashboard
+article-reminders --root examples serve
+```
+
+## Adding a paper
+
+```bash
+article-reminders add "Minimum Wage and Productivity in Portuguese Firms" \
+  --status analysis \
+  --priority high \
+  --repo example-lab/minimum-wage-productivity \
+  --paper-path paper/ \
+  --journal "Labour Economics" \
+  --tags labour,portugal \
+  --next-action "Run the robustness specification on the revised OECD vintage" \
+  --due 2026-08-31
+```
+
+`--repo` and `--paper-path` are what make activity detection possible: the first
+says where the work lives, the second says which part of it is the manuscript.
+
+## Setting next actions
+
+Every active paper should have exactly one, and the application treats a missing
+one as a workflow problem rather than an empty field.
+
+```bash
+article-reminders next-action                      # every paper's next action
+article-reminders next-action minimum-wage         # just this one
+article-reminders next-action minimum-wage "Rebuild the tables" --due 2026-09-04
+article-reminders next-action minimum-wage --done --then "Write the discussion"
+article-reminders next-action minimum-wage --clear
+```
+
+Papers in `submitted`, `under_review`, or `resubmitted`, and any paper with
+`waiting_for` set, are exempt: the ball is in someone else's court and demanding
+a next action from them would only train you to write "wait" over and over.
+
+## Moving through the lifecycle
+
+Sixteen states, from `idea` to `published`, plus `paused` and `abandoned`:
+
+```bash
+article-reminders status minimum-wage draft
+article-reminders submit minimum-wage "Labour Economics"
+article-reminders decision minimum-wage major_revision --revision-due 2026-09-12
+article-reminders status old-paper published --force --note "published elsewhere"
+```
+
+Transitions outside the canonical path are refused unless you pass `--force`, and
+a forced move is recorded as forced. Research does not walk the graph in order,
+so the rule bends — but it says so afterwards.
+
+## Configuring GitHub
+
+GitHub is optional. Without it the dashboard, board, calendar, analytics, and
+every deadline and workflow reminder still work; what you lose is observed
+repository activity and issue synchronisation.
+
+```bash
+export GITHUB_TOKEN=...          # writes reminder issues in this repository
+export ARTICLE_SCAN_TOKEN=...    # reads the tracked research repositories
+article-reminders sync-github
+```
+
+Two tokens because they have different jobs: most tracked repositories are
+private and live outside this one, so the scan token needs read access there and
+write access nowhere.
+
+Tell it which paths mean what in `article-reminders.yml` (copy
+`article-reminders.example.yml`):
+
+```yaml
+activity_paths:
+  manuscript: [paper/, papers/, manuscript/]
+  analysis:   [src/, analysis/, notebooks/, results/]
+  data:       [data/, datasets/]
+```
+
+Classification is path-based and deterministic. A commit that touches `paper/` is
+manuscript work; a commit whose message says "writing" but touches `src/` is not.
+
+### Issues
+
+`article-reminders sync-github --only issues` maintains one issue per active
+paper, using the same `[article-reminder]` prefix and `article-reminder` label
+this repository has always used, so issues created by the older script are
+reused rather than duplicated. Issues carry `research-paper` plus, optionally,
+`needs-action`, `stalled`, `submission`, and `revision`.
+
+The portfolio file stays authoritative. Issues are a notification channel.
+
+## Running reminders
+
+```bash
+article-reminders reminders                       # everything
+article-reminders reminders --severity critical   # only what is on fire
+article-reminders reminders --json                # for scripting
+article-reminders reminders --exit-code           # exit 2 if anything is found
+```
+
+Reminders come in three families:
+
+* **Deadlines** — next actions, revision deadlines, conference deadlines,
+  internal review deadlines. Overdue is critical; a revision due within a week is
+  critical; anything else inside the window is a warning.
+* **Inactivity** — stage-aware staleness, a frozen manuscript, a quiet
+  repository, a project nothing has touched.
+* **Workflow** — an active paper with no next action, a paper marked ready to
+  submit with nowhere to submit it, a draft with no manuscript activity ever
+  detected, and analysis moving while the manuscript does not.
+
+## Interpreting staleness
+
+Staleness is measured against the stage, not against a single global number:
+
+```text
+stale  ⟺  (now − last meaningful activity) > d_stage
+```
+
+| Stage | Days | Stage | Days |
+|---|---|---|---|
+| idea | 90 | ready_to_submit | 14 |
+| planned | 60 | submitted | 120 |
+| research | 30 | under_review | 180 |
+| data_collection | 21 | revision | 7 |
+| analysis | 21 | resubmitted | 120 |
+| draft | 14 | accepted | 60 |
+| internal_review | 21 | | |
+
+A draft untouched for 45 days is a problem. A manuscript sitting with a journal
+for 45 days is a Tuesday. All of these are configurable.
+
+### Manuscript stagnation
+
+The finding this application exists for:
+
+```text
+A_r < 7 days   and   A_m > 30 days   ⟹   "Analysis remains active, but the
+                                           manuscript has not changed for 36 days."
+```
+
+where `A_r` is the age of the newest repository or analysis activity and `A_m`
+the age of the newest manuscript activity. Both thresholds are configurable, and
+the rule stays quiet when it has no evidence rather than guessing.
+
+## The web application
+
+```bash
+article-reminders serve                  # http://127.0.0.1:8000
+article-reminders serve --port 9000
+```
+
+| Route | Page |
+|---|---|
+| `/` | portfolio dashboard: buckets, counts, and what to work on next |
+| `/papers` | every paper, filterable by stage, priority, tag, and text |
+| `/papers/{id}` | one paper: warnings, next action, timeline, history, submissions |
+| `/board` | lifecycle Kanban, ten columns |
+| `/calendar` | every dated commitment, by month |
+| `/analytics` | pipeline durations and portfolio counts |
+| `/settings` | the resolved configuration |
+
+There is also a small JSON API — `/api/papers`, `/api/papers/{id}`,
+`/api/reminders`, `/api/dashboard`, `/api/analytics`, `/api/health` — and
+interactive docs at `/api/docs`.
+
+Server-rendered, no build step, no JavaScript. It binds to localhost and has no
+authentication; it is not built to be exposed.
+
+## Analytics
+
+```bash
+article-reminders analytics
+article-reminders analytics --json
+```
+
+Median time from idea to draft, draft to submission, submission to decision,
+revision to resubmission, acceptance to publication, and idea to publication,
+each with the sample size it rests on. Plus counts of active, stalled, submitted,
+accepted, published, paused, and abandoned papers, and an acceptance rate.
+
+Intervals without enough history report *not enough data* rather than a number.
+A median over one paper is not a median.
+
+## Migrations
+
+```bash
+article-reminders migrate --dry-run   # report only
+article-reminders migrate             # data/articles.json → data/portfolio.json
+article-reminders legacy-export       # data/portfolio.json → data/articles.json
+article-reminders validate            # the portfolio loads and is internally consistent
+```
+
+`legacy-export` is what keeps the older automation working: `project-sync.yml`
+and `check_article_drift.py` still read `data/articles.json`, and the scheduled
+workflow regenerates it after every run. Both commands back up what they are
+about to overwrite into `data/backups/`.
+
+Every one of this repository's 65 legacy entries round-trips through the new
+model byte for byte, and the test suite asserts it against the real file. The
+first `legacy-export` does reorder `data/articles.json`: the portfolio is stored
+sorted by title, so the export follows that order. No record changes, and the
+order is stable from then on.
+
+### The legacy tracker format
+
+`data/articles.json` keeps the shape it has always had, and `legacy-export`
+emits exactly the keys `scripts/validate_articles.py` accepts:
 
 ```json
 {
   "articles": [
     {
-      "title": "Uncertainty and Calibration Under Shift, Noise, and Autocorrelation: A Simulation Benchmark",
-      "repo": "DiogoRibeiro7/uncertainty-bench",
+      "title": "Minimum Wage and Productivity in Portuguese Firms",
+      "repo": "example-lab/minimum-wage-productivity",
       "status": "in_progress",
-      "notes": "Current experiments are running on the medium grid.",
-      "abstract": "We present uncertainty-bench, a fully reproducible simulation benchmark for predictive uncertainty under dataset shift, class imbalance with label noise, and temporal dependence.",
+      "notes": "Robustness specification running on the revised vintage.",
+      "abstract": "Matched employer-employee panel around the statutory minimum wage increases.",
       "paper_path": "paper/",
       "priority": "high",
-      "last_updated": "2026-03-07",
-      "venue": "",
-      "target_date": "2026-03-20",
-      "next_action": "Regenerate tables and figures from latest aggregated metrics."
+      "last_updated": "2026-08-25",
+      "venue": "Labour Economics",
+      "target_date": "2026-08-31",
+      "next_action": "Run the robustness specification on the revised OECD vintage"
     }
   ]
 }
 ```
 
-`title`, `repo`, `status`, `notes`, `paper_path`, `priority`, and `last_updated` are
-required. `abstract`, `venue`, `target_date`, and `next_action` are optional. `venue`,
-`target_date`, and `next_action` feed the Project columns of the same name; leave them
-out and those columns stay blank. `abstract` is rendered as its own section in the
-reminder issue, so the issue says what the paper argues without opening the repository.
-Any other key is rejected by `validate.yml`, because the sync scripts read none of them
-and it would sit in the file doing nothing.
+`title`, `repo`, `status`, `notes`, `paper_path`, `priority`, and `last_updated`
+are required; `abstract`, `venue`, `target_date`, and `next_action` are optional;
+anything else is rejected. The nine legacy statuses map onto the sixteen
+lifecycle states and back again without loss — the table is in
+`docs/research_workflow_app_design.md`.
 
-`abstract` holds a two-sentence summary rather than the full abstract, to keep the file
-readable and its diffs small.
+## The scheduled workflows
 
-## Article status mapping
+| Workflow | When | What |
+|---|---|---|
+| `validate.yml` | every push and PR | ruff, mypy, both validators, the example build, pytest |
+| `article-reminders.yml` | weekly | migrate, refresh activity, export, sync issues, commit |
+| `project-sync.yml` | after reminders | issues into the GitHub Project, via GraphQL |
+| `drift-check.yml` | monthly | compares entries against the real repositories |
 
-The `status` field in `articles.json` is mapped to the Project Status field as follows:
+`scripts/sync_article_issues.py` still exists and still works; it is simply no
+longer the thing that runs on a schedule. **Do not enable both issue
+synchronisers** — they would rewrite each other's issue bodies every week.
 
-| `articles.json` status | Project Status |
-|---|---|
-| `planned` | Backlog |
-| `in_progress` | Experiments |
-| `draft` | Drafting |
-| `submitted` | Review |
-| `revising` | Review |
-| `finished` | Done |
-| `published` | Done |
-| `archived` | Done |
-| `cancelled` | Done |
+## Development
 
-Use the left-hand values only. A Project Status name such as `Experiments` sorts onto
-the board correctly but is not a status `sync_article_issues.py` recognises, so the
-article is skipped and never gets a reminder issue at all. The same goes for free text
-such as `experiments running`; put that richer description in `notes` or `next_action`.
-`validate.yml` rejects both.
+```bash
+poetry install --with dev
+poetry run ruff check .
+poetry run mypy .
+poetry run pytest
+poetry run pre-commit install
+```
 
-## How the automation works
+`mypy` runs strict over `src`; the four legacy scripts and their tests are
+checked under relaxed rules rather than rewritten, because they work and they
+predate the tooling.
 
-### `article-reminders.yml`
+To regenerate the example portfolio after changing the model:
 
-- runs on a schedule and on manual dispatch
-- reads `data/articles.json`
-- creates or updates one issue per article
-- closes issues for articles marked `Done` or `Archived`
-- closes orphaned issues: any reminder whose article has been deleted from
-  `data/articles.json` outright, rather than moved to a closed status
+```bash
+poetry run python examples/build_seed.py
+```
 
-Only issues the workflow owns are eligible for orphan cleanup — they must carry
-the `article-reminder` label and the `[article-reminder]` title prefix — and the
-cleanup is skipped entirely when no articles load, so a truncated or malformed
-data file cannot close every reminder at once. Deleting an article is therefore
-a safe way to retire it; the issue closes on the next run and reopens if the
-entry comes back.
+It is deterministic — same input, same bytes — and CI checks that it still is.
 
-### `validate.yml`
+## The five ideas this is built on
 
-- runs on every push to `main`, every pull request, and manual dispatch
-- validates `data/articles.json`: required keys, no unknown keys, known status and
-  priority vocabulary, `YYYY-MM-DD` dates, unique titles, unique repo + `paper_path`
-- runs the test suite
-
-The sync workflows run on a schedule and treat this file as the source of truth, so
-without this gate a malformed entry surfaces midway through a cron run that has
-already created or edited issues.
-
-### `drift-check.yml`
-
-- runs monthly and on manual dispatch
-- compares every entry against its actual repository and reports the disagreements
-  in a single `[article-drift]` issue, which closes automatically once nothing drifts
-
-It reports rather than edits: whether 50 KB of sections counts as a draft is a
-judgement call. It flags repositories that no longer resolve, `paper_path` values
-that no longer exist, statuses contradicted by how much manuscript source is
-actually committed, and a `last_updated` more than 60 days behind the repository's
-last push.
-
-Requires an `ARTICLE_SCAN_TOKEN` secret with read access to the tracked
-repositories. Most of them are private and the default `GITHUB_TOKEN` is scoped to
-this repository alone, so without it every lookup returns 404; the workflow skips
-with a notice rather than reporting a tracker full of deleted repositories. The
-scan token only reads — the report is written with the workflow's own
-`GITHUB_TOKEN`.
-
-### `project-sync.yml`
-
-- runs after issue sync, on issue events, and on manual dispatch
-- finds each article issue
-- adds the issue to the configured GitHub Project if missing
-- updates Project fields using the GraphQL API
-
-GitHub documents GraphQL mutations for adding items to Projects and updating field values, and also documents how to automate Projects from Actions.
+1. **Research first.** The vocabulary is stages, venues, submissions, and
+   revisions, not tickets and sprints.
+2. **One next action.** An active paper makes the next concrete piece of work
+   obvious, or it is a workflow problem.
+3. **Evidence over guesses.** Commit paths and recorded timestamps are evidence
+   of activity. Nothing here claims they are evidence of thinking.
+4. **Data portability.** Plain JSON in git. If this application disappears, the
+   portfolio is still readable and still recoverable.
+5. **GitHub-enhanced, not GitHub-dependent.** Everything except observed activity
+   and issue sync works with no token at all.
