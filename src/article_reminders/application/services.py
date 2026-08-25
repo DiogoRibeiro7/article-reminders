@@ -269,7 +269,10 @@ class PortfolioService:
         if not updates:
             return paper
 
-        repository_fields = {
+        # Annotated rather than inferred: a comprehension over a tuple of string
+        # literals infers dict[Literal[...], Any], and Mapping is invariant in its
+        # key type, so the inferred type does not satisfy Mapping[str, Any].
+        repository_fields: dict[str, Any] = {
             key: updates.pop(key)
             for key in ("repository", "paper_path", "repository_branch", "repository_provider")
             if key in updates

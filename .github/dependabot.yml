@@ -10,8 +10,17 @@ updates:
     open-pull-requests-limit: 10
     pull-request-branch-name:
       separator: "/"
+    groups:
+      actions:
+        patterns:
+          - "*"
 
-  # Uncomment below if you add a requirements.txt or pyproject.toml for Python dependencies
+  # Python dependencies, read from pyproject.toml at the repository root.
+  #
+  # This block was enabled before there was any Python manifest to read, so every
+  # Monday run failed with "No files found in /". It works now that the project is
+  # packaged; if the packaging is ever removed, remove this block with it rather
+  # than leaving it to fail weekly.
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
@@ -21,3 +30,15 @@ updates:
     open-pull-requests-limit: 10
     pull-request-branch-name:
       separator: "/"
+    groups:
+      # One pull request for the tooling rather than four. A ruff or mypy release
+      # can fail the Validate gate on its own, so these are worth reviewing
+      # together.
+      dev-tooling:
+        dependency-type: "development"
+        patterns:
+          - "*"
+      runtime:
+        dependency-type: "production"
+        patterns:
+          - "*"

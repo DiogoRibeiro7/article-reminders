@@ -18,7 +18,7 @@ while every one of those scripts and workflows still works.
 | "when was this repository last pushed" | manuscript, analysis, and data activity read separately by path |
 | no history | append-only `data/events.jsonl` |
 | no interface | a CLI with 20 commands and a 7-page web application |
-| no tests beyond the scripts | 345 tests, `ruff` and `mypy --strict` clean |
+| no tests beyond the scripts | 346 tests, `ruff` and `mypy --strict` clean |
 
 Run against this repository's real data, the reminder engine's first output was
 that 64 of the 65 tracked papers have no next action, and it named the stalled
@@ -124,7 +124,7 @@ tracked repositories), `ARTICLE_REMINDERS_ROOT`, `ARTICLE_REMINDERS_CONFIG`,
 
 ## Tests added
 
-345 tests, all offline.
+346 tests, all offline.
 
 | Area | Covers |
 |---|---|
@@ -143,6 +143,28 @@ tracked repositories), `ARTICLE_REMINDERS_ROOT`, `ARTICLE_REMINDERS_CONFIG`,
 External calls go through a fake transport (`FakeTransport`) or a fake gateway;
 nothing touches the network. Time is injected through a `FixedClock`, so no test
 depends on today's date.
+
+## Two CI failures on main, and what they were
+
+`Validate` failed on 2026-08-24 22:20 (`test_close_orphaned_issues_closes_unclaimed_issue`
+asserted `/repos/None/issues/4`, because `REPOSITORY` is read from
+`GITHUB_REPOSITORY` at import time and Actions sets it). Already fixed on main by
+`6425bff` three minutes later; this branch inherits the fix.
+
+`Dependabot Updates (pip)` failed on 2026-08-24 03:09 with
+`dependency_file_not_found: No files found in /`, and had been failing every
+Monday since the config was written: the `pip` ecosystem was enabled at `/` while
+the repository had no Python manifest. Adding `pyproject.toml` is the fix, and
+`.github/dependabot.yml` now says so instead of carrying the stale
+"uncomment this if you add a pyproject.toml" comment.
+
+The dev dependencies are declared with lower bounds, so CI resolves to whatever
+is current. That is deliberate but it does drift: `poetry install` resolves
+`mypy>=1.11` to 2.3.1, which infers `dict[Literal[...], Any]` where 1.x inferred
+`dict[str, Any]` and rejects it against an invariant `Mapping[str, Any]`. The one
+site that hit is annotated explicitly, and the gate is verified clean under
+mypy 1.20.2 and 2.3.1, and ruff 0.16.1 and 0.16.4. If that drift becomes tiresome,
+commit a `poetry.lock` and let Dependabot bump it.
 
 ## Known limitations
 

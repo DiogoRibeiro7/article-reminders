@@ -76,7 +76,7 @@ paper with a DOI.
 **Packaging and tooling**: `pyproject.toml` (Poetry), `ruff`, `mypy --strict`
 over `src`, `pytest`, and `pre-commit`.
 
-**Tests**: 345 covering the domain, the rules, the services, the reminder engine,
+**Tests**: 346 covering the domain, the rules, the services, the reminder engine,
 activity classification and stagnation, the GitHub client, activity gateway and
 issue synchronisation (all mocked), analytics, the migration, the CLI, and the
 web application.
@@ -95,6 +95,15 @@ web application.
   example-portfolio build check, and `pytest`.
 - Reminder issue bodies now lead with the stage and the next action, list the
   paper's current reminders, and carry a hidden id marker for reliable matching.
+
+### Fixed
+
+- The weekly `Dependabot Updates (pip)` job, which had been failing with
+  `dependency_file_not_found: No files found in /` since the pip ecosystem was
+  enabled without a Python manifest at the repository root. `pyproject.toml`
+  gives it something to read, and `.github/dependabot.yml` now groups updates
+  instead of carrying a comment that says to uncomment an already-uncommented
+  block.
 
 ### Preserved
 
