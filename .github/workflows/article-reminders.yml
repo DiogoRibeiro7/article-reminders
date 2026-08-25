@@ -1,16 +1,29 @@
 name: Article reminders
 
+# Reads the portfolio, refreshes what GitHub knows about each tracked repository,
+# and keeps one issue per active paper.
+#
+# The issue conventions are unchanged from the script this replaced -- same
+# `[article-reminder]` title prefix, same `article-reminder` label -- so existing
+# issues are reused rather than duplicated. `scripts/sync_article_issues.py` is
+# still in the repository and still works; it is simply no longer the thing that
+# runs on a schedule. Do not enable both: they would fight over the same issues.
+
 on:
   schedule:
     - cron: '0 9 * * 1'
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   issues: write
 
+concurrency:
+  group: article-reminders
+  cancel-in-progress: false
+
 jobs:
-  sync-issues:
+  sync:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -21,8 +34,58 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Sync article issues
+      - name: Install article-reminders
+        run: python -m pip install --upgrade pip && python -m pip install .
+
+      # Idempotent: after the first run there is nothing left to migrate, and
+      # data/articles.json is never modified by it.
+      - name: Migrate any legacy tracker entries
+        run: article-reminders migrate
+
+      # Most tracked repositories are private and the default GITHUB_TOKEN is
+      # scoped to this repository alone, so without a broader token every lookup
+      # 404s. Skip with a notice rather than reporting an unreachable portfolio.
+      - name: Check for a token that can read the tracked repositories
+        id: scan_token
+        env:
+          ARTICLE_SCAN_TOKEN: ${{ secrets.ARTICLE_SCAN_TOKEN }}
+        run: |
+          if [ -n "$ARTICLE_SCAN_TOKEN" ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Skipping repository activity. Set ARTICLE_SCAN_TOKEN to a token with read access to the tracked repositories to enable manuscript and analysis activity detection."
+          fi
+
+      - name: Refresh repository, manuscript, and analysis activity
+        if: steps.scan_token.outputs.present == 'true'
+        env:
+          ARTICLE_SCAN_TOKEN: ${{ secrets.ARTICLE_SCAN_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: article-reminders sync-github --only activity
+
+      # data/articles.json stays the input the Project sync reads, so it is
+      # regenerated from the portfolio rather than edited by hand.
+      - name: Refresh the legacy tracker
+        run: article-reminders legacy-export
+
+      - name: Synchronise reminder issues
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-        run: python scripts/sync_article_issues.py
+        run: article-reminders sync-github --only issues
+
+      - name: Report what needs attention
+        run: article-reminders reminders || true
+
+      - name: Commit refreshed portfolio data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+          else
+            git commit -m "Refresh tracked research activity"
+            git push
+          fi

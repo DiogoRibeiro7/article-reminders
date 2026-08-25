@@ -1,0 +1,78 @@
+{
+  "articles": [
+    {
+      "title": "Minimum Wage and Productivity in Portuguese Firms",
+      "repo": "example-lab/minimum-wage-productivity",
+      "status": "in_progress",
+      "notes": "Matched employer-employee panel, difference-in-differences around the statutory increases, with a firm-level productivity decomposition.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-08-25",
+      "venue": "Labour Economics",
+      "target_date": "2026-08-31",
+      "next_action": "Run the robustness specification on the revised OECD vintage"
+    },
+    {
+      "title": "Parish-Level Rent Indices from Administrative Records",
+      "repo": "example-lab/parish-rents",
+      "status": "draft",
+      "notes": "",
+      "paper_path": "manuscript/",
+      "priority": "high",
+      "last_updated": "2026-08-25",
+      "venue": "Journal of Housing Economics",
+      "target_date": "2026-09-04",
+      "next_action": "Finish the methodology section"
+    },
+    {
+      "title": "Adaptive Threshold Selection for Heavy-Tailed Insurance Losses",
+      "repo": "example-lab/heavy-tails",
+      "status": "revising",
+      "notes": "",
+      "paper_path": "papers/threshold/",
+      "priority": "critical",
+      "last_updated": "2026-08-25",
+      "venue": "Insurance: Mathematics and Economics",
+      "target_date": "2026-09-05",
+      "next_action": "Answer reviewer 2 on the bootstrap variance"
+    },
+    {
+      "title": "Calibration of Predictive Uncertainty Under Dataset Shift",
+      "repo": "example-lab/uncertainty-bench",
+      "status": "submitted",
+      "notes": "",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-08-25",
+      "venue": "Journal of Machine Learning Research"
+    },
+    {
+      "title": "Do Rewritten Documents Keep a Recoverable Order?",
+      "repo": "",
+      "status": "planned",
+      "notes": "",
+      "paper_path": "",
+      "priority": "low",
+      "last_updated": "2026-08-25"
+    },
+    {
+      "title": "A Dynamical Systems View of Fiscal Crises",
+      "repo": "example-lab/fiscal-dynamics",
+      "status": "published",
+      "notes": "",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-08-25",
+      "venue": "Journal of Economic Dynamics and Control"
+    },
+    {
+      "title": "Multi-Stage Watermark Interference",
+      "repo": "example-lab/watermark-dynamics",
+      "status": "archived",
+      "notes": "Parked until there is a sharper claim than 'watermarks can coexist'.",
+      "paper_path": "papers/watermarks/",
+      "priority": "low",
+      "last_updated": "2026-08-25"
+    }
+  ]
+}

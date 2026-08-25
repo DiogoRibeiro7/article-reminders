@@ -1,0 +1,88 @@
+# article-reminders configuration.
+#
+# Copy this file to `article-reminders.yml` at the repository root and delete
+# whatever you do not want to change: every value here is already the default,
+# and anything you leave out keeps that default rather than being reset.
+
+# Where the portfolio lives. Relative paths are resolved against the repository
+# root (or $ARTICLE_REMINDERS_ROOT). All three files are plain text on purpose.
+storage:
+  portfolio: data/portfolio.json     # the source of truth
+  events: data/events.jsonl          # append-only history
+  legacy: data/articles.json         # read before migration, written by `legacy-export`
+  backups: data/backups              # timestamped copies, written before any overwrite
+
+# Days of silence each stage tolerates before a paper counts as stalled.
+# These differ by an order of magnitude on purpose: a draft untouched for 45 days
+# is a problem, a manuscript sitting with a journal for 45 days is a Tuesday.
+staleness:
+  idea: 90
+  planned: 60
+  research: 30
+  data_collection: 21
+  analysis: 21
+  draft: 14
+  internal_review: 21
+  ready_to_submit: 14
+  submitted: 120
+  under_review: 180
+  revision: 7
+  resubmitted: 120
+  accepted: 60
+
+reminders:
+  # A deadline this many days away starts being reported.
+  upcoming_deadline_days: 14
+  # Days of silence before each kind of inactivity is reported. The stage-aware
+  # thresholds above usually fire first; these catch the specific cases.
+  inactivity:
+    manuscript: 30
+    repository: 45
+    project: 60
+  # How long to wait on a venue before suggesting you chase it.
+  waiting_follow_up_days: 60
+
+# Analysis moving while the manuscript does not. Reported when the newest
+# repository or analysis activity is younger than the first threshold and the
+# newest manuscript activity is older than the second.
+stagnation:
+  repository_active_within_days: 7
+  manuscript_idle_days: 30
+
+# What a changed path means. Classification is path-based and deterministic; the
+# commit message is never consulted. A paper's own `paper_path` always takes
+# priority over the manuscript prefixes below.
+activity_paths:
+  manuscript:
+    - paper/
+    - papers/
+    - manuscript/
+    - manuscripts/
+  analysis:
+    - src/
+    - analysis/
+    - notebooks/
+    - scripts/
+    - results/
+    - code/
+    - R/
+  data:
+    - data/
+    - datasets/
+    - raw/
+
+# GitHub is optional. Without a token everything except observed activity and
+# issue synchronisation still works.
+github:
+  # Defaults to $GITHUB_REPOSITORY, which GitHub Actions sets for you.
+  repository: null
+  api_url: https://api.github.com
+  # Kept identical to the legacy sync script so existing issues are reused
+  # rather than duplicated.
+  issue_prefix: "[article-reminder]"
+  managed_label: article-reminder
+  paper_label: research-paper
+  # Also apply needs-action / stalled / submission / revision labels.
+  workflow_labels: true
+  token_env: GITHUB_TOKEN
+  scan_token_env: ARTICLE_SCAN_TOKEN
