@@ -19,3 +19,11 @@ env/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Local backups written before any overwrite. The previous version of every one
+# of these is already in git history, so there is nothing here worth committing.
+data/backups/
+examples/data/backups/
+
+# Local configuration; article-reminders.example.yml is the one that is tracked.
+article-reminders.yml
