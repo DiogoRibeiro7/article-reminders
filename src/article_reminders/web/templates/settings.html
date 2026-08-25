@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+<h1>Settings</h1>
+<p class="lede">
+  Read from {{ settings.source_path or 'built-in defaults' }}. Edit
+  <code>article-reminders.yml</code> at the repository root to change any of it; every value
+  below has a working default.
+</p>
+
+<h2>Storage</h2>
+<table>
+  <tbody>
+    {% for key, value in config.paths.items() %}
+      <tr><th>{{ key }}</th><td class="mono">{{ value }}</td></tr>
+    {% endfor %}
+    <tr><th>reading legacy tracker</th><td>{{ 'yes' if legacy_fallback else 'no' }}</td></tr>
+  </tbody>
+</table>
+
+<h2>Staleness thresholds</h2>
+<p class="muted">Days of silence a stage tolerates before a paper counts as stalled.</p>
+<table>
+  <thead><tr><th>Stage</th><th>Days</th></tr></thead>
+  <tbody>
+    {% for stage, days in config.staleness.items() %}
+      <tr><td>{{ stage.replace('_', ' ') }}</td><td class="num">{{ days }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>Reminder thresholds</h2>
+<table>
+  <tbody>
+    {% for key, value in config.reminders.items() %}
+      <tr><th>{{ key.replace('_', ' ') }}</th><td class="num">{{ value }}</td></tr>
+    {% endfor %}
+    {% for key, value in config.stagnation.items() %}
+      <tr><th>{{ key.replace('_', ' ') }}</th><td class="num">{{ value }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>Activity paths</h2>
+<p class="muted">
+  Path prefixes that decide what a commit touched. Classification is path-based and
+  deterministic, never based on the commit message.
+</p>
+<table>
+  <tbody>
+    {% for key, values in config.activity_paths.items() %}
+      <tr><th>{{ key }}</th><td class="mono">{{ values | join(', ') }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>GitHub</h2>
+<table>
+  <tbody>
+    <tr><th>repository</th><td class="mono">{{ github_repository or 'not configured' }}</td></tr>
+    <tr><th>token present</th><td>{{ 'yes' if github_token else 'no' }}</td></tr>
+    <tr><th>issue prefix</th><td class="mono">{{ config.github.issue_prefix }}</td></tr>
+    <tr><th>managed label</th><td class="mono">{{ config.github.managed_label }}</td></tr>
+    <tr><th>paper label</th><td class="mono">{{ config.github.paper_label }}</td></tr>
+    <tr><th>workflow labels</th><td>{{ 'yes' if config.github.workflow_labels else 'no' }}</td></tr>
+  </tbody>
+</table>
+<p class="muted">
+  GitHub is optional. Without a token the dashboard, board, calendar, analytics, and reminders
+  all still work; only observed repository activity and issue synchronisation are unavailable.
+</p>
+{% endblock %}

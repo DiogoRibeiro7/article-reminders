@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Deadlines{% endblock %}
+
+{% block content %}
+<h1>Deadlines</h1>
+<p class="lede">
+  Next actions, revision deadlines, conference deadlines, and internal review dates, taken from
+  the portfolio itself. {{ entries | length }} entr{{ 'y' if entries | length == 1 else 'ies' }}.
+</p>
+
+<form class="inline" method="get" action="/calendar" style="margin-bottom:1.5rem">
+  <div style="flex:0 1 160px">
+    <label for="days">Within days</label>
+    <input id="days" name="days" type="number" min="1" value="{{ days or '' }}" placeholder="all">
+  </div>
+  <div style="flex:0 0 auto">
+    <label>&nbsp;</label>
+    <label class="muted" style="white-space:nowrap">
+      <input type="checkbox" name="all" value="true" style="width:auto" {{ 'checked' if show_all }}>
+      include inactive
+    </label>
+  </div>
+  <button type="submit">Apply</button>
+</form>
+
+{% if months %}
+  {% for month in months %}
+    <section class="month">
+      <h2>{{ month.label }}</h2>
+      {% for day, items in month.by_day().items() %}
+        <div class="day-group {{ 'past' if items[0].on < now.date() }}">
+          <div class="day">{{ items[0].on.isoformat() }}</div>
+          <div>
+            {% for entry in items %}
+              <div>
+                <a href="/papers/{{ entry.paper_id }}">{{ entry.paper.title }}</a>
+                <span class="pill">{{ entry.kind.replace('_', ' ') }}</span>
+                <span class="muted">{{ entry.label }}</span>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </section>
+  {% endfor %}
+{% else %}
+  <div class="empty">No deadlines recorded. Give an active paper a next action with a due date.</div>
+{% endif %}
+{% endblock %}

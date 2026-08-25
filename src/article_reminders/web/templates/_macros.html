@@ -1,0 +1,44 @@
+{% macro paper_card(card, show_reasons=True) %}
+<article class="card">
+  <div class="title"><a href="/papers/{{ card.paper.id }}">{{ card.paper.title }}</a></div>
+  <div class="meta">
+    <span class="pill stage">{{ card.paper.status.label }}</span>
+    <span class="pill priority-{{ card.paper.priority.value }}">{{ card.paper.priority.label }}</span>
+    {% if card.paper.repository %}
+      <a class="pill" href="{{ card.paper.repository.url }}">{{ card.paper.repository.slug }}</a>
+    {% endif %}
+    {% if card.paper.venue %}<span class="pill">{{ card.paper.venue }}</span>{% endif %}
+    {% if card.paper.waiting_for %}<span class="pill">waiting: {{ card.paper.waiting_for }}</span>{% endif %}
+    {% if card.days_since_activity is not none %}
+      <span class="pill {{ 'warning' if card.is_stale }}">
+        quiet {{ card.days_since_activity | round | int }}d
+      </span>
+    {% endif %}
+  </div>
+
+  {% if card.paper.next_action %}
+    <div class="next">
+      <strong>Next:</strong> {{ card.paper.next_action.description }}
+      {% if card.paper.next_action.due_at %}
+        <span class="muted">&mdash; due {{ card.paper.next_action.due_at | date }}
+        ({{ card.paper.next_action.due_at | relative(now) }})</span>
+      {% endif %}
+    </div>
+  {% elif card.paper.is_active and not card.paper.is_waiting %}
+    <div class="next missing"><strong>No next action defined.</strong></div>
+  {% endif %}
+
+  {% if show_reasons and card.attention_reasons %}
+    <ul class="reasons">
+      {% for reason in card.attention_reasons %}<li>{{ reason }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+</article>
+{% endmacro %}
+
+{% macro reminder_row(reminder) %}
+<div class="warning-row {{ reminder.severity.value }}">
+  <strong>{{ reminder.severity.label }}</strong> &middot; {{ reminder.message }}
+  {% if reminder.due_at %}<span class="muted">(due {{ reminder.due_at | date }})</span>{% endif %}
+</div>
+{% endmacro %}

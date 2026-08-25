@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+{% from "_macros.html" import reminder_row %}
+{% block title %}{{ paper.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ paper.title }}</h1>
+<p class="lede">
+  <span class="pill stage">{{ paper.status.label }}</span>
+  <span class="pill priority-{{ paper.priority.value }}">{{ paper.priority.label }} priority</span>
+  {% if paper.research_programme %}<span class="pill">{{ paper.research_programme }}</span>{% endif %}
+  {% for tag in paper.tags %}<span class="pill">{{ tag }}</span>{% endfor %}
+  <a class="pill" href="/papers/{{ paper.id }}/edit">edit</a>
+</p>
+
+{% if reminders %}
+  <div class="warnings">
+    {% for reminder in reminders %}{{ reminder_row(reminder) }}{% endfor %}
+  </div>
+{% endif %}
+
+<div class="detail-grid">
+  <div>
+    {% if paper.research_question %}
+      <h2>Research question</h2>
+      <p>{{ paper.research_question }}</p>
+    {% endif %}
+    {% if paper.abstract %}
+      <h2>Abstract</h2>
+      <p>{{ paper.abstract }}</p>
+    {% endif %}
+    {% if paper.description %}
+      <h2>Description</h2>
+      <p>{{ paper.description }}</p>
+    {% endif %}
+
+    <h2>Next action</h2>
+    <form class="stack" method="post" action="/papers/{{ paper.id }}/next-action">
+      <div class="row">
+        <div style="grid-column: span 2">
+          <label for="description">The one concrete thing that moves this paper forward</label>
+          <input id="description" name="description"
+                 value="{{ paper.next_action.description if paper.next_action else '' }}"
+                 placeholder="e.g. Retrieve the revised OECD productivity vintage">
+        </div>
+        <div>
+          <label for="due_at">Due</label>
+          <input id="due_at" name="due_at" type="date"
+                 value="{{ paper.next_action.due_at | date if paper.next_action and paper.next_action.due_at else '' }}">
+        </div>
+      </div>
+      <div class="inline">
+        <button type="submit" name="action" value="set">Save next action</button>
+        {% if paper.next_action %}
+          <button type="submit" name="action" value="done" class="secondary">Mark done</button>
+          <button type="submit" name="action" value="clear" class="secondary">Clear</button>
+        {% endif %}
+      </div>
+    </form>
+
+    <h2>Submission history</h2>
+    {% if paper.submissions %}
+      <table>
+        <thead><tr><th>Submitted</th><th>Venue</th><th>Decision</th><th>Decided</th></tr></thead>
+        <tbody>
+          {% for record in paper.submissions %}
+            <tr>
+              <td class="mono">{{ record.submitted_at | date }}</td>
+              <td>{{ record.venue }}</td>
+              <td>{{ record.decision.label }}</td>
+              <td class="mono">{{ record.decision_at | date }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p class="muted">Nothing submitted yet.</p>
+    {% endif %}
+
+    <div class="row" style="margin-top:1rem">
+      <form class="stack" method="post" action="/papers/{{ paper.id }}/submission">
+        <h3>Record a submission</h3>
+        <div>
+          <label for="venue">Venue</label>
+          <input id="venue" name="venue" required value="{{ paper.venue or '' }}">
+        </div>
+        <div>
+          <label for="submitted_at">Date</label>
+          <input id="submitted_at" name="submitted_at" type="date">
+        </div>
+        <button type="submit" class="secondary">Record submission</button>
+      </form>
+
+      <form class="stack" method="post" action="/papers/{{ paper.id }}/decision">
+        <h3>Record a decision</h3>
+        <div>
+          <label for="decision">Outcome</label>
+          <select id="decision" name="decision">
+            {% for item in decisions %}<option value="{{ item.value }}">{{ item.label }}</option>{% endfor %}
+          </select>
+        </div>
+        <div>
+          <label for="decided_at">Date</label>
+          <input id="decided_at" name="decided_at" type="date">
+        </div>
+        <div>
+          <label for="revision_due_at">Revision due</label>
+          <input id="revision_due_at" name="revision_due_at" type="date">
+        </div>
+        <button type="submit" class="secondary">Record decision</button>
+      </form>
+    </div>
+
+    {% if paper.notes %}
+      <h2>Notes</h2>
+      <p style="white-space:pre-wrap">{{ paper.notes }}</p>
+    {% endif %}
+
+    <h2>History</h2>
+    {% if events %}
+      <ul class="timeline">
+        {% for event in events %}
+          <li><span class="when">{{ event.occurred_at | date }}</span><span>{{ event.summary }}</span></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="muted">
+        No events recorded yet. History starts accumulating the first time this paper changes
+        inside the application.
+      </p>
+    {% endif %}
+  </div>
+
+  <aside>
+    <h2 style="margin-top:0">Stage</h2>
+    <form class="stack" method="post" action="/papers/{{ paper.id }}/status">
+      <div>
+        <label for="status">Move to</label>
+        <select id="status" name="status">
+          {% for item in statuses %}
+            <option value="{{ item.value }}" {{ 'selected' if item == paper.status }}>
+              {{ item.label }}{{ '' if item in transitions or item == paper.status else ' (needs override)' }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label for="note">Note</label>
+        <input id="note" name="note" placeholder="why, if it is not obvious">
+      </div>
+      <label class="muted"><input type="checkbox" name="force" value="true" style="width:auto"> allow a non-canonical move</label>
+      <button type="submit">Change stage</button>
+    </form>
+
+    <h2>Facts</h2>
+    <dl class="facts">
+      <dt>Slug</dt><dd class="mono">{{ paper.slug }}</dd>
+      <dt>Id</dt><dd class="mono">{{ paper.id }}</dd>
+      {% if paper.repository %}
+        <dt>Repository</dt><dd><a href="{{ paper.repository.url }}">{{ paper.repository.slug }}</a></dd>
+        <dt>Manuscript</dt><dd class="mono">{{ paper.paper_path or 'not set' }}</dd>
+        {% if paper.repository.branch %}<dt>Branch</dt><dd class="mono">{{ paper.repository.branch }}</dd>{% endif %}
+      {% endif %}
+      {% if paper.target_journal %}<dt>Journal</dt><dd>{{ paper.target_journal }}</dd>{% endif %}
+      {% if paper.target_conference %}<dt>Conference</dt><dd>{{ paper.target_conference }}</dd>{% endif %}
+      {% if paper.authors %}<dt>Authors</dt><dd>{{ paper.authors | join(', ') }}</dd>{% endif %}
+      {% if paper.corresponding_author %}<dt>Corresponding</dt><dd>{{ paper.corresponding_author }}</dd>{% endif %}
+      {% if paper.waiting_for %}<dt>Waiting for</dt><dd>{{ paper.waiting_for }}</dd>{% endif %}
+      {% if paper.doi %}<dt>DOI</dt><dd class="mono">{{ paper.doi }}</dd>{% endif %}
+      {% if paper.preprint_url %}<dt>Preprint</dt><dd><a href="{{ paper.preprint_url }}">link</a></dd>{% endif %}
+      {% if paper.publication_url %}<dt>Publication</dt><dd><a href="{{ paper.publication_url }}">link</a></dd>{% endif %}
+      {% if paper.github_issue_number %}<dt>Issue</dt><dd>#{{ paper.github_issue_number }}</dd>{% endif %}
+    </dl>
+
+    <h2>Timeline</h2>
+    <dl class="facts">
+      <dt>Created</dt><dd class="mono">{{ paper.created_at | date }}</dd>
+      {% if paper.started_at %}<dt>Started</dt><dd class="mono">{{ paper.started_at | date }}</dd>{% endif %}
+      {% if paper.draft_started_at %}<dt>Draft</dt><dd class="mono">{{ paper.draft_started_at | date }}</dd>{% endif %}
+      {% if paper.submitted_at %}<dt>Submitted</dt><dd class="mono">{{ paper.submitted_at | date }}</dd>{% endif %}
+      {% if paper.decision_received_at %}<dt>Decision</dt><dd class="mono">{{ paper.decision_received_at | date }}</dd>{% endif %}
+      {% if paper.revision_due_at %}<dt>Revision due</dt><dd class="mono">{{ paper.revision_due_at | date }}</dd>{% endif %}
+      {% if paper.conference_deadline %}<dt>Conference</dt><dd class="mono">{{ paper.conference_deadline | date }}</dd>{% endif %}
+      {% if paper.internal_review_deadline %}<dt>Internal review</dt><dd class="mono">{{ paper.internal_review_deadline | date }}</dd>{% endif %}
+      {% if paper.accepted_at %}<dt>Accepted</dt><dd class="mono">{{ paper.accepted_at | date }}</dd>{% endif %}
+      {% if paper.published_at %}<dt>Published</dt><dd class="mono">{{ paper.published_at | date }}</dd>{% endif %}
+      <dt>Updated</dt><dd class="mono">{{ paper.updated_at | date }}</dd>
+    </dl>
+
+    <h2>Observed activity</h2>
+    <dl class="facts">
+      <dt>Repository</dt>
+      <dd class="mono">{{ paper.last_repository_activity_at | date or 'never observed' }}</dd>
+      <dt>Manuscript</dt>
+      <dd class="mono">{{ paper.last_manuscript_activity_at | date or 'never observed' }}</dd>
+      <dt>Analysis</dt>
+      <dd class="mono">{{ paper.last_analysis_activity_at | date or 'never observed' }}</dd>
+    </dl>
+    <p class="muted" style="font-size:0.84rem">
+      Filled in by <code>article-reminders sync-github</code>, using path-based classification.
+    </p>
+
+    <h2>Measured intervals</h2>
+    <dl class="facts">
+      {% for label, days in durations %}
+        <dt>{{ label }}</dt>
+        <dd>{% if days is none %}<span class="muted">unknown</span>{% else %}{{ days | round | int }} days{% endif %}</dd>
+      {% endfor %}
+    </dl>
+  </aside>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% from "_macros.html" import paper_card %}
+{% block title %}Portfolio dashboard{% endblock %}
+
+{% block content %}
+<h1>Portfolio</h1>
+<p class="lede">
+  {{ dashboard.total }} paper{{ '' if dashboard.total == 1 else 's' }} tracked &middot;
+  {{ dashboard.reminders | length }} reminder{{ '' if dashboard.reminders | length == 1 else 's' }}
+  as of {{ dashboard.generated_at | date }}.
+</p>
+
+<div class="counts">
+  {% for bucket in buckets %}
+    <a class="count {{ 'alert' if bucket.key == 'needs_attention' and bucket.count }}{{ 'warn' if bucket.key in ('stalled', 'no_next_action') and bucket.count }}"
+       href="#bucket-{{ bucket.key }}" title="{{ bucket.question }}">
+      <span class="value">{{ bucket.count }}</span>
+      <span class="label">{{ bucket.label }}</span>
+    </a>
+  {% endfor %}
+</div>
+
+<h2>What to work on next</h2>
+{% if focus %}
+  {% for card in focus %}{{ paper_card(card) }}{% endfor %}
+{% else %}
+  <div class="empty">Nothing active. Add a paper to get started.</div>
+{% endif %}
+
+{% for bucket in buckets %}
+  {% if bucket.count and bucket.key != 'active' %}
+    <h2 id="bucket-{{ bucket.key }}">{{ bucket.label }} <span class="muted">&mdash; {{ bucket.question }}</span></h2>
+    <table>
+      <thead>
+        <tr><th>Paper</th><th>Stage</th><th>Next action</th><th>Due</th><th>Quiet for</th></tr>
+      </thead>
+      <tbody>
+      {% for card in bucket.cards %}
+        <tr>
+          <td><a href="/papers/{{ card.paper.id }}">{{ card.paper.title }}</a></td>
+          <td><span class="pill stage">{{ card.paper.status.label }}</span></td>
+          <td>{% if card.paper.next_action %}{{ card.paper.next_action.description }}
+              {% else %}<span class="muted">none</span>{% endif %}</td>
+          <td class="mono">{{ card.paper.next_action_due_at | date or '&mdash;' | safe }}</td>
+          <td class="num">{% if card.days_since_activity is not none %}{{ card.days_since_activity | round | int }}d{% else %}&mdash;{% endif %}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+{% endfor %}
+{% endblock %}
