@@ -629,6 +629,86 @@
       "paper_path": "articles/oajda_commentary/",
       "priority": "medium",
       "last_updated": "2026-08-24"
+    },
+    {
+      "title": "Epistemic Tipping in Recursive Language-Model Ecosystems: Stability, Adversarial Forcing, Provenance, and Hysteresis",
+      "repo": "DiogoRibeiro7/epistemic-tipping-llm",
+      "status": "draft",
+      "notes": "Mathematics-first manuscript on epistemic stability under recursive information contamination and adversarial forcing. The current version develops spectral tipping conditions, provenance stabilization, hysteresis, time-varying safety envelopes, and forcing-energy results, with large-model experiments treated as optional downstream validation rather than the scientific object.",
+      "abstract": "This paper studies epistemic error dynamics in recursive language-model ecosystems through a dynamical-system model with baseline persistence, recursive propagation, and adversarial forcing. It defines an epistemic reproduction number, derives stability and threshold results, and analyzes provenance weighting, pseudo-replication, non-normal amplification, hysteresis, switching instability, and attack-energy scaling.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-08-28"
+    },
+    {
+      "title": "Productive Redundancy Is Not Strategic Redundancy: Survival, Sovereignty, and Coercion after Full Automation",
+      "repo": "DiogoRibeiro7/human-wealth-decoupling",
+      "status": "draft",
+      "notes": "Integrated theory manuscript and referee-style review project on whether production autonomy and corporate circularity imply human biological exclusion after full automation. The repository argues that a lethal endpoint requires an additional sovereignty, coercion, entitlement, production-network, or physical-access transition.",
+      "abstract": "A fully automated economy may be able to produce and trade without human labor, but that does not by itself imply that humans lose access to survival resources. This paper models biological survival as a production, transport, storage, capacity, and deadline feasibility problem and derives necessity results for sovereignty collapse and coercive substitution.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-08-28"
+    },
+    {
+      "title": "Acquired Immunity to Self-Propagating Instructions in Multi-Agent LLM Systems",
+      "repo": "DiogoRibeiro7/multiagent-immunity-lab",
+      "status": "in_progress",
+      "notes": "Prospective experimental paper and research harness testing whether controlled exposure to harmless self-propagating instruction families produces resistance to unseen semantic families without damaging legitimate delegation. The project is protocol-driven and keeps harmful payload optimization out of scope.",
+      "abstract": "This study asks whether LLM agents can acquire cross-family resistance to benign self-propagating instructions while preserving ordinary task performance and legitimate agent-to-agent delegation. The primary endpoint compares infection probabilities between vaccinated and control agents on held-out semantic families, where infection requires both adoption and attempted transmission.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-08-28"
+    },
+    {
+      "title": "Demand, Regionality, Entry Selectivity, and the Research Talent Pipeline in Portuguese Higher Education",
+      "repo": "DiogoRibeiro7/portugal-higher-ed-rd-pipeline",
+      "status": "in_progress",
+      "notes": "Reproducible empirical paper on Portuguese higher-education demand, student regionality, entry selectivity, and exposure of R&D units to education-pipeline constraints. The design separates descriptive, predictive, associational, and causal claims and is built around public Portuguese data sources.",
+      "abstract": "This empirical study evaluates whether science and engineering placements are declining in Portugal, how much geography and demand pressure account for student choices and entry grades, and whether high-performing R&D units may face future capacity constraints from weakening education pipelines.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-08-28"
+    },
+    {
+      "title": "Is Portugal's Wage Gap Larger Than Its Productivity Gap? Productivity, Wage Pass-Through and the Portuguese Pay Residual",
+      "repo": "DiogoRibeiro7/portugal-wage-productivity-gap",
+      "status": "in_progress",
+      "notes": "Reproducible empirical manuscript measuring whether Portugal's compensation shortfall exceeds its productivity shortfall. The project separates level comparisons, wage-productivity pass-through, and conditional Portuguese pay residuals, with Eurostat source contracts and interpretation rules locked before primary analysis.",
+      "abstract": "This paper asks whether Portugal's wage shortfall relative to European peers can be accounted for by its productivity shortfall. It distinguishes a descriptive cross-country level gap from dynamic pass-through and estimates a comparator-country wage-productivity relationship excluding Portugal to measure the Portuguese conditional compensation residual.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-08-28"
+    },
+    {
+      "title": "School Stratification and Social Externalities: Institutional Design, Socioeconomic Sorting, Cross-Class Connectedness, and Social Attitudes",
+      "repo": "DiogoRibeiro7/school-stratification-externalities",
+      "status": "draft",
+      "notes": "Working manuscript and companion empirical track on whether institutional separation of children by socioeconomic status produces measurable social externalities. The repository separates systematic-review evidence from the PISA companion pipeline and marks incomplete search, screening, and benchmark conditions explicitly.",
+      "abstract": "This paper studies whether school-sector institutions and private provision increase socioeconomic sorting, whether integration produces cross-class connectedness, and whether connectedness affects attitudes, discrimination, trust, or longer-run distributional outcomes. Evidence for each link in the causal chain is treated separately rather than collapsed into one omnibus claim.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-08-28"
+    },
+    {
+      "title": "Detecting Persistent Overnight-Intraday Return Divergence in S&P 500 Stocks",
+      "repo": "DiogoRibeiro7/sp500-overnight-intraday-detector",
+      "status": "in_progress",
+      "notes": "Reproducible empirical paper on detecting S&P 500 stocks with persistent positive close-to-open returns and negative open-to-close returns. The project separates a published overnight benchmark replication from a point-in-time stock detector and keeps post-2021 outcomes locked until the development methodology is frozen.",
+      "abstract": "This paper asks whether individual S&P 500 stocks can be identified ex ante as likely to earn positive overnight returns while losing money intraday in a later period. It defines return-decomposition identities, detector families, historical membership handling, replication gates, and prospective evaluation rules.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-08-28"
+    },
+    {
+      "title": "Is the Welfare-State Comparison Well Posed?",
+      "repo": "DiogoRibeiro7/welfare-dynamics",
+      "status": "draft",
+      "notes": "Draft paper and model repository testing whether standard welfare-state comparisons survive being written as a coupled socio-ecological dynamical system. The repository is explicit that it is not yet a paper in the stronger publication sense, but it does contain a draft and reproducible figure pipeline.",
+      "abstract": "This project studies whether comparing a welfare state against a minimal-state alternative through long-run steady states is well posed. A five-state socio-ecological model shows several ways the comparison can fail and argues that regime-shift, tipping, or collapse claims do not follow from the coupling alone.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-08-28"
     }
   ]
 }
