@@ -493,12 +493,12 @@
       "title": "Adaptive Tail-Index Threshold Selection: Calibration, Discrimination, and Excess Risk",
       "repo": "DiogoRibeiro7/heavytails",
       "status": "draft",
-      "notes": "Separates whether an adaptive rule detects threshold instability from whether acting on that detection improves risk. A hard-prefix compatibility selector for an orthogonalized Hill estimator is calibrated under the exact Pareto null, its discrimination against second-order alternatives measured, and its squared error compared against the no-selection full-grid aggregate with paired differences. It discriminates and does not reduce risk. The manuscript source is not in version control yet -- heavytails gitignores /research/ -- so paper_path is empty; the supporting experiments at n = 10,000 and n = 50,000 are in the repository.",
+      "notes": "Separates whether an adaptive rule detects threshold instability from whether acting on that detection improves risk. A hard-prefix compatibility selector for an orthogonalized Hill estimator is calibrated under the exact Pareto null, its discrimination against second-order alternatives measured, and its squared error compared against the no-selection full-grid aggregate with paired differences. It discriminates and does not reduce risk. The manuscript-location question is now settled: heavytails gitignores /research/ deliberately and paper artifacts stay out of version control, so paper_path stays empty. The supporting experiments at n = 10,000 and n = 50,000 are in the repository. The sibling sparse-contamination paper in the same repository is further along and is formatted for Extremes.",
       "abstract": "Adaptive threshold selection is often motivated by the instability of tail-index estimators across the upper order statistics used for estimation. This paper separates two questions that are sometimes conflated: whether a rule detects threshold instability, and whether acting on that detection improves estimation risk. Using a hard-prefix compatibility selector for an orthogonalized Hill-type estimator as a worked case, we calibrate the selector under the exact Pareto null, inspect discrimination against second-order alternatives, and then compare it with the no-selection full-grid aggregate using paired squared-error differences. The selector is most discriminating in the slow Burr rho = -1/4 alternative, yet even there it does not reduce risk in the current experiments. For a fixed candidate vector under exact Pareto sampling, we show that restricting a minimum-variance unbiased full-grid aggregate cannot reduce squared-error risk. This provides the risk benchmark tested directly by the fixed-candidate experiment reported here. Under second-order alternatives, threshold selection is beneficial only when the squared-bias reduction exceeds the variance penalty. The results therefore motivate excess risk, rather than threshold recovery or stability detection alone, as the primary criterion for evaluating adaptive tail-index procedures.",
-      "paper_path": "",
+      "paper_path": "research/adaptive_tail/paper/",
       "priority": "high",
-      "last_updated": "2026-08-24",
-      "next_action": "Decide where the manuscript lives: its own repo, or un-ignore research/ in heavytails."
+      "last_updated": "2026-08-29",
+      "next_action": "Choose a target venue. The manuscript-location question is settled: research/ stays gitignored and the paper artifacts stay out of version control, as for the sibling sparse-contamination paper."
     },
     {
       "title": "From Accounting Boundaries to Policy Inference: A Methodological Audit of Portugal's 2026 Pension Reform Report",
@@ -709,6 +709,18 @@
       "paper_path": "paper/",
       "priority": "medium",
       "last_updated": "2026-08-28"
+    },
+    {
+      "title": "Sparse Contamination in Tail-Index Estimation: Detectability, Negligibility, and Risk",
+      "repo": "DiogoRibeiro7/heavytails",
+      "status": "draft",
+      "notes": "Companion to the adaptive-tail paper in the same repository, and the further-developed of the two. Content is frozen: exact-Pareto spacing theory, a detect-or-ignore theorem, a pre-specified 5000-replication Monte Carlo, three post-specified stress studies (level regime, unequal contamination factors, Burr second-order tails) and a localization result separating L1 Hill damage from L-infinity scan detectability. Formatted for Extremes: author-year citations, keywords, MSC codes, declarations and a data-availability statement. Two placeholders remain in the PDF, [CORRESPONDING E-MAIL] and [REPLICATION DOI]. As with the sibling paper the manuscript source is not in version control, since heavytails gitignores /research/ by choice, so paper_path is empty; the replication archive (50 MB) and a 4 KB Online Resource 1 bundle are built by scripts in that directory.",
+      "abstract": "Robust tail-index estimators are usually judged by whether they identify the contaminated extremes. This paper separates that diagnostic target from two decision targets: mean-squared-error (MSE) worthwhile intervention and first-order risk relevance. In an exact Pareto model, multiplying the largest r_n observations by Delta_n shifts exactly one normalized log-spacing, by S_n = r_n log Delta_n. Three thresholds in S_n govern three questions: trimmed-Hill oracle intervention repays its variance cost above gamma sqrt(r_n k_n / (k_n - r_n)); the conservative spacing scan detects the contaminated boundary above gamma log(h_n / alpha_n); and ordinary Hill risk is disturbed at first order only at gamma sqrt(k_n). For bounded contamination counts these are ordered, so the three are distinct. The main first-order result is a detect-or-ignore theorem: strong contamination is detected and removed, while weak contamination can be missed without changing the first-order limit distribution. A pre-specified Monte Carlo experiment of 5000 paired replications reproduces the two exact risk identities and exhibits the predicted detection transition. Post-specified stress tests bound the detection scale's scope: contamination spread across several spacings damages Hill identically while remaining nearly undetectable. For ordered unequal factors, Hill damage is governed by the sum of the local spacing shifts and scan detectability by their largest component, so localization rather than total magnitude is the relevant diagnostic quantity.",
+      "paper_path": "research/sparse_contamination/paper/",
+      "priority": "high",
+      "last_updated": "2026-08-29",
+      "next_action": "Fill the corresponding e-mail and replication DOI placeholders, deposit the replication archive on Zenodo, then submit to Extremes",
+      "venue": "Extremes"
     }
   ]
 }
