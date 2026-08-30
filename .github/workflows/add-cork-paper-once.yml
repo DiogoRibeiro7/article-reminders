@@ -1,0 +1,58 @@
+name: Add cork paper once
+
+on:
+  push:
+    paths:
+      - .github/workflows/add-cork-paper-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  register:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Install project
+        run: poetry install --no-interaction
+
+      - name: Add cork paper to portfolio
+        run: >-
+          poetry run article-reminders add
+          "Material Heterogeneity, Moisture Dynamics and Bulk-Density Stability in Stopper-Grade Cork Granulates"
+          --status analysis
+          --priority high
+          --repo DiogoRibeiro7/cork-granulate-stability
+          --paper-path paper/
+          --research-question "How do material heterogeneity, industrial processing, and environmental conditioning determine moisture equilibrium and bulk-density stability in stopper-grade cork granulates?"
+          --description "Mechanistic and prospective study of moisture equilibrium, conditioning kinetics, material heterogeneity, and apparent bulk-density stability in stopper-grade loose cork granulates, primarily 0.5-2.0 mm."
+          --abstract "This study examines how material heterogeneity, industrial processing, and environmental conditioning determine moisture equilibrium and apparent bulk-density stability in stopper-grade cork granulates, with primary emphasis on 0.5-2.0 mm material. It separates equilibrium moisture, transient moisture exchange, and bulk-density state; synthesises evidence on granulometry, commercial density grade, cork type, provenance, composition, drying and sorption; and uses the exact identity between dry solids, water mass, bulk volume and measured density to distinguish ordinary water-mass effects from implied packing changes. The current literature supports mechanistic moisture and heterogeneity models but does not identify a within-batch causal moisture-to-density response, so the project prospectively specifies the experiment and confirmatory analysis needed to estimate that missing relationship."
+          --notes "Evidence synthesis, mechanistic Arrhenius/GAB analysis, heterogeneity hierarchy, conditioning-state model, identifiability matrix, prospective experiment design, pilot/power plan, and pre-data confirmatory analysis plan are frozen before new experimental data. The primary unresolved empirical gap is repeated paired moisture and loose bulk-density measurement on the same stopper-grade material during controlled conditioning. No universal moisture threshold is prespecified."
+          --tags cork,materials,moisture,bulk-density,experimental-design
+          --next-action "Create the paper/ manuscript skeleton and convert the frozen protocol, evidence synthesis, conditioning model, and prospective design into the first manuscript draft"
+
+      - name: Export legacy tracker
+        run: poetry run article-reminders legacy-export
+
+      - name: Validate portfolio and legacy tracker
+        run: |
+          poetry run article-reminders validate
+          poetry run python scripts/validate_articles.py
+
+      - name: Remove one-shot workflow and commit
+        run: |
+          rm .github/workflows/add-cork-paper-once.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/portfolio.json data/articles.json data/events.jsonl .github/workflows/add-cork-paper-once.yml
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: track cork granulate stability paper"
+          git push
