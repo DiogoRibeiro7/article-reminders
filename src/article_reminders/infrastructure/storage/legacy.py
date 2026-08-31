@@ -204,6 +204,15 @@ def render_legacy_document(papers: Iterable[Paper]) -> str:
 
     Two-space indent and a trailing newline, matching the file the repository has
     always had, so an export produces a readable diff rather than a rewrite.
+
+    Entries are ordered by slug, and deliberately not in the order they arrive.
+    Callers hand over ``list_papers()``, which sorts by urgency -- and urgency moves
+    on its own as deadlines approach and papers go stale, so an export ordered that
+    way rewrites the whole file whenever the ranking shifts rather than when the
+    content does. The scheduled export in cd69ce7 moved 453 lines to add a single
+    paper. Ordering by identity keeps the diff proportional to the change; urgency
+    belongs in a view, not in a file.
     """
-    records = [legacy_from_paper(paper) for paper in papers]
+    ordered = sorted(papers, key=lambda paper: str(paper.slug))
+    records = [legacy_from_paper(paper) for paper in ordered]
     return json.dumps({"articles": records}, indent=2, ensure_ascii=False) + "\n"

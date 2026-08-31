@@ -22,6 +22,16 @@
       "next_action": "Choose a target venue. The manuscript-location question is settled: research/ stays gitignored and the paper artifacts stay out of version control, as for the sibling sparse-contamination paper."
     },
     {
+      "title": "Beyond Accuracy: Operational Reliability in Applied AI",
+      "repo": "DiogoRibeiro7/esmad",
+      "status": "draft",
+      "notes": "Commentary arguing that operational reliability should be a core criterion in applied AI evaluation rather than an afterthought to benchmark performance, because a test-set score shows whether a model separates cases, not whether it stays dependable once its outputs feed queues, alerts, thresholds and escalation rules. Organised around five dimensions that matter in deployment but are reported unevenly in manuscripts: robustness to imperfect data, temporal stability, calibrated uncertainty, interpretability in context, and actionability for downstream decisions. The argument is not that any of these is new, but that no expectation exists that they be reported together and in clear operational terms. Single-author piece under the ESMAD affiliation. An arXiv variant and a submission source package sit beside the main manuscript and a final version, so the real status may be further along than draft; confirm before acting on the first reminder. Note the location: this lives inside the esmad backup monorepo rather than its own repository, under articles/oajda_commentary/.",
+      "paper_path": "articles/oajda_commentary/",
+      "priority": "medium",
+      "last_updated": "2026-08-24",
+      "abstract": "Much of the applied AI literature still treats benchmark performance as the main test of quality, which shows whether a model can separate cases on a test set, not whether it remains dependable once its outputs feed queues, alerts, thresholds and escalation rules. Failures in these settings often appear first as unstable thresholds, queue backlogs, or a widening gap between confidence and action rather than as an abrupt collapse in accuracy, so standard offline evaluation can miss the point at which a model is still scoring well but no longer helping. This commentary argues that operational reliability should be treated as a core criterion, across robustness to imperfect data, temporal stability, calibrated uncertainty, interpretability in context, and actionability."
+    },
+    {
       "title": "Can Portugal Produce a Parish-Level Map of Rent per Square Metre? A Coverage and Concordance Audit of Official INE Rent Data",
       "repo": "DiogoRibeiro7/pt_rent_parish_repo",
       "status": "in_progress",
@@ -29,6 +39,93 @@
       "paper_path": "reports/",
       "priority": "high",
       "last_updated": "2026-07-07"
+    },
+    {
+      "title": "cfad: A Characteristic Function Anomaly Detector for Financial Time Series (JOSS)",
+      "repo": "DiogoRibeiro7/cfad",
+      "status": "draft",
+      "notes": "JOSS-format software paper for a Python package detecting structural breaks in financial return series via contour integrals of the empirical characteristic function. Rather than tracking only first and second moments, it monitors changes in the analytic structure of the data-generating law in the complex frequency domain: under diffusive Gaussian dynamics the characteristic function is entire, so a closed contour integral vanishes by Cauchy's theorem, while heavy-tailed and jump processes introduce branch cuts and poles that make the score rise. Combines Cython-accelerated rolling ECF estimation, contour-residue scoring, and sequential CUSUM alarming in one API, plus parametric CF models (Gaussian, NIG, CGMY, Levy-stable) for structural interpretation. Aimed at computational scientists rather than only quantitative finance.",
+      "paper_path": "paper/paper.md",
+      "priority": "medium",
+      "last_updated": "2026-04-12"
+    },
+    {
+      "title": "Colonial versus European Linkages in Portuguese Growth, 1960-1973",
+      "repo": "DiogoRibeiro7/portugal-external-growth-1960-1973",
+      "status": "planned",
+      "notes": "Data-engineering and analytical code only - the repository deliberately contains no paper, argument, or narrative conclusion until the pipeline, territorial definitions, classifications, and cross-checks are stable. Builds evidence on the shift of Portuguese export destinations across colonial, EFTA, EEC, and other markets, product-group dependence on colonial markets, and openness/trade/GDP evolution, cross-checking UN Comtrade, BPstat, World Bank, CEPII TRADHIST, INE, OECD, and EFTA aggregates. Three-layer raw/interim/processed reproducibility policy with SHA-256 sidecars and manifests; a committed deterministic World Bank bootstrap snapshot makes validation run offline. Explicitly refuses to treat gross exports as GDP or to estimate a net return from colonialism without fiscal, financial, military, and opportunity-cost data. Synthetic records exist only under tests/fixtures.",
+      "paper_path": "results/",
+      "priority": "medium",
+      "last_updated": "2026-08-07"
+    },
+    {
+      "title": "Comparing Agent-Based and ODE SEIR Models Under Non-Pharmaceutical Interventions",
+      "repo": "DiogoRibeiro7/seir-abm",
+      "status": "planned",
+      "notes": "Framework simulating epidemic dynamics with both an agent-based SEIR model - individuals as particles moving in a 2D domain with distance-based infection - and compartmental SEIR models at regional and metapopulation scale with a mobility matrix, used to compare non-pharmaceutical interventions such as lockdown, mobility reduction, and targeted protection of elderly subpopulations. Code, CLI, tests, and an ABM-vs-ODE notebook are in place; the repository describes paper/main.tex as a LaTeX skeleton for writing up results, so the manuscript itself is not yet written.",
+      "paper_path": "paper/",
+      "priority": "low",
+      "last_updated": "2025-11-28",
+      "abstract": "We present a simple yet flexible framework for simulating epidemic dynamics using both an agent-based SEIR model and compartmental SEIR models at regional and metapopulation scales. The agent-based model represents individuals as particles moving in a two-dimensional domain, with infection occurring through distance-based contacts."
+    },
+    {
+      "title": "Configurational Pathways to Firm Innovation Across Europe",
+      "repo": "DiogoRibeiro7/europe-fsqca-innovation",
+      "status": "planned",
+      "notes": "Survey-design-aware fuzzy-set QCA of firm innovation across the EU-27, testing whether capability configurations associated with high innovation are pan-European or context-dependent, and whether they travel between Northern/Western, Southern and Central/Eastern Europe. Deliberately gated: there are no findings in the repository and there cannot be until the licensed EU-27 microdata is acquired, the manifest is empty, every WBES construct mapping is unresolved, and the calibration anchors in configs/analysis.yml are placeholders. The gate is machine-checkable rather than prose, with configs/analysis.yml marked status: template so the runner refuses it and a readiness command enumerating what is missing. The manuscript is a scaffold defining argument, data requirements, methods, result slots, robustness checks and the reproducibility record, and states that it contains no empirical claims before the variable mapping, calibration anchors and final robustness specifications are frozen. Current release v0.3.0.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-08-24",
+      "abstract": "This manuscript scaffold defines the argument, data requirements, methods, result slots, robustness checks, and reproducibility record for a comparative fsQCA study of firm innovation across Europe. It intentionally contains no empirical claims before the World Bank Enterprise Survey variable mapping, calibration anchors, and final robustness specifications are frozen."
+    },
+    {
+      "title": "Could Portugal Build a Sovereign Fund from Social Security Surpluses? A Monte Carlo Stress-Testing Framework",
+      "repo": "DiogoRibeiro7/portugal_swf_sim",
+      "status": "in_progress",
+      "notes": "Transparent Monte Carlo stress-testing framework (explicitly not a forecast) for whether Portugal could build a sovereign or strategic fund via the indirect route of Social Security surpluses, FEFSS transfers, and financial-asset purchases. Anchored on editable 2025 fiscal and FEFSS baselines, it simulates public-debt trajectories, FEFSS pension-coverage ratios, sovereign-fund asset growth, and downside risk across six policy scenarios spanning conservative reinforcement, debt-reduction-first, higher-equity mandates, indirect and aggressive strategic funds, and a post-2035 demographic-stress case. A second engine isolates the specific risk of buying Portuguese equities with pension surpluses, using transparent proxy returns by default and optional downloaded market data. The model deliberately separates fiscal balance, financial allocation, and mandate, and is designed to be falsifiable and improvable with better demographic and return calibration.",
+      "paper_path": "notebooks/",
+      "priority": "medium",
+      "last_updated": "2026-07-03"
+    },
+    {
+      "title": "Credentialisation, Status Loss, and the Post-2012 Republican Realignment: County-Ecological Association and Individual-Level Workflow",
+      "repo": "DiogoRibeiro7/credential-divide-analysis",
+      "status": "draft",
+      "notes": "Tests whether U.S. counties entering the 2010s with a larger non-graduate population and slower growth in university attainment subsequently shifted more strongly toward the Republican presidential ticket. Empirical-first, on real public county election returns for 2000-2024, county educational-attainment histories, labour-market and poverty data, with synthetic data retained only as an optional software test; the primary exposure is defined before the 2016 election. The headline state-fixed-effects estimate is reported as an ecological association and never as a causal effect, and the paper leads with the limitation rather than burying it: the immediate 2008-2012 placebo is a small null, but the longer 2000-2012 pre-trend is positive and significant, so the post-2012 movement is layered on a pre-existing educational realignment rather than a clean one-time break. County-ecological evidence is kept strictly separate from the individual-level survey questions, which are described as an unrestricted public ANES workflow with expected outputs rather than presented as bundled results. The compiled PDF is committed.",
+      "paper_path": "report/",
+      "priority": "medium",
+      "last_updated": "2026-08-24",
+      "abstract": "This report asks whether the evolution of the educational and labour-market system enlarged the population politically available to the post-2012 Republican realignment through economic exclusion, status loss, institutional distrust and particularistic welfare preferences. In the primary state-fixed-effects specification, a one-standard-deviation increase in a pre-2012 educational left-behind index is associated with a larger increase in the Republican two-party vote share between 2012 and 2016. The estimate is an ecological association, not a causal effect: an immediate 2008-2012 placebo is a small null, but a longer 2000-2012 pre-trend is positive and significant, and we report that prominently as a material limitation."
+    },
+    {
+      "title": "Curvature-Adaptive k-NN on Nonlinear Manifolds",
+      "repo": "DiogoRibeiro7/curvknn",
+      "status": "draft",
+      "notes": "Research codebase for curvature-adaptive nearest-neighbour classification, including fixed-k, curvature-adaptive, and curvature-weighted k-NN with reproducible synthetic benchmarks, runtime tracking, and paper artifact generation.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-03-08",
+      "abstract": "This preprint studies a concrete question in nearest-neighbour learning: when does locally adaptive neighbourhood size produce measurable headroom over strong fixed-(k) and non-curvature baselines, and can that headroom be recovered by a deployable proxy? The repository answers this question through a fully reproducible benchmark stack with three layers: an original local-PCA residual proxy, an oracle local-optimal-(k) diagnostic that measures the attainable adaptive ceiling, and supervised proxy estimators that attempt to approximate that ceiling from training labels alone without query-time leakage."
+    },
+    {
+      "title": "Demand, Regionality, Entry Selectivity, and the Research Talent Pipeline in Portuguese Higher Education",
+      "repo": "DiogoRibeiro7/portugal-higher-ed-rd-pipeline",
+      "status": "in_progress",
+      "notes": "Reproducible empirical paper on Portuguese higher-education demand, student regionality, entry selectivity, and exposure of R&D units to education-pipeline constraints. The design separates descriptive, predictive, associational, and causal claims and is built around public Portuguese data sources.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-08-28",
+      "abstract": "This empirical study evaluates whether science and engineering placements are declining in Portugal, how much geography and demand pressure account for student choices and entry grades, and whether high-performing R&D units may face future capacity constraints from weakening education pipelines."
+    },
+    {
+      "title": "Detecting Persistent Overnight-Intraday Return Divergence in S&P 500 Stocks",
+      "repo": "DiogoRibeiro7/sp500-overnight-intraday-detector",
+      "status": "in_progress",
+      "notes": "Reproducible empirical paper on detecting S&P 500 stocks with persistent positive close-to-open returns and negative open-to-close returns. The project separates a published overnight benchmark replication from a point-in-time stock detector and keeps post-2021 outcomes locked until the development methodology is frozen.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-08-28",
+      "abstract": "This paper asks whether individual S&P 500 stocks can be identified ex ante as likely to earn positive overnight returns while losing money intraday in a later period. It defines return-decomposition identities, detector families, historical membership handling, replication gates, and prospective evaluation rules."
     },
     {
       "title": "Determinants of Municipal House Prices in Portugal: Structure, Space, and the Limits of a Short Panel",
@@ -51,6 +148,16 @@
       "abstract": "A widely used simulation method for likelihood inference in discretely observed diffusions approximates each transition density by simulating an Euler scheme to one step before the observed endpoint and averaging the final Gaussian density. We show that this endpoint estimator is a shrinking-bandwidth kernel estimator whose effective simulation size is S/M^K/2, not S, where K is the state dimension, M the number of Euler substeps and S the number of simulations."
     },
     {
+      "title": "Dynamics of the Real Estate Market: Determining Factors in the Value of Housing in Portugal",
+      "repo": "DiogoRibeiro7/article_tex_repo",
+      "status": "draft",
+      "notes": "Multiple linear regression on PORDATA data for all 308 Portuguese municipalities, identifying the factors driving municipal housing transaction values: location, population density, local purchasing power, family size, unemployment, environmental quality, ageing, education, marital status, owner-occupier ratio, and available housing stock. Finds most factors significant except population density and environmental quality. Framed as decision support for buyers and investors and for municipal-to-national housing policy. NOTE: this 2023 manuscript closely matches the scope of the published ICCSA 2026 paper and may be its pre-publication draft rather than a live article - confirm before working it.",
+      "paper_path": "",
+      "priority": "low",
+      "last_updated": "2023-11-10",
+      "abstract": "This study provides decision-making support in the Portuguese housing sector, serving both individual and political stakeholders. For individuals - buyers and investors alike - it offers insights for informed purchasing and investment decisions."
+    },
+    {
       "title": "Economic Crises as Redistribution Operators: A Dynamical Systems Model of Wage Decline, Wealth Concentration, and Policy Control",
       "repo": "DiogoRibeiro7/crisis_wealth_dynamics",
       "status": "draft",
@@ -61,6 +168,16 @@
       "abstract": "This article studies a distributional pattern that appears in several modern crises: real wages fall or stagnate while wealth at the top of the distribution rises. The paper formalises this pattern as a controlled dynamical system."
     },
     {
+      "title": "Economic Pressure, Institutional Decay, and Anti-System Voting in Europe",
+      "repo": "DiogoRibeiro7/economic-pressure-democracy-europe",
+      "status": "draft",
+      "notes": "Comparative panel of 30 European countries from 1990 to 2025, 1080 country-year rows with 265 election-year observations carrying a measured anti-system vote share, built to test whether economic pressure and institutional decay interact rather than merely coexist. The outcome is constructed from party-level election results joined to auditable populist, far-right, far-left and Eurosceptic classification flags, and the repository is explicit that this is a research choice rather than an ontological truth, keeping party-flag files, source metadata and a dashboard audit page visible so a narrower or broader definition can be substituted. Two indices are modelled: economic pressure from unemployment, youth unemployment, growth and related macro stress, and institutional decay from V-Dem style liberal-democracy, electoral-democracy, expression, rule-of-law and executive-constraint measures. This pass also fixed substantive pipeline defects rather than cosmetic ones: ISO country-code normalisation, canonical numeric party identifiers so joins do not break silently, respect for the configured study window, and keeping the most recent contest where a country holds multiple elections in one year. Outputs under reports/ are an article draft, panel regression results and a methodology appendix.",
+      "paper_path": "reports/",
+      "priority": "medium",
+      "last_updated": "2026-08-24",
+      "abstract": "Economic pressure alone does not explain anti-system voting. Across 265 observed European elections between 1990 and 2025 the mean anti-system vote share is 24.1 percent with a maximum of 74.1, a spread too wide to support a story in which economic discomfort automatically produces one political outcome everywhere. The substantive argument is that institutions mediate economic anger: insecurity heightens distrust, but whether distrust becomes anti-system voting depends on whether mainstream institutions still look responsive and whether party competition offers credible channels for grievance."
+    },
+    {
       "title": "Epistemic Tipping in Recursive Language-Model Ecosystems: Stability, Adversarial Forcing, Provenance, and Hysteresis",
       "repo": "DiogoRibeiro7/epistemic-tipping-llm",
       "status": "draft",
@@ -69,6 +186,15 @@
       "priority": "high",
       "last_updated": "2026-08-28",
       "abstract": "This paper studies epistemic error dynamics in recursive language-model ecosystems through a dynamical-system model with baseline persistence, recursive propagation, and adversarial forcing. It defines an epistemic reproduction number, derives stability and threshold results, and analyzes provenance weighting, pseudo-replication, non-normal amplification, hysteresis, switching instability, and attack-energy scaling."
+    },
+    {
+      "title": "ewma-ad: Robust EWMA Detectors for Streaming Anomaly Detection (JOSS)",
+      "repo": "DiogoRibeiro7/ewma-ad",
+      "status": "draft",
+      "notes": "JOSS-format software paper for a lightweight implementation of robust exponentially weighted moving average detectors for streaming anomaly detection over smart-home event and value streams, with adaptive sigma updates, an optional outlier-exclusion gate, per-user baselines, seasonality baselines (hour-of-day and hour-of-week), online conformal prediction intervals, and optional Numba JIT acceleration. Exposes a CLI and an AWS Lambda handler for serverless deployment; metrics include precision/recall@k, time-to-detect, hourly false-alarm rate, and interval coverage (PICP).",
+      "paper_path": "paper/paper.md",
+      "priority": "low",
+      "last_updated": "2025-09-04"
     },
     {
       "title": "Extending the Municipal Housing-Price Model to Multiple Years",
@@ -158,6 +284,25 @@
       "abstract": "Inequality is not exhausted by differences in labour income: it also depends on whether households can convert current income into appreciating assets before housing costs, debt service, and asset-price inflation absorb their residual surplus. This paper develops a deterministic two-type accumulation model-renters versus owners-in which a moving down-payment threshold and a debt-service-to-income cap govern who crosses into ownership, and proves how rent burden, house-price growth, and policy instruments shape that transition."
     },
     {
+      "title": "Geodesic Non-Local Means for Geometry-Aware Image Denoising",
+      "repo": "DiogoRibeiro7/geodesic-nlm",
+      "status": "draft",
+      "notes": "Research codebase for geometry-aware image denoising with reliable baselines, graph-based geodesic denoising methods, reproducible experiments, and publication-ready paper artifacts (figures, tables, and LaTeX alignment).",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-03-08"
+    },
+    {
+      "title": "Growth Regimes in Portuguese Real GDP",
+      "repo": "DiogoRibeiro7/pt_gdp_regime_repo",
+      "status": "draft",
+      "notes": "Break-detection study of Portuguese real GDP growth built on World Bank WDI series, pairing a long-run regression on log real GDP with a piecewise regression on annual growth. The design note is explicit that classifying raw GDP levels would mostly separate early from late years rather than identify economic regimes, so the object of study is the growth series. Breaks are found by exact dynamic programming with information-criterion selection and recursive within-segment refinement, the break count validated by a Bai-Perron sequential supF test with parametric-bootstrap p-values and the dates by a residual bootstrap. Only the first break is both formally supported and sharply dated; the later turning points are real in sample but reported as ranges. A dynamic tax-regime screen using Jorda local projections on a signed catalog of Portuguese tax reforms finds no robust conditional response. Every figure, table and quoted number regenerates from a clean clone, with the prose reading machine-generated macros so it cannot drift from the estimates. The Zenodo DOI badge is still a placeholder pending the first deposit.",
+      "paper_path": "reports/",
+      "priority": "medium",
+      "last_updated": "2026-08-24",
+      "abstract": "I characterise the time-series structure of Portuguese real GDP growth using a reproducible break-detection pipeline. Because log real GDP carries a unit root while its growth rate does not, the object of study is the growth series, which is partitioned into piecewise-constant regimes by exact dynamic programming with information-criterion selection and a recursive within-segment refinement. Only the first break is both formally supported by a bootstrap sup-F test and sharply dated; the later turning points should be reported as ranges. A dynamic tax-regime screen finds no robust conditional response, consistent with these being descriptive associations rather than identified effects."
+    },
+    {
       "title": "Has Supply-Side Liberalisation Been Tested? Event Studies, Synthetic Control, and Panel Evidence on Its Promised Gains",
       "repo": "DiogoRibeiro7/il_supply_side_policy_tests",
       "status": "in_progress",
@@ -175,6 +320,16 @@
       "priority": "high",
       "last_updated": "2026-06-26",
       "abstract": "Thunderstorm heat bursts are localized events characterized by abrupt surface warming, sharp drying, and gusty winds. They are rare, short-lived, and difficult to study from station records alone."
+    },
+    {
+      "title": "High-Order Navier-Stokes Solvers for Transitional and Turbulent Flows",
+      "repo": "DiogoRibeiro7/navier-stokes-solvers",
+      "status": "draft",
+      "notes": "Unified computational framework for the 2D incompressible Navier-Stokes equations combining a Newton-Raphson finite-difference scheme with multigrid pressure correction and a Fourier pseudospectral solver with hyperviscosity, stochastic large-scale forcing, and adaptive time stepping. Covers formulation, discretisation, and algorithmic enhancements, with validation showing spectral accuracy on canonical benchmarks and scaling studies confirming strong parallel efficiency. Both solvers share a configuration system, automated testing, and publication-ready assets (manuscript, figures, slides).",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-06-22",
+      "abstract": "We present a unified computational framework for the two-dimensional incompressible Navier-Stokes equations that combines a Newton-Raphson finite difference scheme with a Fourier spectral solver. The accompanying open-source implementation emphasises reproducibility, modularity, and high performance across transitional and turbulent regimes."
     },
     {
       "title": "How Fast Would Carbon Capture Have to Grow? A Transparent, Reproducible Feasibility-Gap Assessment of Mid-Century CCS Deployment",
@@ -197,6 +352,36 @@
       "abstract": "A document produced by one language model may be rewritten by others before anyone sees it, so the observable text is the endpoint of a latent sequence of stochastic transformations. Modelling each rewriting mechanism as a Markov kernel and a lineage as an ordered composition of kernels, we ask when the lineage is identifiable from the law of the final text."
     },
     {
+      "title": "Is Nuclear Cleaner Than Wind or Solar? A Decision-Analytic Rebuttal",
+      "repo": "DiogoRibeiro7/nuclear_vs_wind_solar_cleanliness",
+      "status": "in_progress",
+      "notes": "Tests the claim that nuclear plants produce cleaner energy than wind or solar and that the data confirm it, explicitly not as an anti-nuclear analysis: nuclear is a genuinely low-carbon source, and what is tested is the stronger claim. Three lines of attack: the claim equates clean with lifecycle carbon, where IPCC AR5 Annex III medians put onshore wind at 11 gCO2e/kWh against nuclear at 12 and the uncertainty simulation gives onshore wind the lower intensity in about 71 percent of draws; it collapses a twelve-dimensional, conflicting and uncertain comparison into a single ranking, where nuclear wins none of the uniformly random value-weightings; and it erases context, since the preferred technology moves with the grid, the cost of capital and the deployment year. Supporting artifacts include bootstrap intervals, a cleanliness frontier, rank stability, marginal abatement, financing LCOE and WACC sensitivity, and a grid-intensity trajectory, all reproduced by scripts/run_all.py with a fixed seed. The finished argument currently lives in REPORT.md at the repository root; the English and Portuguese article drafts under reports/generated/ are still thin, which is why this is tracked as in_progress rather than draft.",
+      "paper_path": "reports/generated/",
+      "priority": "low",
+      "last_updated": "2026-08-24",
+      "abstract": "Nuclear is a genuinely low-carbon electricity source, but the claim that it is cleaner than wind or solar is not one the data support. Using IPCC lifecycle estimates, onshore wind has the lower median carbon intensity and wins roughly 71 percent of uncertainty draws; across a twelve-dimensional set of cleanliness criteria, nuclear wins none of the uniformly random value-weightings; and the preferred technology moves with the grid, the cost of capital and the deployment year. The defensible output is a decision map, not a winner."
+    },
+    {
+      "title": "Is Portugal's Wage Gap Larger Than Its Productivity Gap? Productivity, Wage Pass-Through and the Portuguese Pay Residual",
+      "repo": "DiogoRibeiro7/portugal-wage-productivity-gap",
+      "status": "in_progress",
+      "notes": "Reproducible empirical manuscript measuring whether Portugal's compensation shortfall exceeds its productivity shortfall. The project separates level comparisons, wage-productivity pass-through, and conditional Portuguese pay residuals, with Eurostat source contracts and interpretation rules locked before primary analysis.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-08-28",
+      "abstract": "This paper asks whether Portugal's wage shortfall relative to European peers can be accounted for by its productivity shortfall. It distinguishes a descriptive cross-country level gap from dynamic pass-through and estimates a comparator-country wage-productivity relationship excluding Portugal to measure the Portuguese conditional compensation residual."
+    },
+    {
+      "title": "Is the Welfare-State Comparison Well Posed?",
+      "repo": "DiogoRibeiro7/welfare-dynamics",
+      "status": "draft",
+      "notes": "Draft paper and model repository testing whether standard welfare-state comparisons survive being written as a coupled socio-ecological dynamical system. The repository is explicit that it is not yet a paper in the stronger publication sense, but it does contain a draft and reproducible figure pipeline.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-08-28",
+      "abstract": "This project studies whether comparing a welfare state against a minimal-state alternative through long-run steady states is well posed. A five-state socio-ecological model shows several ways the comparison can fail and argues that regime-shift, tipping, or collapse claims do not follow from the coupling alone."
+    },
+    {
       "title": "Koopman Early-Warning Indicators for Destructive Attractors in Political-Economy Dynamical Systems",
       "repo": "DiogoRibeiro7/wealth_attractor_dynamics",
       "status": "draft",
@@ -214,6 +399,25 @@
       "priority": "high",
       "last_updated": "2026-08-19",
       "abstract": "Does a dynamical-EVT workflow turn clustered extreme scores into useful maintenance alarms on public industrial monitoring data? On this evidence, no."
+    },
+    {
+      "title": "Long School Days in Elementary Education: A Literature Review and Benchmark-Based Time-Budget Analysis for Children Aged 6-10",
+      "repo": "DiogoRibeiro7/latex_works",
+      "status": "draft",
+      "notes": "Literature review and time-budget analysis of long school days, fatigue, attention and learning conditions in elementary education, with a reproducible public-data pipeline supporting the manuscript. Evidence is drawn from OECD Education at a Glance instruction-time data, TIMSS 2019 and 2023 Grade 4 tiredness and achievement summaries, and Portuguese DGE and DGEEC data on AEC and 1 ciclo extended-day context, with an optional PIRLS 2021 extension held for a later phase. The pipeline does not fabricate data: where a public source needs manual export, registration or harmonisation it writes a TODO instruction file and fails clearly at processing time until the raw file is added. English and Portuguese versions of the manuscript both compile, alongside a reproducibility report. Note the location: this lives inside the latex_works backup monorepo rather than its own repository, under schedules/school-day-analysis-lab/, which is why paper_path is deep. The sub-project carries its own CITATION.cff, Makefile and roadmap and would be a clean candidate to split into a dedicated repository.",
+      "paper_path": "schedules/school-day-analysis-lab/paper/",
+      "priority": "medium",
+      "last_updated": "2026-08-24",
+      "abstract": "A literature review and benchmark-based time-budget analysis of the long school day for children aged 6 to 10, combining the research evidence on fatigue, attention and learning conditions with a reproducible public-data comparison of instruction time and extended-day context. The analysis draws on OECD instruction-time series, TIMSS Grade 4 tiredness and achievement summaries, and Portuguese DGE and DGEEC data, and reports what the public sources can and cannot establish about the Portuguese schedule."
+    },
+    {
+      "title": "loss-functions-gof: A Unified Python Framework for Loss Functions and Goodness-of-Fit Measures (JOSS)",
+      "repo": "DiogoRibeiro7/loss-functions-gof",
+      "status": "draft",
+      "notes": "JOSS-format software paper for a Python library providing a unified, extensible framework for loss functions, metrics, and statistical tests, aiming to bridge classical statistical methods and modern deep-learning approaches for model evaluation, optimisation, and analysis. Ships supplementary materials alongside the paper draft.",
+      "paper_path": "paper/paper.md",
+      "priority": "low",
+      "last_updated": "2026-04-21"
     },
     {
       "title": "Material Heterogeneity, Moisture Dynamics and Bulk-Density Stability in Stopper-Grade Cork Granulates",
@@ -246,6 +450,16 @@
       "last_updated": "2026-08-19"
     },
     {
+      "title": "Passive Proximity Inference in Smart Homes Using RSSI Signals and Temporal Context: A Privacy-Conscious, Data-Centric Framework",
+      "repo": "DiogoRibeiro7/rssi_research",
+      "status": "draft",
+      "notes": "Infers user proximity in smart homes from passive RSSI signals and annotated behavioural intervals, for continuous unobtrusive monitoring that improves the temporal resolution of presence detection without requiring explicit sensor activations. Combines a preprocessing pipeline turning semi-structured logs into interpretable time series, integration of annotated sleep and timeout intervals, and transparent rule-based proximity labelling. Positioned against prior work needing dense sensor deployments or complex signal processing: lightweight, explainable, and deployable under ethical and privacy constraints. Two manuscript versions tracked (article.tex, article_version_2.tex).",
+      "paper_path": "",
+      "priority": "low",
+      "last_updated": "2025-04-24",
+      "abstract": "This study proposes a data-centric methodology for inferring user proximity to IoT sensors in smart home environments, even in the absence of direct sensor activations. Leveraging time-series RSSI (Received Signal Strength Indicator) data, sleep state intervals, and contextual device metadata, we construct a pipeline that integrates heterogeneous data sources to enable behavioral inference."
+    },
+    {
       "title": "Persistent Continuous Price-Level Ordering in Portuguese Municipal Housing Across Two Price Constructs",
       "repo": "DiogoRibeiro7/portugal-housing-trajectories",
       "status": "draft",
@@ -254,6 +468,16 @@
       "priority": "high",
       "last_updated": "2026-08-19",
       "abstract": "We ask which summary of transaction data describes a municipal housing market, and what is lost when a continuous price signal is forced into discrete groups. Using two differently defined Portuguese price constructs that we never splice-an average transaction value from PORDATA (2009-2019) and a median price per square metre from Statistics Portugal (2019-2025)-we find that variation on both is overwhelmingly variation in persistent level."
+    },
+    {
+      "title": "Portugal's Incomplete Convergence: Growth, Productivity, Wages, Debt and Wealth since 1910",
+      "repo": "DiogoRibeiro7/portugal-growth-distribution-lab",
+      "status": "in_progress",
+      "notes": "Quarto report project over a typed analytical package, separating three questions that are usually compressed into one: absolute growth in real GDP per capita, relative convergence to a stable European benchmark, and which workers and households captured the gains. Twelve chapters are scaffolded, from measurement and the 1910-1974 period through the democratic transition, European convergence, productivity, wages and distribution, mortgages, wealth, education and emigration, regions, counterfactuals and conclusions, with headline numbers generated from the processed long-run table rather than typed in. The roadmap fixes three non-negotiable constraints: no fabricated empirical data, with access-controlled microdata imported manually or the code saying so explicitly; no causal claims from event timing, with attribution deferred to the counterfactuals chapter; and averages never reported as distributions. Chapters are still thin relative to the surrounding infrastructure, so this is an analytical skeleton moving toward an evidence-backed publication rather than a finished manuscript.",
+      "paper_path": "reports/",
+      "priority": "medium",
+      "last_updated": "2026-08-24",
+      "abstract": "Portugal is substantially richer than it was in 1910, but absolute growth is not the same as convergence. This report distinguishes the growth of average output from the distribution of income, debt and assets across Portuguese households, asking when Portugal grew and when it converged, why convergence weakened after the late twentieth century, and whether productivity and asset gains reached the median salary-dependent household. It will not use a changing European Union composition as a historical benchmark without explicit labelling, and will not infer household welfare from average GDP per capita alone."
     },
     {
       "title": "Portugal's Public-Debt Interest Burden: Measurement and Debt Dynamics under ESA 2010",
@@ -265,6 +489,16 @@
       "last_updated": "2026-08-19"
     },
     {
+      "title": "Portugal-Spain Diesel Price Gap and Country-Specific Brent Pass-Through: Weekly Prices, Taxes, and Diagnostics Since 2015",
+      "repo": "DiogoRibeiro7/portugal-diesel-brent-weekly-analysis",
+      "status": "draft",
+      "notes": "Weekly analysis of mainland Portuguese automotive diesel prices against a Spanish comparison and Brent crude from 2015 onward, in two layers: a like-for-like Portugal-Spain price comparison in EUR per litre, and country-specific distributed-lag pass-through estimated separately for retail prices and prices excluding duties and taxes. Brent is converted from USD per barrel using the ECB reference rate, and the primary exposure for each Monday diesel price is the preceding Monday-to-Friday Brent mean. The proximate accounting explanation for the gap is taxes: the mean implied-tax gap dominates the mean pre-tax gap. Lag length is BIC-selected and intervals are HAC, with a data-quality appendix, a model appendix, and separate robustness and limitations sections; the estimates are stated as observational and specification-dependent, not causal. A separate analysis roadmap records the forward-looking work.",
+      "paper_path": "report/",
+      "priority": "medium",
+      "last_updated": "2026-08-24",
+      "abstract": "This report studies the weekly Portugal-Spain automotive diesel price gap and country-specific diesel pass-through from Brent crude oil since 2015. Spain is cheaper than Portugal in most matched primary-complete weeks, and the proximate accounting explanation is taxes: the mean implied-tax gap is substantially larger than the mean pre-tax gap. The report then estimates Portuguese and Spanish diesel-Brent pass-through separately for retail and pre-tax prices, with BIC-selected lag length and HAC intervals. These estimates are observational and specification-dependent; they do not establish causal effects."
+    },
+    {
       "title": "Productive Redundancy Is Not Strategic Redundancy: Survival, Sovereignty, and Coercion after Full Automation",
       "repo": "DiogoRibeiro7/human-wealth-decoupling",
       "status": "draft",
@@ -273,6 +507,36 @@
       "priority": "high",
       "last_updated": "2026-08-28",
       "abstract": "A fully automated economy may be able to produce and trade without human labor, but that does not by itself imply that humans lose access to survival resources. This paper models biological survival as a production, transport, storage, capacity, and deadline feasibility problem and derives necessity results for sovereignty collapse and coercive substitution."
+    },
+    {
+      "title": "Restricted Mean Survival Time Versus Classical Tests: A Comprehensive Simulation-Based Comparison of Statistical Power",
+      "repo": "DiogoRibeiro7/rmstpower",
+      "status": "draft",
+      "notes": "Simulation framework comparing RMST against the logrank test, Peto-Peto Wilcoxon, and Cox PH across 24 survival scenarios including proportional hazards, early benefit, delayed benefit, crossing hazards, and diminishing effects, with 5,000 replications per scenario and 200-1,000 participants per arm. Evaluates type I error control, power, and sensitivity to the truncation horizon. Shipped as an installable R package with vignettes and a YAML-driven CLI for batch runs. INCOMPLETE: the manuscript's Results section is still a placeholder ('to be completed') covering type I error rates, power comparisons, truncation-time guidance, and sample-size recommendations.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2025-09-24",
+      "abstract": "Background: Traditional survival analysis methods, including the Cox proportional hazards model and logrank test, assume proportional hazards (PH) and may lose power or interpretability when this assumption is violated. The restricted mean survival time (RMST) offers a robust alternative that quantifies treatment benefit as the difference in mean survival time up to a prespecified horizon."
+    },
+    {
+      "title": "School Stratification and Social Externalities: Institutional Design, Socioeconomic Sorting, Cross-Class Connectedness, and Social Attitudes",
+      "repo": "DiogoRibeiro7/school-stratification-externalities",
+      "status": "draft",
+      "notes": "Working manuscript and companion empirical track on whether institutional separation of children by socioeconomic status produces measurable social externalities. The repository separates systematic-review evidence from the PISA companion pipeline and marks incomplete search, screening, and benchmark conditions explicitly.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-08-28",
+      "abstract": "This paper studies whether school-sector institutions and private provision increase socioeconomic sorting, whether integration produces cross-class connectedness, and whether connectedness affects attitudes, discrimination, trust, or longer-run distributional outcomes. Evidence for each link in the causal chain is treated separately rather than collapsed into one omnibus claim."
+    },
+    {
+      "title": "Sequential Watermark Dynamics under Repeated LLM Rewriting",
+      "repo": "DiogoRibeiro7/llm-rewrite-lineage-identifiability",
+      "status": "planned",
+      "notes": "Controlled special case on multi-stage watermark attenuation, interference, collision, and order effects. Deliberately gated on finding a sharper contribution than 'multiple watermarks can coexist or decay'.",
+      "paper_path": "papers/04_watermark_dynamics/",
+      "priority": "low",
+      "last_updated": "2026-08-14",
+      "abstract": "This manuscript is reserved for the explicit-watermark special case of sequential text rewriting. Its intended focus is the evolution, coexistence, interference, and possible order information of multiple statistical watermark signals under repeated rewriting."
     },
     {
       "title": "Short-Term Interest Rate Innovations Across Monetary Regimes",
@@ -296,6 +560,15 @@
       "next_action": "Fill the corresponding e-mail and replication DOI placeholders, deposit the replication archive on Zenodo, then submit to Extremes"
     },
     {
+      "title": "ssspx: Production-Grade Single-Source Shortest Paths in Python (JOSS)",
+      "repo": "DiogoRibeiro7/bmssp",
+      "status": "draft",
+      "notes": "JOSS-format software paper for ssspx, a typed and tested deterministic single-source shortest-paths solver for directed graphs with non-negative weights, following a BMSSP-style divide-and-conquer design (levels, FindPivots, bounded base case) with a switchable frontier, optional constant-outdegree transform, CLI, exports, and a benchmark harness. The software paper is original; the algorithm it implements is from Duan, Mao, Mao, Shu & Yin, 'Breaking the Sorting Barrier for Directed Single-Source Shortest Paths' (arXiv:2504.17033).",
+      "paper_path": "paper/paper.md",
+      "priority": "medium",
+      "last_updated": "2026-08-03"
+    },
+    {
       "title": "Statistical Dynamics of Sequentially Rewritten LLM Text",
       "repo": "DiogoRibeiro7/llm-rewrite-lineage-identifiability",
       "status": "draft",
@@ -314,6 +587,24 @@
       "priority": "high",
       "last_updated": "2026-03-07",
       "abstract": "Classical online change-point detectors are widely deployed but poorly understood under the data corruption that real-world monitoring systems routinely face: outlier contamination, sensor dropout, and strong seasonality. We present a complete engineering pipeline-seasonal residualization, bounded-influence M-estimation, per-variant threshold calibration, and detection clustering-that makes three sequential detectors (Page-Hinkley, two-sided CUSUM, BOCPD) practical under these conditions, along with a simulation framework for systematic evaluation."
+    },
+    {
+      "title": "Synthetic Household Electricity Load Generation: A Model Ladder Approach",
+      "repo": "DiogoRibeiro7/goiener_synthetic_pipeline",
+      "status": "draft",
+      "notes": "Synthload generates realistic synthetic household electricity consumption from Spanish GoiEner smart-meter data using a ladder of hierarchical and dynamic linear models capturing time-of-week effects, temperature sensitivity via heating and cooling degree hours, AR(1) or time-varying-coefficient temporal autocorrelation, and household heterogeneity. The package and pipeline are complete, and the manuscript is written: paper/main.tex is a thin wrapper that inputs six substantive section files (introduction, data and methods, dynamic model, factor model, results and validation, conclusion) totalling roughly 54 KB, with a compiled paper/main.pdf.",
+      "paper_path": "paper/",
+      "priority": "low",
+      "last_updated": "2026-08-19"
+    },
+    {
+      "title": "The European Economy as a Set of Choices: A Reusable Diagnostic Framework for Convergence, Wages, Investment, and Fiscal Policy",
+      "repo": "DiogoRibeiro7/eu_economy_decision_lab",
+      "status": "in_progress",
+      "notes": "Policy-facing analytical framework for diagnosing the European economy through economic choices rather than headline GDP. Implements a synthetic EU macro-panel generator, growth and beta/sigma convergence analysis, wage-productivity gap and labour/profit-share diagnostics, public and private investment indicators, fiscal-stance classification, inflation and real-wage pressure measures, inequality indicators, country scorecards, and an automated Portugal-vs-EU policy brief, exposed through a Typer CLI, notebooks, and tests. The framework currently runs offline on synthetic panels with an explicit extension path to Eurostat, AMECO, and ECB data, so it is best understood as a reusable diagnostic toolkit awaiting connection to official sources.",
+      "paper_path": "notebooks/",
+      "priority": "medium",
+      "last_updated": "2026-07-03"
     },
     {
       "title": "The Founder Fallacy: Occupational Choice, Congestion, and the Limits of Universal Entrepreneurship",
@@ -357,6 +648,16 @@
       "abstract": "A general-government balance is reported as a single number, although it is the sum of institutionally distinct subsectors with different revenue bases, expenditure mandates and borrowing constraints. We assemble a harmonised annual panel of net lending and net borrowing for Portuguese General Government and its three subsectors over 1977-2025 and decompose the aggregate exactly into its subsector components and their annual changes. The composition is asymmetric and stable: the Central Government balance is negative in every year, General Government and Central Government track each other closely within each statistical regime, and in every aggregate surplus year the combined non-Social-Security balance is negative, so the Social Security balance exceeding it in absolute size follows from the identity."
     },
     {
+      "title": "TMLE Missingness Simulation Study",
+      "repo": "DiogoRibeiro7/tmle-missingness-sim",
+      "status": "draft",
+      "notes": "Simulation study comparing MI + Rubin versus missingness-aware orthogonal estimators with bootstrap or BLB inference for causal effects under missing data.",
+      "paper_path": "paper/",
+      "priority": "medium",
+      "last_updated": "2026-03-07",
+      "abstract": "Orthogonal estimators such as augmented inverse probability weighting (AIPW) and targeted maximum likelihood estimation (TMLE) are widely used to estimate causal effects in observational studies, often with flexible machine learning nuisance fits and cross-fitting. In practice, missing outcomes are commonly handled by complete-case analysis or multiple imputation (MI) followed by Rubin's rules."
+    },
+    {
       "title": "Topological Cartography of Collapse and Resilience: Morse Graphs and Basin Structure in Destructive-Attractor Models",
       "repo": "DiogoRibeiro7/wealth_attractor_dynamics",
       "status": "draft",
@@ -364,6 +665,16 @@
       "paper_path": "papers/6_topological_cartography_destructive_attractors/",
       "priority": "high",
       "last_updated": "2026-08-19"
+    },
+    {
+      "title": "Tracing the Rewrite Chain: Recovering Ordered LLM Provenance from Final Text",
+      "repo": "DiogoRibeiro7/llm-rewrite-lineage-identifiability",
+      "status": "planned",
+      "notes": "Empirical lineage reconstruction: labelled rewrite-chain datasets, ordered-path estimators, benchmark protocol, and provenance-depth curves testing the predictions of Papers 1 and 2. Gated on data and compute access.",
+      "paper_path": "papers/03_ordered_provenance_reconstruction/",
+      "priority": "medium",
+      "last_updated": "2026-08-14",
+      "abstract": "This manuscript is reserved for empirical reconstruction of ordered LLM rewrite histories from final text. It will evaluate whether model-specific statistical traces permit recovery of latent rewrite paths under controlled and realistic transformations."
     },
     {
       "title": "Uncertainty and Calibration Under Shift, Noise, and Autocorrelation: A Simulation Benchmark",
@@ -416,250 +727,6 @@
       "abstract": "This paper studies the conditions under which wealth concentration turns into financial fragility. We develop an agent-based simulation in which heterogeneous agents differ in wealth, income, debt, and marginal propensity to consume."
     },
     {
-      "title": "Who Funded the Public Pension Promise? Historical Financing of Portugal's CGA, Social Security, and Transferred Banking-Sector Pension Liabilities",
-      "repo": "DiogoRibeiro7/portugal-public-pension-financing",
-      "status": "draft",
-      "notes": "Evidence-controlled reconstruction of how Portuguese public pensions were financed over the long run, covering CGA, the general Social Security system, and the banking-sector pension liabilities transferred to the State in 2009-2012 under Decree-Laws 54/2009, 1-A/2011, 127/2011 and 88/2012. The design keeps legal obligations, cash accounting, consolidated public-finance flows, actuarial liabilities and counterfactual regimes separate before any balance is read as a deficit, subsidy or transfer, and one benchmark to replicate is the European Commission finding that the 2011 bank-pension-fund transfer improved the ESA-95 headline deficit by about 3.5% of GDP while ESA-2010 treats it as a financial transaction. The manuscript compiles and Zenodo snapshot 0.2.1 is released, but the claim set is deliberately bounded: employee remittance loss, quantified employer underpayment, a post-2006 reallocation magnitude, a combined pension-balance sign, a bank subsidy and a full lifecycle gain or loss are all held outside the article boundary until the data are in. Gated on extraction: 29 of 37 registered sources acquired, 396 open coverage rows, and 8 sources still needing citable raw evidence, tracked in docs/data_completion_roadmap.md.",
-      "paper_path": "paper/",
-      "priority": "high",
-      "last_updated": "2026-08-24",
-      "abstract": "This draft asks how Portugal's public pension obligations and financing flows should be described when responsibilities move across institutional boundaries. The current evidence supports a limited set of legal and accounting facts about CGA financing and the 2011-2012 banking-sector pension transfers, but not yet definitive claims about employee remittance loss, quantified employer underpayment, a combined pension-balance sign, or a subsidy for banks. The paper is therefore written as an evidence-controlled reconstruction: it reports registered values, separates accounting standards from economic incidence, and leaves unresolved claims outside the article boundary."
-    },
-    {
-      "title": "Beyond Accuracy: Operational Reliability in Applied AI",
-      "repo": "DiogoRibeiro7/esmad",
-      "status": "draft",
-      "notes": "Commentary arguing that operational reliability should be a core criterion in applied AI evaluation rather than an afterthought to benchmark performance, because a test-set score shows whether a model separates cases, not whether it stays dependable once its outputs feed queues, alerts, thresholds and escalation rules. Organised around five dimensions that matter in deployment but are reported unevenly in manuscripts: robustness to imperfect data, temporal stability, calibrated uncertainty, interpretability in context, and actionability for downstream decisions. The argument is not that any of these is new, but that no expectation exists that they be reported together and in clear operational terms. Single-author piece under the ESMAD affiliation. An arXiv variant and a submission source package sit beside the main manuscript and a final version, so the real status may be further along than draft; confirm before acting on the first reminder. Note the location: this lives inside the esmad backup monorepo rather than its own repository, under articles/oajda_commentary/.",
-      "paper_path": "articles/oajda_commentary/",
-      "priority": "medium",
-      "last_updated": "2026-08-24",
-      "abstract": "Much of the applied AI literature still treats benchmark performance as the main test of quality, which shows whether a model can separate cases on a test set, not whether it remains dependable once its outputs feed queues, alerts, thresholds and escalation rules. Failures in these settings often appear first as unstable thresholds, queue backlogs, or a widening gap between confidence and action rather than as an abrupt collapse in accuracy, so standard offline evaluation can miss the point at which a model is still scoring well but no longer helping. This commentary argues that operational reliability should be treated as a core criterion, across robustness to imperfect data, temporal stability, calibrated uncertainty, interpretability in context, and actionability."
-    },
-    {
-      "title": "cfad: A Characteristic Function Anomaly Detector for Financial Time Series (JOSS)",
-      "repo": "DiogoRibeiro7/cfad",
-      "status": "draft",
-      "notes": "JOSS-format software paper for a Python package detecting structural breaks in financial return series via contour integrals of the empirical characteristic function. Rather than tracking only first and second moments, it monitors changes in the analytic structure of the data-generating law in the complex frequency domain: under diffusive Gaussian dynamics the characteristic function is entire, so a closed contour integral vanishes by Cauchy's theorem, while heavy-tailed and jump processes introduce branch cuts and poles that make the score rise. Combines Cython-accelerated rolling ECF estimation, contour-residue scoring, and sequential CUSUM alarming in one API, plus parametric CF models (Gaussian, NIG, CGMY, Levy-stable) for structural interpretation. Aimed at computational scientists rather than only quantitative finance.",
-      "paper_path": "paper/paper.md",
-      "priority": "medium",
-      "last_updated": "2026-04-12"
-    },
-    {
-      "title": "Colonial versus European Linkages in Portuguese Growth, 1960-1973",
-      "repo": "DiogoRibeiro7/portugal-external-growth-1960-1973",
-      "status": "planned",
-      "notes": "Data-engineering and analytical code only - the repository deliberately contains no paper, argument, or narrative conclusion until the pipeline, territorial definitions, classifications, and cross-checks are stable. Builds evidence on the shift of Portuguese export destinations across colonial, EFTA, EEC, and other markets, product-group dependence on colonial markets, and openness/trade/GDP evolution, cross-checking UN Comtrade, BPstat, World Bank, CEPII TRADHIST, INE, OECD, and EFTA aggregates. Three-layer raw/interim/processed reproducibility policy with SHA-256 sidecars and manifests; a committed deterministic World Bank bootstrap snapshot makes validation run offline. Explicitly refuses to treat gross exports as GDP or to estimate a net return from colonialism without fiscal, financial, military, and opportunity-cost data. Synthetic records exist only under tests/fixtures.",
-      "paper_path": "results/",
-      "priority": "medium",
-      "last_updated": "2026-08-07"
-    },
-    {
-      "title": "Configurational Pathways to Firm Innovation Across Europe",
-      "repo": "DiogoRibeiro7/europe-fsqca-innovation",
-      "status": "planned",
-      "notes": "Survey-design-aware fuzzy-set QCA of firm innovation across the EU-27, testing whether capability configurations associated with high innovation are pan-European or context-dependent, and whether they travel between Northern/Western, Southern and Central/Eastern Europe. Deliberately gated: there are no findings in the repository and there cannot be until the licensed EU-27 microdata is acquired, the manifest is empty, every WBES construct mapping is unresolved, and the calibration anchors in configs/analysis.yml are placeholders. The gate is machine-checkable rather than prose, with configs/analysis.yml marked status: template so the runner refuses it and a readiness command enumerating what is missing. The manuscript is a scaffold defining argument, data requirements, methods, result slots, robustness checks and the reproducibility record, and states that it contains no empirical claims before the variable mapping, calibration anchors and final robustness specifications are frozen. Current release v0.3.0.",
-      "paper_path": "paper/",
-      "priority": "medium",
-      "last_updated": "2026-08-24",
-      "abstract": "This manuscript scaffold defines the argument, data requirements, methods, result slots, robustness checks, and reproducibility record for a comparative fsQCA study of firm innovation across Europe. It intentionally contains no empirical claims before the World Bank Enterprise Survey variable mapping, calibration anchors, and final robustness specifications are frozen."
-    },
-    {
-      "title": "Could Portugal Build a Sovereign Fund from Social Security Surpluses? A Monte Carlo Stress-Testing Framework",
-      "repo": "DiogoRibeiro7/portugal_swf_sim",
-      "status": "in_progress",
-      "notes": "Transparent Monte Carlo stress-testing framework (explicitly not a forecast) for whether Portugal could build a sovereign or strategic fund via the indirect route of Social Security surpluses, FEFSS transfers, and financial-asset purchases. Anchored on editable 2025 fiscal and FEFSS baselines, it simulates public-debt trajectories, FEFSS pension-coverage ratios, sovereign-fund asset growth, and downside risk across six policy scenarios spanning conservative reinforcement, debt-reduction-first, higher-equity mandates, indirect and aggressive strategic funds, and a post-2035 demographic-stress case. A second engine isolates the specific risk of buying Portuguese equities with pension surpluses, using transparent proxy returns by default and optional downloaded market data. The model deliberately separates fiscal balance, financial allocation, and mandate, and is designed to be falsifiable and improvable with better demographic and return calibration.",
-      "paper_path": "notebooks/",
-      "priority": "medium",
-      "last_updated": "2026-07-03"
-    },
-    {
-      "title": "Credentialisation, Status Loss, and the Post-2012 Republican Realignment: County-Ecological Association and Individual-Level Workflow",
-      "repo": "DiogoRibeiro7/credential-divide-analysis",
-      "status": "draft",
-      "notes": "Tests whether U.S. counties entering the 2010s with a larger non-graduate population and slower growth in university attainment subsequently shifted more strongly toward the Republican presidential ticket. Empirical-first, on real public county election returns for 2000-2024, county educational-attainment histories, labour-market and poverty data, with synthetic data retained only as an optional software test; the primary exposure is defined before the 2016 election. The headline state-fixed-effects estimate is reported as an ecological association and never as a causal effect, and the paper leads with the limitation rather than burying it: the immediate 2008-2012 placebo is a small null, but the longer 2000-2012 pre-trend is positive and significant, so the post-2012 movement is layered on a pre-existing educational realignment rather than a clean one-time break. County-ecological evidence is kept strictly separate from the individual-level survey questions, which are described as an unrestricted public ANES workflow with expected outputs rather than presented as bundled results. The compiled PDF is committed.",
-      "paper_path": "report/",
-      "priority": "medium",
-      "last_updated": "2026-08-24",
-      "abstract": "This report asks whether the evolution of the educational and labour-market system enlarged the population politically available to the post-2012 Republican realignment through economic exclusion, status loss, institutional distrust and particularistic welfare preferences. In the primary state-fixed-effects specification, a one-standard-deviation increase in a pre-2012 educational left-behind index is associated with a larger increase in the Republican two-party vote share between 2012 and 2016. The estimate is an ecological association, not a causal effect: an immediate 2008-2012 placebo is a small null, but a longer 2000-2012 pre-trend is positive and significant, and we report that prominently as a material limitation."
-    },
-    {
-      "title": "Curvature-Adaptive k-NN on Nonlinear Manifolds",
-      "repo": "DiogoRibeiro7/curvknn",
-      "status": "draft",
-      "notes": "Research codebase for curvature-adaptive nearest-neighbour classification, including fixed-k, curvature-adaptive, and curvature-weighted k-NN with reproducible synthetic benchmarks, runtime tracking, and paper artifact generation.",
-      "paper_path": "paper/",
-      "priority": "medium",
-      "last_updated": "2026-03-08",
-      "abstract": "This preprint studies a concrete question in nearest-neighbour learning: when does locally adaptive neighbourhood size produce measurable headroom over strong fixed-(k) and non-curvature baselines, and can that headroom be recovered by a deployable proxy? The repository answers this question through a fully reproducible benchmark stack with three layers: an original local-PCA residual proxy, an oracle local-optimal-(k) diagnostic that measures the attainable adaptive ceiling, and supervised proxy estimators that attempt to approximate that ceiling from training labels alone without query-time leakage."
-    },
-    {
-      "title": "Demand, Regionality, Entry Selectivity, and the Research Talent Pipeline in Portuguese Higher Education",
-      "repo": "DiogoRibeiro7/portugal-higher-ed-rd-pipeline",
-      "status": "in_progress",
-      "notes": "Reproducible empirical paper on Portuguese higher-education demand, student regionality, entry selectivity, and exposure of R&D units to education-pipeline constraints. The design separates descriptive, predictive, associational, and causal claims and is built around public Portuguese data sources.",
-      "paper_path": "paper/",
-      "priority": "medium",
-      "last_updated": "2026-08-28",
-      "abstract": "This empirical study evaluates whether science and engineering placements are declining in Portugal, how much geography and demand pressure account for student choices and entry grades, and whether high-performing R&D units may face future capacity constraints from weakening education pipelines."
-    },
-    {
-      "title": "Detecting Persistent Overnight-Intraday Return Divergence in S&P 500 Stocks",
-      "repo": "DiogoRibeiro7/sp500-overnight-intraday-detector",
-      "status": "in_progress",
-      "notes": "Reproducible empirical paper on detecting S&P 500 stocks with persistent positive close-to-open returns and negative open-to-close returns. The project separates a published overnight benchmark replication from a point-in-time stock detector and keeps post-2021 outcomes locked until the development methodology is frozen.",
-      "paper_path": "paper/",
-      "priority": "medium",
-      "last_updated": "2026-08-28",
-      "abstract": "This paper asks whether individual S&P 500 stocks can be identified ex ante as likely to earn positive overnight returns while losing money intraday in a later period. It defines return-decomposition identities, detector families, historical membership handling, replication gates, and prospective evaluation rules."
-    },
-    {
-      "title": "Economic Pressure, Institutional Decay, and Anti-System Voting in Europe",
-      "repo": "DiogoRibeiro7/economic-pressure-democracy-europe",
-      "status": "draft",
-      "notes": "Comparative panel of 30 European countries from 1990 to 2025, 1080 country-year rows with 265 election-year observations carrying a measured anti-system vote share, built to test whether economic pressure and institutional decay interact rather than merely coexist. The outcome is constructed from party-level election results joined to auditable populist, far-right, far-left and Eurosceptic classification flags, and the repository is explicit that this is a research choice rather than an ontological truth, keeping party-flag files, source metadata and a dashboard audit page visible so a narrower or broader definition can be substituted. Two indices are modelled: economic pressure from unemployment, youth unemployment, growth and related macro stress, and institutional decay from V-Dem style liberal-democracy, electoral-democracy, expression, rule-of-law and executive-constraint measures. This pass also fixed substantive pipeline defects rather than cosmetic ones: ISO country-code normalisation, canonical numeric party identifiers so joins do not break silently, respect for the configured study window, and keeping the most recent contest where a country holds multiple elections in one year. Outputs under reports/ are an article draft, panel regression results and a methodology appendix.",
-      "paper_path": "reports/",
-      "priority": "medium",
-      "last_updated": "2026-08-24",
-      "abstract": "Economic pressure alone does not explain anti-system voting. Across 265 observed European elections between 1990 and 2025 the mean anti-system vote share is 24.1 percent with a maximum of 74.1, a spread too wide to support a story in which economic discomfort automatically produces one political outcome everywhere. The substantive argument is that institutions mediate economic anger: insecurity heightens distrust, but whether distrust becomes anti-system voting depends on whether mainstream institutions still look responsive and whether party competition offers credible channels for grievance."
-    },
-    {
-      "title": "Geodesic Non-Local Means for Geometry-Aware Image Denoising",
-      "repo": "DiogoRibeiro7/geodesic-nlm",
-      "status": "draft",
-      "notes": "Research codebase for geometry-aware image denoising with reliable baselines, graph-based geodesic denoising methods, reproducible experiments, and publication-ready paper artifacts (figures, tables, and LaTeX alignment).",
-      "paper_path": "paper/",
-      "priority": "medium",
-      "last_updated": "2026-03-08"
-    },
-    {
-      "title": "Growth Regimes in Portuguese Real GDP",
-      "repo": "DiogoRibeiro7/pt_gdp_regime_repo",
-      "status": "draft",
-      "notes": "Break-detection study of Portuguese real GDP growth built on World Bank WDI series, pairing a long-run regression on log real GDP with a piecewise regression on annual growth. The design note is explicit that classifying raw GDP levels would mostly separate early from late years rather than identify economic regimes, so the object of study is the growth series. Breaks are found by exact dynamic programming with information-criterion selection and recursive within-segment refinement, the break count validated by a Bai-Perron sequential supF test with parametric-bootstrap p-values and the dates by a residual bootstrap. Only the first break is both formally supported and sharply dated; the later turning points are real in sample but reported as ranges. A dynamic tax-regime screen using Jorda local projections on a signed catalog of Portuguese tax reforms finds no robust conditional response. Every figure, table and quoted number regenerates from a clean clone, with the prose reading machine-generated macros so it cannot drift from the estimates. The Zenodo DOI badge is still a placeholder pending the first deposit.",
-      "paper_path": "reports/",
-      "priority": "medium",
-      "last_updated": "2026-08-24",
-      "abstract": "I characterise the time-series structure of Portuguese real GDP growth using a reproducible break-detection pipeline. Because log real GDP carries a unit root while its growth rate does not, the object of study is the growth series, which is partitioned into piecewise-constant regimes by exact dynamic programming with information-criterion selection and a recursive within-segment refinement. Only the first break is both formally supported by a bootstrap sup-F test and sharply dated; the later turning points should be reported as ranges. A dynamic tax-regime screen finds no robust conditional response, consistent with these being descriptive associations rather than identified effects."
-    },
-    {
-      "title": "High-Order Navier-Stokes Solvers for Transitional and Turbulent Flows",
-      "repo": "DiogoRibeiro7/navier-stokes-solvers",
-      "status": "draft",
-      "notes": "Unified computational framework for the 2D incompressible Navier-Stokes equations combining a Newton-Raphson finite-difference scheme with multigrid pressure correction and a Fourier pseudospectral solver with hyperviscosity, stochastic large-scale forcing, and adaptive time stepping. Covers formulation, discretisation, and algorithmic enhancements, with validation showing spectral accuracy on canonical benchmarks and scaling studies confirming strong parallel efficiency. Both solvers share a configuration system, automated testing, and publication-ready assets (manuscript, figures, slides).",
-      "paper_path": "paper/",
-      "priority": "medium",
-      "last_updated": "2026-06-22",
-      "abstract": "We present a unified computational framework for the two-dimensional incompressible Navier-Stokes equations that combines a Newton-Raphson finite difference scheme with a Fourier spectral solver. The accompanying open-source implementation emphasises reproducibility, modularity, and high performance across transitional and turbulent regimes."
-    },
-    {
-      "title": "Is Portugal's Wage Gap Larger Than Its Productivity Gap? Productivity, Wage Pass-Through and the Portuguese Pay Residual",
-      "repo": "DiogoRibeiro7/portugal-wage-productivity-gap",
-      "status": "in_progress",
-      "notes": "Reproducible empirical manuscript measuring whether Portugal's compensation shortfall exceeds its productivity shortfall. The project separates level comparisons, wage-productivity pass-through, and conditional Portuguese pay residuals, with Eurostat source contracts and interpretation rules locked before primary analysis.",
-      "paper_path": "paper/",
-      "priority": "medium",
-      "last_updated": "2026-08-28",
-      "abstract": "This paper asks whether Portugal's wage shortfall relative to European peers can be accounted for by its productivity shortfall. It distinguishes a descriptive cross-country level gap from dynamic pass-through and estimates a comparator-country wage-productivity relationship excluding Portugal to measure the Portuguese conditional compensation residual."
-    },
-    {
-      "title": "Is the Welfare-State Comparison Well Posed?",
-      "repo": "DiogoRibeiro7/welfare-dynamics",
-      "status": "draft",
-      "notes": "Draft paper and model repository testing whether standard welfare-state comparisons survive being written as a coupled socio-ecological dynamical system. The repository is explicit that it is not yet a paper in the stronger publication sense, but it does contain a draft and reproducible figure pipeline.",
-      "paper_path": "paper/",
-      "priority": "medium",
-      "last_updated": "2026-08-28",
-      "abstract": "This project studies whether comparing a welfare state against a minimal-state alternative through long-run steady states is well posed. A five-state socio-ecological model shows several ways the comparison can fail and argues that regime-shift, tipping, or collapse claims do not follow from the coupling alone."
-    },
-    {
-      "title": "Long School Days in Elementary Education: A Literature Review and Benchmark-Based Time-Budget Analysis for Children Aged 6-10",
-      "repo": "DiogoRibeiro7/latex_works",
-      "status": "draft",
-      "notes": "Literature review and time-budget analysis of long school days, fatigue, attention and learning conditions in elementary education, with a reproducible public-data pipeline supporting the manuscript. Evidence is drawn from OECD Education at a Glance instruction-time data, TIMSS 2019 and 2023 Grade 4 tiredness and achievement summaries, and Portuguese DGE and DGEEC data on AEC and 1 ciclo extended-day context, with an optional PIRLS 2021 extension held for a later phase. The pipeline does not fabricate data: where a public source needs manual export, registration or harmonisation it writes a TODO instruction file and fails clearly at processing time until the raw file is added. English and Portuguese versions of the manuscript both compile, alongside a reproducibility report. Note the location: this lives inside the latex_works backup monorepo rather than its own repository, under schedules/school-day-analysis-lab/, which is why paper_path is deep. The sub-project carries its own CITATION.cff, Makefile and roadmap and would be a clean candidate to split into a dedicated repository.",
-      "paper_path": "schedules/school-day-analysis-lab/paper/",
-      "priority": "medium",
-      "last_updated": "2026-08-24",
-      "abstract": "A literature review and benchmark-based time-budget analysis of the long school day for children aged 6 to 10, combining the research evidence on fatigue, attention and learning conditions with a reproducible public-data comparison of instruction time and extended-day context. The analysis draws on OECD instruction-time series, TIMSS Grade 4 tiredness and achievement summaries, and Portuguese DGE and DGEEC data, and reports what the public sources can and cannot establish about the Portuguese schedule."
-    },
-    {
-      "title": "Portugal's Incomplete Convergence: Growth, Productivity, Wages, Debt and Wealth since 1910",
-      "repo": "DiogoRibeiro7/portugal-growth-distribution-lab",
-      "status": "in_progress",
-      "notes": "Quarto report project over a typed analytical package, separating three questions that are usually compressed into one: absolute growth in real GDP per capita, relative convergence to a stable European benchmark, and which workers and households captured the gains. Twelve chapters are scaffolded, from measurement and the 1910-1974 period through the democratic transition, European convergence, productivity, wages and distribution, mortgages, wealth, education and emigration, regions, counterfactuals and conclusions, with headline numbers generated from the processed long-run table rather than typed in. The roadmap fixes three non-negotiable constraints: no fabricated empirical data, with access-controlled microdata imported manually or the code saying so explicitly; no causal claims from event timing, with attribution deferred to the counterfactuals chapter; and averages never reported as distributions. Chapters are still thin relative to the surrounding infrastructure, so this is an analytical skeleton moving toward an evidence-backed publication rather than a finished manuscript.",
-      "paper_path": "reports/",
-      "priority": "medium",
-      "last_updated": "2026-08-24",
-      "abstract": "Portugal is substantially richer than it was in 1910, but absolute growth is not the same as convergence. This report distinguishes the growth of average output from the distribution of income, debt and assets across Portuguese households, asking when Portugal grew and when it converged, why convergence weakened after the late twentieth century, and whether productivity and asset gains reached the median salary-dependent household. It will not use a changing European Union composition as a historical benchmark without explicit labelling, and will not infer household welfare from average GDP per capita alone."
-    },
-    {
-      "title": "Portugal-Spain Diesel Price Gap and Country-Specific Brent Pass-Through: Weekly Prices, Taxes, and Diagnostics Since 2015",
-      "repo": "DiogoRibeiro7/portugal-diesel-brent-weekly-analysis",
-      "status": "draft",
-      "notes": "Weekly analysis of mainland Portuguese automotive diesel prices against a Spanish comparison and Brent crude from 2015 onward, in two layers: a like-for-like Portugal-Spain price comparison in EUR per litre, and country-specific distributed-lag pass-through estimated separately for retail prices and prices excluding duties and taxes. Brent is converted from USD per barrel using the ECB reference rate, and the primary exposure for each Monday diesel price is the preceding Monday-to-Friday Brent mean. The proximate accounting explanation for the gap is taxes: the mean implied-tax gap dominates the mean pre-tax gap. Lag length is BIC-selected and intervals are HAC, with a data-quality appendix, a model appendix, and separate robustness and limitations sections; the estimates are stated as observational and specification-dependent, not causal. A separate analysis roadmap records the forward-looking work.",
-      "paper_path": "report/",
-      "priority": "medium",
-      "last_updated": "2026-08-24",
-      "abstract": "This report studies the weekly Portugal-Spain automotive diesel price gap and country-specific diesel pass-through from Brent crude oil since 2015. Spain is cheaper than Portugal in most matched primary-complete weeks, and the proximate accounting explanation is taxes: the mean implied-tax gap is substantially larger than the mean pre-tax gap. The report then estimates Portuguese and Spanish diesel-Brent pass-through separately for retail and pre-tax prices, with BIC-selected lag length and HAC intervals. These estimates are observational and specification-dependent; they do not establish causal effects."
-    },
-    {
-      "title": "Restricted Mean Survival Time Versus Classical Tests: A Comprehensive Simulation-Based Comparison of Statistical Power",
-      "repo": "DiogoRibeiro7/rmstpower",
-      "status": "draft",
-      "notes": "Simulation framework comparing RMST against the logrank test, Peto-Peto Wilcoxon, and Cox PH across 24 survival scenarios including proportional hazards, early benefit, delayed benefit, crossing hazards, and diminishing effects, with 5,000 replications per scenario and 200-1,000 participants per arm. Evaluates type I error control, power, and sensitivity to the truncation horizon. Shipped as an installable R package with vignettes and a YAML-driven CLI for batch runs. INCOMPLETE: the manuscript's Results section is still a placeholder ('to be completed') covering type I error rates, power comparisons, truncation-time guidance, and sample-size recommendations.",
-      "paper_path": "paper/",
-      "priority": "medium",
-      "last_updated": "2025-09-24",
-      "abstract": "Background: Traditional survival analysis methods, including the Cox proportional hazards model and logrank test, assume proportional hazards (PH) and may lose power or interpretability when this assumption is violated. The restricted mean survival time (RMST) offers a robust alternative that quantifies treatment benefit as the difference in mean survival time up to a prespecified horizon."
-    },
-    {
-      "title": "School Stratification and Social Externalities: Institutional Design, Socioeconomic Sorting, Cross-Class Connectedness, and Social Attitudes",
-      "repo": "DiogoRibeiro7/school-stratification-externalities",
-      "status": "draft",
-      "notes": "Working manuscript and companion empirical track on whether institutional separation of children by socioeconomic status produces measurable social externalities. The repository separates systematic-review evidence from the PISA companion pipeline and marks incomplete search, screening, and benchmark conditions explicitly.",
-      "paper_path": "paper/",
-      "priority": "medium",
-      "last_updated": "2026-08-28",
-      "abstract": "This paper studies whether school-sector institutions and private provision increase socioeconomic sorting, whether integration produces cross-class connectedness, and whether connectedness affects attitudes, discrimination, trust, or longer-run distributional outcomes. Evidence for each link in the causal chain is treated separately rather than collapsed into one omnibus claim."
-    },
-    {
-      "title": "ssspx: Production-Grade Single-Source Shortest Paths in Python (JOSS)",
-      "repo": "DiogoRibeiro7/bmssp",
-      "status": "draft",
-      "notes": "JOSS-format software paper for ssspx, a typed and tested deterministic single-source shortest-paths solver for directed graphs with non-negative weights, following a BMSSP-style divide-and-conquer design (levels, FindPivots, bounded base case) with a switchable frontier, optional constant-outdegree transform, CLI, exports, and a benchmark harness. The software paper is original; the algorithm it implements is from Duan, Mao, Mao, Shu & Yin, 'Breaking the Sorting Barrier for Directed Single-Source Shortest Paths' (arXiv:2504.17033).",
-      "paper_path": "paper/paper.md",
-      "priority": "medium",
-      "last_updated": "2026-08-03"
-    },
-    {
-      "title": "The European Economy as a Set of Choices: A Reusable Diagnostic Framework for Convergence, Wages, Investment, and Fiscal Policy",
-      "repo": "DiogoRibeiro7/eu_economy_decision_lab",
-      "status": "in_progress",
-      "notes": "Policy-facing analytical framework for diagnosing the European economy through economic choices rather than headline GDP. Implements a synthetic EU macro-panel generator, growth and beta/sigma convergence analysis, wage-productivity gap and labour/profit-share diagnostics, public and private investment indicators, fiscal-stance classification, inflation and real-wage pressure measures, inequality indicators, country scorecards, and an automated Portugal-vs-EU policy brief, exposed through a Typer CLI, notebooks, and tests. The framework currently runs offline on synthetic panels with an explicit extension path to Eurostat, AMECO, and ECB data, so it is best understood as a reusable diagnostic toolkit awaiting connection to official sources.",
-      "paper_path": "notebooks/",
-      "priority": "medium",
-      "last_updated": "2026-07-03"
-    },
-    {
-      "title": "TMLE Missingness Simulation Study",
-      "repo": "DiogoRibeiro7/tmle-missingness-sim",
-      "status": "draft",
-      "notes": "Simulation study comparing MI + Rubin versus missingness-aware orthogonal estimators with bootstrap or BLB inference for causal effects under missing data.",
-      "paper_path": "paper/",
-      "priority": "medium",
-      "last_updated": "2026-03-07",
-      "abstract": "Orthogonal estimators such as augmented inverse probability weighting (AIPW) and targeted maximum likelihood estimation (TMLE) are widely used to estimate causal effects in observational studies, often with flexible machine learning nuisance fits and cross-fitting. In practice, missing outcomes are commonly handled by complete-case analysis or multiple imputation (MI) followed by Rubin's rules."
-    },
-    {
-      "title": "Tracing the Rewrite Chain: Recovering Ordered LLM Provenance from Final Text",
-      "repo": "DiogoRibeiro7/llm-rewrite-lineage-identifiability",
-      "status": "planned",
-      "notes": "Empirical lineage reconstruction: labelled rewrite-chain datasets, ordered-path estimators, benchmark protocol, and provenance-depth curves testing the predictions of Papers 1 and 2. Gated on data and compute access.",
-      "paper_path": "papers/03_ordered_provenance_reconstruction/",
-      "priority": "medium",
-      "last_updated": "2026-08-14",
-      "abstract": "This manuscript is reserved for empirical reconstruction of ordered LLM rewrite histories from final text. It will evaluate whether model-specific statistical traces permit recovery of latent rewrite paths under controlled and realistic transformations."
-    },
-    {
       "title": "When Political Systems Negate Their Own Values",
       "repo": "DiogoRibeiro7/political-systems-research",
       "status": "planned",
@@ -669,81 +736,14 @@
       "last_updated": "2026-08-19"
     },
     {
-      "title": "Comparing Agent-Based and ODE SEIR Models Under Non-Pharmaceutical Interventions",
-      "repo": "DiogoRibeiro7/seir-abm",
-      "status": "planned",
-      "notes": "Framework simulating epidemic dynamics with both an agent-based SEIR model - individuals as particles moving in a 2D domain with distance-based infection - and compartmental SEIR models at regional and metapopulation scale with a mobility matrix, used to compare non-pharmaceutical interventions such as lockdown, mobility reduction, and targeted protection of elderly subpopulations. Code, CLI, tests, and an ABM-vs-ODE notebook are in place; the repository describes paper/main.tex as a LaTeX skeleton for writing up results, so the manuscript itself is not yet written.",
+      "title": "Who Funded the Public Pension Promise? Historical Financing of Portugal's CGA, Social Security, and Transferred Banking-Sector Pension Liabilities",
+      "repo": "DiogoRibeiro7/portugal-public-pension-financing",
+      "status": "draft",
+      "notes": "Evidence-controlled reconstruction of how Portuguese public pensions were financed over the long run, covering CGA, the general Social Security system, and the banking-sector pension liabilities transferred to the State in 2009-2012 under Decree-Laws 54/2009, 1-A/2011, 127/2011 and 88/2012. The design keeps legal obligations, cash accounting, consolidated public-finance flows, actuarial liabilities and counterfactual regimes separate before any balance is read as a deficit, subsidy or transfer, and one benchmark to replicate is the European Commission finding that the 2011 bank-pension-fund transfer improved the ESA-95 headline deficit by about 3.5% of GDP while ESA-2010 treats it as a financial transaction. The manuscript compiles and Zenodo snapshot 0.2.1 is released, but the claim set is deliberately bounded: employee remittance loss, quantified employer underpayment, a post-2006 reallocation magnitude, a combined pension-balance sign, a bank subsidy and a full lifecycle gain or loss are all held outside the article boundary until the data are in. Gated on extraction: 29 of 37 registered sources acquired, 396 open coverage rows, and 8 sources still needing citable raw evidence, tracked in docs/data_completion_roadmap.md.",
       "paper_path": "paper/",
-      "priority": "low",
-      "last_updated": "2025-11-28",
-      "abstract": "We present a simple yet flexible framework for simulating epidemic dynamics using both an agent-based SEIR model and compartmental SEIR models at regional and metapopulation scales. The agent-based model represents individuals as particles moving in a two-dimensional domain, with infection occurring through distance-based contacts."
-    },
-    {
-      "title": "Dynamics of the Real Estate Market: Determining Factors in the Value of Housing in Portugal",
-      "repo": "DiogoRibeiro7/article_tex_repo",
-      "status": "draft",
-      "notes": "Multiple linear regression on PORDATA data for all 308 Portuguese municipalities, identifying the factors driving municipal housing transaction values: location, population density, local purchasing power, family size, unemployment, environmental quality, ageing, education, marital status, owner-occupier ratio, and available housing stock. Finds most factors significant except population density and environmental quality. Framed as decision support for buyers and investors and for municipal-to-national housing policy. NOTE: this 2023 manuscript closely matches the scope of the published ICCSA 2026 paper and may be its pre-publication draft rather than a live article - confirm before working it.",
-      "paper_path": "",
-      "priority": "low",
-      "last_updated": "2023-11-10",
-      "abstract": "This study provides decision-making support in the Portuguese housing sector, serving both individual and political stakeholders. For individuals - buyers and investors alike - it offers insights for informed purchasing and investment decisions."
-    },
-    {
-      "title": "ewma-ad: Robust EWMA Detectors for Streaming Anomaly Detection (JOSS)",
-      "repo": "DiogoRibeiro7/ewma-ad",
-      "status": "draft",
-      "notes": "JOSS-format software paper for a lightweight implementation of robust exponentially weighted moving average detectors for streaming anomaly detection over smart-home event and value streams, with adaptive sigma updates, an optional outlier-exclusion gate, per-user baselines, seasonality baselines (hour-of-day and hour-of-week), online conformal prediction intervals, and optional Numba JIT acceleration. Exposes a CLI and an AWS Lambda handler for serverless deployment; metrics include precision/recall@k, time-to-detect, hourly false-alarm rate, and interval coverage (PICP).",
-      "paper_path": "paper/paper.md",
-      "priority": "low",
-      "last_updated": "2025-09-04"
-    },
-    {
-      "title": "Is Nuclear Cleaner Than Wind or Solar? A Decision-Analytic Rebuttal",
-      "repo": "DiogoRibeiro7/nuclear_vs_wind_solar_cleanliness",
-      "status": "in_progress",
-      "notes": "Tests the claim that nuclear plants produce cleaner energy than wind or solar and that the data confirm it, explicitly not as an anti-nuclear analysis: nuclear is a genuinely low-carbon source, and what is tested is the stronger claim. Three lines of attack: the claim equates clean with lifecycle carbon, where IPCC AR5 Annex III medians put onshore wind at 11 gCO2e/kWh against nuclear at 12 and the uncertainty simulation gives onshore wind the lower intensity in about 71 percent of draws; it collapses a twelve-dimensional, conflicting and uncertain comparison into a single ranking, where nuclear wins none of the uniformly random value-weightings; and it erases context, since the preferred technology moves with the grid, the cost of capital and the deployment year. Supporting artifacts include bootstrap intervals, a cleanliness frontier, rank stability, marginal abatement, financing LCOE and WACC sensitivity, and a grid-intensity trajectory, all reproduced by scripts/run_all.py with a fixed seed. The finished argument currently lives in REPORT.md at the repository root; the English and Portuguese article drafts under reports/generated/ are still thin, which is why this is tracked as in_progress rather than draft.",
-      "paper_path": "reports/generated/",
-      "priority": "low",
+      "priority": "high",
       "last_updated": "2026-08-24",
-      "abstract": "Nuclear is a genuinely low-carbon electricity source, but the claim that it is cleaner than wind or solar is not one the data support. Using IPCC lifecycle estimates, onshore wind has the lower median carbon intensity and wins roughly 71 percent of uncertainty draws; across a twelve-dimensional set of cleanliness criteria, nuclear wins none of the uniformly random value-weightings; and the preferred technology moves with the grid, the cost of capital and the deployment year. The defensible output is a decision map, not a winner."
-    },
-    {
-      "title": "loss-functions-gof: A Unified Python Framework for Loss Functions and Goodness-of-Fit Measures (JOSS)",
-      "repo": "DiogoRibeiro7/loss-functions-gof",
-      "status": "draft",
-      "notes": "JOSS-format software paper for a Python library providing a unified, extensible framework for loss functions, metrics, and statistical tests, aiming to bridge classical statistical methods and modern deep-learning approaches for model evaluation, optimisation, and analysis. Ships supplementary materials alongside the paper draft.",
-      "paper_path": "paper/paper.md",
-      "priority": "low",
-      "last_updated": "2026-04-21"
-    },
-    {
-      "title": "Passive Proximity Inference in Smart Homes Using RSSI Signals and Temporal Context: A Privacy-Conscious, Data-Centric Framework",
-      "repo": "DiogoRibeiro7/rssi_research",
-      "status": "draft",
-      "notes": "Infers user proximity in smart homes from passive RSSI signals and annotated behavioural intervals, for continuous unobtrusive monitoring that improves the temporal resolution of presence detection without requiring explicit sensor activations. Combines a preprocessing pipeline turning semi-structured logs into interpretable time series, integration of annotated sleep and timeout intervals, and transparent rule-based proximity labelling. Positioned against prior work needing dense sensor deployments or complex signal processing: lightweight, explainable, and deployable under ethical and privacy constraints. Two manuscript versions tracked (article.tex, article_version_2.tex).",
-      "paper_path": "",
-      "priority": "low",
-      "last_updated": "2025-04-24",
-      "abstract": "This study proposes a data-centric methodology for inferring user proximity to IoT sensors in smart home environments, even in the absence of direct sensor activations. Leveraging time-series RSSI (Received Signal Strength Indicator) data, sleep state intervals, and contextual device metadata, we construct a pipeline that integrates heterogeneous data sources to enable behavioral inference."
-    },
-    {
-      "title": "Sequential Watermark Dynamics under Repeated LLM Rewriting",
-      "repo": "DiogoRibeiro7/llm-rewrite-lineage-identifiability",
-      "status": "planned",
-      "notes": "Controlled special case on multi-stage watermark attenuation, interference, collision, and order effects. Deliberately gated on finding a sharper contribution than 'multiple watermarks can coexist or decay'.",
-      "paper_path": "papers/04_watermark_dynamics/",
-      "priority": "low",
-      "last_updated": "2026-08-14",
-      "abstract": "This manuscript is reserved for the explicit-watermark special case of sequential text rewriting. Its intended focus is the evolution, coexistence, interference, and possible order information of multiple statistical watermark signals under repeated rewriting."
-    },
-    {
-      "title": "Synthetic Household Electricity Load Generation: A Model Ladder Approach",
-      "repo": "DiogoRibeiro7/goiener_synthetic_pipeline",
-      "status": "draft",
-      "notes": "Synthload generates realistic synthetic household electricity consumption from Spanish GoiEner smart-meter data using a ladder of hierarchical and dynamic linear models capturing time-of-week effects, temperature sensitivity via heating and cooling degree hours, AR(1) or time-varying-coefficient temporal autocorrelation, and household heterogeneity. The package and pipeline are complete, and the manuscript is written: paper/main.tex is a thin wrapper that inputs six substantive section files (introduction, data and methods, dynamic model, factor model, results and validation, conclusion) totalling roughly 54 KB, with a compiled paper/main.pdf.",
-      "paper_path": "paper/",
-      "priority": "low",
-      "last_updated": "2026-08-19"
+      "abstract": "This draft asks how Portugal's public pension obligations and financing flows should be described when responsibilities move across institutional boundaries. The current evidence supports a limited set of legal and accounting facts about CGA financing and the 2011-2012 banking-sector pension transfers, but not yet definitive claims about employee remittance loss, quantified employer underpayment, a combined pension-balance sign, or a subsidy for banks. The paper is therefore written as an evidence-controlled reconstruction: it reports registered values, separates accounting standards from economic incidence, and leaves unresolved claims outside the article boundary."
     }
   ]
 }

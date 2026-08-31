@@ -134,6 +134,26 @@ class TestTheRepositorysOwnData:
         by_title = sorted(records, key=lambda record: str(record["title"]).lower())
         assert exported["articles"] == by_title
 
+    def test_the_export_order_does_not_depend_on_the_order_it_is_given(self) -> None:
+        """Callers pass ``list_papers()``, which is sorted by urgency.
+
+        Urgency moves on its own as deadlines approach and papers go stale. An export that
+        inherited it would rewrite the whole file whenever the ranking shifted rather than
+        when a paper changed, which is how one scheduled run came to move 453 lines to add a
+        single paper.
+        """
+        papers = [paper_from_legacy(record) for record in read_legacy_file(REPOSITORY_DATA)]
+        by_slug = sorted(papers, key=lambda paper: str(paper.slug))
+
+        forwards = render_legacy_document(papers)
+        backwards = render_legacy_document(list(reversed(papers)))
+        by_title_desc = render_legacy_document(sorted(papers, key=lambda p: p.title, reverse=True))
+
+        assert forwards == backwards == by_title_desc
+
+        exported = json.loads(forwards)["articles"]
+        assert [record["title"] for record in exported] == [paper.title for paper in by_slug]
+
     def test_the_exported_document_is_still_valid_for_the_old_workflow(
         self, tmp_path: Path
     ) -> None:
