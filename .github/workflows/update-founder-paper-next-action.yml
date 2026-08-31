@@ -1,0 +1,43 @@
+name: Update founder paper next action
+
+on:
+  push:
+    branches:
+      - chore/update-founder-paper-next-action
+    paths:
+      - .github/workflows/update-founder-paper-next-action.yml
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chore/update-founder-paper-next-action
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install application
+        run: pip install .
+
+      - name: Update tracked next action
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          article-reminders next-action 5dd18c3c2647 "Review and merge the first manuscript draft, then perform a claim-by-claim audit separating theorem-level claims, mapping-conditional Eurostat evidence, and model-conditional sensitivity results"
+          article-reminders legacy-export
+          article-reminders sync-github --only issues
+
+      - name: Commit tracker state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/portfolio.json data/events.jsonl data/articles.json
+          git commit -m "chore: update Founder Fallacy next action"
+          git push origin HEAD:chore/update-founder-paper-next-action
