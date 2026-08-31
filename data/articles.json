@@ -494,10 +494,10 @@
       "title": "Detecting Persistent Overnight-Intraday Return Divergence in S&P 500 Stocks",
       "repo": "DiogoRibeiro7/sp500-overnight-intraday-detector",
       "status": "in_progress",
-      "notes": "Reproducible empirical paper on detecting S&P 500 stocks with persistent positive close-to-open returns and negative open-to-close returns. The project separates a published overnight benchmark replication from a point-in-time stock detector and keeps post-2021 outcomes locked until the development methodology is frozen.",
+      "notes": "Reproducible empirical paper on detecting S&P 500 stocks with persistent positive close-to-open returns and negative open-to-close returns. The project separates a published overnight benchmark replication from a point-in-time stock detector and keeps post-2021 outcomes locked until the development methodology is frozen. The statistical design is frozen under a hash-bound preregistration; the repository passes its own readiness, preregistration and synthetic dry-run gates. The empirical result is gated on licensed WRDS/CRSP access, which has not been supplied, so no S&P 500 outcome is claimed and the 2022+ holdout has never been opened.",
       "paper_path": "paper/",
       "priority": "medium",
-      "last_updated": "2026-08-28",
+      "last_updated": "2026-08-31",
       "abstract": "This paper asks whether individual S&P 500 stocks can be identified ex ante as likely to earn positive overnight returns while losing money intraday in a later period. It defines return-decomposition identities, detector families, historical membership handling, replication gates, and prospective evaluation rules."
     },
     {
