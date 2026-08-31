@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+title: article-reminders
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+version: 0.2.0
+license: MIT
+repository-code: "https://github.com/DiogoRibeiro7/article-reminders"
+url: "https://github.com/DiogoRibeiro7/article-reminders"
+abstract: >-
+  A research workflow application for the operational side of writing papers:
+  which paper needs attention, why, and what the next concrete piece of work is.
+  It tracks the lifecycle of manuscripts from idea to publication, keeps its data
+  in plain files that remain readable without it, and uses GitHub commit activity
+  as evidence rather than as a database - which lets it answer the one question a
+  task list cannot: the analysis is moving, but is the manuscript?
+keywords:
+  - research workflow
+  - academic writing
+  - manuscript tracking
+  - reminders
+  - research software

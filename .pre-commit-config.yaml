@@ -6,16 +6,6 @@ repos:
       - id: ruff
         args: [--fix]
 
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.20.2
-    hooks:
-      - id: mypy
-        additional_dependencies:
-          - fastapi>=0.115
-          - types-pyyaml>=6.0
-        pass_filenames: false
-        args: [.]
-
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
@@ -27,6 +17,17 @@ repos:
 
   - repo: local
     hooks:
+      # mypy runs through the project environment rather than a mirrors-mypy sandbox with a
+      # hand-maintained dependency list. That list had drifted -- uvicorn, jinja2, pytest and
+      # httpx were missing -- so the hook reported 28 import errors that CI never saw. Running
+      # the same mypy CI runs is the only way the two stay in agreement.
+      - id: mypy
+        name: mypy (strict over src)
+        entry: poetry run mypy
+        language: system
+        types: [python]
+        pass_filenames: false
+
       - id: validate-portfolio
         name: validate the portfolio and the legacy tracker
         entry: python -c "import sys; sys.path.insert(0, 'src'); from article_reminders.cli.main import main; sys.exit(main(['validate']))"

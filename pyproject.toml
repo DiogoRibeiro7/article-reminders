@@ -7,6 +7,19 @@ requires-python = ">=3.11"
 license = "MIT"
 authors = [{ name = "Diogo Ribeiro" }]
 keywords = ["research", "papers", "workflow", "reminders", "github"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Environment :: Web Environment",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Office/Business :: Scheduling",
+    "Typing :: Typed",
+]
 dependencies = [
     "fastapi>=0.115",
     "jinja2>=3.1",
@@ -24,6 +37,7 @@ Homepage = "https://github.com/DiogoRibeiro7/article-reminders"
 [tool.poetry]
 requires-poetry = ">=2.0"
 packages = [{ include = "article_reminders", from = "src" }]
+include = [{ path = "src/article_reminders/py.typed", format = ["sdist", "wheel"] }]
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=8.0"

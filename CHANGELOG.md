@@ -4,6 +4,25 @@ All notable changes to this project are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow
 [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+- Added the licence the package had been declaring for two versions without shipping: `LICENSE`,
+  MIT. Until now the published repository was, strictly, all rights reserved.
+- Added `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, `CITATION.cff`, a pull-request
+  template and `CODEOWNERS`. The contribution guide writes down the architecture rule, the
+  deterministic-seed check, the legacy-script policy, and the frozen-clock-versus-system-clock
+  trap that has broken the suite twice.
+- Committed `poetry.lock`, so CI installs a resolved dependency set instead of re-resolving on
+  every run, and added a `poetry check --lock` step to keep it honest.
+- Gave `validate.yml` concurrency cancellation and dependency caching, and moved the Poetry
+  install ahead of `setup-python` so the cache can key on the lock file.
+- Added a `py.typed` marker, packaging classifiers, `.editorconfig`, and `.gitattributes` that
+  normalises line endings and marks `data/events.jsonl` as append-only history for merges.
+- Fixed the `mypy` pre-commit hook, which had been failing on 28 import errors CI never saw: the
+  `mirrors-mypy` sandbox carried a hand-maintained dependency list that had drifted behind the
+  project (no uvicorn, jinja2, pytest or httpx). It now runs the project's own mypy.
+- Added README badges and closing sections for contributing, security, citation and licence.
+
 ## [0.2.0] - 2026-08-25
 
 The tracker becomes an application. Everything the repository did before still

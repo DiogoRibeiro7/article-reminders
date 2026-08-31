@@ -1,5 +1,11 @@
 # article-reminders
 
+[![Validate](https://github.com/DiogoRibeiro7/article-reminders/actions/workflows/validate.yml/badge.svg)](https://github.com/DiogoRibeiro7/article-reminders/actions/workflows/validate.yml)
+[![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Lint](https://img.shields.io/badge/lint-ruff-261230.svg)](https://docs.astral.sh/ruff/)
+[![Typing](https://img.shields.io/badge/mypy-strict-1f5082.svg)](https://mypy-lang.org/)
+
 A research workflow application for the operational side of writing papers:
 which paper needs attention, why, and what the next concrete piece of work is.
 
@@ -388,3 +394,27 @@ It is deterministic — same input, same bytes — and CI checks that it still i
    portfolio is still readable and still recoverable.
 5. **GitHub-enhanced, not GitHub-dependent.** Everything except observed activity
    and issue sync works with no token at all.
+
+---
+
+## Contributing
+
+[`CONTRIBUTING.md`](CONTRIBUTING.md) covers where code goes, why `domain` imports nothing, how
+the deterministic example seed is checked, and the one thing that has actually broken this
+repository twice: the tests run on a frozen clock while the CLI runs on the system clock, so a
+literal date in a CLI test is a fuse with a few weeks on it.
+
+## Security
+
+Tokens and workflow permissions are the whole threat model here — the application has no server
+and no accounts, but it does hold a token that can write issues and commit to this repository.
+[`SECURITY.md`](SECURITY.md) says what counts and how to report it privately. Not in a public
+issue.
+
+## Citation
+
+[`CITATION.cff`](CITATION.cff); GitHub renders it as APA and BibTeX from the sidebar.
+
+## Licence
+
+[MIT](LICENSE).
