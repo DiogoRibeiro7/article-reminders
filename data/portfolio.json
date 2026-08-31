@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-08-31T07:56:43.544040+00:00",
+  "generated_at": "2026-08-31T09:00:50.806921+00:00",
   "papers": [
     {
       "id": "30e86e8dd4cd",
@@ -603,7 +603,7 @@
       "research_question": "How do material heterogeneity, industrial processing, and environmental conditioning determine moisture equilibrium and bulk-density stability in stopper-grade cork granulates?",
       "description": "Mechanistic and prospective study of moisture equilibrium, conditioning kinetics, material heterogeneity, and apparent bulk-density stability in stopper-grade loose cork granulates, primarily 0.5-2.0 mm.",
       "abstract": "This study examines how material heterogeneity, industrial processing, and environmental conditioning determine moisture equilibrium and apparent bulk-density stability in stopper-grade cork granulates, with primary emphasis on 0.5-2.0 mm material. It separates equilibrium moisture, transient moisture exchange, and bulk-density state; synthesises evidence on granulometry, commercial density grade, cork type, provenance, composition, drying and sorption; and uses the exact identity between dry solids, water mass, bulk volume and measured density to distinguish ordinary water-mass effects from implied packing changes. The current literature supports mechanistic moisture and heterogeneity models but does not identify a within-batch causal moisture-to-density response, so the project prospectively specifies the experiment and confirmatory analysis needed to estimate that missing relationship.",
-      "notes": "Evidence synthesis, mechanistic Arrhenius/GAB analysis, heterogeneity hierarchy, conditioning-state model, identifiability matrix, prospective experiment design, pilot/power plan, and pre-data confirmatory analysis plan are frozen before new experimental data. The primary unresolved empirical gap is repeated paired moisture and loose bulk-density measurement on the same stopper-grade material during controlled conditioning. No universal moisture threshold is prespecified.",
+      "notes": "Complete first LaTeX draft and journal-specific submission package. Target classification corrected to Review Article: the paper is a quantitative/mechanistic synthesis with an identifiability framework and prospective experiment, not a new-experiment Original Article. Manuscript now includes affiliation, keywords, author contributions, data/code statement and generative-AI disclosure. Funding, competing interests, corresponding email, ORCID, exclusive-submission confirmation and archival DOI decision remain explicit blockers.",
       "target_journal": "European Journal of Wood and Wood Products",
       "tags": [
         "cork",
@@ -613,8 +613,8 @@
         "experimental-design"
       ],
       "next_action": {
-        "description": "Complete the journal-specific submission pass: author affiliation, keywords, declarations, data/code availability, cover letter, and final format check for European Journal of Wood and Wood Products",
-        "created_at": "2026-08-31T07:56:43.541847+00:00"
+        "description": "Confirm funding, competing interests, corresponding email, ORCID and exclusive-submission status; decide and create the archival release/DOI; then insert final metadata and compile the submission PDF.",
+        "created_at": "2026-08-31T09:00:50.804115+00:00"
       },
       "transitions": [
         {
@@ -633,7 +633,7 @@
       "repository_provider": "github",
       "paper_path": "paper/",
       "created_at": "2026-08-30T22:20:34.511721+00:00",
-      "updated_at": "2026-08-31T07:56:43.541847+00:00",
+      "updated_at": "2026-08-31T09:00:50.804115+00:00",
       "draft_started_at": "2026-08-31T07:42:44.104012+00:00"
     },
     {
