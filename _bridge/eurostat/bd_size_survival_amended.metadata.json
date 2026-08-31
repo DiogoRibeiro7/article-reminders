@@ -1,0 +1,13 @@
+{
+  "bridge_branch": "ops/eurostat-bd-size-bridge",
+  "bridge_repository": "DiogoRibeiro7/article-reminders",
+  "content_type": "application/json",
+  "dataset_code": "bd_size",
+  "http_status": 200,
+  "indicator": "ENT_SRVLR_BRTH_PC",
+  "payload_sha256": "19008cb2a2348bc4eedd5dd3307c70cbc6eebbd3b14e8e9885eb42f90c5b2e8c",
+  "request_sha256": "64af4c904ffba1f5f6acd6fb0425c5ae48681c9210240a4293427ba3f8f1dfc3",
+  "request_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/bd_size?lang=EN&geo=PT&geo=EU27_2020&indic_sbs=ENT_SRVLR_BRTH_PC&nace_r2=B-S_X_O_S94&sizeclas=TOTAL&age=Y1&age=Y2&age=Y3&age=Y4&age=Y5&sinceTimePeriod=2021",
+  "retrieved_at_utc": "2026-08-31T08:28:41.348555+00:00",
+  "scientific_source": "Eurostat API Statistics"
+}
