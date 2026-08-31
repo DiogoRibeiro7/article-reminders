@@ -1,0 +1,88 @@
+name: Eurostat amended survival bridge
+
+on:
+  push:
+    branches: [ops/eurostat-bd-size-bridge]
+    paths:
+      - ".github/workflows/eurostat-survival-amended-bridge.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-public-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch exact amended Eurostat survival response
+        run: |
+          python - <<'PY'
+          from __future__ import annotations
+          import hashlib
+          import json
+          from datetime import datetime, timezone
+          from pathlib import Path
+          from urllib.request import Request, urlopen
+
+          url = (
+              "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/bd_size"
+              "?lang=EN"
+              "&geo=PT"
+              "&geo=EU27_2020"
+              "&indic_sbs=ENT_SRVLR_BRTH_PC"
+              "&nace_r2=B-S_X_O_S94"
+              "&sizeclas=TOTAL"
+              "&age=Y1"
+              "&age=Y2"
+              "&age=Y3"
+              "&age=Y4"
+              "&age=Y5"
+              "&sinceTimePeriod=2021"
+          )
+          request = Request(
+              url,
+              headers={"User-Agent": "founder-equilibrium-public-evidence-bridge/1.0"},
+          )
+          with urlopen(request, timeout=60) as response:  # noqa: S310
+              payload = response.read()
+              status = response.status
+              content_type = response.headers.get("Content-Type", "")
+
+          if status != 200:
+              raise SystemExit(f"HTTP {status}")
+          parsed = json.loads(payload)
+          if parsed.get("class") != "dataset":
+              raise SystemExit("unexpected JSON-stat class")
+
+          out = Path("_bridge/eurostat")
+          out.mkdir(parents=True, exist_ok=True)
+          (out / "bd_size_survival_amended.json").write_bytes(payload)
+          metadata = {
+              "dataset_code": "bd_size",
+              "indicator": "ENT_SRVLR_BRTH_PC",
+              "request_url": url,
+              "request_sha256": hashlib.sha256(url.encode("utf-8")).hexdigest(),
+              "payload_sha256": hashlib.sha256(payload).hexdigest(),
+              "retrieved_at_utc": datetime.now(timezone.utc).isoformat(),
+              "http_status": status,
+              "content_type": content_type,
+              "bridge_repository": "DiogoRibeiro7/article-reminders",
+              "bridge_branch": "ops/eurostat-bd-size-bridge",
+              "scientific_source": "Eurostat API Statistics",
+          }
+          (out / "bd_size_survival_amended.metadata.json").write_text(
+              json.dumps(metadata, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(metadata, indent=2, sort_keys=True))
+          PY
+      - name: Commit public evidence to bridge branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _bridge/eurostat
+          git commit -m "data: capture amended Eurostat survival response"
+          git push
