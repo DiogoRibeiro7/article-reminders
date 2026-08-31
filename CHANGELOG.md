@@ -6,6 +6,13 @@ All notable changes to this project are recorded here. The format follows
 
 ## [Unreleased]
 
+- Fixed the exported tracker reordering itself. `render_legacy_document` now orders entries by
+  slug; it previously kept the order it was handed, and callers hand over `list_papers()`, which
+  sorts by urgency. Urgency moves on its own as deadlines approach and papers go stale, so a
+  scheduled export rewrote the whole file whenever the ranking shifted rather than when a paper
+  changed — `cd69ce7` moved 453 lines to add one paper. `data/articles.json` is re-exported here
+  in the new order, which is the one-time cost of the change; every record is unchanged.
+
 - Added the licence the package had been declaring for two versions without shipping: `LICENSE`,
   MIT. Until now the published repository was, strictly, all rights reserved.
 - Added `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, `CITATION.cff`, a pull-request

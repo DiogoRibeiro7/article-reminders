@@ -1,28 +1,14 @@
 {
   "articles": [
     {
-      "title": "Minimum Wage and Productivity in Portuguese Firms",
-      "repo": "example-lab/minimum-wage-productivity",
-      "status": "in_progress",
-      "notes": "Matched employer-employee panel, difference-in-differences around the statutory increases, with a firm-level productivity decomposition.",
-      "paper_path": "paper/",
-      "priority": "high",
-      "last_updated": "2026-08-25",
-      "venue": "Labour Economics",
-      "target_date": "2026-08-31",
-      "next_action": "Run the robustness specification on the revised OECD vintage"
-    },
-    {
-      "title": "Parish-Level Rent Indices from Administrative Records",
-      "repo": "example-lab/parish-rents",
-      "status": "draft",
+      "title": "A Dynamical Systems View of Fiscal Crises",
+      "repo": "example-lab/fiscal-dynamics",
+      "status": "published",
       "notes": "",
-      "paper_path": "manuscript/",
-      "priority": "high",
+      "paper_path": "paper/",
+      "priority": "medium",
       "last_updated": "2026-08-25",
-      "venue": "Journal of Housing Economics",
-      "target_date": "2026-09-04",
-      "next_action": "Finish the methodology section"
+      "venue": "Journal of Economic Dynamics and Control"
     },
     {
       "title": "Adaptive Threshold Selection for Heavy-Tailed Insurance Losses",
@@ -56,14 +42,16 @@
       "last_updated": "2026-08-25"
     },
     {
-      "title": "A Dynamical Systems View of Fiscal Crises",
-      "repo": "example-lab/fiscal-dynamics",
-      "status": "published",
-      "notes": "",
+      "title": "Minimum Wage and Productivity in Portuguese Firms",
+      "repo": "example-lab/minimum-wage-productivity",
+      "status": "in_progress",
+      "notes": "Matched employer-employee panel, difference-in-differences around the statutory increases, with a firm-level productivity decomposition.",
       "paper_path": "paper/",
-      "priority": "medium",
+      "priority": "high",
       "last_updated": "2026-08-25",
-      "venue": "Journal of Economic Dynamics and Control"
+      "venue": "Labour Economics",
+      "target_date": "2026-08-31",
+      "next_action": "Run the robustness specification on the revised OECD vintage"
     },
     {
       "title": "Multi-Stage Watermark Interference",
@@ -73,6 +61,18 @@
       "paper_path": "papers/watermarks/",
       "priority": "low",
       "last_updated": "2026-08-25"
+    },
+    {
+      "title": "Parish-Level Rent Indices from Administrative Records",
+      "repo": "example-lab/parish-rents",
+      "status": "draft",
+      "notes": "",
+      "paper_path": "manuscript/",
+      "priority": "high",
+      "last_updated": "2026-08-25",
+      "venue": "Journal of Housing Economics",
+      "target_date": "2026-09-04",
+      "next_action": "Finish the methodology section"
     }
   ]
 }
