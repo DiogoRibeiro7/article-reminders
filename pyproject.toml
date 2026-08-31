@@ -8,11 +8,11 @@ license = "MIT"
 authors = [{ name = "Diogo Ribeiro" }]
 keywords = ["research", "papers", "workflow", "reminders", "github"]
 dependencies = [
-    "fastapi>=0.115",
-    "jinja2>=3.1",
-    "python-multipart>=0.0.9",
-    "pyyaml>=6.0",
-    "uvicorn>=0.30",
+    "fastapi>=0.141.1",
+    "jinja2>=3.1.6",
+    "python-multipart>=0.0.32",
+    "pyyaml>=6.0.3",
+    "uvicorn>=0.52.4",
 ]
 
 [project.scripts]
