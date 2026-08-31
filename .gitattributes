@@ -1,0 +1,14 @@
+# The portfolio and its history are compared and diffed across machines; normalise endings.
+* text=auto eol=lf
+
+*.py     text eol=lf diff=python
+*.json   text eol=lf
+*.jsonl  text eol=lf
+*.yml    text eol=lf
+*.toml   text eol=lf
+*.md     text eol=lf
+*.html   text eol=lf
+
+# Append-only history: a merge here is almost always a mistake worth looking at by hand.
+data/events.jsonl merge=union linguist-generated=true
+docs/**          linguist-documentation=true
