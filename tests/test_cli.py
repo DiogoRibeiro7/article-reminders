@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from collections.abc import Callable
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import pytest
@@ -11,6 +12,18 @@ import pytest
 from article_reminders.cli.formatting import relative_days, table, truncate
 from article_reminders.cli.main import EXIT_ERROR, EXIT_FINDINGS, EXIT_OK, main
 from tests.conftest import NOW, days_ahead, write_legacy
+
+
+def real_days_ahead(days: int) -> str:
+    """Return a date that many days after *today*, as ``YYYY-MM-DD``.
+
+    The frozen ``NOW`` in ``conftest`` governs the fixtures, but the CLI builds its own
+    application on the system clock. A literal date handed to a CLI command is therefore
+    a fuse: it is in the future when it is written and in the past some weeks later, and
+    the suite then fails on a calendar day rather than on a change.
+    """
+
+    return (datetime.now(UTC) + timedelta(days=days)).date().isoformat()
 
 
 @pytest.fixture
@@ -47,7 +60,7 @@ def test_add_then_list_then_show(run: Callable[..., str]) -> None:
         "--next-action",
         "Retrieve the revised OECD productivity vintage",
         "--due",
-        "2026-08-31",
+        real_days_ahead(6),
         "--tags",
         "labour,portugal",
     )
@@ -99,7 +112,13 @@ def test_a_forced_transition_is_allowed(run: Callable[..., str]) -> None:
 def test_next_action_lifecycle(run: Callable[..., str]) -> None:
     run("add", "A Paper", "--status", "draft")
 
-    run("next-action", "a-paper", "Finish the methodology section", "--due", "2026-09-04")
+    run(
+        "next-action",
+        "a-paper",
+        "Finish the methodology section",
+        "--due",
+        real_days_ahead(10),
+    )
     assert "Finish the methodology section" in run("next-action", "a-paper")
 
     run("next-action", "a-paper", "--done", "--then", "Rebuild the tables")
@@ -134,7 +153,7 @@ def test_reminders_as_json_can_be_filtered_by_kind(run: Callable[..., str]) -> N
 
 
 def test_a_healthy_portfolio_says_so(run: Callable[..., str]) -> None:
-    run("add", "A Paper", "--status", "draft", "--next-action", "x", "--due", "2027-01-01")
+    run("add", "A Paper", "--status", "draft", "--next-action", "x", "--due", real_days_ahead(120))
     assert "Nothing needs attention." in run("reminders")
 
 
@@ -156,10 +175,11 @@ def test_board_groups_by_column(run: Callable[..., str]) -> None:
 
 
 def test_calendar_lists_deadlines(run: Callable[..., str]) -> None:
-    run("add", "A Paper", "--status", "draft", "--next-action", "x", "--due", "2026-09-04")
+    due = real_days_ahead(40)
+    run("add", "A Paper", "--status", "draft", "--next-action", "x", "--due", due)
     output = run("calendar")
-    assert "September 2026" in output
-    assert "2026-09-04" in output
+    assert datetime.fromisoformat(due).strftime("%B %Y") in output
+    assert due in output
 
 
 def test_calendar_is_empty_when_nothing_is_dated(run: Callable[..., str]) -> None:
@@ -180,9 +200,7 @@ def test_submission_and_decision(run: Callable[..., str]) -> None:
     run("add", "A Paper", "--status", "ready_to_submit")
     assert "submitted to Labour Economics" in run("submit", "a-paper", "Labour Economics")
 
-    output = run(
-        "decision", "a-paper", "major_revision", "--revision-due", days_ahead(5).date().isoformat()
-    )
+    output = run("decision", "a-paper", "major_revision", "--revision-due", real_days_ahead(5))
     assert "now at revision" in output
 
     # The CLI runs on the real clock, so assert on the shape rather than the count.
@@ -229,12 +247,13 @@ def test_migrate_dry_run_reports_without_writing(
 def test_legacy_export_round_trips(run: Callable[..., str], workspace: Path) -> None:
     write_legacy(workspace / "data" / "articles.json")
     run("migrate")
-    run("next-action", "uncertainty", "Rebuild the figures", "--due", "2026-12-01")
+    due = real_days_ahead(90)
+    run("next-action", "uncertainty", "Rebuild the figures", "--due", due)
 
     run("legacy-export")
     exported = json.loads((workspace / "data" / "articles.json").read_text(encoding="utf-8"))
     assert exported["articles"][0]["next_action"] == "Rebuild the figures"
-    assert exported["articles"][0]["target_date"] == "2026-12-01"
+    assert exported["articles"][0]["target_date"] == due
 
 
 def test_the_legacy_tracker_is_readable_before_any_migration(
