@@ -315,6 +315,17 @@
       "abstract": "Classical online change-point detectors are widely deployed but poorly understood under the data corruption that real-world monitoring systems routinely face: outlier contamination, sensor dropout, and strong seasonality. We present a complete engineering pipeline-seasonal residualization, bounded-influence M-estimation, per-variant threshold calibration, and detection clustering-that makes three sequential detectors (Page-Hinkley, two-sided CUSUM, BOCPD) practical under these conditions, along with a simulation framework for systematic evaluation."
     },
     {
+      "title": "The Founder Fallacy: Occupational Choice, Congestion, and the Limits of Universal Entrepreneurship",
+      "repo": "DiogoRibeiro7/founder-equilibrium",
+      "status": "in_progress",
+      "notes": "The theoretical architecture is complete: labour complementarity, finite demand, heterogeneous occupational choice, endogenous labour and capital markets, differentiated demand and exit, sustainable founder-share bounds, belief distortion, survivorship-biased visibility, and visibility-to-equilibrium transmission. The empirical identification contract is frozen and Eurostat Business Demography ingestion is implemented; production evidence is currently blocked by external runner infrastructure. No manuscript draft exists yet.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-08-31",
+      "abstract": "Entrepreneurship is often presented as a universally scalable career recommendation even though entrepreneurial payoffs depend on occupational scarcity, complementary labour, finite demand, and factor-market adjustment. This paper develops a finite-population equilibrium model showing that scalable founder roles cannot be universal under weak complementarity assumptions, that private entry can diverge from the socially desirable founder share, and that survivorship-biased visibility can rationally distort perceived success odds and propagate into excess entry through general-equilibrium feedback.",
+      "next_action": "Complete the frozen Eurostat evidence audit and partial-identification layer, then create the paper manuscript and draft the theorem/model sections"
+    },
+    {
       "title": "The heteroTests Package: A Unified Toolkit for Heteroscedasticity Diagnostics",
       "repo": "DiogoRibeiro7/heteroTests",
       "status": "draft",

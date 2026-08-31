@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-08-30T22:20:34.516349+00:00",
+  "generated_at": "2026-08-31T07:10:50.315480+00:00",
   "papers": [
     {
       "id": "30e86e8dd4cd",
@@ -876,6 +876,41 @@
       "paper_path": "notebooks/",
       "created_at": "2026-07-03T00:00:00+00:00",
       "updated_at": "2026-07-03T00:00:00+00:00"
+    },
+    {
+      "id": "5dd18c3c2647",
+      "title": "The Founder Fallacy: Occupational Choice, Congestion, and the Limits of Universal Entrepreneurship",
+      "slug": "the-founder-fallacy-occupational-choice-congestion-and-the-limits-of-universal-e",
+      "status": "research",
+      "priority": "high",
+      "research_question": "Why does universal scalable-founder success fail as a macroeconomic prescription once occupational complementarity, finite demand, factor-market adjustment, and biased success visibility are modelled jointly?",
+      "description": "Mathematical-economics study of the feasible and welfare-relevant share of scalable founders in a finite economy, including occupational choice, demand congestion, labour and capital markets, entry and exit, and survivorship-biased visibility.",
+      "abstract": "Entrepreneurship is often presented as a universally scalable career recommendation even though entrepreneurial payoffs depend on occupational scarcity, complementary labour, finite demand, and factor-market adjustment. This paper develops a finite-population equilibrium model showing that scalable founder roles cannot be universal under weak complementarity assumptions, that private entry can diverge from the socially desirable founder share, and that survivorship-biased visibility can rationally distort perceived success odds and propagate into excess entry through general-equilibrium feedback.",
+      "notes": "The theoretical architecture is complete: labour complementarity, finite demand, heterogeneous occupational choice, endogenous labour and capital markets, differentiated demand and exit, sustainable founder-share bounds, belief distortion, survivorship-biased visibility, and visibility-to-equilibrium transmission. The empirical identification contract is frozen and Eurostat Business Demography ingestion is implemented; production evidence is currently blocked by external runner infrastructure. No manuscript draft exists yet.",
+      "tags": [
+        "entrepreneurship",
+        "occupational-choice",
+        "industrial-organization",
+        "general-equilibrium",
+        "selection-bias"
+      ],
+      "next_action": {
+        "description": "Complete the frozen Eurostat evidence audit and partial-identification layer, then create the paper manuscript and draft the theorem/model sections",
+        "created_at": "2026-08-31T07:10:50.311085+00:00"
+      },
+      "transitions": [
+        {
+          "to_status": "research",
+          "occurred_at": "2026-08-31T07:10:50.311085+00:00",
+          "forced": false
+        }
+      ],
+      "repository": "DiogoRibeiro7/founder-equilibrium",
+      "repository_provider": "github",
+      "paper_path": "paper/",
+      "created_at": "2026-08-31T07:10:50.311085+00:00",
+      "updated_at": "2026-08-31T07:10:50.311085+00:00",
+      "started_at": "2026-08-31T07:10:50.311085+00:00"
     },
     {
       "id": "cebd4da1c33d",
