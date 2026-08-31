@@ -1,0 +1,47 @@
+name: Update cork paper once
+
+on:
+  push:
+    paths:
+      - ".github/workflows/update-cork-paper-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Poetry
+        run: pip install poetry
+      - name: Install project
+        run: poetry install --no-interaction
+      - name: Move cork paper to draft
+        run: >-
+          poetry run article-reminders status
+          "Material Heterogeneity, Moisture Dynamics and Bulk-Density Stability in Stopper-Grade Cork Granulates"
+          draft
+      - name: Set next manuscript action
+        run: >-
+          poetry run article-reminders next-action
+          "Material Heterogeneity, Moisture Dynamics and Bulk-Density Stability in Stopper-Grade Cork Granulates"
+          "Audit the first manuscript draft against the extraction and derived tables, add a compact evidence table, verify every quantitative claim is traceable, then select a target journal."
+      - name: Export and validate
+        run: |
+          poetry run article-reminders legacy-export
+          poetry run article-reminders validate
+          poetry run python scripts/validate_articles.py
+      - name: Commit tracker update and remove workflow
+        run: |
+          rm .github/workflows/update-cork-paper-once.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/portfolio.json data/articles.json data/events.jsonl .github/workflows/update-cork-paper-once.yml
+          git commit -m "chore: mark cork granulate paper as draft"
+          git push
