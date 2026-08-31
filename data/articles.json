@@ -224,7 +224,8 @@
       "priority": "high",
       "last_updated": "2026-08-31",
       "abstract": "This study examines how material heterogeneity, industrial processing, and environmental conditioning determine moisture equilibrium and apparent bulk-density stability in stopper-grade cork granulates, with primary emphasis on 0.5-2.0 mm material. It separates equilibrium moisture, transient moisture exchange, and bulk-density state; synthesises evidence on granulometry, commercial density grade, cork type, provenance, composition, drying and sorption; and uses the exact identity between dry solids, water mass, bulk volume and measured density to distinguish ordinary water-mass effects from implied packing changes. The current literature supports mechanistic moisture and heterogeneity models but does not identify a within-batch causal moisture-to-density response, so the project prospectively specifies the experiment and confirmatory analysis needed to estimate that missing relationship.",
-      "next_action": "Audit the first manuscript draft against the extraction and derived tables, add a compact evidence table, verify every quantitative claim is traceable, then select a target journal."
+      "venue": "European Journal of Wood and Wood Products",
+      "next_action": "Complete the journal-specific submission pass: author affiliation, keywords, declarations, data/code availability, cover letter, and final format check for European Journal of Wood and Wood Products"
     },
     {
       "title": "Monte Carlo Cartography of Destructive Attractors: Collapse Probabilities, Resilience Thresholds, and Global Sensitivity",
