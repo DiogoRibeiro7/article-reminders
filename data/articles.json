@@ -218,13 +218,13 @@
     {
       "title": "Material Heterogeneity, Moisture Dynamics and Bulk-Density Stability in Stopper-Grade Cork Granulates",
       "repo": "DiogoRibeiro7/cork-granulate-stability",
-      "status": "in_progress",
+      "status": "draft",
       "notes": "Evidence synthesis, mechanistic Arrhenius/GAB analysis, heterogeneity hierarchy, conditioning-state model, identifiability matrix, prospective experiment design, pilot/power plan, and pre-data confirmatory analysis plan are frozen before new experimental data. The primary unresolved empirical gap is repeated paired moisture and loose bulk-density measurement on the same stopper-grade material during controlled conditioning. No universal moisture threshold is prespecified.",
       "paper_path": "paper/",
       "priority": "high",
-      "last_updated": "2026-08-30",
+      "last_updated": "2026-08-31",
       "abstract": "This study examines how material heterogeneity, industrial processing, and environmental conditioning determine moisture equilibrium and apparent bulk-density stability in stopper-grade cork granulates, with primary emphasis on 0.5-2.0 mm material. It separates equilibrium moisture, transient moisture exchange, and bulk-density state; synthesises evidence on granulometry, commercial density grade, cork type, provenance, composition, drying and sorption; and uses the exact identity between dry solids, water mass, bulk volume and measured density to distinguish ordinary water-mass effects from implied packing changes. The current literature supports mechanistic moisture and heterogeneity models but does not identify a within-batch causal moisture-to-density response, so the project prospectively specifies the experiment and confirmatory analysis needed to estimate that missing relationship.",
-      "next_action": "Create the paper/ manuscript skeleton and convert the frozen protocol, evidence synthesis, conditioning model, and prospective design into the first manuscript draft"
+      "next_action": "Audit the first manuscript draft against the extraction and derived tables, add a compact evidence table, verify every quantitative claim is traceable, then select a target journal."
     },
     {
       "title": "Monte Carlo Cartography of Destructive Attractors: Collapse Probabilities, Resilience Thresholds, and Global Sensitivity",
@@ -505,10 +505,10 @@
       "title": "Detecting Persistent Overnight-Intraday Return Divergence in S&P 500 Stocks",
       "repo": "DiogoRibeiro7/sp500-overnight-intraday-detector",
       "status": "in_progress",
-      "notes": "Reproducible empirical paper on detecting S&P 500 stocks with persistent positive close-to-open returns and negative open-to-close returns. The project separates a published overnight benchmark replication from a point-in-time stock detector and keeps post-2021 outcomes locked until the development methodology is frozen. The statistical design is frozen under a hash-bound preregistration; the repository passes its own readiness, preregistration and synthetic dry-run gates. The empirical result is gated on licensed WRDS/CRSP access, which has not been supplied, so no S&P 500 outcome is claimed and the 2022+ holdout has never been opened.",
+      "notes": "Reproducible empirical paper on detecting S&P 500 stocks with persistent positive close-to-open returns and negative open-to-close returns. The project separates a published overnight benchmark replication from a point-in-time stock detector and keeps post-2021 outcomes locked until the development methodology is frozen.",
       "paper_path": "paper/",
       "priority": "medium",
-      "last_updated": "2026-08-31",
+      "last_updated": "2026-08-28",
       "abstract": "This paper asks whether individual S&P 500 stocks can be identified ex ante as likely to earn positive overnight returns while losing money intraday in a later period. It defines return-decomposition identities, detector families, historical membership handling, replication gates, and prospective evaluation rules."
     },
     {

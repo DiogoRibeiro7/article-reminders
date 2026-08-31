@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-08-31T07:10:50.315480+00:00",
+  "generated_at": "2026-08-31T07:42:44.897736+00:00",
   "papers": [
     {
       "id": "30e86e8dd4cd",
@@ -598,7 +598,7 @@
       "id": "1bd6f606f9d1",
       "title": "Material Heterogeneity, Moisture Dynamics and Bulk-Density Stability in Stopper-Grade Cork Granulates",
       "slug": "material-heterogeneity-moisture-dynamics-and-bulk-density-stability-in-stopper-g",
-      "status": "analysis",
+      "status": "draft",
       "priority": "high",
       "research_question": "How do material heterogeneity, industrial processing, and environmental conditioning determine moisture equilibrium and bulk-density stability in stopper-grade cork granulates?",
       "description": "Mechanistic and prospective study of moisture equilibrium, conditioning kinetics, material heterogeneity, and apparent bulk-density stability in stopper-grade loose cork granulates, primarily 0.5-2.0 mm.",
@@ -612,13 +612,19 @@
         "experimental-design"
       ],
       "next_action": {
-        "description": "Create the paper/ manuscript skeleton and convert the frozen protocol, evidence synthesis, conditioning model, and prospective design into the first manuscript draft",
-        "created_at": "2026-08-30T22:20:34.511721+00:00"
+        "description": "Audit the first manuscript draft against the extraction and derived tables, add a compact evidence table, verify every quantitative claim is traceable, then select a target journal.",
+        "created_at": "2026-08-31T07:42:44.894867+00:00"
       },
       "transitions": [
         {
           "to_status": "analysis",
           "occurred_at": "2026-08-30T22:20:34.511721+00:00",
+          "forced": false
+        },
+        {
+          "from_status": "analysis",
+          "to_status": "draft",
+          "occurred_at": "2026-08-31T07:42:44.104012+00:00",
           "forced": false
         }
       ],
@@ -626,7 +632,8 @@
       "repository_provider": "github",
       "paper_path": "paper/",
       "created_at": "2026-08-30T22:20:34.511721+00:00",
-      "updated_at": "2026-08-30T22:20:34.511721+00:00"
+      "updated_at": "2026-08-31T07:42:44.894867+00:00",
+      "draft_started_at": "2026-08-31T07:42:44.104012+00:00"
     },
     {
       "id": "2cf76c6a1077",
