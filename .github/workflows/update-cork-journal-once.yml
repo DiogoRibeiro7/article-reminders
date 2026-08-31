@@ -1,0 +1,37 @@
+name: Update cork journal once
+
+on:
+  push:
+    paths:
+      - ".github/workflows/update-cork-journal-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install poetry
+      - run: poetry install --no-interaction
+      - name: Update target journal and next action
+        run: |
+          poetry run article-reminders update "Material Heterogeneity, Moisture Dynamics and Bulk-Density Stability in Stopper-Grade Cork Granulates" \
+            --journal "European Journal of Wood and Wood Products"
+          poetry run article-reminders next-action "Material Heterogeneity, Moisture Dynamics and Bulk-Density Stability in Stopper-Grade Cork Granulates" \
+            "Complete the journal-specific submission pass: author affiliation, keywords, declarations, data/code availability, cover letter, and final format check for European Journal of Wood and Wood Products"
+          poetry run article-reminders legacy-export
+          poetry run article-reminders validate
+          poetry run python scripts/validate_articles.py
+      - name: Remove one-shot workflow and commit
+        run: |
+          rm .github/workflows/update-cork-journal-once.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/portfolio.json data/articles.json .github/workflows/update-cork-journal-once.yml
+          git commit -m "chore: set cork paper target journal"
+          git push
