@@ -1,0 +1,58 @@
+name: Add founder-equilibrium paper once
+
+on:
+  push:
+    paths:
+      - .github/workflows/add-founder-equilibrium-paper-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  register:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Install project
+        run: poetry install --no-interaction
+
+      - name: Add founder-equilibrium paper
+        run: >-
+          poetry run article-reminders add
+          "The Founder Fallacy: Occupational Choice, Congestion, and the Limits of Universal Entrepreneurship"
+          --status research
+          --priority high
+          --repo DiogoRibeiro7/founder-equilibrium
+          --paper-path paper/
+          --research-question "Why does universal scalable-founder success fail as a macroeconomic prescription once occupational complementarity, finite demand, factor-market adjustment, and biased success visibility are modelled jointly?"
+          --description "Mathematical-economics study of the feasible and welfare-relevant share of scalable founders in a finite economy, including occupational choice, demand congestion, labour and capital markets, entry and exit, and survivorship-biased visibility."
+          --abstract "Entrepreneurship is often presented as a universally scalable career recommendation even though entrepreneurial payoffs depend on occupational scarcity, complementary labour, finite demand, and factor-market adjustment. This paper develops a finite-population equilibrium model showing that scalable founder roles cannot be universal under weak complementarity assumptions, that private entry can diverge from the socially desirable founder share, and that survivorship-biased visibility can rationally distort perceived success odds and propagate into excess entry through general-equilibrium feedback."
+          --notes "The theoretical architecture is complete: labour complementarity, finite demand, heterogeneous occupational choice, endogenous labour and capital markets, differentiated demand and exit, sustainable founder-share bounds, belief distortion, survivorship-biased visibility, and visibility-to-equilibrium transmission. The empirical identification contract is frozen and Eurostat Business Demography ingestion is implemented; production evidence is currently blocked by external runner infrastructure. No manuscript draft exists yet."
+          --tags entrepreneurship,occupational-choice,industrial-organization,general-equilibrium,selection-bias
+          --next-action "Complete the frozen Eurostat evidence audit and partial-identification layer, then create the paper manuscript and draft the theorem/model sections"
+
+      - name: Export legacy tracker
+        run: poetry run article-reminders legacy-export
+
+      - name: Validate portfolio and legacy tracker
+        run: |
+          poetry run article-reminders validate
+          poetry run python scripts/validate_articles.py
+
+      - name: Remove one-shot workflow and commit
+        run: |
+          rm .github/workflows/add-founder-equilibrium-paper-once.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/portfolio.json data/articles.json data/events.jsonl .github/workflows/add-founder-equilibrium-paper-once.yml
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: track founder-equilibrium paper"
+          git push
