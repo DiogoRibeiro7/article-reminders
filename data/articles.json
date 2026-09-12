@@ -476,7 +476,7 @@
       "notes": "",
       "paper_path": "paper/",
       "priority": "high",
-      "last_updated": "2026-09-06",
+      "last_updated": "2026-09-07",
       "next_action": "Integrate the causal-horizon T5 theorem into the assembled manuscript, complete the theorem-by-theorem provenance audit, and adversarially stress-test the fixed task-class result before submission."
     },
     {
@@ -527,6 +527,16 @@
       "priority": "medium",
       "last_updated": "2026-08-31",
       "abstract": "Background: Traditional survival analysis methods, including the Cox proportional hazards model and logrank test, assume proportional hazards (PH) and may lose power or interpretability when this assumption is violated. The restricted mean survival time (RMST) offers a robust alternative that quantifies treatment benefit as the difference in mean survival time up to a prespecified horizon."
+    },
+    {
+      "title": "Riccati Equations as Projective Linear Dynamics: Equivalence Classes, Integrability, and Singularities",
+      "repo": "DiogoRibeiro7/riccati-projective-atlas",
+      "status": "in_progress",
+      "notes": "",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-09-12",
+      "next_action": "Formalize the canonical Riccati-to-linear transformation and prove the equivalence of the particular-solution, Bernoulli, and first-order-linear reductions before classifying Euler/log-time subclasses."
     },
     {
       "title": "School Stratification and Social Externalities: Institutional Design, Socioeconomic Sorting, Cross-Class Connectedness, and Social Attitudes",
