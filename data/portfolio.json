@@ -1,7 +1,42 @@
 {
   "version": 2,
-  "generated_at": "2026-09-12T08:57:10.154875+00:00",
+  "generated_at": "2026-09-12T10:41:17.167784+00:00",
   "papers": [
+    {
+      "id": "cea6d90044ec",
+      "title": "A Gaussian–Pareto Bridge with Pure Power-Law Tails",
+      "slug": "a-gaussianpareto-bridge-with-pure-power-law-tails",
+      "status": "draft",
+      "priority": "high",
+      "abstract": "We study a transformed-Gaussian distribution family with locally Gaussian behaviour and regularly varying tails whose slowly varying factor converges to a finite positive constant. The construction cancels the leading Gaussian Mills-ratio correction, yields explicit higher-order cancellation points, and is analysed for finite-sample tail accessibility, likelihood geometry, and parameter recovery.",
+      "notes": "Active manuscript in gauss-pareto-bridge. The theorem-driven core, related-work boundary, numerical diagnostics, and repeated recovery experiments are in place. Novelty claims remain deliberately conservative while matched external benchmarks are developed.",
+      "authors": [
+        "Diogo Ribeiro"
+      ],
+      "tags": [
+        "extreme-value-theory",
+        "heavy-tails",
+        "statistics",
+        "transformed-gaussian"
+      ],
+      "next_action": {
+        "description": "Complete the matched Tukey-h benchmark at equal tail index, comparing tail-ratio convergence, extreme-quantile error, and finite-sample tail accessibility.",
+        "created_at": "2026-09-12T10:41:17.160308+00:00"
+      },
+      "transitions": [
+        {
+          "to_status": "draft",
+          "occurred_at": "2026-09-12T10:41:17.160308+00:00",
+          "forced": false
+        }
+      ],
+      "repository": "DiogoRibeiro7/gauss-pareto-bridge",
+      "repository_provider": "github",
+      "paper_path": "paper/",
+      "created_at": "2026-09-12T10:41:17.160308+00:00",
+      "updated_at": "2026-09-12T10:41:17.160308+00:00",
+      "draft_started_at": "2026-09-12T10:41:17.160308+00:00"
+    },
     {
       "id": "30e86e8dd4cd",
       "title": "Acquired Immunity to Self-Propagating Instructions in Multi-Agent LLM Systems",
