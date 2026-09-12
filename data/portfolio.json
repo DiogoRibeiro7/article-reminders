@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-09-07T14:35:14.603127+00:00",
+  "generated_at": "2026-09-12T08:57:10.154875+00:00",
   "papers": [
     {
       "id": "30e86e8dd4cd",
@@ -842,6 +842,37 @@
       "paper_path": "paper/",
       "created_at": "2025-09-24T00:00:00+00:00",
       "updated_at": "2026-08-31T16:31:17.279914+00:00"
+    },
+    {
+      "id": "8d25b271f9bd",
+      "title": "Riccati Equations as Projective Linear Dynamics: Equivalence Classes, Integrability, and Singularities",
+      "slug": "riccati-equations-as-projective-linear-dynamics-equivalence-classes-integrabilit",
+      "status": "research",
+      "priority": "high",
+      "tags": [
+        "riccati",
+        "differential-equations",
+        "projective-geometry",
+        "integrability",
+        "linearization"
+      ],
+      "next_action": {
+        "description": "Formalize the canonical Riccati-to-linear transformation and prove the equivalence of the particular-solution, Bernoulli, and first-order-linear reductions before classifying Euler/log-time subclasses.",
+        "created_at": "2026-09-12T08:57:10.148016+00:00"
+      },
+      "transitions": [
+        {
+          "to_status": "research",
+          "occurred_at": "2026-09-12T08:57:10.148016+00:00",
+          "forced": false
+        }
+      ],
+      "repository": "DiogoRibeiro7/riccati-projective-atlas",
+      "repository_provider": "github",
+      "paper_path": "paper/",
+      "created_at": "2026-09-12T08:57:10.148016+00:00",
+      "updated_at": "2026-09-12T08:57:10.148016+00:00",
+      "started_at": "2026-09-12T08:57:10.148016+00:00"
     },
     {
       "id": "a90e6a589dd6",
