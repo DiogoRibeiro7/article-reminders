@@ -629,6 +629,17 @@
       "last_updated": "2026-08-31"
     },
     {
+      "title": "The Economic After-Effects of Corporate Income Tax Cuts Across OECD Economies",
+      "repo": "DiogoRibeiro7/oecd-corporate-tax-cuts",
+      "status": "in_progress",
+      "notes": "Active empirical project in oecd-corporate-tax-cuts. The treatment and stacked-event-study architecture is in place; the current work is constructing and auditing the OECD statutory-rate event inventory before outcome estimation.",
+      "paper_path": "paper/",
+      "priority": "high",
+      "last_updated": "2026-09-13",
+      "abstract": "We study the economic after-effects of statutory corporate income tax cuts across OECD economies. Using OECD corporate tax-rate histories, we construct an audited inventory of policy events and examine the subsequent paths of investment, foreign direct investment, wages, employment, labour productivity, operating surplus, GDP and corporate-tax revenue. The empirical design separates transparent event-by-event profiles from pooled stacked event studies with clean control windows, repeated-treatment safeguards and pre-trend diagnostics. The analysis is designed to distinguish real-activity responses from fiscal-base and profit-shifting effects rather than treating any post-reform movement as causal by construction.",
+      "next_action": "Complete and audit the 2000-2026 OECD statutory corporate-tax-cut event inventory, then freeze the reviewed treatment table before adding the first outcome series."
+    },
+    {
       "title": "The European Economy as a Set of Choices: A Reusable Diagnostic Framework for Convergence, Wages, Investment, and Fiscal Policy",
       "repo": "DiogoRibeiro7/eu_economy_decision_lab",
       "status": "in_progress",

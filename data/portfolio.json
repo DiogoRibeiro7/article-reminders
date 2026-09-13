@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-09-12T10:41:17.167784+00:00",
+  "generated_at": "2026-09-13T05:24:02.596744+00:00",
   "papers": [
     {
       "id": "cea6d90044ec",
@@ -1030,6 +1030,44 @@
       "paper_path": "paper/",
       "created_at": "2026-08-19T00:00:00+00:00",
       "updated_at": "2026-08-31T16:31:32.762268+00:00"
+    },
+    {
+      "id": "9db30996e200",
+      "title": "The Economic After-Effects of Corporate Income Tax Cuts Across OECD Economies",
+      "slug": "the-economic-after-effects-of-corporate-income-tax-cuts-across-oecd-economies",
+      "status": "research",
+      "priority": "high",
+      "research_question": "What happens to investment, FDI, wages, employment, productivity, profits, GDP and corporate-tax revenue after statutory corporate income tax cuts across OECD economies?",
+      "description": "Cross-country OECD event-study project identifying statutory corporate income tax cuts and tracing their subsequent macroeconomic and fiscal effects using audited treatment dates, event-specific profiles and clean-control stacked designs.",
+      "abstract": "We study the economic after-effects of statutory corporate income tax cuts across OECD economies. Using OECD corporate tax-rate histories, we construct an audited inventory of policy events and examine the subsequent paths of investment, foreign direct investment, wages, employment, labour productivity, operating surplus, GDP and corporate-tax revenue. The empirical design separates transparent event-by-event profiles from pooled stacked event studies with clean control windows, repeated-treatment safeguards and pre-trend diagnostics. The analysis is designed to distinguish real-activity responses from fiscal-base and profit-shifting effects rather than treating any post-reform movement as causal by construction.",
+      "notes": "Active empirical project in oecd-corporate-tax-cuts. The treatment and stacked-event-study architecture is in place; the current work is constructing and auditing the OECD statutory-rate event inventory before outcome estimation.",
+      "authors": [
+        "Diogo Ribeiro"
+      ],
+      "tags": [
+        "corporate-tax",
+        "OECD",
+        "event-study",
+        "public-finance",
+        "causal-inference"
+      ],
+      "next_action": {
+        "description": "Complete and audit the 2000-2026 OECD statutory corporate-tax-cut event inventory, then freeze the reviewed treatment table before adding the first outcome series.",
+        "created_at": "2026-09-13T05:24:02.590537+00:00"
+      },
+      "transitions": [
+        {
+          "to_status": "research",
+          "occurred_at": "2026-09-13T05:24:02.590537+00:00",
+          "forced": false
+        }
+      ],
+      "repository": "DiogoRibeiro7/oecd-corporate-tax-cuts",
+      "repository_provider": "github",
+      "paper_path": "paper/",
+      "created_at": "2026-09-13T05:24:02.590537+00:00",
+      "updated_at": "2026-09-13T05:24:02.590537+00:00",
+      "started_at": "2026-09-13T05:24:02.590537+00:00"
     },
     {
       "id": "4402bfa665ce",
