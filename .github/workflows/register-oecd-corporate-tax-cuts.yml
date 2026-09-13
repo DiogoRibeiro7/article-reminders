@@ -33,7 +33,7 @@ jobs:
         run: |
           poetry run article-reminders add \
             "The Economic After-Effects of Corporate Income Tax Cuts Across OECD Economies" \
-            --status in_progress \
+            --status research \
             --priority high \
             --repo DiogoRibeiro7/oecd-corporate-tax-cuts \
             --paper-path paper/ \
