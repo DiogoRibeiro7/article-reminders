@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-09-13T05:24:02.596744+00:00",
+  "generated_at": "2026-09-14T15:24:52.067134+00:00",
   "papers": [
     {
       "id": "cea6d90044ec",
@@ -23,6 +23,7 @@
         "description": "Complete the matched Tukey-h benchmark at equal tail index, comparing tail-ratio convergence, extreme-quantile error, and finite-sample tail accessibility.",
         "created_at": "2026-09-12T10:41:17.160308+00:00"
       },
+      "github_issue_number": 101,
       "transitions": [
         {
           "to_status": "draft",
@@ -34,7 +35,7 @@
       "repository_provider": "github",
       "paper_path": "paper/",
       "created_at": "2026-09-12T10:41:17.160308+00:00",
-      "updated_at": "2026-09-12T10:41:17.160308+00:00",
+      "updated_at": "2026-09-14T15:24:20.937882+00:00",
       "draft_started_at": "2026-09-12T10:41:17.160308+00:00"
     },
     {
@@ -895,6 +896,7 @@
         "description": "Formalize the canonical Riccati-to-linear transformation and prove the equivalence of the particular-solution, Bernoulli, and first-order-linear reductions before classifying Euler/log-time subclasses.",
         "created_at": "2026-09-12T08:57:10.148016+00:00"
       },
+      "github_issue_number": 102,
       "transitions": [
         {
           "to_status": "research",
@@ -906,7 +908,7 @@
       "repository_provider": "github",
       "paper_path": "paper/",
       "created_at": "2026-09-12T08:57:10.148016+00:00",
-      "updated_at": "2026-09-12T08:57:10.148016+00:00",
+      "updated_at": "2026-09-14T15:24:48.004411+00:00",
       "started_at": "2026-09-12T08:57:10.148016+00:00"
     },
     {
@@ -1055,6 +1057,7 @@
         "description": "Complete and audit the 2000-2026 OECD statutory corporate-tax-cut event inventory, then freeze the reviewed treatment table before adding the first outcome series.",
         "created_at": "2026-09-13T05:24:02.590537+00:00"
       },
+      "github_issue_number": 103,
       "transitions": [
         {
           "to_status": "research",
@@ -1066,7 +1069,7 @@
       "repository_provider": "github",
       "paper_path": "paper/",
       "created_at": "2026-09-13T05:24:02.590537+00:00",
-      "updated_at": "2026-09-13T05:24:02.590537+00:00",
+      "updated_at": "2026-09-14T15:24:52.064709+00:00",
       "started_at": "2026-09-13T05:24:02.590537+00:00"
     },
     {
