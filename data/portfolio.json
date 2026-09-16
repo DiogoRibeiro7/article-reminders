@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-09-14T15:24:52.067134+00:00",
+  "generated_at": "2026-09-16T10:02:15.556680+00:00",
   "papers": [
     {
       "id": "cea6d90044ec",
@@ -348,6 +348,41 @@
       "repository_provider": "github",
       "created_at": "2026-08-19T00:00:00+00:00",
       "updated_at": "2026-08-31T16:30:24.963087+00:00"
+    },
+    {
+      "id": "07db96f9b59d",
+      "title": "Failure-Aware Multimodal Behavioural Sensing: Probabilistic State Inference, Person Attribution, and Sensor Reduction in Smart Homes",
+      "slug": "failure-aware-multimodal-behavioural-sensing-probabilistic-state-inference-perso",
+      "status": "draft",
+      "priority": "medium",
+      "notes": "Primary system paper: platform, frozen confirmatory simulation, one-shot real-data external validation, and the limits established by sensor-modeling 0.3.0. Moving to DiogoRibeiro7/research-articles with a pinned sensor-modeling v0.4.0 environment.",
+      "authors": [
+        "Diogo Ribeiro"
+      ],
+      "tags": [
+        "smart-homes",
+        "sensor-fusion",
+        "probabilistic-inference",
+        "ambient-assisted-living",
+        "behavioural-sensing"
+      ],
+      "next_action": {
+        "description": "Move the manuscript and its confirmatory experiments to research-articles with sensor-modeling pinned at v0.4.0.",
+        "created_at": "2026-09-16T10:02:15.543560+00:00"
+      },
+      "transitions": [
+        {
+          "to_status": "draft",
+          "occurred_at": "2026-09-16T10:02:15.543560+00:00",
+          "forced": false
+        }
+      ],
+      "repository": "DiogoRibeiro7/behavioral-sensing-research",
+      "repository_provider": "github",
+      "paper_path": "papers/failure-aware-multimodal-behavioural-sensing/",
+      "created_at": "2026-09-16T10:02:15.543560+00:00",
+      "updated_at": "2026-09-16T10:02:15.543560+00:00",
+      "draft_started_at": "2026-09-16T10:02:15.543560+00:00"
     },
     {
       "id": "00870942705e",
@@ -1255,6 +1290,41 @@
       "paper_path": "papers/1_destructive_attractor_benchmark/",
       "created_at": "2026-08-19T00:00:00+00:00",
       "updated_at": "2026-08-31T16:30:58.565067+00:00"
+    },
+    {
+      "id": "7ca3bc21f6dd",
+      "title": "When Confidence Is Not Information: Failure Modes of Abstention in Ambient Behavioural Sensing",
+      "slug": "when-confidence-is-not-information-failure-modes-of-abstention-in-ambient-behavi",
+      "status": "draft",
+      "priority": "high",
+      "notes": "Primary analysis frozen: all three pre-specified hypotheses fail. Declared exploratory mechanism analyses are implemented but not yet run. The manuscript moves to DiogoRibeiro7/research-articles once that artifact is frozen.",
+      "authors": [
+        "Diogo Ribeiro"
+      ],
+      "tags": [
+        "uncertainty",
+        "abstention",
+        "selective-prediction",
+        "smart-homes",
+        "behavioural-sensing"
+      ],
+      "next_action": {
+        "description": "Merge behavioral-sensing-research#198, dispatch the Paper 1 uncertainty mechanisms workflow on develop, and freeze artifacts/paper1/uncertainty_mechanisms.json.",
+        "created_at": "2026-09-16T10:02:15.320324+00:00"
+      },
+      "transitions": [
+        {
+          "to_status": "draft",
+          "occurred_at": "2026-09-16T10:02:15.320324+00:00",
+          "forced": false
+        }
+      ],
+      "repository": "DiogoRibeiro7/behavioral-sensing-research",
+      "repository_provider": "github",
+      "paper_path": "papers/when-confidence-is-not-information/",
+      "created_at": "2026-09-16T10:02:15.320324+00:00",
+      "updated_at": "2026-09-16T10:02:15.320324+00:00",
+      "draft_started_at": "2026-09-16T10:02:15.320324+00:00"
     },
     {
       "id": "79110a5370fe",

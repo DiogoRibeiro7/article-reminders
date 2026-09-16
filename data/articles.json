@@ -7,7 +7,7 @@
       "notes": "Active manuscript in gauss-pareto-bridge. The theorem-driven core, related-work boundary, numerical diagnostics, and repeated recovery experiments are in place. Novelty claims remain deliberately conservative while matched external benchmarks are developed.",
       "paper_path": "paper/",
       "priority": "high",
-      "last_updated": "2026-09-12",
+      "last_updated": "2026-09-14",
       "abstract": "We study a transformed-Gaussian distribution family with locally Gaussian behaviour and regularly varying tails whose slowly varying factor converges to a finite positive constant. The construction cancels the leading Gaussian Mills-ratio correction, yields explicit higher-order cancellation points, and is analysed for finite-sample tail accessibility, likelihood geometry, and parameter recovery.",
       "next_action": "Complete the matched Tukey-h benchmark at equal tail index, comparing tail-ratio convergence, extreme-quantile error, and finite-sample tail accessibility."
     },
@@ -215,6 +215,16 @@
       "paper_path": "",
       "priority": "high",
       "last_updated": "2026-08-31"
+    },
+    {
+      "title": "Failure-Aware Multimodal Behavioural Sensing: Probabilistic State Inference, Person Attribution, and Sensor Reduction in Smart Homes",
+      "repo": "DiogoRibeiro7/behavioral-sensing-research",
+      "status": "draft",
+      "notes": "Primary system paper: platform, frozen confirmatory simulation, one-shot real-data external validation, and the limits established by sensor-modeling 0.3.0. Moving to DiogoRibeiro7/research-articles with a pinned sensor-modeling v0.4.0 environment.",
+      "paper_path": "papers/failure-aware-multimodal-behavioural-sensing/",
+      "priority": "medium",
+      "last_updated": "2026-09-16",
+      "next_action": "Move the manuscript and its confirmatory experiments to research-articles with sensor-modeling pinned at v0.4.0."
     },
     {
       "title": "Fifty Years of the Portuguese Minimum Wage: Real Erosion, the Productivity Gap, and the Limits of Regional Identification",
@@ -546,7 +556,7 @@
       "notes": "",
       "paper_path": "paper/",
       "priority": "high",
-      "last_updated": "2026-09-12",
+      "last_updated": "2026-09-14",
       "next_action": "Formalize the canonical Riccati-to-linear transformation and prove the equivalence of the particular-solution, Bernoulli, and first-order-linear reductions before classifying Euler/log-time subclasses."
     },
     {
@@ -635,7 +645,7 @@
       "notes": "Active empirical project in oecd-corporate-tax-cuts. The treatment and stacked-event-study architecture is in place; the current work is constructing and auditing the OECD statutory-rate event inventory before outcome estimation.",
       "paper_path": "paper/",
       "priority": "high",
-      "last_updated": "2026-09-13",
+      "last_updated": "2026-09-14",
       "abstract": "We study the economic after-effects of statutory corporate income tax cuts across OECD economies. Using OECD corporate tax-rate histories, we construct an audited inventory of policy events and examine the subsequent paths of investment, foreign direct investment, wages, employment, labour productivity, operating surplus, GDP and corporate-tax revenue. The empirical design separates transparent event-by-event profiles from pooled stacked event studies with clean control windows, repeated-treatment safeguards and pre-trend diagnostics. The analysis is designed to distinguish real-activity responses from fiscal-base and profit-shifting effects rather than treating any post-reform movement as causal by construction.",
       "next_action": "Complete and audit the 2000-2026 OECD statutory corporate-tax-cut event inventory, then freeze the reviewed treatment table before adding the first outcome series."
     },
@@ -747,6 +757,16 @@
       "priority": "high",
       "last_updated": "2026-08-31",
       "abstract": "Can wealth concentration become a locally self-reinforcing boundary state in a reduced-form political-economy dynamics? This article studies the general two-state class x=x(1-x)F(x,y) and y=yG(x,y), where x is a normalised concentration or effective-power index and y is a normalised demand-support/activity index."
+    },
+    {
+      "title": "When Confidence Is Not Information: Failure Modes of Abstention in Ambient Behavioural Sensing",
+      "repo": "DiogoRibeiro7/behavioral-sensing-research",
+      "status": "draft",
+      "notes": "Primary analysis frozen: all three pre-specified hypotheses fail. Declared exploratory mechanism analyses are implemented but not yet run. The manuscript moves to DiogoRibeiro7/research-articles once that artifact is frozen.",
+      "paper_path": "papers/when-confidence-is-not-information/",
+      "priority": "high",
+      "last_updated": "2026-09-16",
+      "next_action": "Merge behavioral-sensing-research#198, dispatch the Paper 1 uncertainty mechanisms workflow on develop, and freeze artifacts/paper1/uncertainty_mechanisms.json."
     },
     {
       "title": "When Did Portuguese Wage Dispersion Begin to Compress? Structural Breaks in Employee Gains, 2002-2024",
