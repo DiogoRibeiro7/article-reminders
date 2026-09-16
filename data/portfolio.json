@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-09-16T15:46:25.265096+00:00",
+  "generated_at": "2026-09-16T20:58:58.999625+00:00",
   "papers": [
     {
       "id": "cea6d90044ec",
@@ -351,7 +351,7 @@
     },
     {
       "id": "07db96f9b59d",
-      "title": "Failure-Aware Multimodal Behavioural Sensing: Probabilistic State Inference, Person Attribution, and Sensor Reduction in Smart Homes",
+      "title": "Failure-Aware Multimodal Behavioural Sensing in Smart Homes",
       "slug": "failure-aware-multimodal-behavioural-sensing-probabilistic-state-inference-perso",
       "status": "draft",
       "priority": "medium",
@@ -381,7 +381,7 @@
       "repository_provider": "github",
       "paper_path": "failure-aware-multimodal-behavioural-sensing/",
       "created_at": "2026-09-16T10:02:15.543560+00:00",
-      "updated_at": "2026-09-16T15:46:25.250050+00:00",
+      "updated_at": "2026-09-16T20:58:58.997625+00:00",
       "draft_started_at": "2026-09-16T10:02:15.543560+00:00"
     },
     {
@@ -1292,42 +1292,6 @@
       "updated_at": "2026-08-31T16:30:58.565067+00:00"
     },
     {
-      "id": "7ca3bc21f6dd",
-      "title": "When Confidence Is Not Information: Failure Modes of Abstention in Ambient Behavioural Sensing",
-      "slug": "when-confidence-is-not-information-failure-modes-of-abstention-in-ambient-behavi",
-      "status": "draft",
-      "priority": "high",
-      "notes": "Primary analysis frozen: all three pre-specified hypotheses fail. The declared exploratory mechanism analyses are frozen (research-articles#1) and written up (research-articles#5). Targeting TMLR: typeset with a named and a double-blind build, related work expanded with verified references, and an anonymised supplement (research-articles#6, #7). Moved from behavioral-sensing-research at 012f22b.",
-      "target_journal": "Transactions on Machine Learning Research",
-      "authors": [
-        "Diogo Ribeiro"
-      ],
-      "tags": [
-        "uncertainty",
-        "abstention",
-        "selective-prediction",
-        "smart-homes",
-        "behavioural-sensing"
-      ],
-      "next_action": {
-        "description": "Submit to TMLR on OpenReview: upload local-runs/when-confidence-is-not-information-submission.pdf and the supplement zip, both built from research-articles main.",
-        "created_at": "2026-09-16T15:18:55.938342+00:00"
-      },
-      "transitions": [
-        {
-          "to_status": "draft",
-          "occurred_at": "2026-09-16T10:02:15.320324+00:00",
-          "forced": false
-        }
-      ],
-      "repository": "DiogoRibeiro7/research-articles",
-      "repository_provider": "github",
-      "paper_path": "when-confidence-is-not-information/",
-      "created_at": "2026-09-16T10:02:15.320324+00:00",
-      "updated_at": "2026-09-16T15:18:55.938342+00:00",
-      "draft_started_at": "2026-09-16T10:02:15.320324+00:00"
-    },
-    {
       "id": "79110a5370fe",
       "title": "When Did Portuguese Wage Dispersion Begin to Compress? Structural Breaks in Employee Gains, 2002-2024",
       "slug": "when-did-portuguese-wage-dispersion-begin-to-compress-structural-breaks-in-emplo",
@@ -1370,6 +1334,42 @@
       "paper_path": "papers/self-negating-political-systems/",
       "created_at": "2026-08-19T00:00:00+00:00",
       "updated_at": "2026-08-31T16:31:23.728458+00:00"
+    },
+    {
+      "id": "7ca3bc21f6dd",
+      "title": "When Posterior Confidence Fails as an Abstention Signal in Ambient Behavioural Sensing",
+      "slug": "when-confidence-is-not-information-failure-modes-of-abstention-in-ambient-behavi",
+      "status": "draft",
+      "priority": "high",
+      "notes": "Primary analysis frozen: all three pre-specified hypotheses fail. The declared exploratory mechanism analyses are frozen (research-articles#1) and written up (research-articles#5). Targeting TMLR: typeset with a named and a double-blind build, related work expanded with verified references, and an anonymised supplement (research-articles#6, #7). Moved from behavioral-sensing-research at 012f22b.",
+      "target_journal": "Transactions on Machine Learning Research",
+      "authors": [
+        "Diogo Ribeiro"
+      ],
+      "tags": [
+        "uncertainty",
+        "abstention",
+        "selective-prediction",
+        "smart-homes",
+        "behavioural-sensing"
+      ],
+      "next_action": {
+        "description": "Submit to TMLR on OpenReview: upload local-runs/when-confidence-is-not-information-submission.pdf and the supplement zip, both built from research-articles main.",
+        "created_at": "2026-09-16T15:18:55.938342+00:00"
+      },
+      "transitions": [
+        {
+          "to_status": "draft",
+          "occurred_at": "2026-09-16T10:02:15.320324+00:00",
+          "forced": false
+        }
+      ],
+      "repository": "DiogoRibeiro7/research-articles",
+      "repository_provider": "github",
+      "paper_path": "when-confidence-is-not-information/",
+      "created_at": "2026-09-16T10:02:15.320324+00:00",
+      "updated_at": "2026-09-16T20:58:57.089944+00:00",
+      "draft_started_at": "2026-09-16T10:02:15.320324+00:00"
     },
     {
       "id": "fb23c7fdfab6",

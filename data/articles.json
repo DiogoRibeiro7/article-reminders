@@ -217,7 +217,7 @@
       "last_updated": "2026-08-31"
     },
     {
-      "title": "Failure-Aware Multimodal Behavioural Sensing: Probabilistic State Inference, Person Attribution, and Sensor Reduction in Smart Homes",
+      "title": "Failure-Aware Multimodal Behavioural Sensing in Smart Homes",
       "repo": "DiogoRibeiro7/research-articles",
       "status": "draft",
       "notes": "Primary system paper: platform, frozen confirmatory simulation, one-shot real-data external validation, and the limits established by sensor-modeling 0.3.0. Moved from behavioral-sensing-research at 012f22b; the smoke check runs against sensor-modeling v0.4.0, and the confirmatory route stays frozen at bd5a9b1.",
@@ -759,7 +759,7 @@
       "abstract": "Can wealth concentration become a locally self-reinforcing boundary state in a reduced-form political-economy dynamics? This article studies the general two-state class x=x(1-x)F(x,y) and y=yG(x,y), where x is a normalised concentration or effective-power index and y is a normalised demand-support/activity index."
     },
     {
-      "title": "When Confidence Is Not Information: Failure Modes of Abstention in Ambient Behavioural Sensing",
+      "title": "When Posterior Confidence Fails as an Abstention Signal in Ambient Behavioural Sensing",
       "repo": "DiogoRibeiro7/research-articles",
       "status": "draft",
       "notes": "Primary analysis frozen: all three pre-specified hypotheses fail. The declared exploratory mechanism analyses are frozen (research-articles#1) and written up (research-articles#5). Targeting TMLR: typeset with a named and a double-blind build, related work expanded with verified references, and an anonymised supplement (research-articles#6, #7). Moved from behavioral-sensing-research at 012f22b.",
