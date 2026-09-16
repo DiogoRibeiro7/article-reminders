@@ -223,7 +223,8 @@
       "notes": "Primary system paper: platform, frozen confirmatory simulation, one-shot real-data external validation, and the limits established by sensor-modeling 0.3.0. Moved from behavioral-sensing-research at 012f22b; the smoke check runs against sensor-modeling v0.4.0, and the confirmatory route stays frozen at bd5a9b1.",
       "paper_path": "failure-aware-multimodal-behavioural-sensing/",
       "priority": "medium",
-      "last_updated": "2026-09-16"
+      "last_updated": "2026-09-16",
+      "next_action": "Review and merge research-articles#4: real-data corrections, executed validations in the abstract, abstract trim and section order."
     },
     {
       "title": "Fifty Years of the Portuguese Minimum Wage: Real Erosion, the Productivity Gap, and the Limits of Regional Identification",
@@ -761,11 +762,11 @@
       "title": "When Confidence Is Not Information: Failure Modes of Abstention in Ambient Behavioural Sensing",
       "repo": "DiogoRibeiro7/research-articles",
       "status": "draft",
-      "notes": "Primary analysis frozen: all three pre-specified hypotheses fail. The declared exploratory mechanism analyses have run; their result awaits freezing in research-articles#1. Moved from behavioral-sensing-research at 012f22b.",
+      "notes": "Primary analysis frozen: all three pre-specified hypotheses fail. The declared exploratory mechanism analyses are frozen (research-articles#1) and written up as an exploratory section in research-articles#5. Moved from behavioral-sensing-research at 012f22b.",
       "paper_path": "when-confidence-is-not-information/",
       "priority": "high",
       "last_updated": "2026-09-16",
-      "next_action": "Review and merge research-articles#1, then write the exploratory mechanism section required by section 7 of the mechanism plan."
+      "next_action": "Review and merge research-articles#5, which adds the exploratory mechanism section."
     },
     {
       "title": "When Did Portuguese Wage Dispersion Begin to Compress? Structural Breaks in Employee Gains, 2002-2024",
