@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-09-16T10:02:15.556680+00:00",
+  "generated_at": "2026-09-16T10:42:53.195708+00:00",
   "papers": [
     {
       "id": "cea6d90044ec",
@@ -355,7 +355,7 @@
       "slug": "failure-aware-multimodal-behavioural-sensing-probabilistic-state-inference-perso",
       "status": "draft",
       "priority": "medium",
-      "notes": "Primary system paper: platform, frozen confirmatory simulation, one-shot real-data external validation, and the limits established by sensor-modeling 0.3.0. Moving to DiogoRibeiro7/research-articles with a pinned sensor-modeling v0.4.0 environment.",
+      "notes": "Primary system paper: platform, frozen confirmatory simulation, one-shot real-data external validation, and the limits established by sensor-modeling 0.3.0. Moved from behavioral-sensing-research at 012f22b; the smoke check runs against sensor-modeling v0.4.0, and the confirmatory route stays frozen at bd5a9b1.",
       "authors": [
         "Diogo Ribeiro"
       ],
@@ -366,10 +366,6 @@
         "ambient-assisted-living",
         "behavioural-sensing"
       ],
-      "next_action": {
-        "description": "Move the manuscript and its confirmatory experiments to research-articles with sensor-modeling pinned at v0.4.0.",
-        "created_at": "2026-09-16T10:02:15.543560+00:00"
-      },
       "transitions": [
         {
           "to_status": "draft",
@@ -377,11 +373,11 @@
           "forced": false
         }
       ],
-      "repository": "DiogoRibeiro7/behavioral-sensing-research",
+      "repository": "DiogoRibeiro7/research-articles",
       "repository_provider": "github",
-      "paper_path": "papers/failure-aware-multimodal-behavioural-sensing/",
+      "paper_path": "failure-aware-multimodal-behavioural-sensing/",
       "created_at": "2026-09-16T10:02:15.543560+00:00",
-      "updated_at": "2026-09-16T10:02:15.543560+00:00",
+      "updated_at": "2026-09-16T10:42:53.191482+00:00",
       "draft_started_at": "2026-09-16T10:02:15.543560+00:00"
     },
     {
@@ -1297,7 +1293,7 @@
       "slug": "when-confidence-is-not-information-failure-modes-of-abstention-in-ambient-behavi",
       "status": "draft",
       "priority": "high",
-      "notes": "Primary analysis frozen: all three pre-specified hypotheses fail. Declared exploratory mechanism analyses are implemented but not yet run. The manuscript moves to DiogoRibeiro7/research-articles once that artifact is frozen.",
+      "notes": "Primary analysis frozen: all three pre-specified hypotheses fail. The declared exploratory mechanism analyses have run; their result awaits freezing in research-articles#1. Moved from behavioral-sensing-research at 012f22b.",
       "authors": [
         "Diogo Ribeiro"
       ],
@@ -1309,8 +1305,8 @@
         "behavioural-sensing"
       ],
       "next_action": {
-        "description": "Merge behavioral-sensing-research#198, dispatch the Paper 1 uncertainty mechanisms workflow on develop, and freeze artifacts/paper1/uncertainty_mechanisms.json.",
-        "created_at": "2026-09-16T10:02:15.320324+00:00"
+        "description": "Review and merge research-articles#1, then write the exploratory mechanism section required by section 7 of the mechanism plan.",
+        "created_at": "2026-09-16T10:42:51.914446+00:00"
       },
       "transitions": [
         {
@@ -1319,11 +1315,11 @@
           "forced": false
         }
       ],
-      "repository": "DiogoRibeiro7/behavioral-sensing-research",
+      "repository": "DiogoRibeiro7/research-articles",
       "repository_provider": "github",
-      "paper_path": "papers/when-confidence-is-not-information/",
+      "paper_path": "when-confidence-is-not-information/",
       "created_at": "2026-09-16T10:02:15.320324+00:00",
-      "updated_at": "2026-09-16T10:02:15.320324+00:00",
+      "updated_at": "2026-09-16T10:42:51.914446+00:00",
       "draft_started_at": "2026-09-16T10:02:15.320324+00:00"
     },
     {
