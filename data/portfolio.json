@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-09-16T13:03:47.993712+00:00",
+  "generated_at": "2026-09-16T15:46:25.265096+00:00",
   "papers": [
     {
       "id": "cea6d90044ec",
@@ -367,8 +367,8 @@
         "behavioural-sensing"
       ],
       "next_action": {
-        "description": "Review and merge research-articles#4: real-data corrections, executed validations in the abstract, abstract trim and section order.",
-        "created_at": "2026-09-16T13:03:47.991882+00:00"
+        "description": "Choose a venue: shortlist journals by scope, length, format, open-access cost and data/code policy, as done for When Confidence Is Not Information.",
+        "created_at": "2026-09-16T15:46:25.250050+00:00"
       },
       "transitions": [
         {
@@ -381,7 +381,7 @@
       "repository_provider": "github",
       "paper_path": "failure-aware-multimodal-behavioural-sensing/",
       "created_at": "2026-09-16T10:02:15.543560+00:00",
-      "updated_at": "2026-09-16T13:03:47.991882+00:00",
+      "updated_at": "2026-09-16T15:46:25.250050+00:00",
       "draft_started_at": "2026-09-16T10:02:15.543560+00:00"
     },
     {
@@ -1297,7 +1297,8 @@
       "slug": "when-confidence-is-not-information-failure-modes-of-abstention-in-ambient-behavi",
       "status": "draft",
       "priority": "high",
-      "notes": "Primary analysis frozen: all three pre-specified hypotheses fail. The declared exploratory mechanism analyses are frozen (research-articles#1) and written up as an exploratory section in research-articles#5. Moved from behavioral-sensing-research at 012f22b.",
+      "notes": "Primary analysis frozen: all three pre-specified hypotheses fail. The declared exploratory mechanism analyses are frozen (research-articles#1) and written up (research-articles#5). Targeting TMLR: typeset with a named and a double-blind build, related work expanded with verified references, and an anonymised supplement (research-articles#6, #7). Moved from behavioral-sensing-research at 012f22b.",
+      "target_journal": "Transactions on Machine Learning Research",
       "authors": [
         "Diogo Ribeiro"
       ],
@@ -1309,8 +1310,8 @@
         "behavioural-sensing"
       ],
       "next_action": {
-        "description": "Review and merge research-articles#5, which adds the exploratory mechanism section.",
-        "created_at": "2026-09-16T13:03:46.571650+00:00"
+        "description": "Submit to TMLR on OpenReview: upload local-runs/when-confidence-is-not-information-submission.pdf and the supplement zip, both built from research-articles main.",
+        "created_at": "2026-09-16T15:18:55.938342+00:00"
       },
       "transitions": [
         {
@@ -1323,7 +1324,7 @@
       "repository_provider": "github",
       "paper_path": "when-confidence-is-not-information/",
       "created_at": "2026-09-16T10:02:15.320324+00:00",
-      "updated_at": "2026-09-16T13:03:46.571650+00:00",
+      "updated_at": "2026-09-16T15:18:55.938342+00:00",
       "draft_started_at": "2026-09-16T10:02:15.320324+00:00"
     },
     {
