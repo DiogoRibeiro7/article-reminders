@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-09-16T10:42:53.195708+00:00",
+  "generated_at": "2026-09-16T13:03:47.993712+00:00",
   "papers": [
     {
       "id": "cea6d90044ec",
@@ -366,6 +366,10 @@
         "ambient-assisted-living",
         "behavioural-sensing"
       ],
+      "next_action": {
+        "description": "Review and merge research-articles#4: real-data corrections, executed validations in the abstract, abstract trim and section order.",
+        "created_at": "2026-09-16T13:03:47.991882+00:00"
+      },
       "transitions": [
         {
           "to_status": "draft",
@@ -377,7 +381,7 @@
       "repository_provider": "github",
       "paper_path": "failure-aware-multimodal-behavioural-sensing/",
       "created_at": "2026-09-16T10:02:15.543560+00:00",
-      "updated_at": "2026-09-16T10:42:53.191482+00:00",
+      "updated_at": "2026-09-16T13:03:47.991882+00:00",
       "draft_started_at": "2026-09-16T10:02:15.543560+00:00"
     },
     {
@@ -1293,7 +1297,7 @@
       "slug": "when-confidence-is-not-information-failure-modes-of-abstention-in-ambient-behavi",
       "status": "draft",
       "priority": "high",
-      "notes": "Primary analysis frozen: all three pre-specified hypotheses fail. The declared exploratory mechanism analyses have run; their result awaits freezing in research-articles#1. Moved from behavioral-sensing-research at 012f22b.",
+      "notes": "Primary analysis frozen: all three pre-specified hypotheses fail. The declared exploratory mechanism analyses are frozen (research-articles#1) and written up as an exploratory section in research-articles#5. Moved from behavioral-sensing-research at 012f22b.",
       "authors": [
         "Diogo Ribeiro"
       ],
@@ -1305,8 +1309,8 @@
         "behavioural-sensing"
       ],
       "next_action": {
-        "description": "Review and merge research-articles#1, then write the exploratory mechanism section required by section 7 of the mechanism plan.",
-        "created_at": "2026-09-16T10:42:51.914446+00:00"
+        "description": "Review and merge research-articles#5, which adds the exploratory mechanism section.",
+        "created_at": "2026-09-16T13:03:46.571650+00:00"
       },
       "transitions": [
         {
@@ -1319,7 +1323,7 @@
       "repository_provider": "github",
       "paper_path": "when-confidence-is-not-information/",
       "created_at": "2026-09-16T10:02:15.320324+00:00",
-      "updated_at": "2026-09-16T10:42:51.914446+00:00",
+      "updated_at": "2026-09-16T13:03:46.571650+00:00",
       "draft_started_at": "2026-09-16T10:02:15.320324+00:00"
     },
     {
