@@ -218,13 +218,12 @@
     },
     {
       "title": "Failure-Aware Multimodal Behavioural Sensing: Probabilistic State Inference, Person Attribution, and Sensor Reduction in Smart Homes",
-      "repo": "DiogoRibeiro7/behavioral-sensing-research",
+      "repo": "DiogoRibeiro7/research-articles",
       "status": "draft",
-      "notes": "Primary system paper: platform, frozen confirmatory simulation, one-shot real-data external validation, and the limits established by sensor-modeling 0.3.0. Moving to DiogoRibeiro7/research-articles with a pinned sensor-modeling v0.4.0 environment.",
-      "paper_path": "papers/failure-aware-multimodal-behavioural-sensing/",
+      "notes": "Primary system paper: platform, frozen confirmatory simulation, one-shot real-data external validation, and the limits established by sensor-modeling 0.3.0. Moved from behavioral-sensing-research at 012f22b; the smoke check runs against sensor-modeling v0.4.0, and the confirmatory route stays frozen at bd5a9b1.",
+      "paper_path": "failure-aware-multimodal-behavioural-sensing/",
       "priority": "medium",
-      "last_updated": "2026-09-16",
-      "next_action": "Move the manuscript and its confirmatory experiments to research-articles with sensor-modeling pinned at v0.4.0."
+      "last_updated": "2026-09-16"
     },
     {
       "title": "Fifty Years of the Portuguese Minimum Wage: Real Erosion, the Productivity Gap, and the Limits of Regional Identification",
@@ -760,13 +759,13 @@
     },
     {
       "title": "When Confidence Is Not Information: Failure Modes of Abstention in Ambient Behavioural Sensing",
-      "repo": "DiogoRibeiro7/behavioral-sensing-research",
+      "repo": "DiogoRibeiro7/research-articles",
       "status": "draft",
-      "notes": "Primary analysis frozen: all three pre-specified hypotheses fail. Declared exploratory mechanism analyses are implemented but not yet run. The manuscript moves to DiogoRibeiro7/research-articles once that artifact is frozen.",
-      "paper_path": "papers/when-confidence-is-not-information/",
+      "notes": "Primary analysis frozen: all three pre-specified hypotheses fail. The declared exploratory mechanism analyses have run; their result awaits freezing in research-articles#1. Moved from behavioral-sensing-research at 012f22b.",
+      "paper_path": "when-confidence-is-not-information/",
       "priority": "high",
       "last_updated": "2026-09-16",
-      "next_action": "Merge behavioral-sensing-research#198, dispatch the Paper 1 uncertainty mechanisms workflow on develop, and freeze artifacts/paper1/uncertainty_mechanisms.json."
+      "next_action": "Review and merge research-articles#1, then write the exploratory mechanism section required by section 7 of the mechanism plan."
     },
     {
       "title": "When Did Portuguese Wage Dispersion Begin to Compress? Structural Breaks in Employee Gains, 2002-2024",
