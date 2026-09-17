@@ -1,0 +1,31 @@
+{
+  "project": {
+    "owner": "DiogoRibeiro7",
+    "number": 17
+  },
+  "issue_title": "[portfolio] R / CRAN package tracking",
+  "repositories": [
+    "DiogoRibeiro7/heteroTests",
+    "DiogoRibeiro7/breakinfer",
+    "DiogoRibeiro7/momentineq",
+    "DiogoRibeiro7/rmstpower",
+    "DiogoRibeiro7/survdisc",
+    "DiogoRibeiro7/tidytsanomaly",
+    "DiogoRibeiro7/pharmoCovR",
+    "DiogoRibeiro7/PharmaTestSuite",
+    "DiogoRibeiro7/effectbridge",
+    "DiogoRibeiro7/reasonbench",
+    "DiogoRibeiro7/SEMKit",
+    "DiogoRibeiro7/parametricboot",
+    "DiogoRibeiro7/samplesizePredictR",
+    "DiogoRibeiro7/ClassImbalanceR",
+    "DiogoRibeiro7/transformeR",
+    "DiogoRibeiro7/attest",
+    "DiogoRibeiro7/clustcor",
+    "DiogoRibeiro7/health-data-science",
+    "DiogoRibeiro7/chaotic-dynamical-systems",
+    "DiogoRibeiro7/wind-clean-hybrid",
+    "DiogoRibeiro7/gdp_prediction",
+    "DiogoRibeiro7/myRpackage"
+  ]
+}
