@@ -220,11 +220,12 @@
       "title": "Failure-Aware Multimodal Behavioural Sensing in Smart Homes",
       "repo": "DiogoRibeiro7/research-articles",
       "status": "draft",
-      "notes": "Primary system paper: platform, frozen confirmatory simulation, one-shot real-data external validation, and the limits established by sensor-modeling 0.3.0. Moved from behavioral-sensing-research at 012f22b; the smoke check runs against sensor-modeling v0.4.0, and the confirmatory route stays frozen at bd5a9b1.",
+      "notes": "Primary system paper: platform, frozen confirmatory simulation, one-shot real-data external validation, and the limits established by sensor-modeling 0.3.0. Targeting Pervasive and Mobile Computing (Elsevier; chosen over IMWUT, JAISE and Information Fusion for scope fit, no length limit and a fee-free route): typeset with elsarticle, abstract and keywords within limits, references verified, and a Zenodo package of the frozen confirmatory results including the full accepted bundle (research-articles#11, draft until the DOI is reserved). Moved from behavioral-sensing-research at 012f22b; the smoke check runs against sensor-modeling v0.4.0, and the confirmatory route stays frozen at bd5a9b1.",
       "paper_path": "failure-aware-multimodal-behavioural-sensing/",
       "priority": "medium",
-      "last_updated": "2026-09-16",
-      "next_action": "Choose a venue: shortlist journals by scope, length, format, open-access cost and data/code policy, as done for When Confidence Is Not Information."
+      "last_updated": "2026-09-17",
+      "venue": "Pervasive and Mobile Computing",
+      "next_action": "Upload local-runs/failure-aware-confirmatory-results.zip to Zenodo and reserve its DOI, then put the DOI in research-articles#11 and merge it."
     },
     {
       "title": "Fifty Years of the Portuguese Minimum Wage: Real Erosion, the Productivity Gap, and the Limits of Regional Identification",

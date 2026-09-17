@@ -264,3 +264,6 @@
 {"project_id": "07db96f9b59d", "event_type": "next_action_changed", "occurred_at": "2026-09-16T15:46:25.250050+00:00", "metadata": {"description": "Choose a venue: shortlist journals by scope, length, format, open-access cost and data/code policy, as done for When Confidence Is Not Information."}}
 {"project_id": "7ca3bc21f6dd", "event_type": "project_updated", "occurred_at": "2026-09-16T20:58:57.089944+00:00", "metadata": {"fields": ["title"]}}
 {"project_id": "07db96f9b59d", "event_type": "project_updated", "occurred_at": "2026-09-16T20:58:58.997625+00:00", "metadata": {"fields": ["title"]}}
+{"project_id": "07db96f9b59d", "event_type": "project_updated", "occurred_at": "2026-09-17T11:06:06.788859+00:00", "metadata": {"fields": ["notes", "target_journal"]}}
+{"project_id": "07db96f9b59d", "event_type": "next_action_completed", "occurred_at": "2026-09-17T11:06:08.513726+00:00", "metadata": {"description": "Choose a venue: shortlist journals by scope, length, format, open-access cost and data/code policy, as done for When Confidence Is Not Information."}}
+{"project_id": "07db96f9b59d", "event_type": "next_action_changed", "occurred_at": "2026-09-17T11:06:08.527686+00:00", "metadata": {"description": "Upload local-runs/failure-aware-confirmatory-results.zip to Zenodo and reserve its DOI, then put the DOI in research-articles#11 and merge it."}}
