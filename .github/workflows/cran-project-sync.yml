@@ -1,0 +1,39 @@
+name: CRAN portfolio project sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/cran_portfolio.json
+      - scripts/sync_cran_project.py
+      - .github/workflows/cran-project-sync.yml
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: read
+  repository-projects: write
+
+concurrency:
+  group: cran-portfolio-project-sync
+  cancel-in-progress: false
+
+jobs:
+  sync-project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Synchronize CRAN tracker issues into Project #17
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROJECT_TOKEN || secrets.GITHUB_TOKEN }}
+          CRAN_PORTFOLIO_CONFIG: data/cran_portfolio.json
+        run: python scripts/sync_cran_project.py
