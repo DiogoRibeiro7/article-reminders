@@ -20,7 +20,7 @@ import urllib.error
 import urllib.request
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 DEFAULT_CONFIG_PATH = Path("data/cran_portfolio.json")
 GRAPHQL_URL = "https://api.github.com/graphql"
@@ -192,7 +192,7 @@ def find_tracker_issue(token: str, repository: str, title: str) -> dict[str, Any
     if len(matches) > 1:
         numbers = ", ".join(str(issue["number"]) for issue in matches)
         raise RuntimeError(f"Multiple tracker issues in {repository}: {numbers}")
-    return matches[0]
+    return cast(dict[str, Any], matches[0])
 
 
 def add_issue_to_project(token: str, project_id: str, issue_id: str) -> str:
