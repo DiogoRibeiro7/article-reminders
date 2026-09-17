@@ -3,7 +3,7 @@
     "owner": "DiogoRibeiro7",
     "number": 17
   },
-  "issue_title": "[portfolio] R / CRAN package tracking",
+  "issue_title_template": "[CRAN] {repo}",
   "repositories": [
     "DiogoRibeiro7/heteroTests",
     "DiogoRibeiro7/breakinfer",
