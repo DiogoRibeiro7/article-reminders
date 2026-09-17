@@ -1,14 +1,14 @@
-"""Synchronize R/CRAN portfolio tracker issues into a GitHub Project v2.
+"""Synchronize R/CRAN tracker issues into a GitHub Project v2.
 
-The script is intentionally idempotent: issues already present in the project
-are left untouched, while missing tracker issues are added exactly once.
+The sync is idempotent: existing project items are preserved and only missing
+tracker issues are added.
 
 Required environment variable:
-    GITHUB_TOKEN: token with read access to the listed repositories and write
-                  access to the target user/organization Project v2.
+    GITHUB_TOKEN: token with read access to configured repositories and write
+                  access to the target GitHub Project v2.
 
 Optional environment variable:
-    CRAN_PORTFOLIO_CONFIG: path to the JSON configuration file.
+    CRAN_PORTFOLIO_CONFIG: path to the portfolio JSON configuration.
 """
 
 from __future__ import annotations
@@ -28,16 +28,21 @@ GRAPHQL_URL = "https://api.github.com/graphql"
 
 @dataclass(frozen=True)
 class PortfolioConfig:
-    """Configuration for one cross-repository GitHub Project portfolio."""
+    """Configuration for one cross-repository CRAN portfolio."""
 
     owner: str
     project_number: int
-    issue_title: str
+    issue_title_template: str
     repositories: tuple[str, ...]
+
+    def issue_title_for(self, repository: str) -> str:
+        """Build the expected tracker title for one repository."""
+        repo_name = repository.split("/", 1)[1]
+        return self.issue_title_template.format(repo=repo_name, repository=repository)
 
 
 def graphql(token: str, query: str, variables: dict[str, Any]) -> dict[str, Any]:
-    """Execute an authenticated GitHub GraphQL request and return its data."""
+    """Execute an authenticated GitHub GraphQL request."""
     payload = json.dumps({"query": query, "variables": variables}).encode("utf-8")
     request = urllib.request.Request(
         GRAPHQL_URL,
@@ -50,7 +55,6 @@ def graphql(token: str, query: str, variables: dict[str, Any]) -> dict[str, Any]
         },
         method="POST",
     )
-
     try:
         with urllib.request.urlopen(request, timeout=30) as response:
             result = json.loads(response.read().decode("utf-8"))
@@ -61,7 +65,6 @@ def graphql(token: str, query: str, variables: dict[str, Any]) -> dict[str, Any]
     errors = result.get("errors")
     if errors:
         raise RuntimeError(f"GitHub GraphQL error: {json.dumps(errors, indent=2)}")
-
     data = result.get("data")
     if not isinstance(data, dict):
         raise RuntimeError("GitHub GraphQL response did not contain a data object")
@@ -69,21 +72,20 @@ def graphql(token: str, query: str, variables: dict[str, Any]) -> dict[str, Any]
 
 
 def load_config(path: Path) -> PortfolioConfig:
-    """Load and validate the CRAN portfolio configuration."""
+    """Load and validate the portfolio configuration."""
     raw = json.loads(path.read_text(encoding="utf-8"))
     project = raw.get("project", {})
-
     owner = str(project.get("owner", "")).strip()
-    issue_title = str(raw.get("issue_title", "")).strip()
-    project_number_raw = project.get("number")
+    project_number = project.get("number")
+    title_template = str(raw.get("issue_title_template", "[CRAN] {repo}")).strip()
     repositories_raw = raw.get("repositories", [])
 
     if not owner:
         raise ValueError("project.owner must be a non-empty string")
-    if not isinstance(project_number_raw, int) or project_number_raw <= 0:
+    if not isinstance(project_number, int) or project_number <= 0:
         raise ValueError("project.number must be a positive integer")
-    if not issue_title:
-        raise ValueError("issue_title must be a non-empty string")
+    if "{repo}" not in title_template and "{repository}" not in title_template:
+        raise ValueError("issue_title_template must contain {repo} or {repository}")
     if not isinstance(repositories_raw, list) or not repositories_raw:
         raise ValueError("repositories must be a non-empty list")
 
@@ -99,8 +101,8 @@ def load_config(path: Path) -> PortfolioConfig:
 
     return PortfolioConfig(
         owner=owner,
-        project_number=project_number_raw,
-        issue_title=issue_title,
+        project_number=project_number,
+        issue_title_template=title_template,
         repositories=tuple(repositories),
     )
 
@@ -109,22 +111,17 @@ def get_project_id(token: str, owner: str, number: int) -> str:
     """Resolve a user or organization Project v2 number to its node ID."""
     user_query = """
     query($owner: String!, $number: Int!) {
-      user(login: $owner) {
-        projectV2(number: $number) { id }
-      }
+      user(login: $owner) { projectV2(number: $number) { id } }
     }
     """
     user_data = graphql(token, user_query, {"owner": owner, "number": number})
-    user = user_data.get("user") or {}
-    project = user.get("projectV2")
-    if project:
-        return str(project["id"])
+    user_project = (user_data.get("user") or {}).get("projectV2")
+    if user_project:
+        return str(user_project["id"])
 
     organization_query = """
     query($owner: String!, $number: Int!) {
-      organization(login: $owner) {
-        projectV2(number: $number) { id }
-      }
+      organization(login: $owner) { projectV2(number: $number) { id } }
     }
     """
     organization_data = graphql(
@@ -132,33 +129,27 @@ def get_project_id(token: str, owner: str, number: int) -> str:
         organization_query,
         {"owner": owner, "number": number},
     )
-    organization = organization_data.get("organization") or {}
-    project = organization.get("projectV2")
-    if project:
-        return str(project["id"])
+    organization_project = (organization_data.get("organization") or {}).get("projectV2")
+    if organization_project:
+        return str(organization_project["id"])
 
     raise RuntimeError(f"Could not resolve Project #{number} for {owner}")
 
 
 def get_project_issue_ids(token: str, project_id: str) -> set[str]:
-    """Return issue node IDs already present in the project, following pagination."""
+    """Return issue node IDs already present in the target project."""
     query = """
     query($projectId: ID!, $cursor: String) {
       node(id: $projectId) {
         ... on ProjectV2 {
           items(first: 100, after: $cursor) {
             pageInfo { hasNextPage endCursor }
-            nodes {
-              content {
-                ... on Issue { id }
-              }
-            }
+            nodes { content { ... on Issue { id } } }
           }
         }
       }
     }
     """
-
     issue_ids: set[str] = set()
     cursor: str | None = None
     while True:
@@ -166,24 +157,20 @@ def get_project_issue_ids(token: str, project_id: str) -> set[str]:
         node = data.get("node")
         if not node:
             raise RuntimeError("Target Project v2 could not be read")
-
         items = node["items"]
         for item in items["nodes"]:
             content = item.get("content") or {}
             issue_id = content.get("id")
             if issue_id:
                 issue_ids.add(str(issue_id))
-
         page_info = items["pageInfo"]
         if not page_info["hasNextPage"]:
-            break
+            return issue_ids
         cursor = str(page_info["endCursor"])
-
-    return issue_ids
 
 
 def find_tracker_issue(token: str, repository: str, title: str) -> dict[str, Any] | None:
-    """Find the canonical tracker issue in a repository by exact title."""
+    """Find one tracker issue in a repository by its deterministic title."""
     owner, name = repository.split("/", 1)
     query = """
     query($owner: String!, $name: String!) {
@@ -204,12 +191,12 @@ def find_tracker_issue(token: str, repository: str, title: str) -> dict[str, Any
         return None
     if len(matches) > 1:
         numbers = ", ".join(str(issue["number"]) for issue in matches)
-        raise RuntimeError(f"Multiple canonical tracker issues in {repository}: {numbers}")
+        raise RuntimeError(f"Multiple tracker issues in {repository}: {numbers}")
     return matches[0]
 
 
 def add_issue_to_project(token: str, project_id: str, issue_id: str) -> str:
-    """Add one issue to a Project v2 and return the new project-item ID."""
+    """Add one issue to the target Project v2."""
     mutation = """
     mutation($projectId: ID!, $contentId: ID!) {
       addProjectV2ItemById(input: {projectId: $projectId, contentId: $contentId}) {
@@ -222,7 +209,7 @@ def add_issue_to_project(token: str, project_id: str, issue_id: str) -> str:
 
 
 def main() -> int:
-    """Synchronize all configured tracker issues into the configured project."""
+    """Synchronize all configured tracker issues into the target project."""
     token = os.environ.get("GITHUB_TOKEN", "").strip()
     if not token:
         print("Missing required environment variable: GITHUB_TOKEN", file=sys.stderr)
@@ -242,10 +229,11 @@ def main() -> int:
     missing: list[str] = []
 
     for repository in config.repositories:
-        issue = find_tracker_issue(token, repository, config.issue_title)
+        expected_title = config.issue_title_for(repository)
+        issue = find_tracker_issue(token, repository, expected_title)
         if issue is None:
             missing.append(repository)
-            print(f"MISSING tracker issue: {repository}")
+            print(f"MISSING tracker issue: {repository} ({expected_title})")
             continue
 
         issue_id = str(issue["id"])
@@ -263,13 +251,11 @@ def main() -> int:
         f"CRAN portfolio sync complete: added={added}, "
         f"already_present={unchanged}, missing={len(missing)}"
     )
-
     if missing:
-        print("Repositories missing the canonical tracker issue:", file=sys.stderr)
+        print("Repositories missing the expected tracker issue:", file=sys.stderr)
         for repository in missing:
             print(f"  - {repository}", file=sys.stderr)
         return 1
-
     return 0
 
 
