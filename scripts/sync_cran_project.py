@@ -107,24 +107,37 @@ def load_config(path: Path) -> PortfolioConfig:
 
 def get_project_id(token: str, owner: str, number: int) -> str:
     """Resolve a user or organization Project v2 number to its node ID."""
-    query = """
+    user_query = """
     query($owner: String!, $number: Int!) {
       user(login: $owner) {
         projectV2(number: $number) { id }
       }
+    }
+    """
+    user_data = graphql(token, user_query, {"owner": owner, "number": number})
+    user = user_data.get("user") or {}
+    project = user.get("projectV2")
+    if project:
+        return str(project["id"])
+
+    organization_query = """
+    query($owner: String!, $number: Int!) {
       organization(login: $owner) {
         projectV2(number: $number) { id }
       }
     }
     """
-    data = graphql(token, query, {"owner": owner, "number": number})
+    organization_data = graphql(
+        token,
+        organization_query,
+        {"owner": owner, "number": number},
+    )
+    organization = organization_data.get("organization") or {}
+    project = organization.get("projectV2")
+    if project:
+        return str(project["id"])
 
-    user = data.get("user") or {}
-    organization = data.get("organization") or {}
-    project = user.get("projectV2") or organization.get("projectV2")
-    if not project:
-        raise RuntimeError(f"Could not resolve Project #{number} for {owner}")
-    return str(project["id"])
+    raise RuntimeError(f"Could not resolve Project #{number} for {owner}")
 
 
 def get_project_issue_ids(token: str, project_id: str) -> set[str]:
