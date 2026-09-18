@@ -1,4 +1,11 @@
-from scripts.sync_cran_portfolio_metadata import VIEWS, normalized_values, parse_state
+import runpy
+from collections.abc import Callable, Sequence
+from typing import Any, cast
+
+_module = runpy.run_path("scripts/sync_cran_portfolio_metadata.py")
+parse_state = cast(Callable[[str], dict[str, str]], _module["parse_state"])
+normalized_values = cast(Callable[[str], dict[str, str]], _module["normalized_values"])
+VIEWS = cast(Sequence[Any], _module["VIEWS"])
 
 
 def test_parse_state_stops_at_next_section() -> None:
