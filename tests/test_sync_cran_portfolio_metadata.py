@@ -6,8 +6,14 @@ _module = runpy.run_path("scripts/sync_cran_portfolio_metadata.py")
 parse_state = cast(Callable[[str], dict[str, str]], _module["parse_state"])
 normalized_values = cast(Callable[[str], dict[str, str]], _module["normalized_values"])
 VIEWS = cast(Sequence[Any], _module["VIEWS"])
-audit_integrity_errors = cast(Callable[[dict[str, Any]], list[str]], _module["audit_integrity_errors"])
-validate_audit_integrity = cast(Callable[[list[dict[str, Any]]], None], _module["validate_audit_integrity"])
+audit_integrity_errors = cast(
+    Callable[[dict[str, Any]], list[str]],
+    _module["audit_integrity_errors"],
+)
+validate_audit_integrity = cast(
+    Callable[[list[dict[str, Any]]], None],
+    _module["validate_audit_integrity"],
+)
 
 
 def test_parse_state_stops_at_next_section() -> None:
