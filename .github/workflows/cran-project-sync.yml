@@ -6,6 +6,7 @@ on:
     paths:
       - data/cran_portfolio.json
       - scripts/sync_cran_project.py
+      - scripts/sync_cran_portfolio_metadata.py
       - .github/workflows/cran-project-sync.yml
   schedule:
     - cron: '17 6 * * *'
@@ -37,3 +38,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PROJECT_TOKEN || secrets.GITHUB_TOKEN }}
           CRAN_PORTFOLIO_CONFIG: data/cran_portfolio.json
         run: python scripts/sync_cran_project.py
+
+      - name: Synchronize CRAN portfolio fields and views
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROJECT_TOKEN || secrets.GITHUB_TOKEN }}
+        run: python scripts/sync_cran_portfolio_metadata.py
