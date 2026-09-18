@@ -16,6 +16,15 @@ CONFIG_PATH = Path("data/cran_portfolio.json")
 GRAPHQL_URL = "https://api.github.com/graphql"
 STATE_RE = re.compile(r"^\s*-\s+\*\*(.+?):\*\*\s*(.*?)\s*$")
 MAX_TEXT = 1024
+REQUIRED_STATE_KEYS = (
+    "CRAN target",
+    "Maturity",
+    "Current status",
+    "Priority",
+    "Version",
+    "R CMD check",
+    "Next action",
+)
 
 
 @dataclass(frozen=True)
@@ -87,6 +96,8 @@ FIELDS = (
     FieldSpec("R CMD Check", "TEXT"),
     FieldSpec("Next Action", "TEXT"),
 )
+
+EXPECTED_SYNC_FIELDS = {spec.name for spec in FIELDS}
 
 VIEWS = (
     ViewSpec(
@@ -234,6 +245,52 @@ def normalized_values(body: str) -> dict[str, str]:
         if value:
             values[target] = value if len(value) <= MAX_TEXT else value[: MAX_TEXT - 1] + "…"
     return values
+
+
+def audit_integrity_errors(issue: dict[str, Any]) -> list[str]:
+    """Return human-readable audit-schema errors for one canonical tracker issue."""
+    body = str(issue.get("body") or "")
+    state = parse_state(body)
+    errors: list[str] = []
+
+    missing = [key for key in REQUIRED_STATE_KEYS if not state.get(key, "").strip()]
+    if missing:
+        errors.append("missing Portfolio state keys: " + ", ".join(missing))
+
+    placeholder_values = {
+        "CRAN target": {"To be reviewed"},
+        "Maturity": {"To be reviewed"},
+        "Current status": {"Inventory"},
+        "Priority": {"To be assigned"},
+        "Next action": {"Review current package and release state"},
+    }
+    for key, placeholders in placeholder_values.items():
+        if state.get(key, "").strip() in placeholders:
+            errors.append(f"{key} still has inventory placeholder value")
+
+    values = normalized_values(body)
+    missing_sync = sorted(EXPECTED_SYNC_FIELDS - values.keys())
+    if missing_sync:
+        errors.append("does not normalize all Project fields: " + ", ".join(missing_sync))
+
+    return errors
+
+
+def validate_audit_integrity(issues: list[dict[str, Any]]) -> None:
+    """Fail before mutating Project #17 when any audited tracker is incomplete."""
+    failures: list[str] = []
+    for issue in issues:
+        errors = audit_integrity_errors(issue)
+        if errors:
+            failures.append(
+                f"{issue.get('title', '<untitled>')} ({issue.get('url', '<no url>')}): "
+                + "; ".join(errors)
+            )
+    if failures:
+        joined = "\n  - ".join(failures)
+        raise RuntimeError(
+            "CRAN audit integrity check failed; refusing partial Project sync:\n  - " + joined
+        )
 
 
 def tracker_issues(token: str, repos: list[str], title_template: str) -> list[dict[str, Any]]:
@@ -485,6 +542,8 @@ def main() -> int:
     owner, number, title_template, repos = load_config()
     pid = project_id(token, owner, number)
     issues = tracker_issues(token, repos, title_template)
+    validate_audit_integrity(issues)
+    print(f"AUDIT integrity OK: {len(issues)} canonical trackers complete")
     items = project_items(token, pid)
     project_fields = ensure_fields(token, pid)
     sync_values(token, pid, issues, items, project_fields)
