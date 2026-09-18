@@ -21,6 +21,7 @@ REQUIRED_STATE_KEYS = (
     "Maturity",
     "Current status",
     "Priority",
+    "Primary blocker",
     "Version",
     "R CMD check",
     "Next action",
@@ -92,6 +93,19 @@ FIELDS = (
             SelectOption("P3", "GRAY", "Low priority"),
         ),
     ),
+    FieldSpec(
+        "Primary Blocker",
+        "SINGLE_SELECT",
+        (
+            SelectOption("None", "GREEN", "No current blocker"),
+            SelectOption("Methodology", "RED", "Statistical or scientific correctness"),
+            SelectOption("Methodology / Runtime", "RED", "Method correctness plus runtime integration"),
+            SelectOption("CI / Packaging", "YELLOW", "Build, checks, CI, or package mechanics"),
+            SelectOption("Metadata / Release", "BLUE", "Release metadata, visibility, or final release gates"),
+            SelectOption("Naming / Scope", "PURPLE", "Package identity, name, or CRAN scope"),
+            SelectOption("Dormant / Revive", "GRAY", "Paused pending a revive-or-stop decision"),
+        ),
+    ),
     FieldSpec("Version", "TEXT"),
     FieldSpec("R CMD Check", "TEXT"),
     FieldSpec("Next Action", "TEXT"),
@@ -103,8 +117,8 @@ VIEWS = (
     ViewSpec(
         "CRAN Pipeline",
         "is:issue",
-        ("Title", "CRAN", "Maturity", "Lifecycle", "Priority", "Version",
-         "R CMD Check", "Next Action", "Repository"),
+        ("Title", "CRAN", "Maturity", "Lifecycle", "Priority", "Primary Blocker",
+         "Version", "R CMD Check", "Next Action", "Repository"),
     ),
     ViewSpec(
         "Release Queue",
@@ -114,7 +128,8 @@ VIEWS = (
     ViewSpec(
         "Blocked — Fix First",
         "Lifecycle:Blocked",
-        ("Title", "Priority", "Maturity", "R CMD Check", "Next Action", "Repository"),
+        ("Title", "Priority", "Primary Blocker", "Maturity", "R CMD Check",
+         "Next Action", "Repository"),
     ),
     ViewSpec(
         "P0 / P1",
@@ -124,7 +139,8 @@ VIEWS = (
     ViewSpec(
         "Paused — Revive?",
         "Lifecycle:Paused",
-        ("Title", "Priority", "Maturity", "Version", "Next Action", "Repository"),
+        ("Title", "Priority", "Primary Blocker", "Maturity", "Version",
+         "Next Action", "Repository"),
     ),
     ViewSpec(
         "Maturity Map",
@@ -235,6 +251,19 @@ def normalized_values(body: str) -> dict[str, str]:
     priority = re.match(r"^\s*(P[0-3])\b", state.get("Priority", ""), re.I)
     if priority:
         values["Priority"] = priority.group(1).upper()
+
+    blocker = state.get("Primary blocker", "").strip()
+    allowed_blockers = {
+        "None",
+        "Methodology",
+        "Methodology / Runtime",
+        "CI / Packaging",
+        "Metadata / Release",
+        "Naming / Scope",
+        "Dormant / Revive",
+    }
+    if blocker in allowed_blockers:
+        values["Primary Blocker"] = blocker
 
     for source, target in (
         ("Version", "Version"),
