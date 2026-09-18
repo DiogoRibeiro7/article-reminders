@@ -23,6 +23,7 @@ def test_parse_state_stops_at_next_section() -> None:
 - **Maturity:** Release Candidate
 - **Current status:** CRAN Hardening
 - **Priority:** P0
+- **Primary blocker:** Metadata / Release
 - **Version:** 0.1.0
 - **R CMD check:** 0 errors / 0 warnings / 0 notes
 - **Next action:** Freeze the exact candidate.
@@ -37,6 +38,7 @@ def test_parse_state_stops_at_next_section() -> None:
         "Maturity": "Release Candidate",
         "Current status": "CRAN Hardening",
         "Priority": "P0",
+        "Primary blocker": "Metadata / Release",
         "Version": "0.1.0",
         "R CMD check": "0 errors / 0 warnings / 0 notes",
         "Next action": "Freeze the exact candidate.",
@@ -50,6 +52,7 @@ def test_normalized_values_handles_audit_variants() -> None:
 - **Maturity:** Release Candidate technically; demonstration package functionally
 - **Current status:** Blocked
 - **Priority:** p1
+- **Primary blocker:** Methodology
 - **Version:** 0.2.0
 - **R CMD check:** No successful hosted validation.
 - **Next action:** Fix the estimator.
@@ -60,6 +63,7 @@ def test_normalized_values_handles_audit_variants() -> None:
         "Maturity": "Release Candidate",
         "Lifecycle": "Blocked",
         "Priority": "P1",
+        "Primary Blocker": "Methodology",
         "Version": "0.2.0",
         "R CMD Check": "No successful hosted validation.",
         "Next Action": "Fix the estimator.",
@@ -73,12 +77,14 @@ def test_normalized_values_maps_no_target() -> None:
 - **Maturity:** Alpha
 - **Current status:** Do Not Submit
 - **Priority:** P3
+- **Primary blocker:** Naming / Scope
 """
     assert normalized_values(body) == {
         "CRAN": "No",
         "Maturity": "Alpha",
         "Lifecycle": "Do Not Submit",
         "Priority": "P3",
+        "Primary Blocker": "Naming / Scope",
     }
 
 
@@ -106,6 +112,7 @@ def test_audit_integrity_accepts_complete_tracker() -> None:
 - **Maturity:** Beta
 - **Current status:** Blocked
 - **Priority:** P1
+- **Primary blocker:** Methodology
 - **Version:** 0.1.0
 - **R CMD check:** No successful hosted validation.
 - **Next action:** Fix the blocker.
@@ -124,6 +131,7 @@ def test_audit_integrity_rejects_inventory_template() -> None:
 - **Maturity:** To be reviewed
 - **Current status:** Inventory
 - **Priority:** To be assigned
+- **Primary blocker:** Dormant / Revive
 - **Next action:** Review current package and release state
 """,
     }
@@ -144,6 +152,7 @@ def test_audit_integrity_fails_before_partial_sync() -> None:
 - **Maturity:** Alpha
 - **Current status:** Paused
 - **Priority:** P3
+- **Primary blocker:** Dormant / Revive
 - **Version:** 0.0.0.9000
 - **R CMD check:** Not yet run.
 - **Next action:** Decide whether to revive.
@@ -171,3 +180,19 @@ def test_audit_integrity_fails_before_partial_sync() -> None:
     assert "Version" in message
     assert "R CMD check" in message
     assert "Next action" in message
+
+
+def test_normalized_values_rejects_unknown_primary_blocker() -> None:
+    body = """## Portfolio state
+
+- **CRAN target:** Yes
+- **Maturity:** Beta
+- **Current status:** Blocked
+- **Priority:** P1
+- **Primary blocker:** Something Else
+- **Version:** 0.1.0
+- **R CMD check:** Not green.
+- **Next action:** Fix it.
+"""
+    values = normalized_values(body)
+    assert "Primary Blocker" not in values
