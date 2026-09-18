@@ -98,6 +98,7 @@ def test_view_names_are_unique() -> None:
     names = [view.name for view in VIEWS]
     assert len(names) == len(set(names))
     assert {
+        "Portfolio Summary",
         "CRAN Pipeline",
         "Release Queue",
         "Blocked — Fix First",
