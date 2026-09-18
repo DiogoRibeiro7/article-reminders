@@ -22,6 +22,7 @@ REQUIRED_STATE_KEYS = (
     "Current status",
     "Priority",
     "Primary blocker",
+    "Last reviewed",
     "Version",
     "R CMD check",
     "Next action",
@@ -106,6 +107,7 @@ FIELDS = (
             SelectOption("Dormant / Revive", "GRAY", "Paused pending a revive-or-stop decision"),
         ),
     ),
+    FieldSpec("Last Reviewed", "DATE"),
     FieldSpec("Version", "TEXT"),
     FieldSpec("R CMD Check", "TEXT"),
     FieldSpec("Next Action", "TEXT"),
@@ -118,18 +120,19 @@ VIEWS = (
         "CRAN Pipeline",
         "is:issue",
         ("Title", "CRAN", "Maturity", "Lifecycle", "Priority", "Primary Blocker",
-         "Version", "R CMD Check", "Next Action", "Repository"),
+         "Last Reviewed", "Version", "R CMD Check", "Next Action", "Repository"),
     ),
     ViewSpec(
         "Release Queue",
         'Lifecycle:"Ready to Submit","CRAN Hardening"',
-        ("Title", "Lifecycle", "Priority", "Version", "R CMD Check", "Next Action", "Repository"),
+        ("Title", "Lifecycle", "Priority", "Last Reviewed", "Version", "R CMD Check",
+         "Next Action", "Repository"),
     ),
     ViewSpec(
         "Blocked — Fix First",
         "Lifecycle:Blocked",
-        ("Title", "Priority", "Primary Blocker", "Maturity", "R CMD Check",
-         "Next Action", "Repository"),
+        ("Title", "Priority", "Primary Blocker", "Maturity", "Last Reviewed",
+         "R CMD Check", "Next Action", "Repository"),
     ),
     ViewSpec(
         "P0 / P1",
@@ -139,8 +142,8 @@ VIEWS = (
     ViewSpec(
         "Paused — Revive?",
         "Lifecycle:Paused",
-        ("Title", "Priority", "Primary Blocker", "Maturity", "Version",
-         "Next Action", "Repository"),
+        ("Title", "Priority", "Primary Blocker", "Maturity", "Last Reviewed",
+         "Version", "Next Action", "Repository"),
     ),
     ViewSpec(
         "Maturity Map",
@@ -264,6 +267,10 @@ def normalized_values(body: str) -> dict[str, str]:
     }
     if blocker in allowed_blockers:
         values["Primary Blocker"] = blocker
+
+    reviewed = state.get("Last reviewed", "").strip()
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", reviewed):
+        values["Last Reviewed"] = reviewed
 
     for source, target in (
         ("Version", "Version"),
@@ -452,6 +459,8 @@ def set_value(
         if not option_id:
             raise RuntimeError(f"Missing option {value!r} in {field['name']!r}")
         field_value = {"singleSelectOptionId": option_id}
+    elif field["dataType"] == "DATE":
+        field_value = {"date": value}
     else:
         field_value = {"text": value}
 
