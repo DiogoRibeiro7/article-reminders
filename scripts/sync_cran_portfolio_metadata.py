@@ -117,6 +117,12 @@ EXPECTED_SYNC_FIELDS = {spec.name for spec in FIELDS}
 
 VIEWS = (
     ViewSpec(
+        "Portfolio Summary",
+        "is:issue",
+        ("Title", "Lifecycle", "Priority", "Maturity", "CRAN",
+         "Primary Blocker", "Last Reviewed", "Version", "Repository"),
+    ),
+    ViewSpec(
         "CRAN Pipeline",
         "is:issue",
         ("Title", "CRAN", "Maturity", "Lifecycle", "Priority", "Primary Blocker",
