@@ -24,6 +24,7 @@ def test_parse_state_stops_at_next_section() -> None:
 - **Current status:** CRAN Hardening
 - **Priority:** P0
 - **Primary blocker:** Metadata / Release
+- **Last reviewed:** 2026-09-18
 - **Version:** 0.1.0
 - **R CMD check:** 0 errors / 0 warnings / 0 notes
 - **Next action:** Freeze the exact candidate.
@@ -39,6 +40,7 @@ def test_parse_state_stops_at_next_section() -> None:
         "Current status": "CRAN Hardening",
         "Priority": "P0",
         "Primary blocker": "Metadata / Release",
+        "Last reviewed": "2026-09-18",
         "Version": "0.1.0",
         "R CMD check": "0 errors / 0 warnings / 0 notes",
         "Next action": "Freeze the exact candidate.",
@@ -53,6 +55,7 @@ def test_normalized_values_handles_audit_variants() -> None:
 - **Current status:** Blocked
 - **Priority:** p1
 - **Primary blocker:** Methodology
+- **Last reviewed:** 2026-09-18
 - **Version:** 0.2.0
 - **R CMD check:** No successful hosted validation.
 - **Next action:** Fix the estimator.
@@ -64,6 +67,7 @@ def test_normalized_values_handles_audit_variants() -> None:
         "Lifecycle": "Blocked",
         "Priority": "P1",
         "Primary Blocker": "Methodology",
+        "Last Reviewed": "2026-09-18",
         "Version": "0.2.0",
         "R CMD Check": "No successful hosted validation.",
         "Next Action": "Fix the estimator.",
@@ -78,6 +82,7 @@ def test_normalized_values_maps_no_target() -> None:
 - **Current status:** Do Not Submit
 - **Priority:** P3
 - **Primary blocker:** Naming / Scope
+- **Last reviewed:** 2026-09-18
 """
     assert normalized_values(body) == {
         "CRAN": "No",
@@ -85,6 +90,7 @@ def test_normalized_values_maps_no_target() -> None:
         "Lifecycle": "Do Not Submit",
         "Priority": "P3",
         "Primary Blocker": "Naming / Scope",
+        "Last Reviewed": "2026-09-18",
     }
 
 
@@ -113,6 +119,7 @@ def test_audit_integrity_accepts_complete_tracker() -> None:
 - **Current status:** Blocked
 - **Priority:** P1
 - **Primary blocker:** Methodology
+- **Last reviewed:** 2026-09-18
 - **Version:** 0.1.0
 - **R CMD check:** No successful hosted validation.
 - **Next action:** Fix the blocker.
@@ -153,6 +160,7 @@ def test_audit_integrity_fails_before_partial_sync() -> None:
 - **Current status:** Paused
 - **Priority:** P3
 - **Primary blocker:** Dormant / Revive
+- **Last reviewed:** 2026-09-18
 - **Version:** 0.0.0.9000
 - **R CMD check:** Not yet run.
 - **Next action:** Decide whether to revive.
@@ -196,3 +204,20 @@ def test_normalized_values_rejects_unknown_primary_blocker() -> None:
 """
     values = normalized_values(body)
     assert "Primary Blocker" not in values
+
+
+def test_normalized_values_rejects_invalid_review_date() -> None:
+    body = """## Portfolio state
+
+- **CRAN target:** Yes
+- **Maturity:** Beta
+- **Current status:** Blocked
+- **Priority:** P1
+- **Primary blocker:** Methodology
+- **Last reviewed:** 18/09/2026
+- **Version:** 0.1.0
+- **R CMD check:** Not green.
+- **Next action:** Fix it.
+"""
+    values = normalized_values(body)
+    assert "Last Reviewed" not in values
