@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-09-17T11:06:08.548814+00:00",
+  "generated_at": "2026-09-21T15:28:34.067102+00:00",
   "papers": [
     {
       "id": "cea6d90044ec",
@@ -371,6 +371,7 @@
         "description": "Upload local-runs/failure-aware-confirmatory-results.zip to Zenodo and reserve its DOI, then put the DOI in research-articles#11 and merge it.",
         "created_at": "2026-09-17T11:06:08.527686+00:00"
       },
+      "github_issue_number": 118,
       "transitions": [
         {
           "to_status": "draft",
@@ -382,7 +383,7 @@
       "repository_provider": "github",
       "paper_path": "failure-aware-multimodal-behavioural-sensing/",
       "created_at": "2026-09-16T10:02:15.543560+00:00",
-      "updated_at": "2026-09-17T11:06:08.527686+00:00",
+      "updated_at": "2026-09-21T15:28:34.063737+00:00",
       "draft_started_at": "2026-09-16T10:02:15.543560+00:00"
     },
     {
@@ -1358,6 +1359,7 @@
         "description": "Submit to TMLR on OpenReview: upload local-runs/when-confidence-is-not-information-submission.pdf and the supplement zip, both built from research-articles main.",
         "created_at": "2026-09-16T15:18:55.938342+00:00"
       },
+      "github_issue_number": 117,
       "transitions": [
         {
           "to_status": "draft",
@@ -1369,7 +1371,7 @@
       "repository_provider": "github",
       "paper_path": "when-confidence-is-not-information/",
       "created_at": "2026-09-16T10:02:15.320324+00:00",
-      "updated_at": "2026-09-16T20:58:57.089944+00:00",
+      "updated_at": "2026-09-21T15:28:24.116476+00:00",
       "draft_started_at": "2026-09-16T10:02:15.320324+00:00"
     },
     {
