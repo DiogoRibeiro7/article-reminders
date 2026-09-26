@@ -14,6 +14,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+from dataexcept import DataExceptError
+
 from article_reminders.application.analytics import build_analytics
 from article_reminders.application.services import PaperFilter
 from article_reminders.application.workflow import (
@@ -889,7 +891,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     except GitHubUnavailableError as exc:
         print(f"GitHub is not available: {exc}", file=sys.stderr)
         return EXIT_ERROR
-    except DomainError as exc:
+    except (DomainError, DataExceptError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return EXIT_ERROR
     except BrokenPipeError:  # pragma: no cover - piping into head

@@ -24,6 +24,7 @@ from article_reminders.domain.errors import (
 from article_reminders.domain.ids import PaperId
 from article_reminders.domain.models import Paper
 from article_reminders.domain.timeutils import format_datetime, now
+from article_reminders.infrastructure._file_io import read_utf8, writing
 from article_reminders.infrastructure.storage.legacy import paper_from_legacy, read_legacy_file
 
 logger = logging.getLogger(__name__)
@@ -37,18 +38,19 @@ def atomic_write(path: Path, text: str) -> None:
     The portfolio is the source of truth; a crash mid-write must not be able to
     truncate it.
     """
-    path.parent.mkdir(parents=True, exist_ok=True)
-    descriptor, name = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.", suffix=".tmp")
-    temporary = Path(name)
-    try:
-        with os.fdopen(descriptor, "w", encoding="utf-8", newline="\n") as stream:
-            stream.write(text)
-            stream.flush()
-            os.fsync(stream.fileno())
-        temporary.replace(path)
-    except BaseException:
-        temporary.unlink(missing_ok=True)
-        raise
+    with writing(path):
+        path.parent.mkdir(parents=True, exist_ok=True)
+        descriptor, name = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.", suffix=".tmp")
+        temporary = Path(name)
+        try:
+            with os.fdopen(descriptor, "w", encoding="utf-8", newline="\n") as stream:
+                stream.write(text)
+                stream.flush()
+                os.fsync(stream.fileno())
+            temporary.replace(path)
+        except BaseException:
+            temporary.unlink(missing_ok=True)
+            raise
 
 
 class JsonPaperRepository:
@@ -86,7 +88,7 @@ class JsonPaperRepository:
             return []
 
         try:
-            raw = json.loads(self.path.read_text(encoding="utf-8"))
+            raw = json.loads(read_utf8(self.path))
         except json.JSONDecodeError as exc:
             raise ValidationError(f"{self.path} is not valid JSON: {exc}") from exc
 

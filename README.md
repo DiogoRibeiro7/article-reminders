@@ -72,6 +72,9 @@ Storage is three plain files:
 | `data/events.jsonl` | append-only history, one event per line |
 | `data/articles.json` | the legacy tracker, still read and still written |
 
+Local file and UTF-8 failures carry DataExcept types with the path and original
+cause. Invalid JSON, YAML, and domain values retain their existing validation errors.
+
 `docs/research_workflow_app_design.md` records why each of these decisions went
 the way it did.
 
@@ -79,7 +82,7 @@ the way it did.
 
 ## Installation
 
-Requires Python 3.11 or newer.
+Requires Python 3.11 through 3.14.
 
 ```bash
 poetry install            # or: pip install .

@@ -18,6 +18,7 @@ import yaml
 from article_reminders.domain.enums import LifecycleStatus
 from article_reminders.domain.errors import ValidationError
 from article_reminders.domain.rules import DEFAULT_STALENESS_DAYS
+from article_reminders.infrastructure._file_io import read_utf8
 
 CONFIG_ENV_VAR = "ARTICLE_REMINDERS_CONFIG"
 ROOT_ENV_VAR = "ARTICLE_REMINDERS_ROOT"
@@ -361,7 +362,7 @@ def load_settings(path: Path | None = None, *, root: Path | None = None) -> Sett
         return settings
 
     try:
-        raw = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
+        raw = yaml.safe_load(read_utf8(config_path)) or {}
     except yaml.YAMLError as exc:
         raise ValidationError(f"{config_path} is not valid YAML: {exc}") from exc
     if not isinstance(raw, Mapping):

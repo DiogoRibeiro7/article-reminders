@@ -15,6 +15,7 @@ from pathlib import Path
 from article_reminders.domain.errors import ValidationError
 from article_reminders.domain.events import ProjectEvent
 from article_reminders.domain.ids import PaperId
+from article_reminders.infrastructure._file_io import read_utf8, writing
 
 logger = logging.getLogger(__name__)
 
@@ -34,10 +35,11 @@ class JsonlEventLog:
         batch = list(events)
         if not batch:
             return 0
-        self.path.parent.mkdir(parents=True, exist_ok=True)
-        with self.path.open("a", encoding="utf-8", newline="\n") as stream:
-            for event in batch:
-                stream.write(json.dumps(event.to_dict(), ensure_ascii=False) + "\n")
+        with writing(self.path):
+            self.path.parent.mkdir(parents=True, exist_ok=True)
+            with self.path.open("a", encoding="utf-8", newline="\n") as stream:
+                for event in batch:
+                    stream.write(json.dumps(event.to_dict(), ensure_ascii=False) + "\n")
         logger.debug("appended %d events to %s", len(batch), self.path)
         return len(batch)
 
@@ -46,7 +48,7 @@ class JsonlEventLog:
         if not self.path.exists():
             return []
         events: list[ProjectEvent] = []
-        for number, line in enumerate(self.path.read_text(encoding="utf-8").splitlines(), start=1):
+        for number, line in enumerate(read_utf8(self.path).splitlines(), start=1):
             text = line.strip()
             if not text:
                 continue
