@@ -20,6 +20,7 @@ from article_reminders.domain.errors import ValidationError
 from article_reminders.domain.ids import PaperId, slugify
 from article_reminders.domain.models import NextAction, Paper, RepositoryRef, coerce_priority
 from article_reminders.domain.timeutils import as_date, now, parse_optional_datetime
+from article_reminders.infrastructure._file_io import read_utf8
 
 S = LifecycleStatus
 
@@ -93,7 +94,7 @@ def read_legacy_file(path: Path) -> list[dict[str, Any]]:
     if not path.exists():
         return []
     try:
-        raw = json.loads(path.read_text(encoding="utf-8"))
+        raw = json.loads(read_utf8(path))
     except json.JSONDecodeError as exc:
         raise ValidationError(f"{path} is not valid JSON: {exc}") from exc
     if not isinstance(raw, Mapping) or "articles" not in raw:

@@ -21,6 +21,7 @@ from article_reminders.domain.enums import ProjectEventType
 from article_reminders.domain.events import ProjectEvent
 from article_reminders.domain.models import Paper
 from article_reminders.domain.timeutils import format_datetime, now
+from article_reminders.infrastructure._file_io import writing
 from article_reminders.infrastructure.configuration.settings import Settings
 from article_reminders.infrastructure.storage.event_log import JsonlEventLog
 from article_reminders.infrastructure.storage.json_store import (
@@ -77,9 +78,10 @@ def backup_file(path: Path, backup_dir: Path, *, stamp: datetime | None = None) 
     if not path.exists():
         return None
     marker = (stamp or now()).strftime("%Y%m%dT%H%M%SZ")
-    backup_dir.mkdir(parents=True, exist_ok=True)
     destination = backup_dir / f"{path.stem}.{marker}{path.suffix}"
-    shutil.copy2(path, destination)
+    with writing(destination):
+        backup_dir.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(path, destination)
     logger.info("backed up %s to %s", path, destination)
     return destination
 
