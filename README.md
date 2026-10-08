@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/project-avatar.png" alt="article-reminders project logo" width="160" height="160">
+</p>
+
 # article-reminders
 
 [![Validate](https://github.com/DiogoRibeiro7/article-reminders/actions/workflows/validate.yml/badge.svg)](https://github.com/DiogoRibeiro7/article-reminders/actions/workflows/validate.yml)
