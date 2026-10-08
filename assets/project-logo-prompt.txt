@@ -1,0 +1,7 @@
+Tool: built-in image generation
+
+Use case: logo-brand.
+Asset type: square project logo for article-reminders.
+Project purpose: Public tracker for article repositories with a scheduled GitHub Action that syncs one reminder issue per unfinished article.
+Design direction: A literary ink illustration: an open indigo book whose long poppy-red ribbon bookmark curls into a single sweeping clock hand above its pages. Fine confident brush edges paired with large solid shapes, plenty of white paper, editorial publishing identity with quiet wit. One compact asymmetric mark, no bell, no loose document sheets, no text.
+Composition: one finished square image, visually distinctive and readable at 160 pixels, with enough margin for README display. Produce the actual artwork, not a mockup sheet or brand presentation. No watermark. Do not use a navy-and-gold metallic badge aesthetic.
